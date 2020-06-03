@@ -2,7 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/06/03/hello-world/</loc>
+    <loc>https://github.com/gha01un/gha01un.github.io/about/index.html</loc>
+    
+    <lastmod>2020-06-03T10:56:33.499Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://github.com/gha01un/gha01un.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-06-03T10:56:13.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://github.com/gha01un/gha01un.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-06-03T10:55:14.290Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://github.com/gha01un/gha01un.github.io/2020/06/03/hello-world/</loc>
     
     <lastmod>2020-06-03T10:17:10.968Z</lastmod>
     
