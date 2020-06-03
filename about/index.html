@@ -219,6 +219,22 @@
     
 
     
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'xxx',
+            clientSecret: 'xxx',
+            repo: 'xxx',
+            owner: 'xxx',
+            admin: ['xxx']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
 
     
 
@@ -232,7 +248,7 @@
     <div class="footer-content">
         <span class="power">
             <i class="icon icon-lg icon-copyright"></i>
-            2017
+            2020
             <i class="icon icon-lg icon-heart"></i>
             <a href="https://github.com/gha01un/gha01un.github.io">tomotoes.com</a>
             <br/>
@@ -305,51 +321,50 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 <!-- 脚本管理 -->
 <script>
-
-if(window.innerWidth > 800){
+if(window.innerWidth > 600){
 	/* 3D标题 */
 	$(".content-header").on("mousemove", threedee);
 
 	/* 底部追随鼠标 */
 	$(".footer").hover(2);
-
+	
 	/* gotop键的涟漪 */
 	$("#gotop").hover(1);
-
+	
 	/* 赞赏的粒子雨 */
 	$("#reward").hover(3);
-
+	
 	/* 微信公众号的底部渲染 */
 	$("#wechat").hover(4);
-
-    /* 标题跳动 */
-    $(".archivestitle").bumpyText();
-
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
 	/* 图片点击放大 */
 	const postimg = jQuery(".post-content img:not(.github-emoji)");
 	postimg.on("click",function(){
-
+	
 		mask.classList.add("in");
 		main.classList.add("Mask");
 		menu.classList.add("Mask");
 		var myimg = this.cloneNode(true);
 		myimg.classList.add("imgShow");
-
+	
 		setTimeout(function(){
 			jQuery(myimg).animate({
 				opacity:"1"
 			},1000);
 		},0);
-
+	
 		document.body.appendChild(myimg);
-
+	
 		myimg.onclick=function(){
 			document.body.removeChild(myimg);
 			mask.classList.remove("in");
 			main.classList.remove("Mask");
 			menu.classList.remove("Mask");
 		};
-
+	
 	});
 
 }
@@ -360,7 +375,7 @@ $("#name").bumpyText();
 
 /* 网站运行时间 */
 setInterval(function () {
-	setTime("2017/10/11");
+	setTime("2020/1/22");
 }, 1000);
 
 /* 文章块的淡出 */
@@ -375,11 +390,10 @@ postshow();
 /* 粘贴提示 */
 G($(".post-content"), location.href, "Mr.Guo");
 
-
 /* 控制台 */
 if (window.console && window.console.log) {
 	setTimeout(function () {
-		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
 	}, 0);
 }
 
