@@ -44,13 +44,13 @@
     <link href="https://github.com/gha01un/gha01un.github.io/2020/06/03/HELLO%20CTF/"/>
     <id>https://github.com/gha01un/gha01un.github.io/2020/06/03/HELLO%20CTF/</id>
     <published>2020-06-03T15:29:39.512Z</published>
-    <updated>2020-06-06T17:26:10.788Z</updated>
+    <updated>2020-06-06T17:28:40.380Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>HELLO</strong> <strong>CTF</strong></p><a id="more"></a><p><strong>这只是一个测试</strong></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<p><strong>HELLO WORLD</strong></p><a id="more"></a><p><strong>这只是一个测试</strong></p><p>flag{gu0_ha0_1un_1s_ctfer}</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;HELLO&lt;/strong&gt; &lt;strong&gt;CTF&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;HELLO WORLD&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
