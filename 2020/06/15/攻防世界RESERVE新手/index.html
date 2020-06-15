@@ -49,8 +49,11 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/15/maAv4WdZkoQuXLN.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/Qu84sneYNtdr3v1.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/WwkGUNOgVS3EAhD.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/15/7jn1FTWSVlYPDci.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/15/vT76aXICVZiosER.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/15/GEDNROc5aysAfnl.png">
 <meta property="article:published_time" content="2020-06-15T03:54:45.208Z">
-<meta property="article:modified_time" content="2020-06-15T04:13:21.367Z">
+<meta property="article:modified_time" content="2020-06-15T04:58:38.230Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -200,7 +203,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XCTF-RE"><span class="post-toc-number">1.</span> <span class="post-toc-text">XCTF-RE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-open-source"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.open-source</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XCTF-RE"><span class="post-toc-number">1.</span> <span class="post-toc-text">XCTF-RE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-open-source"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.open-source</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-simple-unpack"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.simple-unpack</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-logmein"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.logmein</span></a></li></ol></li></ol>
         </nav>
     </aside>
    
@@ -230,7 +233,7 @@
         </div>
         <div class="post-count-custom">
             <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">1</span>&nbsp;分钟
+            阅读本文可能花费您&nbsp;<span class="post-count">3</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="XCTF-RE"><a href="#XCTF-RE" class="headerlink" title="XCTF-RE"></a>XCTF-RE</h1><a id="more"></a>
@@ -279,7 +282,46 @@
                     <img src="https://i.loli.net/2020/06/15/WwkGUNOgVS3EAhD.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><script>
+            </figure>
+
+
+
+<h2 id="2-simple-unpack"><a href="#2-simple-unpack" class="headerlink" title="2.simple-unpack"></a>2.simple-unpack</h2><p>题目描述：菜鸡拿到了一个被加壳的二进制文件</p>
+<p>由于菜鸡本人对kali虚拟机并不是很会用，所以只能先拖入winhex里碰碰运气看看是什么壳！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/06/15/7jn1FTWSVlYPDci.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>尝试在winhex查找中输入flag</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/06/15/vT76aXICVZiosER.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>运气真好，把括号里的乱码删掉即为 flag{Upx_1s_n0t_a_d3liv3r_c0mp4ny}</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/06/15/GEDNROc5aysAfnl.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="3-logmein"><a href="#3-logmein" class="headerlink" title="3.logmein"></a>3.logmein</h2><p>这道题终于涉及到了逆向ida静态分析，让我们把它拖入ida64(提前在exeinfope查看其为64位文件)，并佛系按下F5</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> __fastcall __noreturn <span class="title">main</span><span class="params">(__int64 a1, <span class="keyword">char</span> **a2, <span class="keyword">char</span> **a3)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">size_t</span> v3; <span class="comment">// rsi</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [rsp+3Ch] [rbp-54h]</span></span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">36</span>]; <span class="comment">// [rsp+40h] [rbp-50h]</span></span><br><span class="line">  <span class="keyword">int</span> v6; <span class="comment">// [rsp+64h] [rbp-2Ch]</span></span><br><span class="line">  __int64 v7; <span class="comment">// [rsp+68h] [rbp-28h]</span></span><br><span class="line">  <span class="keyword">char</span> v8[<span class="number">8</span>]; <span class="comment">// [rsp+70h] [rbp-20h]</span></span><br><span class="line">  <span class="keyword">int</span> v9; <span class="comment">// [rsp+8Ch] [rbp-4h]</span></span><br><span class="line"></span><br><span class="line">  v9 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">strcpy</span>(v8, <span class="string">":\"AL_RT^L*.?+6/46"</span>);</span><br><span class="line">  v7 = <span class="number">28537194573619560L</span>L;</span><br><span class="line">  v6 = <span class="number">7</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Welcome to the RC3 secure password guesser.\n"</span>, a2, a3);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"To continue, you must enter the correct password.\n"</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Enter your guess: "</span>);</span><br><span class="line">  __isoc99_scanf(<span class="string">"%32s"</span>, s);</span><br><span class="line">  v3 = <span class="built_in">strlen</span>(s);</span><br><span class="line">  <span class="keyword">if</span> ( v3 &lt; <span class="built_in">strlen</span>(v8) )</span><br><span class="line">    sub_4007C0(v8);</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(s); ++i )</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= <span class="built_in">strlen</span>(v8) )</span><br><span class="line">      ((<span class="keyword">void</span> (*)(<span class="keyword">void</span>))sub_4007C0)();</span><br><span class="line">    <span class="keyword">if</span> ( s[i] != (<span class="keyword">char</span>)(*((_BYTE *)&amp;v7 + i % v6) ^ v8[i]) )</span><br><span class="line">      ((<span class="keyword">void</span> (*)(<span class="keyword">void</span>))sub_4007C0)();</span><br><span class="line">  }</span><br><span class="line">  sub_4007F0();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>仔细分析一下代码，发现这个for循环是找出flag的关键，写一个c++文件试一试吧</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">	long long a = 28537194573619560;     //让v7=a</span><br><span class="line">	char * p = (char*)&amp;a;              //(char *)将int型指针(指向4个字节）转换成char型指针（指向一个字节）</span><br><span class="line">	char b[] = ":\"AL_RT^L*.?+6/46";   //使char b[]=v7</span><br><span class="line">	for(int i = 0;b[i]!=0;i++){        //for循环执行</span><br><span class="line">		b[i] = b[i]^p[i%7];</span><br><span class="line">	}</span><br><span class="line">	cout&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出就得到flag啦！  flag{RC3-2016-XORISGUD}</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -304,7 +346,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-15T04:13:21.367Z" itemprop="dateUpdated">2020-06-15 12:13:21</time>
+    Last updated: <time datetime="2020-06-15T04:58:38.230Z" itemprop="dateUpdated">2020-06-15 12:58:38</time>
 </span>
 
 
