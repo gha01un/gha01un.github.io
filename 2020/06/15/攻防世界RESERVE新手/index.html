@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/15/Xy9ko2AJpwiOCSR.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/bSOXEqxe2kRjwW1.png">
 <meta property="article:published_time" content="2020-06-15T03:54:45.208Z">
-<meta property="article:modified_time" content="2020-06-15T07:09:44.663Z">
+<meta property="article:modified_time" content="2020-06-15T07:15:39.324Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -318,6 +318,8 @@
                 <div class="image-caption"></div>
             </figure>
 
+
+
 <h2 id="0x03-logmein"><a href="#0x03-logmein" class="headerlink" title="0x03.logmein"></a>0x03.logmein</h2><p>这道题终于涉及到了逆向ida静态分析，让我们把它拖入ida64(提前在exeinfope查看其为64位文件)，并佛系按下F5</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void __fastcall __noreturn main(__int64 a1, char **a2, char **a3)</span><br><span class="line">{</span><br><span class="line">  size_t v3; // rsi</span><br><span class="line">  int i; // [rsp+<span class="number">3</span>Ch] [rbp<span class="number">-54</span>h]</span><br><span class="line">  char s[<span class="number">36</span>]; // [rsp+<span class="number">40</span>h] [rbp<span class="number">-50</span>h]</span><br><span class="line">  int v6; // [rsp+<span class="number">64</span>h] [rbp<span class="number">-2</span>Ch]</span><br><span class="line">  __int64 v7; // [rsp+<span class="number">68</span>h] [rbp<span class="number">-28</span>h]</span><br><span class="line">  char v8[<span class="number">8</span>]; // [rsp+<span class="number">70</span>h] [rbp<span class="number">-20</span>h]</span><br><span class="line">  int v9; // [rsp+<span class="number">8</span>Ch] [rbp<span class="number">-4</span>h]</span><br><span class="line"></span><br><span class="line">  v9 = <span class="number">0</span>;</span><br><span class="line">  strcpy(v8, <span class="string">":\"AL_RT^L*.?+6/46"</span>);</span><br><span class="line">  v7 = <span class="number">28537194573619560L</span>L;</span><br><span class="line">  v6 = <span class="number">7</span>;</span><br><span class="line">  printf(<span class="string">"Welcome to the RC3 secure password guesser.\n"</span>, a2, a3);</span><br><span class="line">  printf(<span class="string">"To continue, you must enter the correct password.\n"</span>);</span><br><span class="line">  printf(<span class="string">"Enter your guess: "</span>);</span><br><span class="line">  __isoc99_scanf(<span class="string">"%32s"</span>, s);</span><br><span class="line">  v3 = strlen(s);</span><br><span class="line">  <span class="keyword">if</span> ( v3 &lt; strlen(v8) )</span><br><span class="line">    sub_4007C0(v8);</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; strlen(s); ++i )</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= strlen(v8) )</span><br><span class="line">      ((void (*)(void))sub_4007C0)();</span><br><span class="line">    <span class="keyword">if</span> ( s[i] != (char)(*((_BYTE *)&amp;v7 + i % v6) ^ v8[i]) )</span><br><span class="line">      ((void (*)(void))sub_4007C0)();</span><br><span class="line">  }</span><br><span class="line">  sub_4007F0();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -405,7 +407,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-15T07:09:44.663Z" itemprop="dateUpdated">2020-06-15 15:09:44</time>
+    Last updated: <time datetime="2020-06-15T07:15:39.324Z" itemprop="dateUpdated">2020-06-15 15:15:39</time>
 </span>
 
 
