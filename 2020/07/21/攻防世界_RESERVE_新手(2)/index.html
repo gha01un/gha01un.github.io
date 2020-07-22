@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#77AAFF">
     
     
-    <meta name="keywords" content="RE">
+    <meta name="keywords" content="">
     
     
 
@@ -39,12 +39,12 @@
 
 
     
-    <meta name="description" content="XCTF-RE">
+    <meta name="description" content="layout: posttitle: 攻防世界_RESERVE_新手(2)author: H1undate: 2020-07-21 17：39：15tags:  - REcategories:        - CTF XCTF-RE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界_RESERVE_新手(2)">
 <meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/index.html">
 <meta property="og:site_name" content="Mr.Guo">
-<meta property="og:description" content="XCTF-RE">
+<meta property="og:description" content="layout: posttitle: 攻防世界_RESERVE_新手(2)author: H1undate: 2020-07-21 17：39：15tags:  - REcategories:        - CTF XCTF-RE">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/07/21/J8bYTkpcOV73IXa.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/21/QKwNzsWqxUn7o5C.png">
@@ -60,9 +60,8 @@
 <meta property="og:image" content="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png">
 <meta property="article:published_time" content="2020-07-21T09:39:27.744Z">
-<meta property="article:modified_time" content="2020-07-22T09:01:42.218Z">
+<meta property="article:modified_time" content="2020-07-22T09:08:05.542Z">
 <meta property="article:author" content="Mr.Guo">
-<meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/07/21/J8bYTkpcOV73IXa.png">
     
@@ -226,8 +225,9 @@
 
             <br id="mybreak"/>
             
-	<i class="icon icon-lg icon-folder-o"></i>
-	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+<script>
+	mybreak.style="display:none";
+</script>
 
 
             <i>·</i>
@@ -240,10 +240,12 @@
         </div>
         <div class="post-count-custom">
             <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">8</span>&nbsp;分钟
+            阅读本文可能花费您&nbsp;<span class="post-count">9</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="XCTF-RE"><a href="#XCTF-RE" class="headerlink" title="XCTF-RE"></a>XCTF-RE</h2><a id="more"></a>
+            <p>layout: post<br>title: 攻防世界_RESERVE_新手(2)<br>author: H1un<br>date: 2020-07-21 17：39：15<br>tags: </p>
+<pre><code>- RE</code></pre><p>categories:<br>        - CTF</p>
+<h2 id="XCTF-RE"><a href="#XCTF-RE" class="headerlink" title="XCTF-RE"></a>XCTF-RE</h2><a id="more"></a>
 
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>放假两天了，在家实在闲的太无聊了，把攻防世界新手区的博客给水完吧。啥也不说，直接上题！</p>
 <h3 id="0x01-Hello-CTF"><a href="#0x01-Hello-CTF" class="headerlink" title="0x01 Hello, CTF"></a>0x01 Hello, CTF</h3><figure class="image-bubble">
@@ -264,7 +266,7 @@
 <h3 id="0x02-getit"><a href="#0x02-getit" class="headerlink" title="0x02 getit"></a>0x02 getit</h3><p>IDA静态分析，F5查看关键代码</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">{</span><br><span class="line">  char v3; // al</span><br><span class="line">  __int64 v5; // [rsp+<span class="number">0</span>h] [rbp<span class="number">-40</span>h]</span><br><span class="line">  int i; // [rsp+<span class="number">4</span>h] [rbp<span class="number">-3</span>Ch]</span><br><span class="line">  FILE *stream; // [rsp+<span class="number">8</span>h] [rbp<span class="number">-38</span>h]</span><br><span class="line">  char filename[<span class="number">8</span>]; // [rsp+<span class="number">10</span>h] [rbp<span class="number">-30</span>h]</span><br><span class="line">  unsigned __int64 v9; // [rsp+<span class="number">28</span>h] [rbp<span class="number">-18</span>h]</span><br><span class="line"></span><br><span class="line">  v9 = __readfsqword(<span class="number">0x28</span>u);</span><br><span class="line">  LODWORD(v5) = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> ( (signed int)v5 &lt; strlen(s) )    //  s=c61b68366edeb7bdce3c6820314b7498</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span> ( v5 &amp; <span class="number">1</span> )</span><br><span class="line">      v3 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      v3 = <span class="number">-1</span>;</span><br><span class="line">    *(&amp;t + (signed int)v5 + 10) = s[(signed int)v5] + v3; //t=53h+harifCTF{????????????????????????????????}</span><br><span class="line">    LODWORD(v5) = v5 + <span class="number">1</span>;</span><br><span class="line">  }</span><br><span class="line">  strcpy(filename, <span class="string">"/tmp/flag.txt"</span>);</span><br><span class="line">  stream = fopen(filename, <span class="string">"w"</span>);</span><br><span class="line">  fprintf(stream, <span class="string">"%s\n"</span>, u, v5);</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; strlen(&amp;t); ++i )</span><br><span class="line">  {</span><br><span class="line">    fseek(stream, p[i], <span class="number">0</span>);</span><br><span class="line">    fputc(*(&amp;t + p[i]), stream);</span><br><span class="line">    fseek(stream, <span class="number">0L</span>L, <span class="number">0</span>);</span><br><span class="line">    fprintf(stream, <span class="string">"%s\n"</span>, u);</span><br><span class="line">  }</span><br><span class="line">  fclose(stream);</span><br><span class="line">  remove(filename);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p><em>s = ‘c61b68366edeb7bdce3c6820314b7498’</em><br><em>t = [‘S’,’h’,’a’,’r’,’i’,’f’,’C’,’T’,’F’,’{‘,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’}’]</em></p>
+<p><strong>s = ‘c61b68366edeb7bdce3c6820314b7498’</strong><br><strong>t = [‘S’,’h’,’a’,’r’,’i’,’f’,’C’,’T’,’F’,’{‘,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’}’]</strong></p>
 <p>编写不同语言脚本如下</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line">v5 = <span class="number">0</span>     //python</span><br><span class="line">s = <span class="string">'c61b68366edeb7bdce3c6820314b7498'</span></span><br><span class="line">t = [<span class="string">'S'</span>,<span class="string">'h'</span>,<span class="string">'a'</span>,<span class="string">'r'</span>,<span class="string">'i'</span>,<span class="string">'f'</span>,<span class="string">'C'</span>,<span class="string">'T'</span>,<span class="string">'F'</span>,<span class="string">'{'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'}'</span>]</span><br><span class="line">v3 = <span class="number">0</span></span><br><span class="line">l = len(s)</span><br><span class="line"><span class="keyword">while</span>(v5 &lt; l):</span><br><span class="line">    <span class="keyword">if</span>( v5 &amp; <span class="number">1</span> ):</span><br><span class="line">        v3 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v3 = <span class="number">-1</span></span><br><span class="line">    t[<span class="number">10</span>+v5] = chr(ord(s[v5])+v3)</span><br><span class="line">    v5 += <span class="number">1</span></span><br><span class="line">c = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> t:</span><br><span class="line">    c+=x</span><br><span class="line">print(c)</span><br></pre></td></tr></tbody></table></figure></div>
 
@@ -432,7 +434,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-07-22T09:01:42.218Z" itemprop="dateUpdated">2020-07-22 17:01:42</time>
+    Last updated: <time datetime="2020-07-22T09:08:05.542Z" itemprop="dateUpdated">2020-07-22 17:08:05</time>
 </span>
 
 
@@ -459,8 +461,6 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
-
 
             
 <div class="page-share-wrap">
@@ -479,7 +479,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=XCTF-RE" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=layout: posttitle: 攻防世界_RESERVE_新手(2)author: H1undate: 2020-07-21 17：39：15tag..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -657,7 +657,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=XCTF-RE" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=layout: posttitle: 攻防世界_RESERVE_新手(2)author: H1undate: 2020-07-21 17：39：15tag..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
