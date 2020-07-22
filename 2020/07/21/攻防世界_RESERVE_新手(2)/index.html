@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png">
 <meta property="article:published_time" content="2020-07-21T09:39:27.744Z">
-<meta property="article:modified_time" content="2020-07-22T08:59:37.729Z">
+<meta property="article:modified_time" content="2020-07-22T09:01:42.218Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -240,7 +240,7 @@
         </div>
         <div class="post-count-custom">
             <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">9</span>&nbsp;分钟
+            阅读本文可能花费您&nbsp;<span class="post-count">8</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="XCTF-RE"><a href="#XCTF-RE" class="headerlink" title="XCTF-RE"></a>XCTF-RE</h2><a id="more"></a>
@@ -377,24 +377,24 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/07/22/oYsXWCxGZNgDyd4.png" alt="image-20200722165130480" title="">
+                    <img src="https://i.loli.net/2020/07/22/oYsXWCxGZNgDyd4.png" alt="" title="">
                 </div>
-                <div class="image-caption">image-20200722165130480</div>
+                <div class="image-caption"></div>
             </figure>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png" alt="image-20200722165154529" title="">
+                    <img src="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png" alt="" title="">
                 </div>
-                <div class="image-caption">image-20200722165154529</div>
+                <div class="image-caption"></div>
             </figure>
 
 <p>我们可以看到<strong>sub_400690</strong>是和<strong>asc_601060</strong>有关,猜测是判断上面<strong>asc_601060</strong>数组的第edi个值是否等于20h或23h，如果不等于就跳到</p>
 <p><strong>loc_400822</strong>输出<strong>wrong flag</strong>!</p>
 <p>我们直接去Hex中找到地址为<strong>601060</strong>中的数据！发现恰好为一个八阶方阵，而且数值只有3个，分别为20h，2Ah以及23h</p>
 <p>那么函数<strong>400690</strong>的意思不就是判断当前的位置是否是从（0，0）走到（4，4）</p>
-<p><img src="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png" alt="image-20200722165521263"></p>
+<p><img src="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png" alt=""></p>
 <p>最初的四个跳转应该就是对应着上下左右四个方向</p>
 <p>20 20 2A 2A 2A 2A 2A 2A  </p>
 <p>2A 20 20 20 2A 20 20 2A</p>
@@ -432,7 +432,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-07-22T08:59:37.729Z" itemprop="dateUpdated">2020-07-22 16:59:37</time>
+    Last updated: <time datetime="2020-07-22T09:01:42.218Z" itemprop="dateUpdated">2020-07-22 17:01:42</time>
 </span>
 
 
