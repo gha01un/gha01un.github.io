@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/11/20/eFAhjv5LMOlf9Vs.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/20/9N8sVBHU2RYWeKw.png">
 <meta property="article:published_time" content="2020-11-20T13:58:55.041Z">
-<meta property="article:modified_time" content="2020-11-20T14:15:45.987Z">
+<meta property="article:modified_time" content="2020-11-20T14:18:16.304Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -281,15 +281,23 @@
 <h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h4><p><code>{echo,ZmxhZ3t3MzFjMG1lNX0=}|{base64,-d}|{tr,5,6}bash</code> 执行</p>
 <h4 id="pcap"><a href="#pcap" class="headerlink" title="pcap"></a>pcap</h4><p><code>frame.len == 91</code></p>
 <p>慢慢找</p>
-<p><img src="https://i.loli.net/2020/11/20/eFAhjv5LMOlf9Vs.png" alt="">得到<code>flag{d989e2b92ea671f5d30efb8956eab1427625c}</code></p>
-<h4 id="pcap-analysis"><a href="#pcap-analysis" class="headerlink" title="pcap analysis"></a>pcap analysis</h4><p>先查mod</p><figure class="image-bubble">
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/11/20/eFAhjv5LMOlf9Vs.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>得到`flag{d989e2b92ea671f5d30efb8956eab1427625c}`
+
+<h4 id="pcap-analysis"><a href="#pcap-analysis" class="headerlink" title="pcap analysis"></a>pcap analysis</h4><p>先查modbus,发现有个长度为65,其他都62,与上题基本一样。</p>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://i.loli.net/2020/11/20/9N8sVBHU2RYWeKw.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure>bus,发现有个长度为65,其他都62<p></p>
-<p>题一样:</p>
+            </figure>
+
 <p>接着直接查<code>frame.len == 65</code>,拼接得到flag</p>
 <p><code>flag{323f986d429a689d3b96ad12dc5cbc701db0af55}</code></p>
 <script>
@@ -317,7 +325,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-20T14:15:45.987Z" itemprop="dateUpdated">2020-11-20 22:15:45</time>
+    Last updated: <time datetime="2020-11-20T14:18:16.304Z" itemprop="dateUpdated">2020-11-20 22:18:16</time>
 </span>
 
 
