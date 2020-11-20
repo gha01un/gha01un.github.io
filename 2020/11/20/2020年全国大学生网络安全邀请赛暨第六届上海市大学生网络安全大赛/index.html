@@ -46,18 +46,17 @@
 <meta property="og:site_name" content="Mr.Guo">
 <meta property="og:description" content="上海赛复现">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://img.xzaslxr.xyz/img/%E4%BF%AE%E5%A4%8D%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1.png">
-<meta property="og:image" content="http://img.xzaslxr.xyz/img/%E5%8F%8D%E8%B0%83%E8%AF%95.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/20/DdOF1mKaoEWxjLg.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/20/WQ5HsoXaic6K7DJ.png">
 <meta property="og:image" content="http://img.xzaslxr.xyz/img/3.png">
-<meta property="og:image" content="http://img.xzaslxr.xyz/img/image-20201114132222513.png">
-<meta property="og:image" content="http://img.xzaslxr.xyz/img/image-20201114132236334.png">
-<meta property="og:image" content="http://img.xzaslxr.xyz/img/image-20201114152941804.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/20/eFAhjv5LMOlf9Vs.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/20/9N8sVBHU2RYWeKw.png">
 <meta property="article:published_time" content="2020-11-20T13:58:55.041Z">
-<meta property="article:modified_time" content="2020-11-20T14:07:56.844Z">
+<meta property="article:modified_time" content="2020-11-20T14:15:45.987Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img.xzaslxr.xyz/img/%E4%BF%AE%E5%A4%8D%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/20/DdOF1mKaoEWxjLg.png">
     
         <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
     
@@ -241,18 +240,18 @@
 <h3 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h3><h4 id="RE1-真正的Babyre"><a href="#RE1-真正的Babyre" class="headerlink" title="RE1 真正的Babyre"></a>RE1 真正的Babyre</h4><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://img.xzaslxr.xyz/img/%E4%BF%AE%E5%A4%8D%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1.png" alt="修复堆栈平衡" title="">
+                    <img src="https://i.loli.net/2020/11/20/DdOF1mKaoEWxjLg.png" alt="" title="">
                 </div>
-                <div class="image-caption">修复堆栈平衡</div>
+                <div class="image-caption"></div>
             </figure>
 
 <p>首先定位字符串，函数堆栈不平衡，首先修复堆栈不平衡问题。F5，寻找主逻辑。IDA启动调试，处理掉case3处的反调试。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://img.xzaslxr.xyz/img/%E5%8F%8D%E8%B0%83%E8%AF%95.png" alt="反调试" title="">
+                    <img src="https://i.loli.net/2020/11/20/WQ5HsoXaic6K7DJ.png" alt="" title="">
                 </div>
-                <div class="image-caption">反调试</div>
+                <div class="image-caption"></div>
             </figure>
 
 <p>dump出关键对比数据：</p>
@@ -279,38 +278,18 @@
 
 <h4 id="baby-dsa"><a href="#baby-dsa" class="headerlink" title="baby_dsa"></a>baby_dsa</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha512,md5</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hash</span><span class="params">(message)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> int(sha512(message).hexdigest(), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sign</span><span class="params">(message, pubkey, privkey, random1)</span>:</span></span><br><span class="line">	p, q, g, y = pubkey</span><br><span class="line">	x = privkey</span><br><span class="line">	k = pow(y, x, g) * random1 % q</span><br><span class="line">	r = pow(g, k, p) % q</span><br><span class="line">	s = inverse(k, q) * (hash(message) + x * r) % q</span><br><span class="line">	<span class="keyword">return</span> r, s</span><br><span class="line"></span><br><span class="line">public = (<span class="number">3297226463037324458008837284498963372649038889390685051849680175016505646001761220109858921624266044035133134135402561235635833428206886888308027772353030767400921078346868377298401213812053250316002033941692272192644613252296579884516731560436501073253924457646558698855484781747029397755111633297587215976579633451933658235385386539518006570069653575146060016811911140614606471930327341368582979836042585406811352236326065292636484550807213756482153084427714549694264685695977531537425682212155553568848666088576932888234659355213664909753781753917401161977762663658097504411914908081677033980915039079517766159760522261279115347385813009437510156898969769563687869495721977265444799585634019880951532080217960456901788918439265788169910062822889580199366417455186595489973000351770200485095008494228829300145039695936946379585625051402553034971207474762463147744467360158847593356030745194143276254949463650698210515569533</span>, <span class="number">82302835442112137125891403368151249910268706824854786126600390413622302196443</span>, <span class="number">1156233264299340971106498371495495695225880592354374034142195518472540521911699506391311324676590685365234887170345722135060009885002334748836477169806166169806180231794918961214520698361874839110454610266388341977984902756569838594616255112661600466818870137432772800368859461445854700956291885576855069405183771903076277144927769029433730710613058788277691211698675287829143272152835171859480781061918556840079857761203012054552142555673071865310355331986288606422711525790877591376770834180618492794265362178603111236615495225612101250344421932588038244804199229449738675082560512062564365473035097263889257937140778993389305893378514344032352806521972367991027459721160744835688761657797398841523104074451793557924512992305640697344011520550723893828185707635141404445213445935586965289450282024222064488965878769991566367115153619761583843561579531705057955933288008556165952066173304891391375100346312776539530448611005</span>, <span class="number">290999623787731812697719691852061290246619413463636312382146969900546384514710782843153962704851916091601679028830866176332331519515156301401537173069908181509028464322647352256632424684809349121024262597006913707483811117644197481959053785475083406472583099140506505071300193356002443007750220524932219191932969202270343323955035291396808472686684787610559114702054784699365490860392737061056233160308943296478540798353134878937088336672928162894332961762277559345860479916248086821117811990391025187125193074059001086441305977133252774698996653122297123447837449168657347308016270030881395674066421144002959751936839166935726200833785132736328859710351871352567511516142170956091885352178579302299634322254818383978585773136692588922976043617337904545396146755609284163743476297772686548475170197605412847689587171522453229055932712714154869989454808561458852031769119489235598402066924082778376081494632258448434048562053</span>)</span><br><span class="line">p, q, g, y = public[<span class="number">0</span>], public[<span class="number">1</span>], public[<span class="number">2</span>], public[<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">tmp1 = (<span class="string">b'0234e7971889def7e60348f77db94b7a'</span>, (<span class="number">10859236269959765735236393779936305217305574331839234502190226708929991582386</span>, <span class="number">13707557323895695260471053137828523837745895683218331343360027380310980108819</span>))</span><br><span class="line">tmp2 = (<span class="string">b'16c5ac270b72f70319657b4410d985d4'</span>, (<span class="number">41960642246379067640524709416001536058292817319109764317369777224426218746518</span>, <span class="number">74676725322515593502346275468843411563746982149373670021082686341369076719088</span>))</span><br><span class="line">message1, r1, s1 = tmp1[<span class="number">0</span>], tmp1[<span class="number">1</span>][<span class="number">0</span>], tmp1[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line">message2, r2, s2 = tmp2[<span class="number">0</span>], tmp2[<span class="number">1</span>][<span class="number">0</span>], tmp2[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line">hm1, hm2 = hash(message1), hash(message2)</span><br><span class="line"><span class="comment">#print(hm1, hm2)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> random1 <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">512</span>):</span><br><span class="line">    <span class="keyword">for</span> random2 <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">512</span>):</span><br><span class="line">        random1_inv = inverse(random1, q)</span><br><span class="line">        random_mul = random1_inv * random2</span><br><span class="line">        x = (s1 * hm2 - s2 * hm1 * random_mul) * inverse(s2 * r1 * random_mul - s1 * r2, q)</span><br><span class="line">        x = x % q</span><br><span class="line">        <span class="comment">#print(x)</span></span><br><span class="line">        <span class="comment">#print(sign(message1, public, x, random1))</span></span><br><span class="line">        <span class="comment">#print(tmp1[1])</span></span><br><span class="line">        <span class="keyword">if</span> sign(message1, public, x, random1) == tmp1[<span class="number">1</span>]:</span><br><span class="line">            print(x)</span><br><span class="line">            flag = <span class="string">'flag{'</span>+md5(long_to_bytes(x)).hexdigest()+<span class="string">'}'</span></span><br><span class="line">            print(flag)</span><br><span class="line">            print(random2)</span><br><span class="line">    print(random1)</span><br></pre></td></tr></tbody></table></figure></div>
 
-<h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tbody><tr><td class="code"><pre><span class="line">{<span class="built_in">echo</span>,ZmxhZ3t3MzFjMG1lNX0=}|{base64,-d}|{tr,5,6}bash 执行</span><br></pre></td></tr></tbody></table></figure></div>
-
-<h4 id="pcap"><a href="#pcap" class="headerlink" title="pcap"></a>pcap</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">frame.len == 91</span><br></pre></td></tr></tbody></table></figure></div>
-
+<h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h4><p><code>{echo,ZmxhZ3t3MzFjMG1lNX0=}|{base64,-d}|{tr,5,6}bash</code> 执行</p>
+<h4 id="pcap"><a href="#pcap" class="headerlink" title="pcap"></a>pcap</h4><p><code>frame.len == 91</code></p>
 <p>慢慢找</p>
-<figure class="image-bubble">
+<p><img src="https://i.loli.net/2020/11/20/eFAhjv5LMOlf9Vs.png" alt="">得到<code>flag{d989e2b92ea671f5d30efb8956eab1427625c}</code></p>
+<h4 id="pcap-analysis"><a href="#pcap-analysis" class="headerlink" title="pcap analysis"></a>pcap analysis</h4><p>先查mod</p><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://img.xzaslxr.xyz/img/image-20201114132222513.png" alt="image-20201114132222513" title="">
+                    <img src="https://i.loli.net/2020/11/20/9N8sVBHU2RYWeKw.png" alt="" title="">
                 </div>
-                <div class="image-caption">image-20201114132222513</div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.xzaslxr.xyz/img/image-20201114132236334.png" alt="image-20201114132236334" title="">
-                </div>
-                <div class="image-caption">image-20201114132236334</div>
-            </figure>
-
-<p>拼接的得到<code>flag{d989e2b92ea671f5d30efb8956eab1427625c}</code></p>
-<h4 id="pcap-analysis"><a href="#pcap-analysis" class="headerlink" title="pcap analysis"></a>pcap analysis</h4><p>先查modbus,发现有个长度为65,其他都62</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.xzaslxr.xyz/img/image-20201114152941804.png" alt="image-20201114152941804" title="">
-                </div>
-                <div class="image-caption">image-20201114152941804</div>
-            </figure>
-
-<p>和上题一样:</p>
+                <div class="image-caption"></div>
+            </figure>bus,发现有个长度为65,其他都62<p></p>
+<p>题一样:</p>
 <p>接着直接查<code>frame.len == 65</code>,拼接得到flag</p>
 <p><code>flag{323f986d429a689d3b96ad12dc5cbc701db0af55}</code></p>
 <script>
@@ -338,7 +317,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-20T14:07:56.844Z" itemprop="dateUpdated">2020-11-20 22:07:56</time>
+    Last updated: <time datetime="2020-11-20T14:15:45.987Z" itemprop="dateUpdated">2020-11-20 22:15:45</time>
 </span>
 
 
