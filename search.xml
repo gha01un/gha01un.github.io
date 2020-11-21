@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>peda的官方文档说明</title>
+      <link href="/2020/11/21/peda%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E/"/>
+      <url>/2020/11/21/peda%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<h3 id="有关peda的一些说明"><a href="#有关peda的一些说明" class="headerlink" title="有关peda的一些说明"></a>有关peda的一些说明</h3><a id="more"></a><p>peda在github上的官方文档，摘抄过来，方便查阅。</p><p>安装</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br><span class="line">echo <span class="string">"source ~/peda/peda.py"</span> &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></tbody></table></figure></div><ul><li>Enhance the display of gdb: colorize and display disassembly codes, registers, memory information during debugging.</li><li>Add commands to support debugging and exploit development (for a full list of commands use peda help):<ul><li><code>aslr</code> – Show/set ASLR setting of GDB</li><li><code>checksec</code> – Check for various security options of binary</li><li><code>dumpargs</code> – Display arguments passed to a function when stopped at a call instruction</li><li><code>dumprop</code> – Dump all ROP gadgets in specific memory range</li><li><code>elfheader</code> – Get headers information from debugged ELF file</li><li><code>elfsymbol</code> – Get non-debugging symbol information from an ELF file</li><li><code>lookup</code> – Search for all addresses/references to addresses which belong to a memory range</li><li><code>patch</code> – Patch memory start at an address with string/hexstring/int</li><li><code>pattern</code> – Generate, search, or write a cyclic pattern to memory</li><li><code>procinfo</code> – Display various info from /proc/pid/</li><li><code>pshow</code> – Show various PEDA options and other settings</li><li><code>pset</code> – Set various PEDA options and other settings</li><li><code>readelf</code> – Get headers information from an ELF file</li><li><code>ropgadget</code> – Get common ROP gadgets of binary or library</li><li><code>ropsearch</code> – Search for ROP gadgets in memory</li><li><code>searchmem|find</code> – Search for a pattern in memory; support regex search //查找用，例如 searchmem “/bin/sh” libc</li><li><code>shellcode</code> – Generate or download common shellcodes.</li><li><code>skeleton</code> – Generate python exploit code template</li><li><code>vmmap</code> – Get virtual mapping address ranges of section(s) in debugged process //可以用来查看栈、bss段是否可以执行</li><li><code>xormem</code> – XOR a memory region with a key</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PWN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GDB调试实用命令</title>
       <link href="/2020/11/21/GDB%E8%B0%83%E8%AF%95%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2020/11/21/GDB%E8%B0%83%E8%AF%95%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
