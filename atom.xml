@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/gha01un/gha01un.github.io/"/>
-  <updated>2020-11-20T14:25:02.898Z</updated>
+  <updated>2020-11-21T02:17:47.306Z</updated>
   <id>https://github.com/gha01un/gha01un.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GDB调试实用命令</title>
+    <link href="https://github.com/gha01un/gha01un.github.io/2020/11/21/GDB%E8%B0%83%E8%AF%95%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://github.com/gha01un/gha01un.github.io/2020/11/21/GDB%E8%B0%83%E8%AF%95%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-11-21T02:15:41.578Z</published>
+    <updated>2020-11-21T02:17:47.306Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简单的GDB调试"><a href="#简单的GDB调试" class="headerlink" title="简单的GDB调试"></a>简单的GDB调试</h3><a id="more"></a><h4 id="0x01-插件安装"><a href="#0x01-插件安装" class="headerlink" title="0x01 插件安装"></a>0x01 插件安装</h4><p>1.gdb-peda</p><p>这是一个调试时必不可少的神器,github地址在:<a href="https://github.com/longld/peda">https://github.com/longld/peda</a> ,它的安装两条简单命令即可完成:</p><p>1.git clone <a href="https://github.com/longld/peda.git">https://github.com/longld/peda.git</a> ~/peda</p><p>2.echo “source ~/peda/peda.py” &gt;&gt; ~/.gdbinit</p><p>peda的一个实用命令checksec检测安全保护。</p><p>peda的另一个实用命令searchmem用搜索内存</p><h3 id="0x02-常用命令"><a href="#0x02-常用命令" class="headerlink" title="0x02 常用命令"></a>0x02 常用命令</h3><p>file 路径　　附加文件</p><p>r  　　　　开始执行</p><p>c       继续执行</p><p>step      单步步入</p><p>next      单步步过</p><p>b *地址　　下断点</p><p>enable    激活断点</p><p>disable   禁用断点</p><p>info b    查看断点</p><p>del num   删除断点</p><p>x/wx $esp 　　以4字节16进制显示栈中内容</p><p>stack 100　　 插件提供的，显示栈中100项</p><p> find xxx　　  快速查找，很实用</p><p>s 按字符串输出</p><p>x 按十六进制格式显示变量。<br>d 按十进制格式显示变量。<br>u 按十六进制格式显示无符号整型。<br>o 按八进制格式显示变量。<br>t 按二进制格式显示变量。<br>a 按十六进制格式显示变量。<br>c 按字符格式显示变量。<br>f 按浮点数格式显示变量。</p><p>x/&lt;n/f/u&gt; <addr></addr></p><p>n、f、u是可选的参数。</p><p>b表示单字节，h表示双字节，w表示四字 节，g表示八字节</p><p>但是实际的组合就那么几种：</p><p>x/s 地址　　查看字符串</p><p>x/wx 地址　　查看DWORD</p><p>x/c 地址　　单字节查看</p><p>x/16x $esp+12 查看寄存器偏移 </p><p><em>set args 可指定运行时参数。（如：set args 10 20 30 40 50）<br>show args 命令可以查看设置好的运行参数。</em></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20201121101744152.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简单的GDB调试&quot;&gt;&lt;a href=&quot;#简单的GDB调试&quot; class=&quot;headerlink&quot; title=&quot;简单的GDB调试&quot;&gt;&lt;/a&gt;简单的GDB调试&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://github.com/gha01un/gha01un.github.io/categories/CTF/"/>
+    
+    
+      <category term="PWN" scheme="https://github.com/gha01un/gha01un.github.io/tags/PWN/"/>
+    
+  </entry>
   
   <entry>
     <title>2020年全国大学生网络安全邀请赛</title>
