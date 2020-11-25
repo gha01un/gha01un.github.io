@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>信息安全数学基础复习总结</title>
+      <link href="/2020/11/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+      <url>/2020/11/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>学不动了学不动了，压抑一周了已经，心情也不好，每天水水博客找点存在感吧，呜呜呜好难过啊</p></blockquote><a id="more"></a><h4 id="第1章-整数"><a href="#第1章-整数" class="headerlink" title="第1章 整数"></a><strong>第1章 整数</strong></h4><p><strong>知识点：</strong></p><p>1.整除的概念及性质</p><p>2.欧几里得除法</p><p>3.素数的平凡判别</p><p>4.b进制，会进制转换</p><p>5.最大公因数定义及相关性质</p><p>6.广义欧几里得除法计算最大公因数</p><p>7.最小公倍数计算及相关性质</p><p>8.算术基本定理的应用，会45页的定理1.6.4</p><p><strong>要考题型：</strong></p><p>1.证明整除性（法一，利用整除性质；法二，利用同余性质）</p><p>2.素数相关证明及判断</p><p>3.求最大公因数（欧几里得除法）</p><p>4.求s，t使得sa+tb=1（代入法或者列表法）</p><p>5.整数的表示</p><h4 id="第2章-同余"><a href="#第2章-同余" class="headerlink" title="第2章 同余"></a><strong>第2章 同余</strong></h4><p><strong>知识点：</strong></p><p>1.同余的概念、性质及判断</p><p>2.剩余类、完全剩余系、简化剩余类、简化剩余系的概念及区别，能写出一个具体数的以上几种类型数字</p><p>3.两个模、多个模的完全剩余系和简化剩余系的性质</p><p>4.欧拉定理、费马定理、Wilson定理</p><p>5.模重复平方计算法（老师说，不一定按这个步骤来，但要会算出a模m和谁同余，a、m是具体的数字，结果要算对）</p><p><strong>要考题型：</strong></p><p>1.剩余类、系的概念，很有可能是给出一个具体数字，让你写出剩余类、完全剩余系、简化剩余类、简化剩余系</p><p>2.求模幂，就是一个数a的p次方模m和谁同余，用好欧拉定理</p><p>3.可以用同余性质去证明整除</p><p>4.同余性质的证明</p><p>5.对于ap mod m，m很大的时候，想要求同余，可以将同余式转为同余式组，分别计算出结果，再用中国剩余定理求解</p><h4 id="第3章-同余式"><a href="#第3章-同余式" class="headerlink" title="第3章 同余式"></a><strong>第3章 同余式</strong></h4><p><strong>知识点即考点：</strong></p><p>1.一次同余式求解</p><p>2.二次同余式求解（用中国剩余定理）</p><p>3.高次同余式的求解</p><p>4.高次同余式的提升（模数为mn形式）</p><p>5.素数模的同余式化简</p><p>6.素数模的同余式解数估计</p><h4 id="第4章-二次剩余"><a href="#第4章-二次剩余" class="headerlink" title="第4章 二次剩余"></a><strong>第4章 二次剩余</strong></h4><p><strong>知识点：</strong></p><p>1.模为奇素数的平方剩余与平方非剩余概念</p><p>2.勒让德符号定义及相关计算的性质</p><p>3.二次互反律</p><p>4.雅克比符号（不再限定模数必须为奇素数，见到一个二次同余式，就可直接用勒让德符号的计算性质包含二次互反律，来判断同余式是否有解。但是要判断同余式具体的解数时，还是要将同余式拆为模数为奇数的同余式组，解数为各个同余式解数的乘积）</p><p><strong>要考题型：</strong></p><p>1.求二次剩余</p><p>2.判断是否是二次剩余，二次同余式是否有解</p><p>3.求椭圆曲线上的所有点</p><p>4.判断二次同余式的解数</p><p>5.求满足（a/p）的所有p</p><h4 id="第5章-原根与指标"><a href="#第5章-原根与指标" class="headerlink" title="第5章 原根与指标"></a><strong>第5章 原根与指标</strong></h4><p><strong>知识点：</strong></p><p>1.指数定义与性质</p><p>2.原根定义与性质</p><p>3.指标定义与性质</p><p><strong>要考题型：</strong></p><p>1.求指数（可能要利用指数性质）</p><p>2.求原根</p><p>①模p原根</p><p>②模p2原根</p><p>③模pα原根</p><p>④模2pα原根</p><p>上面这几个是层层递进的，从①到④逐个求解</p><p>3.求指标</p><p>4.利用指标来求高次同余式，例题在195页的例5.3.6，先判断是否有解，再利用指标表（考试会给出）求解。</p><h4 id="第6章-素性检验"><a href="#第6章-素性检验" class="headerlink" title="第6章 素性检验"></a><strong>第6章 素性检验</strong></h4><p><strong>知识点：</strong></p><p>1.伪素数定义（再附加个Carmicheal数）</p><p>2.欧拉伪素数定义</p><p>3.强伪素数定义</p><p><strong>要考题型：</strong></p><p>1.给一个数，利用定义判断它是不是相应的伪素数</p><p>其他要考的点，不太清楚</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Study </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>攻防世界高手区</title>
       <link href="/2020/11/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B/"/>
       <url>/2020/11/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B/</url>
