@@ -796,5 +796,15 @@ if (window.console && window.console.log) {
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
 </body>
 </html>
