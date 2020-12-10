@@ -64,7 +64,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/12/10/udED4eAzTQyn8cb.png">
 <meta property="og:image" content="https://i.loli.net/2020/12/10/3nGJAiYTKLb1ePa.png">
 <meta property="article:published_time" content="2020-12-10T08:42:49.781Z">
-<meta property="article:modified_time" content="2020-12-10T10:16:34.634Z">
+<meta property="article:modified_time" content="2020-12-10T10:17:19.600Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -272,7 +272,7 @@
 <p>  ESP定理脱壳（ESP在OD的寄存器中，我们只要在命令行下ESP的硬件访问断点，就会一下来到程序的OEP了！）</p>
 <p>（1）开始就点F8，注意观察OD右上角的寄存器中ESP有没突现（变成红色）（这只是一 般情况下，更确切的说我们选择的ESP值是关键句之后的第一个ESP值）</p>
 <p>（2）在命令行下：dd XXXXXXXX(指在当前代码中的ESP地址，或者是hr XXXXXXXX)， 按回车</p>
-<p>（3）选中下断的地址，断点—&gt;硬件访—&gt;WORD断点</p>
+<p>（3）选中下断的地址，断点—&gt;硬件访问—&gt;WORD断点</p>
 <p>（4）按一下F9运行程序，直接来到了跳转处，按下F8，到达程序OEP</p>
 <p>按下F8单步步过，发现ESP此时是红色，记下此时ESP寄存器中的值0019FF54（载入程序处的下一个ESP是红色，当然每个人机器上运行这个值有可能不同）</p>
 <figure class="image-bubble">
@@ -467,7 +467,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-12-10T10:16:34.634Z" itemprop="dateUpdated">2020-12-10 18:16:34</time>
+    Last updated: <time datetime="2020-12-10T10:17:19.600Z" itemprop="dateUpdated">2020-12-10 18:17:19</time>
 </span>
 
 
