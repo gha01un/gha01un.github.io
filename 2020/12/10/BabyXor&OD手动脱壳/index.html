@@ -64,7 +64,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/12/10/udED4eAzTQyn8cb.png">
 <meta property="og:image" content="https://i.loli.net/2020/12/10/3nGJAiYTKLb1ePa.png">
 <meta property="article:published_time" content="2020-12-10T08:42:49.781Z">
-<meta property="article:modified_time" content="2020-12-10T10:14:24.243Z">
+<meta property="article:modified_time" content="2020-12-10T10:16:34.634Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -211,6 +211,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#脱壳过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">脱壳过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">静态分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态分析</span></a></li></ol>
+        </nav>
+    </aside>
+   
 <article id="post-BabyXor&amp;OD手动脱壳"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -243,7 +250,7 @@
             <p>题目虽然常规，但是学到了一些关于手动脱壳的知识。</p>
 <a id="more"></a>
 
-<p>查看文件，发现是奇奇怪怪的壳，于是我们用OD手动脱壳.</p>
+<h3 id="脱壳过程"><a href="#脱壳过程" class="headerlink" title="脱壳过程"></a>脱壳过程</h3><p>查看文件，发现是奇奇怪怪的壳，于是我们用OD手动脱壳.</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -323,7 +330,7 @@
 <p>这里有更多关于ESP定律的资料</p>
 <p><code>https://blog.csdn.net/qiurisuixiang/article/details/7649799</code></p>
 <p><code>https://beikeit.com/post-614.html</code></p>
-<p>把已经脱壳的exe文件拖入ida中</p>
+<h3 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h3><p>把已经脱壳的exe文件拖入ida中</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -408,7 +415,7 @@
 <p>完整的exp</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tbody><tr><td class="code"><pre><span class="line">a1 = [<span class="number">102</span>, <span class="number">109</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">127</span>, <span class="number">55</span>, <span class="number">53</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">107</span>, <span class="number">58</span>, <span class="number">60</span>, <span class="number">59</span>, <span class="number">32</span> ]</span><br><span class="line">a2 = [<span class="number">55</span>, <span class="number">111</span>, <span class="number">56</span>, <span class="number">98</span>, <span class="number">54</span>, <span class="number">124</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">118</span>, <span class="number">51</span>, <span class="number">98</span>, <span class="number">100</span>, <span class="number">122</span>]</span><br><span class="line">a3 = [<span class="number">26</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">81</span>,<span class="number">5</span>,<span class="number">17</span>,<span class="number">84</span>,<span class="number">86</span>,<span class="number">85</span>,<span class="number">89</span>,<span class="number">29</span>,<span class="number">9</span>,<span class="number">93</span>,<span class="number">18</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">temp=[]</span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">14</span>):</span><br><span class="line">    flag+=chr(a1[i]^i)</span><br><span class="line"></span><br><span class="line">flag+=chr(a2[<span class="number">0</span>])</span><br><span class="line">temp.append(a2[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">14</span>):</span><br><span class="line">    x=a1[i]^a2[i]^a1[i<span class="number">-1</span>]</span><br><span class="line">    flag+=chr(x)</span><br><span class="line">    temp.append(x)</span><br><span class="line"></span><br><span class="line">x=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">13</span>):</span><br><span class="line">    x+=chr(a3[i+<span class="number">1</span>]^(temp[i])^i)</span><br><span class="line">flag+= chr(a3[<span class="number">0</span>] ^ a2[<span class="number">0</span>]) + x</span><br><span class="line">print(flag)</span><br><span class="line"></span><br><span class="line"><span class="comment"># flag{2378b077-7d6e-4564-bdca-7eec8eede9a2}</span></span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>其实也可以用动态调试的方法做，在三个函数的位置分别下断点</p>
+<h3 id="动态分析"><a href="#动态分析" class="headerlink" title="动态分析"></a>动态分析</h3><p>其实也可以用动态调试的方法做，在三个函数的位置分别下断点</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -460,7 +467,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-12-10T10:14:24.243Z" itemprop="dateUpdated">2020-12-10 18:14:24</time>
+    Last updated: <time datetime="2020-12-10T10:16:34.634Z" itemprop="dateUpdated">2020-12-10 18:16:34</time>
 </span>
 
 
