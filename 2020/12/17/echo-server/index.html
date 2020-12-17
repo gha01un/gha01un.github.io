@@ -271,7 +271,7 @@
                 <div class="image-caption"></div>
             </figure>
 <p>这个程序的main函数伪代码比较清晰，根据伪代码可知程序main函数中只有一个关键函数，但是这个函数调用比较奇怪。猜测这里可能有问题。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tbody><tr><td class="code"><pre><span class="line">((<span class="keyword">void</span> (*)(<span class="keyword">void</span>))((<span class="keyword">char</span> *)&amp;loc_80487C1 + <span class="number">3</span>))();</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">((<span class="keyword">void</span> (*)(<span class="keyword">void</span>))((<span class="keyword">char</span> *)&amp;loc_80487C1 + <span class="number">3</span>))();</span><br></pre></td></tr></table></figure></div>
 
 <p>我们切回汇编代码，直接看汇编代码</p>
 <figure class="image-bubble">
@@ -330,7 +330,7 @@
                 <div class="image-caption"></div>
             </figure>
 <p>然后可以观察到，又有一块汇编代码恢复正常。然后我发现<code>0x08048816</code>处有一个地址被IDA标红。我们观察下发现<code>0x08048816</code>前面的两行汇编代码相当于无条件跳转</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span>     eax, eax</span><br><span class="line">jz      short loc_804881D</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span>     eax, eax</span><br><span class="line">jz      short loc_804881D</span><br></pre></td></tr></table></figure></div>
 
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -412,25 +412,7 @@
                 <div class="image-caption"></div>
             </figure>
 <p>成功得到flag：F8C60EB40BF66919A77C4BD88D45DEF4</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
         </div>
 
         <blockquote class="post-copyright">
