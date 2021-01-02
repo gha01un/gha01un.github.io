@@ -39,23 +39,18 @@
 
 
     
-    <meta name="description" content="2019_西湖论剑_预选赛">
+    <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test_re">
 <meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/12/17/test_re/index.html">
 <meta property="og:site_name" content="Mr.Guo">
-<meta property="og:description" content="2019_西湖论剑_预选赛">
+<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/12/17/GOS78lKai1u4UcI.png">
-<meta property="og:image" content="https://i.loli.net/2020/12/17/ZuwpfOI3U6oSPGr.png">
-<meta property="og:image" content="https://i.loli.net/2020/12/17/Ib89PemyNpDth23.png">
-<meta property="og:image" content="https://i.loli.net/2020/12/17/1cx5JXpHdglKyjs.png">
 <meta property="article:published_time" content="2020-12-17T07:35:41.374Z">
-<meta property="article:modified_time" content="2020-12-17T07:58:35.816Z">
+<meta property="article:modified_time" content="2021-01-02T08:19:51.704Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/12/17/GOS78lKai1u4UcI.png">
     
         <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
     
@@ -227,67 +222,14 @@
             阅读本文可能花费您&nbsp;<span class="post-count">1</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>2019_西湖论剑_预选赛</p>
-<a id="more"></a>
-
-<p>Base58的码表：123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ</p>
-<p>9位数字以及去掉了英文字母容易造成混淆的字母(0：数字零，O：大写O，I：大写i，l:小写L)所组成</p>
-<p>编码流程：</p>
-<p>①  将所要编码的字符串转为ASCII码（ASCII码实际上也就是256进制的数）</p>
-<p>例如将”ABD”转为 65 66 68</p>
-<p>②  然后再将256进制转为10进制数，65<em>256</em>256+66*256+68=4276804</p>
-<p>③  最后将十进制数转为58进制，即模58转化，最后得到21 53 20 0</p>
-<p>④  根据21 53 20 0查表中所对应的字符得到base58编码的密文：nVm1</p>
-<p>解码流程与其编码流程相反</p>
-<p>总结，编码就是将所要加密的字符先转256进制，再转10进制再转为58进制，最后查码表；解码就是查码表得到58进制，再转10进制最后再转256进制最后通过ascii码表转为字符。</p>
-<p>查壳，无壳，64位文件。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/12/17/GOS78lKai1u4UcI.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<p>拖入ida查看主函数</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/12/17/ZuwpfOI3U6oSPGr.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<p>经过分析，sub_400D00函数内容大致意思是输入字符串</p>
-<p>查看sub_400700函数</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/12/17/Ib89PemyNpDth23.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<p>根据意思，s应该是经过某种加密操作后的字符串，后面的D9 cS9N 等等应该就是密文了，密文应该是D9cS9N9iHjMLTdA8YSMRMp（仔细看s后面加了数字，如s+2），通过分析可以知道s被v11所赋值的，所以主要看v11，这里的过程还被加入了其他变量的操作来混淆，主要看有关v11的加密操作过程即可</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/12/17/1cx5JXpHdglKyjs.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-
-<p>根据上面base58的原理，所以这里的算法为base58的加密过程</p>
-<p>将字符串D9cS9N9iHjMLTdA8YSMRMp进行解密即可</p>
-<p>得到flag{base58_is_boring}</p>
-
+            <div id="hexo-blog-encrypt" data-wpm="抱歉，这个密码看着不太对，请再试试。" data-whm="抱歉，这个文章不能被纠正，不过您还是能看看解密后的内容。ss"><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好，这里需要密码。" /><label>您好，这里需要密码。</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="e151f97b2f47ab11e74f7fd0b37de18c0b245c62b52dd43d011d67b80be6c368">b6ede06b30143a812e680a5bc7c6830c67f1857cbeb8757b07f126611382d98117d3f3a1c0772def85e1113a07c971e85a88a9c34e404e833c21ea63e6a92263a0433a62f1b260de8572e115d290aacd344d9aee7fc226b6af727730a43d841a5657518fe6c8c4940cf3790e3d7566f22236788342db856beee734c9d385961fcd6d1296a7c847a9f43d0f8a6308ec0c73368290d455054c6851554b5511353f51607d91a568537f0f58e13dbe82968d9923d8c980468d64db283ebd0ca547895fc0460b80f38838b90d01915b98389d4180980a14802ce8d8812b66ec526db5637699b4d1266b8ecec1d5bca874921bc1d7119f63b8b567c9c44df25d1b402e1536ab16b9e5993af3b12ed60168e5e96a90536f45dfc6074139ec6f60d2a1871227b8e1ba022daba35833405aa54d94943fe89a1e748227a5ff5f3cfc1d9e5730b5b4ccac14113f1febe64cddb682b560a205c5b546880f33e42d835cab01bde8b9b817cad3233b3006c2a9d00a1028223d7f1865e34daf04366c3e0fc0c034cd68e03c06e2cff79f1c49b755d1bffa173c43f46ddc9831f9d59db369669e59e7625fc33c623ea47dbfdcee293e6d03a8b738b0ce4c3def8d0ce35100813952421bf1c29eecf69f92d9b9b8b0b6c85583e17e4c27399b8224328f345a7d1cf1022914ce8b55309f91cb934fea438014c6fb00232718530f14bbb1a603a188422272ac174ab4ee2976be8015e61dfaad10443352de8c1b43fd65c106b8415e071cce9532af104bd663346a7ab9c2b78e04f2f7693998e91c5adfa9f93dc4ce1c3d6635bcb9cae59b7d0becbcc0fbef739bb6fcf9ea82fe7d7cdadd02c018f5393996ec99e490da837c23ff6ef670bce20bbd26cc2f885838524780a74ff85ddd23bf49515752d72f2a62bac01d1be10333609ed8b98f2c060ca541e0103627711c70c8eb82ec31ec26b4af8b9d64a3dacfdf6ee8a2af9e4360f4e5d955ba58ea3598eb45532a78311a3c486bdf2bbf72562127309ee8b1cd37fefb0b1b1114e5aad03d382820a74358bc8d0d3b920609f77f7b5a7fbb29f0257801e0116ab65d37ff69d9bc9a1b5174ed81fc822aae0f210063f8966b068ae90d379f878c61cde7c8fb2a0901404207604e51d6b0361708e031f5e9b03b4531dab27b4634882dbb3adf25110cee07ec2b9ede6abe72a131e3de585e36c1a084d1796fc096131b9ecd8cc3d9b36c0867ce2e64e054028bce10fbac56bc2962832db2d3fb5f949d48ab55aaea8a4f64c1eb01d060673ecb94f69a054aff66f80a6f079f59a100339babb863895c16efb232d8869af88eaf599c097f6fcd25587a448575e23b2d51f9e604db26ec27ad8d4801f1b940c2cf33bd705da9756537b71fdecfdc2deb1c71f9e8c2fdce3dc4a0a508c182b55eabdc9551ee5fb274031f67cb9f7f5fcddcece9eb936fd9d4e996493ef0075c8b2bd0190d0ba5a3d6b2e6b4b7f4d9b5afaaef97b83193f6ef3ab8a98a5b57bd82fd766bfb0e556e342ca3d990ee92f059c5b67670e65d50a558f7d8f75109705d049e43f2648005a99c177826e7dc17ff78cc5439a6ca86e367dec4cf4fdb857655741b4394eb701f4b4c53f10c60e3749ea3ba2c495d6b1073b0c09c3715274ef47200b5a8605da316a9725aebb941a6b362fa8937780f7598fef3fca8464b9fee67fd933d03ef1fcde4a1e3d84189d6baf854b28d4c5a112e4dec8110dac06d081a01f309b3533e25ea196cfbe40ee7816bc56a37218f7eeb65f76c50f9439068307b5b4b271e1bf45d3c008472a92be4f45783ccbe0ee517c136208da143396cb30bb1e3eb5126423ab427b83b377e0868053bb9bcebae1a0d9ae6a3e4a57a0f27e618a3070db56659eb01d1425a55c0e764402a5bef2a77b17992cb7b009fb1ee8b4cabef58bc8161165e9ee4d37f91c569ff69b324afec7fc3cbf7820622ae715f392df07a54cdb8184023039f2d7d369a8560ef1784c8fcb6b853e82614c8105b446ff772f6dceb1cf6f25fbf2f7d3ff5b66a6bb1c698a0f0644e4a01228a18193b58f498df6aa00594ad62a36371f77c8491bd6e4178e6a9a1852423c519a01be1caaa844f414d85dd715f8571c0bab2593c72d71d9dbf18b1e68d01e02e2a1d6323a60a43f194dc8fd51a821af32ab850fe33a63e112db4e3c8d85bca2a4c600ce4f0a12d72731f651355b4743ceca4257ecb6ec6e5378bb10a1201815607a7d48525b8c62e34259d4f239601735b90c55c6c92b8168d3291d5fce5900da80bc9cb42c49d68c34ce84b827dc69ad29f0ae737a513f6abf022b21c36d1c2f864b4ed17d039406f1f51982bf91f3da4bb5d15348481d10de00920d4ead50306e3d98203c74e6ddec54126202dc29a3d247aa00395bd64d2dc2370acb3269fa78d9cde483cc6b1f7d1a7af9c813006b5d4746739ce61765223a33279acd6053a745f60a4edbd53b3de613ecab38cd43d6bce6a26d7cd34eaae20197a823f6a82a407efbb582dcbdf7c84ec4bb4758163f78c233a612e77ef3068eba470d2a358602404be246e5825118960e72b5ead927fbc7c78aa2a294f93c64b80a15471f8e63abba40f45d6b2ccff0c20a9e9b3404f1c01ab21a5172df3d39ad753859b406866d96fc371867ed99181c80c53ad1f1e9db2c5dbf2e468f1c6e06a2a3bd55341e9809f6cb7b3ea971a93b1a2592f486c5f03b497ade582b312e93dba32a7cba9c0d11ddd6300ffe7e9814abe2b4a7e384b39d419fc585a6117445e9b195055a392e2947a088792e6b8ad2a9fa8ce70ba3a39f86b9f34490526a2c138778e621be6a3f33989a8fa40179823c3b740217ee38306587da3b41f3b3ef1568807c7e3a9e45a506a78faf79f3b77df4f1e5e33c374371dc4ae3a982ead0af204aaad2874114c465fb85c009abd5b708049bc9fc420230f677996979faf55a8cf3ffc18241dc40f806dda07313a47cf7d3b33c3600b8091f6068bedf48937753e21faf42f6a3c101fd96361946358e23bf99eb93cf131ae525f804826a3023b8c51d9084048dcdb96ea334f0bb3218b13ecc6cb3e5a8cca680d07762a6ed08d794f284b587369a2339130cafeb0e8a99ed1429edf01fd436619759ab2dd7d0c1ebe0265572cd19f13454d44629825c253f56d0ed58a1bed36f60e26e3e439357c6c02dbc70bc344e61a2c24b7f8b02dff2f717d4840bc98452bc906572218d76dc12c9eb0f8498bdf4df555a25e9e5bfc41d8e36a17b645715c5904b7328fb6fecbeb26cd53831effe91d7f0536873948bf44bf6adba65dfb9f8146bdd75e28069e46677e15d347d14e2a7da1938852550e307dc96a5c208f659ecc14e60d9ab723670bf99d8aa4593c4d0350068b9dc474317104b530385613fb46d7f11b3156107ec2e14291a2182f5b8f6059c565de80e37ddfc483a76590fd08ff01b0267186f862452f36348874a976380c5df892a792fb2754995ea11eadcc3403e9ba57a27053652d52a2e97d02b6c5eddd19cf7059511a5a7b3a1e286181d4f410ab2e0fd1924438a60e821f4f40588e54509bba2b82ee2ce1fc11dfd905b3dc0887a5d70edff7b1e5b1323e1a9247d78fe5dbe5711a7496d1d80cee6493982572b24e43a5a391246756d3a20828c8a0136231dbdded28c76bb2fd609209b28e277abd27ba1944f75a7bc2334342147b51a1e17a756539ae6ea3f5d255eb1e2953471ac7bf0a0bd610587c4a2a375b4c10f98f238a8e0e7cc9f03b616d61aec75b32d37ce6352114c2726386be237d19876e43d78d832ec302bfa14b2adbbac9df83c0dfe52441a3c314d0c8ba6a7f9d1fd04f0cfe2d5347de46429820ff57eb2abd57ae132478d6fd3094998efd57acae260fc043af4d897e31bcee46846f2ca0ff36124763e6bdd7aa983136cef9631e304f08291ad013d019ffafe05ff1d1e4e3122113e8c9c263edf8f3dde77d743ced57ce08523014e936d86328db4e7d3a67fe1b6838696a881ab0b555c53574240270587cb512d7526aedccf6462577b92506b2d4e1b9920c14e82493dfb36453ff32d76db77eb0d98e7a5ac13b33fde7be83cb8fe54e06a2377c3bb2be864c0811daf26ce42c3484a1d43232af649bc473ede85fb0518bc7aadf0c9ae3c5ef63125bf348f6b7d66a75beced2d1dd8b70dafc8a8ec4ba14330c4a7c0d09cadb73333fa9f0ad66252f2262e476232aeb0f34f47c</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-12-17T07:58:35.816Z" itemprop="dateUpdated">2020-12-17 15:58:35</time>
+    Last updated: <time datetime="2021-01-02T08:19:51.704Z" itemprop="dateUpdated">2021-01-02 16:19:51</time>
 </span>
 
 
@@ -334,7 +276,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/test_re/&title=《test_re》 — Mr.Guo&source=2019_西湖论剑_预选赛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/test_re/&title=《test_re》 — Mr.Guo&source=这里有东西被加密了，需要输入密码查看哦。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -520,7 +462,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/test_re/&title=《test_re》 — Mr.Guo&source=2019_西湖论剑_预选赛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/test_re/&title=《test_re》 — Mr.Guo&source=这里有东西被加密了，需要输入密码查看哦。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
