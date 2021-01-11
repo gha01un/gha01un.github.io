@@ -1658,7 +1658,7 @@
     <content><![CDATA[<p>华为三场比赛</p>
 <a id="more"></a>
 
-<h1 id="12-23-鲲鹏计算专场"><a href="#12-23-鲲鹏计算专场" class="headerlink" title="[12.23] 鲲鹏计算专场"></a>[12.23] 鲲鹏计算专场</h1><h1 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h1><p>mips架构。</p>
+<h1 id="12-23-鲲鹏计算专场"><a href="#12-23-鲲鹏计算专场" class="headerlink" title="[12.23] 鲲鹏计算专场"></a>[12.23] 鲲鹏计算专场</h1><h2 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h2><p>mips架构。</p>
 <p>ida反编译以后可以看到</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
