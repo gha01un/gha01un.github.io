@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>XCTF-华为专场 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="华为三场比赛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF-华为专场">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="华为三场比赛">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/07/c9DZrzjpOKIhWJT.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20210107193752532.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/07/uLtqhIOiVS7fRgr.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125153-1161425124.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125456-429734910.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125746-1136159797.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142040126-671489723.jpg">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125990-1063553916.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126206-279751838.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126412-1040493664.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126694-1687417192.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142240176-375331819.jpg">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127053-779771947.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142333111-2036452907.jpg">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142409107-163220647.jpg">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127407-393101395.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127604-1211487554.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127829-418802557.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128048-51121876.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128284-246093210.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128523-1894502838.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128761-1669542994.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128971-29831972.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129252-305638873.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129478-891715450.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129702-143839534.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129908-653041770.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130147-780275031.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130359-9491212.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130593-1901948782.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130873-781443123.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131271-1156274033.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131488-1607244702.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131753-1021300930.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131984-1401341208.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132274-1923711696.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132494-877047308.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132734-938607639.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132983-1952569576.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133216-2013697483.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133413-398089151.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133641-1175617951.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134012-1354607358.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134364-1510036830.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134607-791664511.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134822-1627344499.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135025-755564000.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135267-1176964483.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135506-1315518990.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135729-917943359.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135969-340384244.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231136345-1780338312.png">
+<meta property="article:published_time" content="2021-01-06T13:51:14.710Z">
+<meta property="article:modified_time" content="2021-01-11T01:41:35.819Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XCTF-华为专场</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#12-23-鲲鹏计算专场"><span class="post-toc-number">1.</span> <span class="post-toc-text">[12.23] 鲲鹏计算专场</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mips"><span class="post-toc-number">2.</span> <span class="post-toc-text">mips</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pypy"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">pypy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#print【TODO】"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">print【TODO】</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#12-27-HarmonyOS和HMS专场"><span class="post-toc-number">3.</span> <span class="post-toc-text">[12.27] HarmonyOS和HMS专场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re123"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">re123</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#puzzle"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">puzzle</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#aRm"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">aRm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pe"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">pe</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-[12.20] 华为云专场"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XCTF-华为专场</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-06 21:51:14" datetime="2021-01-06T13:51:14.710Z"  itemprop="datePublished">2021-01-06</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">39</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>华为三场比赛</p>
+<a id="more"></a>
+
+<h1 id="12-23-鲲鹏计算专场"><a href="#12-23-鲲鹏计算专场" class="headerlink" title="[12.23] 鲲鹏计算专场"></a>[12.23] 鲲鹏计算专场</h1><h1 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h1><p>mips架构。</p>
+<p>ida反编译以后可以看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>v4是我们输入的字符串，很明显是迷宫逻辑，上下左右用wasd走，迷宫存在dword_100111F0里。</p>
+<p>sub_10000744()这个初始函数是用来找起点用的（就是迷宫中3所在的地方，在后面可以看到3其实表示的是当前位置）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/07/c9DZrzjpOKIhWJT.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这里也可以看到应该有多个迷宫（dword_10011D10是用来表示第几个迷宫的，且&lt;=2，一个迷宫有225个数）+一个迷宫宽为15=三个迷宫，每个迷宫为15*15。</p>
+<p>然后就是下面的四个函数，随便挑一个出来（比如sub_10000D28()）可以看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20210107193752532.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>很明显是个往右走的函数，3表示当前位置，并把上一个当前位置标为1（可走路径）。并且可以看到终点是4，就是说我们要把每个迷宫从3走到4。</p>
+<p>dump迷宫数组，写脚本打印迷宫：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">aMap&#x3D;[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0]</span><br><span class="line">for i in range(45):</span><br><span class="line">    for j in range(15):</span><br><span class="line">        if aMap[i*15+j]&#x3D;&#x3D;0:</span><br><span class="line">            tmp&#x3D;&#39;*&#39;</span><br><span class="line">        elif aMap[i*15+j]&#x3D;&#x3D;1:</span><br><span class="line">            tmp&#x3D;&#39;.&#39;</span><br><span class="line">        elif aMap[i*15+j]&#x3D;&#x3D;3:</span><br><span class="line">            tmp&#x3D;&#39;@&#39;</span><br><span class="line">        else:</span><br><span class="line">            tmp&#x3D;&#39;#&#39;</span><br><span class="line">        print(tmp,end&#x3D;&#39;&#39;)</span><br><span class="line">    print()</span><br><span class="line">    if i&#x3D;&#x3D;14 or i&#x3D;&#x3D;29:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到打印出了三个迷宫，为了看得清楚所以选用几个特定字符打印。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">.....**********</span><br><span class="line">.....*@*.******</span><br><span class="line">.....*.*.******</span><br><span class="line">.....*.*.******</span><br><span class="line">.....*.*.....**</span><br><span class="line">.....*.*****.**</span><br><span class="line">.....*.*****.**</span><br><span class="line">.....*.*****..*</span><br><span class="line">.....*........*</span><br><span class="line">.....********#*</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">#sssssssddddddds</span><br><span class="line"></span><br><span class="line">..*************</span><br><span class="line">..*@*....******</span><br><span class="line">..*.****.******</span><br><span class="line">..*.****.******</span><br><span class="line">..*..***.....**</span><br><span class="line">..*..*******.**</span><br><span class="line">..*..*******.**</span><br><span class="line">..*..*****....*</span><br><span class="line">..*..*****.**.*</span><br><span class="line">..*..*****.****</span><br><span class="line">..*......*.*..*</span><br><span class="line">..*...........*</span><br><span class="line">..***********#*</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">#ssssssssssdddddddddds</span><br><span class="line"></span><br><span class="line">***************</span><br><span class="line">*@..***********</span><br><span class="line">***.*...*******</span><br><span class="line">***...*.*******</span><br><span class="line">****.**.*******</span><br><span class="line">*..*.**.*******</span><br><span class="line">**...**.*******</span><br><span class="line">*******.*******</span><br><span class="line">*******....****</span><br><span class="line">**********.****</span><br><span class="line">**********.****</span><br><span class="line">**********.****</span><br><span class="line">**********....*</span><br><span class="line">*************.*</span><br><span class="line">*************#*</span><br><span class="line">#ddssddwddssssssdddssssdddss</span><br></pre></td></tr></table></figure></div>
+
+<p>走迷宫，然后把路径拼起来，根据提示转md5，get flag。</p>
+<p>（有个疑惑哈，第二个迷宫理论上说就算是最短路也有多解？是题目出锅了还是我哪里看漏了= =</p>
+<p>（再补一句，题目似乎甚至没要求最短路？？？神奇.jpg</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/07/uLtqhIOiVS7fRgr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">s&#x3D;b&quot;sssssssdddddddsssssssssssddddddddddsddssddwddssssssdddssssdddss&quot;</span><br><span class="line">print(&quot;flag&#123;%s&#125;&quot;%hashlib.md5(s).hexdigest())</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>flag{999ea6aa6c365ab43eec2a0f0e5968d5}</strong></p>
+<h2 id="pypy"><a href="#pypy" class="headerlink" title="pypy"></a>pypy</h2><p>把题目文件拖进ida，搜索字符串能看到</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125153-1161425124.png" alt="](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125153-1161425124.png)" title="">
+                </div>
+                <div class="image-caption">](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125153-1161425124.png)</div>
+            </figure></p>
+<p>猜测是pyinstaller打包的文件。</p>
+<blockquote>
+<p>也就是这个题让我突然发现pyinstaller还能打包成elf的，于是比赛结束以后赶紧把之前总结的解包指南更新了：<a href="https://c10udlnk.top/2020/12/04/reSkillsOn-Pyinstaller-extracted-to-python/" target="_blank" rel="noopener">RE套路 - 关于pyinstaller打包文件的复原 | c10udlnk_Log</a>。</p>
+</blockquote>
+<p>走流程解包，得到python源码。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125456-429734910.png" alt="image-20201229165610468](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125456-429734910.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229165610468](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125456-429734910.png)</div>
+            </figure></p>
+<p>看到这种混淆变量名，果断替换成ida style变量名（。</p>
+<p>放一下源码：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line"># uncompyle6 version 3.7.4</span><br><span class="line"># Python bytecode 3.8 (3413)</span><br><span class="line"># Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:25:05) [MSC v.1500 64 bit (AMD64)]</span><br><span class="line"># Warning: this version of Python has problems handling the Python 3 &quot;byte&quot; type in constants properly.</span><br><span class="line"></span><br><span class="line"># Embedded file name: main.py</span><br><span class="line"># Compiled at: 1995-09-28 00:18:56</span><br><span class="line"># Size of source mod 2**32: 257 bytes</span><br><span class="line">import random, codecs, sys, time, pygame</span><br><span class="line">from pygame.locals import *</span><br><span class="line">from collections import deque</span><br><span class="line">SCREEN_WIDTH &#x3D; 600</span><br><span class="line">SCREEN_HEIGHT &#x3D; 480</span><br><span class="line">SIZE &#x3D; 20</span><br><span class="line">LINE_WIDTH &#x3D; 1</span><br><span class="line">flag &#x3D; &#39;flag&#123;this is a fake flag&#125;&#39;</span><br><span class="line">SCOPE_X &#x3D; (0, SCREEN_WIDTH &#x2F;&#x2F; SIZE - 1)</span><br><span class="line">SCOPE_Y &#x3D; (2, SCREEN_HEIGHT &#x2F;&#x2F; SIZE - 1)</span><br><span class="line">FOOD_STYLE_LIST &#x3D; [(10, (255, 100, 100)), (20, (100, 255, 100)), (30, (100, 100, 255))]</span><br><span class="line">LIGHT &#x3D; (100, 100, 100)</span><br><span class="line">DARK &#x3D; (200, 200, 200)</span><br><span class="line">BLACK &#x3D; (0, 0, 0)</span><br><span class="line">RED &#x3D; (200, 30, 30)</span><br><span class="line">BGCOLOR &#x3D; (40, 40, 60)</span><br><span class="line"></span><br><span class="line">def print_text(v1, v2, v3, v4, v5, fcolor&#x3D;(255, 255, 255)):</span><br><span class="line">    v6 &#x3D; v2.render(v5, True, fcolor)</span><br><span class="line">    v1.blit(v6, (v3, v4))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def init_snake():</span><br><span class="line">    v7 &#x3D; deque()</span><br><span class="line">    v7.append((2, SCOPE_Y[0]))</span><br><span class="line">    v7.append((1, SCOPE_Y[0]))</span><br><span class="line">    v7.append((0, SCOPE_Y[0]))</span><br><span class="line">    return v7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def create_food(v8):</span><br><span class="line">    v9 &#x3D; random.randint(SCOPE_X[0], SCOPE_X[1])</span><br><span class="line">    v10 &#x3D; random.randint(SCOPE_Y[0], SCOPE_Y[1])</span><br><span class="line">    while (v9, v10) in v8:</span><br><span class="line">        v9 &#x3D; random.randint(SCOPE_X[0], SCOPE_X[1])</span><br><span class="line">        v10 &#x3D; random.randint(SCOPE_Y[0], SCOPE_Y[1])</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">     v9, v10)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_food_style():</span><br><span class="line">    return FOOD_STYLE_LIST[random.randint(0, 2)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DEFAULT_KEY &#x3D; u&#39;Y\xf3\x02\xc3%\x9a\x820\x0b\xbb%\x7f~;\xd2\xdc&#39;</span><br><span class="line"></span><br><span class="line">def rc4(v11, key&#x3D;DEFAULT_KEY, skip&#x3D;1024):</span><br><span class="line">    v12 &#x3D; 0</span><br><span class="line">    v13 &#x3D; bytearray([v14 for v14 in range(256)])</span><br><span class="line">    v12 &#x3D; 0</span><br><span class="line">    for v15 in range(256):</span><br><span class="line">        v12 &#x3D; (v12 + v13[v15] + ord(key[(v15 % len(key))])) % 256</span><br><span class="line">        v16 &#x3D; v13[v15]</span><br><span class="line">        v17 &#x3D; v13[v12]</span><br><span class="line">        v13[v15] &#x3D; v13[v12]</span><br><span class="line">        v13[v12] &#x3D; v16</span><br><span class="line">    else:</span><br><span class="line">        v12 &#x3D; 0</span><br><span class="line">        v18 &#x3D; 0</span><br><span class="line">        v19 &#x3D; []</span><br><span class="line">        if skip &gt; 0:</span><br><span class="line">            for v15 in range(skip):</span><br><span class="line">                v12 &#x3D; (v12 + 1) % 256</span><br><span class="line">                v18 &#x3D; (v18 + v13[v12]) % 256</span><br><span class="line">                v13[v12], v13[v18] &#x3D; v13[v18], v13[v12]</span><br><span class="line"></span><br><span class="line">        for v20 in v11:</span><br><span class="line">            v12 &#x3D; (v12 + 1) % 256</span><br><span class="line">            v18 &#x3D; (v18 + v13[v12]) % 256</span><br><span class="line">            v13[v12], v13[v18] &#x3D; v13[v18], v13[v12]</span><br><span class="line">            v21 &#x3D; v13[((v13[v12] + v13[v18]) % 256)]</span><br><span class="line">            v19.append(chr(ord(v20) ^ v21))</span><br><span class="line">        else:</span><br><span class="line">            return &#39;&#39;.join(v19)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def func(v22):</span><br><span class="line">    v23 &#x3D; rc4(v22)</span><br><span class="line">    if v23.encode(&#39;utf-8&#39;).hex() &#x3D;&#x3D; &#39;275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0&#39;:</span><br><span class="line">        return &#39;YOU WIN&#39;</span><br><span class="line">    return &#39;YOU LOSE&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    pygame.init()</span><br><span class="line">    v24 &#x3D; pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))</span><br><span class="line">    pygame.display.set_caption(u&#39;\u8d2a\u5403\u86c7&#39;)</span><br><span class="line">    v25 &#x3D; pygame.font.SysFont(&#39;SimHei&#39;, 24)</span><br><span class="line">    v26 &#x3D; pygame.font.Font(None, 72)</span><br><span class="line">    v27, v28 &#x3D; v26.size(&#39;GAME OVER&#39;)</span><br><span class="line">    v29 &#x3D; True</span><br><span class="line">    v30 &#x3D; init_snake()</span><br><span class="line">    v31 &#x3D; create_food(v30)</span><br><span class="line">    v32 &#x3D; get_food_style()</span><br><span class="line">    v33 &#x3D; (1, 0)</span><br><span class="line">    v34 &#x3D; True</span><br><span class="line">    v35 &#x3D; False</span><br><span class="line">    v36 &#x3D; 0</span><br><span class="line">    v37 &#x3D; 0.5</span><br><span class="line">    v38 &#x3D; v37</span><br><span class="line">    v39 &#x3D; None</span><br><span class="line">    v41 &#x3D; False</span><br><span class="line">    for v40 in pygame.event.get():</span><br><span class="line">        if v40.type &#x3D;&#x3D; QUIT:</span><br><span class="line">            sys.exit()</span><br><span class="line">        elif v40.type &#x3D;&#x3D; KEYDOWN:</span><br><span class="line">            if v40.key &#x3D;&#x3D; K_RETURN:</span><br><span class="line">                if v34:</span><br><span class="line">                    v35 &#x3D; True</span><br><span class="line">                    v34 &#x3D; False</span><br><span class="line">                    v29 &#x3D; True</span><br><span class="line">                    v30 &#x3D; init_snake()</span><br><span class="line">                    v31 &#x3D; create_food(v30)</span><br><span class="line">                    v32 &#x3D; get_food_style()</span><br><span class="line">                    v33 &#x3D; (1, 0)</span><br><span class="line">                    v36 &#x3D; 0</span><br><span class="line">                    v39 &#x3D; time.time()</span><br><span class="line">            elif v40.key &#x3D;&#x3D; K_SPACE:</span><br><span class="line">                if not v34:</span><br><span class="line">                    v41 &#x3D; not v41</span><br><span class="line">            elif v40.key in (K_w, K_UP):</span><br><span class="line">                if v29:</span><br><span class="line">                    v33 &#x3D; v33[1] or (0, -1)</span><br><span class="line">                    v29 &#x3D; False</span><br><span class="line">            elif v40.key in (K_s, K_DOWN):</span><br><span class="line">                if v29:</span><br><span class="line">                    v33 &#x3D; v33[1] or (0, 1)</span><br><span class="line">                    v29 &#x3D; False</span><br><span class="line">            elif v40.key in (K_a, K_LEFT):</span><br><span class="line">                if v29:</span><br><span class="line">                    if not v33[0]:</span><br><span class="line">                        v33 &#x3D; (-1, 0)</span><br><span class="line">                        v29 &#x3D; False</span><br><span class="line">                    elif v40.key in (K_d, K_RIGHT):</span><br><span class="line">                        if v29:</span><br><span class="line">                            if not v33[0]:</span><br><span class="line">                                v33 &#x3D; (1, 0)</span><br><span class="line">                                v29 &#x3D; False</span><br><span class="line">        else:</span><br><span class="line">            v24.fill(BGCOLOR)</span><br><span class="line">            for v42 in range(SIZE, SCREEN_WIDTH, SIZE):</span><br><span class="line">                pygame.draw.line(v24, BLACK, (v42, SCOPE_Y[0] * SIZE), (v42, SCREEN_HEIGHT), LINE_WIDTH)</span><br><span class="line">            else:</span><br><span class="line">                for v43 in range(SCOPE_Y[0] * SIZE, SCREEN_HEIGHT, SIZE):</span><br><span class="line">                    pygame.draw.line(v24, BLACK, (0, v43), (SCREEN_WIDTH, v43), LINE_WIDTH)</span><br><span class="line">                else:</span><br><span class="line">                    v44 &#x3D; v34 or time.time()</span><br><span class="line"></span><br><span class="line">            if v44 - v39 &gt; v38 and not v41:</span><br><span class="line">                v29 &#x3D; True</span><br><span class="line">                v39 &#x3D; v44</span><br><span class="line">                v45 &#x3D; (v30[0][0] + v33[0], v30[0][1] + v33[1])</span><br><span class="line">                if v45 &#x3D;&#x3D; v31:</span><br><span class="line">                    v30.appendleft(v45)</span><br><span class="line">                    v36 +&#x3D; v32[0]</span><br><span class="line">                    v38 &#x3D; v37 - 0.03 * (v36 &#x2F;&#x2F; 100)</span><br><span class="line">                    v31 &#x3D; create_food(v30)</span><br><span class="line">                    v32 &#x3D; get_food_style()</span><br><span class="line">                else:</span><br><span class="line">                    if SCOPE_X[0] &lt;&#x3D; v45[0] &lt;&#x3D; SCOPE_X[1]:</span><br><span class="line">                        if SCOPE_Y[0] &lt;&#x3D; v45[1] &lt;&#x3D; SCOPE_Y[1]:</span><br><span class="line">                            if v45 not in v30:</span><br><span class="line">                                v30.appendleft(v45)</span><br><span class="line">                                v30.pop()</span><br><span class="line">                            else:</span><br><span class="line">                                v34 &#x3D; True</span><br><span class="line">                    if not v34:</span><br><span class="line">                        pygame.draw.rect(v24, v32[1], (v31[0] * SIZE, v31[1] * SIZE, SIZE, SIZE), 0)</span><br><span class="line">                for v46 in v30:</span><br><span class="line">                    pygame.draw.rect(v24, DARK, (v46[0] * SIZE + LINE_WIDTH, v46[1] * SIZE + LINE_WIDTH, SIZE - LINE_WIDTH * 2, SIZE - LINE_WIDTH * 2), 0)</span><br><span class="line">                else:</span><br><span class="line">                    print_text(v24, v25, 30, 7, f&quot;speed: &#123;v36 &#x2F;&#x2F; 100&#125;&quot;)</span><br><span class="line">                    print_text(v24, v25, 450, 7, f&quot;score: &#123;v36&#125;&quot;)</span><br><span class="line">                    if v36 &gt;&#x3D; 5192296858534827628530496329220096:</span><br><span class="line">                        v47 &#x3D; flag</span><br><span class="line">                        print_text(v24, v26, (SCREEN_WIDTH - v27) &#x2F;&#x2F; 2, (SCREEN_HEIGHT - v28) &#x2F;&#x2F; 2, func(v47), RED)</span><br><span class="line">                    if v34:</span><br><span class="line">                        if v35:</span><br><span class="line">                            print_text(v24, v26, (SCREEN_WIDTH - v27) &#x2F;&#x2F; 2, (SCREEN_HEIGHT - v28) &#x2F;&#x2F; 2, &#39;GAME OVER&#39;, RED)</span><br><span class="line">                    pygame.display.update()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"># okay decompiling main.pyc</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到最后getflag这里（func()）的程序逻辑就一个rc4加密，由rc4的特性可知加密和解密流程相同，故复用程序中的rc4()来得到flag。</p>
+<p>uncompyle反编译出来的源码是python3，但是题目本身的源码是python2，注意编码问题。</p>
+<blockquote>
+<p>关于编码问题，可以看：</p>
+<p><a href="https://pycoders-weekly-chinese.readthedocs.io/en/latest/issue5/unipain.html" target="_blank" rel="noopener">Unicode之痛 — PyCoder’s Weelky CN</a></p>
+<p><a href="https://www.cnblogs.com/yangmingxianshen/p/7990102.html" target="_blank" rel="noopener">关于python2中的unicode和str以及python3中的str和bytes - 明王不动心 - 博客园</a></p>
+</blockquote>
+<p>这里因为反编译做了转换成python3的处理，所以脚本用python3写。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">DEFAULT_KEY &#x3D; u&#39;Y\xf3\x02\xc3%\x9a\x820\x0b\xbb%\x7f~;\xd2\xdc&#39;</span><br><span class="line">def rc4(v11, key&#x3D;DEFAULT_KEY, skip&#x3D;1024):</span><br><span class="line">    v12 &#x3D; 0</span><br><span class="line">    v13 &#x3D; bytearray([v14 for v14 in range(256)])</span><br><span class="line">    v12 &#x3D; 0</span><br><span class="line">    for v15 in range(256):</span><br><span class="line">        v12 &#x3D; (v12 + v13[v15] + ord(key[(v15 % len(key))])) % 256</span><br><span class="line">        v16 &#x3D; v13[v15]</span><br><span class="line">        v17 &#x3D; v13[v12]</span><br><span class="line">        v13[v15] &#x3D; v13[v12]</span><br><span class="line">        v13[v12] &#x3D; v16</span><br><span class="line">    else:</span><br><span class="line">        v12 &#x3D; 0</span><br><span class="line">        v18 &#x3D; 0</span><br><span class="line">        v19 &#x3D; []</span><br><span class="line">        if skip &gt; 0:</span><br><span class="line">            for v15 in range(skip):</span><br><span class="line">                v12 &#x3D; (v12 + 1) % 256</span><br><span class="line">                v18 &#x3D; (v18 + v13[v12]) % 256</span><br><span class="line">                v13[v12], v13[v18] &#x3D; v13[v18], v13[v12]</span><br><span class="line"></span><br><span class="line">        for v20 in v11:</span><br><span class="line">            v12 &#x3D; (v12 + 1) % 256</span><br><span class="line">            v18 &#x3D; (v18 + v13[v12]) % 256</span><br><span class="line">            v13[v12], v13[v18] &#x3D; v13[v18], v13[v12]</span><br><span class="line">            v21 &#x3D; v13[((v13[v12] + v13[v18]) % 256)]</span><br><span class="line">            v19.append(chr(ord(v20) ^ v21))</span><br><span class="line">        else:</span><br><span class="line">            return &#39;&#39;.join(v19)</span><br><span class="line"># def func(v22):</span><br><span class="line">#     v23 &#x3D; rc4(v22)</span><br><span class="line">#     if v23.encode(&#39;utf-8&#39;).hex() &#x3D;&#x3D; &#39;275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0&#39;:</span><br><span class="line">#         return &#39;YOU WIN&#39;</span><br><span class="line">#     return &#39;YOU LOSE&#39;</span><br><span class="line"></span><br><span class="line"># -&#x3D;-&#x3D;-&#x3D;以上所有为源码中原函数-&#x3D;-&#x3D;-&#x3D;</span><br><span class="line"></span><br><span class="line">cipher&#x3D;&#39;275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0&#39;</span><br><span class="line">flag&#x3D;bytes.fromhex(cipher).decode(&#39;utf-8&#39;)</span><br><span class="line">print(rc4(flag))</span><br></pre></td></tr></table></figure></div>
+
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125746-1136159797.png" alt="](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125746-1136159797.png)" title="">
+                </div>
+                <div class="image-caption">](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125746-1136159797.png)</div>
+            </figure></p>
+<p><strong>flag{snake_bao_is_really_lucky}</strong></p>
+<h2 id="print【TODO】"><a href="#print【TODO】" class="headerlink" title="print【TODO】"></a>print【TODO】</h2><p>【TODO】</p>
+<p>这个题感觉大概知道怎么做，但就是不会啊（等wp…</p>
+<p>贴一下当时的想法，看了看逻辑只有sprintf这种函数，除此以外没有别的可以改写内存数据的操作了。</p>
+<p>动态调试跟了一下，猜测是sprintf格式化字符串漏洞写入？</p>
+<blockquote>
+<p><a href="https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html" target="_blank" rel="noopener">Introduction to format string exploits</a></p>
+<p><a href="https://www.cnblogs.com/liufang/p/3741943.html" target="_blank" rel="noopener">sprintf - stm32学习中 - 博客园</a></p>
+</blockquote>
+<p>pwn太菜了还没搞懂要怎么往output那里写（虽然这是逆向题orz</p>
+<p>setup函数那里有一些format的初始化，主要是loop()那里，控制input（输入的字符串，全部为可见字符且长度&gt;11），来改变使得output!=原来的output且output-1==48(‘0’)。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142040126-671489723.jpg" alt="](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142040126-671489723.jpg)" title="">
+                </div>
+                <div class="image-caption">](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142040126-671489723.jpg)</div>
+            </figure></p>
+<hr>
+<h1 id="12-27-HarmonyOS和HMS专场"><a href="#12-27-HarmonyOS和HMS专场" class="headerlink" title="[12.27] HarmonyOS和HMS专场"></a>[12.27] HarmonyOS和HMS专场</h1><h2 id="re123"><a href="#re123" class="headerlink" title="re123"></a>re123</h2><p>用file命令可以看到是MS Windows HtmlHelp Data文件（即.chm），查看文件头也可以知道。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125990-1063553916.png" alt="](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125990-1063553916.png)" title="">
+                </div>
+                <div class="image-caption">](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231125990-1063553916.png)</div>
+            </figure></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126206-279751838.png" alt="](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126206-279751838.png)" title="">
+                </div>
+                <div class="image-caption">](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126206-279751838.png)</div>
+            </figure></p>
+<p>所以添加后缀名.chm。</p>
+<p>关于chm文件有一个常用的反编译器ChmDecompiler，可以释放CHM里面的全部源文件（包括网页、文本、图片、CHM、ZIP、EXE等全部源文件），并且完美地恢复源文件的全部目录结构 （摘抄的简介。</p>
+<p>所以用ChmDecompiler打开re.chm，解压缩，可以看到目录下出现一个包含四个文件的文件夹（其实源文件只有三个，.hhp是ChmDecompiler自动生成的）。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126412-1040493664.png" alt="image-20201229191253926](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126412-1040493664.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229191253926](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126412-1040493664.png)</div>
+            </figure></p>
+<p>一个一个翻可以看到doc.htm里有一段奇怪的Item1。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126694-1687417192.png" alt="image-20201229191554582](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126694-1687417192.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229191554582](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231126694-1687417192.png)</div>
+            </figure></p>
+<p>大概可以看到是powershell的语法？（感觉像win后门，这么多no的参数</p>
+<p>查了一下其实就是把后面那大段进行base64解码而已，用wsl解一下base64有</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142240176-375331819.jpg" alt="img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142240176-375331819.jpg)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142240176-375331819.jpg)</div>
+            </figure></p>
+<p>然后得到了一段.NET代码（白字）。</p>
+<p>通过查微软文档可以知道，这里是把base64解码以后的字符进行Deflate解压的过程，所以用脚本把中间那段base64解码，并整理输出。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">import base64</span><br><span class="line">import zlib</span><br><span class="line"> </span><br><span class="line">def deflate(data):</span><br><span class="line">    try:</span><br><span class="line">        return zlib.decompress(data, -zlib.MAX_WBITS)</span><br><span class="line">    except zlib.error:</span><br><span class="line">        return zlib.decompress(data)</span><br><span class="line"></span><br><span class="line">code&#x3D;&#39;TY5BC4IwGIbvgv9hjB2McJhEhNChJMGTkN2qg7qvFHQT&#x2F;bL575vpoV2&#x2F;53n2skJJBInkQG5xwqOqhkcQXCATx7q+gkaHsvYj7kIVvCgburItVgm9MTxbVB5LATp5OlQvb6IMV0LdQvdPpu+8x66SL2eOrMl+Ck7naUA69ggND5UcoEOzI+pUc8p62G3TRZubv34K6IbLespADoGR27vv+R7HpqXzt8Q9y0IJI5N8RLCtLw&#x3D;&#x3D;&#39;</span><br><span class="line">de_code&#x3D;deflate(base64.b64decode(code)).decode()</span><br><span class="line">for x in de_code.split(&#39;\r\n&#39;):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure></div>
+
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127053-779771947.png" alt="image-20201229192220277](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127053-779771947.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229192220277](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127053-779771947.png)</div>
+            </figure></p>
+<p>很明显的逻辑了，把doc.chm（应该是原来的re.chm）中”xxxxxxxx”后面的部分提取出来，还是用base64解码得到文件。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142333111-2036452907.jpg" alt="img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142333111-2036452907.jpg)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142333111-2036452907.jpg)</div>
+            </figure></p>
+<p>把这后面的内容手动复制出来到cont.txt里，进行base64解码，最后存在theFile中。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">base64 -d cont.txt &gt; theFile</span><br></pre></td></tr></table></figure></div>
+
+<p>查看theFile可以猜测是exe（毕竟最开始给的就是有powershell指令的base64），把文件头补上，并改后缀名（即theFile.exe）。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142409107-163220647.jpg" alt="img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142409107-163220647.jpg)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202101/2183122-20210101142409107-163220647.jpg)</div>
+            </figure></p>
+<p>用ida打开，通过FindCrypt插件可以看到AES，跟过去能看到AES加密时的S盒（其实这里前两个都是S盒，第三个是逆S盒），猜测用到了AES加密。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127407-393101395.png" alt="img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127407-393101395.png)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127407-393101395.png)</div>
+            </figure></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127604-1211487554.png" alt="image-20201229193302890](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127604-1211487554.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229193302890](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127604-1211487554.png)</div>
+            </figure></p>
+<p>往上回溯找到主函数</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127829-418802557.png" alt="img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127829-418802557.png)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231127829-418802557.png)</div>
+            </figure></p>
+<p>显然，这里是AES加密过程，sub_180001100()是密钥拓展过程，sub_1800015B0()是AES加密。</p>
+<p>看了一下感觉是原装无魔改的AES，密文密钥都给了，那就直接写脚本解密。</p>
+<p>注意这里是以整数形式给出的，别忘了小端序。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">from Crypto.Cipher import AES</span><br><span class="line">from binascii import *</span><br><span class="line"></span><br><span class="line">arr&#x3D;[0x16157E2B,0xA6D2AE28,0x8815F7AB,0x3C4FCF09]</span><br><span class="line">key&#x3D;&quot;&quot;</span><br><span class="line">for i in range(4):</span><br><span class="line">    key&#x3D;hex(arr[i])[2:]+key</span><br><span class="line">key&#x3D;unhexlify(key)[::-1] #注意小端序的问题</span><br><span class="line">tmp&#x3D;0x46C42084AA2A1B56E799D643453FF4B5</span><br><span class="line">cipher&#x3D;unhexlify(hex(tmp)[2:])[::-1]</span><br><span class="line">enc&#x3D;AES.new(key,AES.MODE_ECB)</span><br><span class="line">print(enc.decrypt(cipher))</span><br></pre></td></tr></table></figure></div>
+
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128048-51121876.png" alt="img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128048-51121876.png)" title="">
+                </div>
+                <div class="image-caption">img](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128048-51121876.png)</div>
+            </figure></p>
+<p><strong>flag{youcangues}</strong></p>
+<h2 id="puzzle"><a href="#puzzle" class="headerlink" title="puzzle"></a>puzzle</h2><p>mips架构。</p>
+<p>加载进ida以后，通过字符串回溯找到主函数。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128284-246093210.png" alt="image-20201229195213434](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128284-246093210.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229195213434](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128284-246093210.png)</div>
+            </figure></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128523-1894502838.png" alt="image-20201229195456197](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128523-1894502838.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229195456197](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128523-1894502838.png)</div>
+            </figure></p>
+<p>可以看到很明显的sub_401134()这个check，先往这里面看。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128761-1669542994.png" alt="image-20201229195646671](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128761-1669542994.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229195646671](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128761-1669542994.png)</div>
+            </figure></p>
+<p>看到是一个疑似maze的逻辑（</p>
+<p>不过sub_400FA8()点进去以后可以看到是swap的功能</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128971-29831972.png" alt="image-20201229202801230](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128971-29831972.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229202801230](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231128971-29831972.png)</div>
+            </figure></p>
+<p>所以应该不是maze，是一个以交换为主的逻辑。</p>
+<p>至于dword_4A0010，可以看到是一个九个数的数组。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129252-305638873.png" alt="image-20201229203258179](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129252-305638873.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229203258179](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129252-305638873.png)</div>
+            </figure></p>
+<p>v4和v5的出处在switch逻辑上面一点</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129478-891715450.png" alt="image-20201229203319240](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129478-891715450.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229203319240](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129478-891715450.png)</div>
+            </figure></p>
+<p>可以看到最后(v4,v5)其实表示了数组里0的位置，且数组实际可以看成是3*3。</p>
+<p>即：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">4 0 3</span><br><span class="line">7 2 6</span><br><span class="line">8 1 5</span><br></pre></td></tr></table></figure></div>
+
+<p>最后sub_400FFC()的检查逻辑：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129702-143839534.png" alt="image-20201229203405086](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129702-143839534.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229203405086](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129702-143839534.png)</div>
+            </figure></p>
+<p>实际上就是要让这个3*3等于</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 0</span><br></pre></td></tr></table></figure></div>
+
+<p>把0看成空位的话，很容易就想到3*3的华容道了。</p>
+<p>（或者玩算法的小伙伴可能对八数码问题这个名字更熟悉？</p>
+<p>有本事下次出数织啊！20*20我都给你火速解出来（来自数织爱好者的吐槽）</p>
+<p>这里实际上是求最短能得到的路径（15步），懒得想了，直接去网上抓了个现成代码下来改了改。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;ctime&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#define maxState 10000</span><br><span class="line">#define N 3</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bool isEqual(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            if(a[i][j][n] !&#x3D; b[i][j]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">bool isEqual(int a[N][N],int b[N][N])&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            if(a[i][j] !&#x3D; b[i][j]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int evalute(int state[N][N],int target[N][N])&#123;</span><br><span class="line">    int num &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)</span><br><span class="line">            if(state[i][j] !&#x3D; target[i][j]) num ++;</span><br><span class="line">    &#125;</span><br><span class="line">    return num;</span><br><span class="line">&#125;</span><br><span class="line">void findBrack(int a[N][N],int x,int y)&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            if(a[i][j] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                x &#x3D; i;y &#x3D; j;return;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool move(int a[N][N],int b[N][N],int dir)&#123;</span><br><span class="line">    &#x2F;&#x2F;1 up 2 down 3 left 4 right</span><br><span class="line">    int x &#x3D; 0,y &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            b[i][j] &#x3D; a[i][j];</span><br><span class="line">            if(a[i][j] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                x &#x3D; i;y &#x3D; j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(x &#x3D;&#x3D; 0 &amp;&amp; dir &#x3D;&#x3D; 1) return false;</span><br><span class="line">    if(x &#x3D;&#x3D; N-1 &amp;&amp; dir &#x3D;&#x3D; 2) return false;</span><br><span class="line">    if(y &#x3D;&#x3D; 0 &amp;&amp; dir &#x3D;&#x3D; 3) return false;</span><br><span class="line">    if(y &#x3D;&#x3D; N-1 &amp;&amp; dir &#x3D;&#x3D; 4) return false;</span><br><span class="line">    if(dir &#x3D;&#x3D; 1)&#123;b[x-1][y] &#x3D; 0;b[x][y] &#x3D; a[x-1][y];&#125;</span><br><span class="line">    else if(dir &#x3D;&#x3D; 2)&#123;b[x+1][y] &#x3D; 0;b[x][y] &#x3D; a[x+1][y];&#125;</span><br><span class="line">    else if(dir &#x3D;&#x3D; 3)&#123;b[x][y-1] &#x3D; 0;b[x][y] &#x3D; a[x][y-1];&#125;</span><br><span class="line">    else if(dir &#x3D;&#x3D; 4)&#123;b[x][y+1] &#x3D; 0;b[x][y] &#x3D; a[x][y+1];&#125;</span><br><span class="line">    else return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">void statecpy(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            a[i][j][n] &#x3D; b[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void getState(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j ++)&#123;</span><br><span class="line">            b[i][j] &#x3D; a[i][j][n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void statecpy(int a[N][N],int b[N][N])&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i++)&#123;</span><br><span class="line">        for(int j &#x3D; 0;j &lt; N;j++)</span><br><span class="line">            a[i][j] &#x3D; b[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int checkAdd(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; n;i ++)&#123;</span><br><span class="line">        if(isEqual(a,b,i)) return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line">int Astar(int a[N][N][maxState],int start[N][N],int target[N][N],int path[maxState])&#123;</span><br><span class="line">    bool visited[maxState] &#x3D; &#123;false&#125;;</span><br><span class="line">    int fitness[maxState] &#x3D; &#123;0&#125;;</span><br><span class="line">    int passLen[maxState] &#x3D; &#123;0&#125;;</span><br><span class="line">    int curpos[N][N];</span><br><span class="line">    statecpy(curpos,start);</span><br><span class="line">    int id &#x3D; 0,Curid &#x3D; 0;</span><br><span class="line">    fitness[id] &#x3D; evalute(curpos,target);</span><br><span class="line">    statecpy(a,start,id++);</span><br><span class="line">    while(!isEqual(curpos,target))&#123;</span><br><span class="line">        for(int i &#x3D; 1;i &lt; 5;i ++)&#123;&#x2F;&#x2F;向四周找方向</span><br><span class="line">            int tmp[N][N] &#x3D; &#123;0&#125;;</span><br><span class="line">            if(move(curpos,tmp,i))&#123;</span><br><span class="line">                int state &#x3D; checkAdd(a,tmp,id);</span><br><span class="line">                if(state &#x3D;&#x3D; -1)&#123;&#x2F;&#x2F;not add</span><br><span class="line">                    path[id] &#x3D; Curid;</span><br><span class="line">                    passLen[id] &#x3D; passLen[Curid] + 1;</span><br><span class="line">                    fitness[id] &#x3D; evalute(tmp,target) + passLen[id];</span><br><span class="line">                    statecpy(a,tmp,id++);</span><br><span class="line">                &#125;else&#123;&#x2F;&#x2F;add</span><br><span class="line">                    int len &#x3D; passLen[Curid] + 1,fit &#x3D; evalute(tmp,target) + len;</span><br><span class="line">                    if(fit &lt; fitness[state])&#123;</span><br><span class="line">                        path[state] &#x3D; Curid;</span><br><span class="line">                        passLen[state] &#x3D; len;</span><br><span class="line">                        fitness[state] &#x3D; fit;</span><br><span class="line">                        visited[state] &#x3D; false;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[Curid] &#x3D; true;</span><br><span class="line">        &#x2F;&#x2F;找到适应度最小的最为下一个带搜索节点</span><br><span class="line">        int minCur &#x3D; -1;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; id;i ++)</span><br><span class="line">            if(!visited[i] &amp;&amp; (minCur &#x3D;&#x3D; -1 || fitness[i] &lt; fitness[minCur])) minCur &#x3D; i;</span><br><span class="line">        Curid &#x3D; minCur;</span><br><span class="line">        getState(a,curpos,Curid);</span><br><span class="line">        if(id &#x3D;&#x3D; maxState) return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    return Curid;</span><br><span class="line">&#125;</span><br><span class="line">void show(int a[N][N][maxState],int n)&#123;</span><br><span class="line">    cout &lt;&lt; &quot;-------------------------------\n&quot;;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D;0;j &lt; N;j ++)&#123;</span><br><span class="line">            cout &lt;&lt; a[i][j][n] &lt;&lt; &quot; &quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;-------------------------------\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">int calDe(int a[N][N])&#123;</span><br><span class="line">    int sum &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 0;i &lt; N*N;i ++)&#123;</span><br><span class="line">        for(int j &#x3D; i+1;j &lt; N*N;j ++)&#123;</span><br><span class="line">            int m,n,c,d;</span><br><span class="line">            m &#x3D; i&#x2F;N;n &#x3D; i%N;</span><br><span class="line">            c &#x3D; j&#x2F;N;d &#x3D; j%N;</span><br><span class="line">            if(a[c][d] &#x3D;&#x3D; 0) continue;</span><br><span class="line">            if(a[m][n] &gt; a[c][d]) sum ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line">void autoGenerate(int a[N][N])&#123;</span><br><span class="line">    int maxMove &#x3D; 50;</span><br><span class="line">    srand((unsigned)time(NULL));</span><br><span class="line">    int tmp[N][N];</span><br><span class="line">    while(maxMove --)&#123;</span><br><span class="line">        int dir &#x3D; rand()%4 + 1;</span><br><span class="line">        if(move(a,tmp,dir)) statecpy(a,tmp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a[N][N][maxState] &#x3D; &#123;0&#125;;</span><br><span class="line">    &#x2F;&#x2F; int start[N][N] &#x3D; &#123;1,2,3,4,5,6,7,8,0&#125;;</span><br><span class="line">    &#x2F;&#x2F; autoGenerate(start);</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; start[0][0] &lt;&lt; start[1][1];</span><br><span class="line">    int start[N][N] &#x3D; &#123;4,0,3,7,2,6,8,1,5&#125;;</span><br><span class="line">    int target[N][N] &#x3D; &#123;1,2,3,4,5,6,7,8,0&#125;;</span><br><span class="line">    if(!(calDe(start)%2 &#x3D;&#x3D; calDe(target)%2))&#123;</span><br><span class="line">        cout &lt;&lt; &quot;无解\n&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int path[maxState] &#x3D; &#123;0&#125;;</span><br><span class="line">    int res &#x3D;  Astar(a,start,target,path);</span><br><span class="line">    if(res &#x3D;&#x3D; -1)&#123;</span><br><span class="line">        cout &lt;&lt; &quot;达到最大搜索能力\n&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int shortest[maxState] &#x3D; &#123;0&#125;,j &#x3D; 0;</span><br><span class="line">    while(res !&#x3D; 0)&#123;</span><br><span class="line">        shortest[j++] &#x3D; res;</span><br><span class="line">        res &#x3D; path[res];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;第 0 步\n&quot;;</span><br><span class="line">    show(a,0);</span><br><span class="line">    for(int i &#x3D; j - 1;i &gt;&#x3D; 0;i --)&#123;</span><br><span class="line">        cout &lt;&lt; &quot;第 &quot; &lt;&lt; j-i &lt;&lt; &quot; 步\n&quot;;</span><br><span class="line">        show(a,shortest[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>得到每一步的情况，进而根据switch写出路径。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">第 0 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 0 3</span><br><span class="line">7 2 6</span><br><span class="line">8 1 5</span><br><span class="line">-------------------------------</span><br><span class="line">第 1 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 2 3</span><br><span class="line">7 0 6</span><br><span class="line">8 1 5</span><br><span class="line">-------------------------------</span><br><span class="line">第 2 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 2 3</span><br><span class="line">7 1 6</span><br><span class="line">8 0 5</span><br><span class="line">-------------------------------</span><br><span class="line">第 3 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 2 3</span><br><span class="line">7 1 6</span><br><span class="line">8 5 0</span><br><span class="line">-------------------------------</span><br><span class="line">第 4 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 2 3</span><br><span class="line">7 1 0</span><br><span class="line">8 5 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 5 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 2 0</span><br><span class="line">7 1 3</span><br><span class="line">8 5 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 6 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 0 2</span><br><span class="line">7 1 3</span><br><span class="line">8 5 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 7 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 1 2</span><br><span class="line">7 0 3</span><br><span class="line">8 5 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 8 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 1 2</span><br><span class="line">7 5 3</span><br><span class="line">8 0 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 9 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 1 2</span><br><span class="line">7 5 3</span><br><span class="line">0 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 10 步</span><br><span class="line">-------------------------------</span><br><span class="line">4 1 2</span><br><span class="line">0 5 3</span><br><span class="line">7 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 11 步</span><br><span class="line">-------------------------------</span><br><span class="line">0 1 2</span><br><span class="line">4 5 3</span><br><span class="line">7 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 12 步</span><br><span class="line">-------------------------------</span><br><span class="line">1 0 2</span><br><span class="line">4 5 3</span><br><span class="line">7 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 13 步</span><br><span class="line">-------------------------------</span><br><span class="line">1 2 0</span><br><span class="line">4 5 3</span><br><span class="line">7 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 14 步</span><br><span class="line">-------------------------------</span><br><span class="line">1 2 3</span><br><span class="line">4 5 0</span><br><span class="line">7 8 6</span><br><span class="line">-------------------------------</span><br><span class="line">第 15 步</span><br><span class="line">-------------------------------</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 0</span><br><span class="line">-------------------------------</span><br><span class="line"></span><br><span class="line">6 左</span><br><span class="line">2 上</span><br><span class="line">4 右</span><br><span class="line">8 下</span><br><span class="line">&#x2F;&#x2F; 884226886224488</span><br></pre></td></tr></table></figure></div>
+
+<p>路径为“884226886224488”。</p>
+<p>接下来看主函数里check上面的部分，看到sub_409070()实际上是一个scanf，而dword_4A1B60是我们的输入，也就是最后的flag，中间对输入进行处理以后才得到“884226886224488”这个字符串。</p>
+<p>在里面翻可以翻到一个sub_400B58()，猜测是base64换表编码。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129908-653041770.png" alt="image-20201229203651570](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129908-653041770.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229203651570](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231129908-653041770.png)</div>
+            </figure></p>
+<p>于是尝试写脚本编码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">import base64</span><br><span class="line">b64table&#x3D;&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;&quot;</span><br><span class="line">mytable&#x3D;&quot;&quot;</span><br><span class="line">offset&#x3D;-18</span><br><span class="line">for i in range(len(b64table)):</span><br><span class="line">    mytable+&#x3D;b64table[(i+offset)%len(b64table)]</span><br><span class="line">text&#x3D;&quot;884226886224488&quot;.encode()</span><br><span class="line">cipher&#x3D;base64.b64encode(text).decode().translate(str.maketrans(b64table,mytable))</span><br><span class="line">print(cipher)</span><br></pre></td></tr></table></figure></div>
+
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130147-780275031.png" alt="image-20201229203733240](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130147-780275031.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229203733240](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130147-780275031.png)</div>
+            </figure></p>
+<p>试试能不能过check。</p>
+<p>wsl运行：（要装qemu才能执行，毕竟特殊架构。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">cp $(which qemu-mips) .</span><br><span class="line">.&#x2F;qemu-mips -L . .&#x2F;puzzle</span><br></pre></td></tr></table></figure></div>
+
+<p>执行mips程序，输入脚本中解出的字符串，发现成功了，get flag。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130359-9491212.png" alt="image-20201229204029832](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130359-9491212.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229204029832](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130359-9491212.png)</div>
+            </figure></p>
+<p><strong>flag{8xOi6R2k8xOk6R2i7xOm}</strong></p>
+<h2 id="aRm"><a href="#aRm" class="headerlink" title="aRm"></a>aRm</h2><p>arm架构。</p>
+<p>照例通过字符串回溯找到主函数。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130593-1901948782.png" alt="image-20201229204442580](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130593-1901948782.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229204442580](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130593-1901948782.png)</div>
+            </figure></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130873-781443123.png" alt="image-20201229205535378](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130873-781443123.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229205535378](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231130873-781443123.png)</div>
+            </figure></p>
+<p>v1是key，v9是输入的flag，对输入的限制就是长度为42且头尾是“flag{”和“}”。</p>
+<p>动态调一下可以发现，sub_27770()这个函数实际上是把unk_723A0数组里的42个数据复制到v8里。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;qemu-arm -L .&#x2F; -g 12345 .&#x2F;aRm</span><br></pre></td></tr></table></figure></div>
+
+<p>（Debugger选Remote GDB debugger，把端口号填上就好，其余配置具体见<a href="https://c10udlnk.top/2020/12/14/reSkillsOn-Debugging/" target="_blank" rel="noopener">RE套路 - 关于使用IDA 7.0前端进行的动态调试 | c10udlnk_Log</a>中调试elf部分。</p>
+<p>现在我们未知的数就剩v5和v6了，v5要看sub_1714C()的输出，v6这里相当于是42条42元一次方程组（输入未知的情况下）。</p>
+<p>而sub_105B4()是输出42个结果，于是可以知道只要输出了output.txt里的42个数就是正确的flag了。</p>
+<p>由于前面有一个sub_169AC(key)，这边又是一个无参的sub_1714C()+1，于是猜测是srand(seed)和rand()。</p>
+<p>为了证明猜测，多次运行程序输入同一个key和相同/不同的flag，发现每一次的v5是一样的，结合rand()的伪随机性，确定这就是随机函数。</p>
+<p>由于key只有一字节（0~255），干脆直接爆破。把output.txt的数据读入，用sympy库解方程，只要第一个解x0等于<code>ord(&#39;f&#39;)^v8[0]=102^0xA0=198</code>，就说明这个key有极大可能性是正确的key。</p>
+<p>当然，在此之前，我们得先知道每一次的v5（即方程的系数）是多少。</p>
+<p>于是hook函数，在v5生成之后复用程序原来就有的print函数及格式符，把每次生成的v5都打印出来。</p>
+<p>还记得有个函数是可以输出八位十六进制数的吧，就是那个sub_105B4()，我们可以用这里面的printf，然后把调用这个函数的地方nop掉（目标要明确，现在是为了爆破key，没必要管程序的正常性hahah）。</p>
+<blockquote>
+<p>本来是想自己堆个调用printf出来的，不知道为什么keypatch对<code>LDR R0, =a08x</code>解释不了，于是只好绕个小路了。</p>
+</blockquote>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131271-1156274033.png" alt="image-20201229210535246](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131271-1156274033.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229210535246](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131271-1156274033.png)</div>
+            </figure></p>
+<p>转到汇编窗口，记一下这里的loc，等会要跳过来的。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131488-1607244702.png" alt="image-20201229210455631](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131488-1607244702.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229210455631](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131488-1607244702.png)</div>
+            </figure></p>
+<p>看回去原来二重循环里出v5那个地方</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131753-1021300930.png" alt="image-20201229220910936](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131753-1021300930.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229220910936](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131753-1021300930.png)</div>
+            </figure></p>
+<p>这几条语句的意思就是f5里面的那行<code>v5 = (unsigned __int8)(sub_1714C() + 1);</code>，我们从再下一行开始改。</p>
+<p>注意可以改的范围在蓝框这里，这是我们不需要的<code>v6[j] += (unsigned __int8)v9[k] * v5;</code>，在这个范围里可以尽情修改，剩下的nop掉。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131984-1401341208.png" alt="image-20201229222635806](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131984-1401341208.png)" title="">
+                </div>
+                <div class="image-caption">image-20201229222635806](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231131984-1401341208.png)</div>
+            </figure></p>
+<p>用keypatch直接输入汇编，patch后面的语句为</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132274-1923711696.png" alt="image-20201230134100558](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132274-1923711696.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230134100558](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132274-1923711696.png)</div>
+            </figure></p>
+<p>（其实就是改了一行<code>B loc_105D4</code>，剩下的直接Fill with NOPs就好）</p>
+<p>接下来去往loc_105D4，改造一下。</p>
+<p>我们知道，现在R3寄存器里实际上存的是v5的值，我们调用printf直接输出R3的值就能达成目标。</p>
+<p>在ARM汇编里，函数传参用R0、R1……所以我们这里给R1一个R3的值就好。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132494-877047308.png" alt="image-20201230134235154](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132494-877047308.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230134235154](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132494-877047308.png)</div>
+            </figure></p>
+<p>这里本来就是<code>MOV R1, R3</code>不用改，所以直接把前面nop掉。</p>
+<p>因为v5那里是取(unsigned __int8)，所以把这里改一下，把”%08x”改成”%02x”，就是出来的v5。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132734-938607639.png" alt="image-20201230134326684](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132734-938607639.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230134326684](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132734-938607639.png)</div>
+            </figure></p>
+<p>别忘了后面还要跳回去，找到地址：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132983-1952569576.png" alt="image-20201230134904926](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132983-1952569576.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230134904926](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231132983-1952569576.png)</div>
+            </figure></p>
+<p>patch：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133216-2013697483.png" alt="image-20201230135257443](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133216-2013697483.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230135257443](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133216-2013697483.png)</div>
+            </figure></p>
+<p>记得把调用sub_105B4()的地方也nop掉。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133413-398089151.png" alt="image-20201230135756039](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133413-398089151.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230135756039](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133413-398089151.png)</div>
+            </figure></p>
+<p>最后把patch的字节保存一下。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133641-1175617951.png" alt="image-20201230141148584](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133641-1175617951.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230141148584](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231133641-1175617951.png)</div>
+            </figure></p>
+<p>运行测试一下，有：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134012-1354607358.png" alt="image-20201230140112007](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134012-1354607358.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230140112007](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134012-1354607358.png)</div>
+            </figure></p>
+<p>ok，hook成功，开始爆破。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">import pexpect</span><br><span class="line">from sympy import *</span><br><span class="line"></span><br><span class="line">data&#x3D;[]</span><br><span class="line">with open(&#39;output.txt&#39;,&#39;r&#39;) as f:</span><br><span class="line">    tmp&#x3D;f.read().split(&#39;\r\n&#39;)</span><br><span class="line">    data&#x3D;[int(x,16) for x in tmp]</span><br><span class="line">src&#x3D;[0xA0, 0xE4, 0xBA, 0xFB, 0x10, 0xDD, 0xAC, 0x65, 0x8D, 0x0B, 0x57, 0x1A, 0xE4, 0x28, 0x96, 0xB3, 0x0C, 0x79, 0x4D, 0x80, 0x90, 0x99, 0x58, 0xFE, 0x50, 0xD3, 0xF9, 0x3C, 0x0F, 0xC1, 0xE3, 0xA6, 0x39, 0xC3, 0x28, 0x75, 0xF8, 0xC9, 0xC8, 0xCD, 0x78, 0x26]</span><br><span class="line">flag&#x3D;&#39;flag&#123;000000000000000000000000000000000000&#125;&#39;</span><br><span class="line"></span><br><span class="line">var&#x3D;[]</span><br><span class="line">for num in range(42):</span><br><span class="line">    exec(&quot;x&quot;+str(num)+&quot;&#x3D;Symbol(&#39;x&#39;+str(num))&quot;)</span><br><span class="line">    var.append(&quot;x&quot;+str(num)) #创建42个变量x0~x41</span><br><span class="line">for i in range(256):</span><br><span class="line">    r&#x3D;pexpect.spawn(&#39;.&#x2F;qemu-arm -L .&#x2F; .&#x2F;aRm_getRand&#39;)</span><br><span class="line">    r.sendline(str(i))</span><br><span class="line">    r.sendline(flag)</span><br><span class="line">    r.readline()</span><br><span class="line">    r.readline()</span><br><span class="line">    rand&#x3D;[]</span><br><span class="line">    for j in range(42*42):</span><br><span class="line">        s&#x3D;r.readline()</span><br><span class="line">        rand.append(int(str(s)[2:-5],16))</span><br><span class="line">    r.wait()</span><br><span class="line">    exper&#x3D;[]</span><br><span class="line">    for j in range(42):</span><br><span class="line">        anEx&#x3D;&quot;&quot;</span><br><span class="line">        for k in range(42):</span><br><span class="line">            anEx+&#x3D;str(rand[j*42+k])+&quot;*&quot;+var[k]+&quot;+&quot;</span><br><span class="line">        anEx&#x3D;anEx[:-1]+&quot;-&quot;+str(data[j])</span><br><span class="line">        exper.append(anEx)</span><br><span class="line">    res&#x3D;solve(exper,var)</span><br><span class="line">    print(str(i)+&quot;: &quot;)</span><br><span class="line">    print(res.values())</span><br></pre></td></tr></table></figure></div>
+
+<p>爆破得到：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134364-1510036830.png" alt="image-20201230140621270](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134364-1510036830.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230140621270](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134364-1510036830.png)</div>
+            </figure></p>
+<p>可知key是82，而v9在xor以后的数组也爆出来了，简单xor得flag：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">arr&#x3D;[0xA0, 0xE4, 0xBA, 0xFB, 0x10, 0xDD, 0xAC, 0x65, 0x8D, 0x0B, 0x57, 0x1A, 0xE4, 0x28, 0x96, 0xB3, 0x0C, 0x79, 0x4D, 0x80, 0x90, 0x99, 0x58, 0xFE, 0x50, 0xD3, 0xF9, 0x3C, 0x0F, 0xC1, 0xE3, 0xA6, 0x39, 0xC3, 0x28, 0x75, 0xF8, 0xC9, 0xC8, 0xCD, 0x78, 0x26]</span><br><span class="line">x&#x3D;[198, 136, 219, 156, 107, 228, 152, 7, 239, 63, 97, 127, 134, 5, 247, 131, 109, 75, 96, 180, 241, 173, 57, 211, 49, 224, 157, 9, 34, 243, 129, 199, 1, 244, 31, 17, 157, 171, 252, 249, 64, 91]</span><br><span class="line">flag&#x3D;&quot;&quot;</span><br><span class="line">for i in range(42):</span><br><span class="line">    flag+&#x3D;chr(x[i]^arr[i])</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
+
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134607-791664511.png" alt="image-20201230140838366](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134607-791664511.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230140838366](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134607-791664511.png)</div>
+            </figure></p>
+<p><strong>flag{94bb46eb-a0a2-4a4a-a3d5-2ba877deb448}</strong></p>
+<h2 id="pe"><a href="#pe" class="headerlink" title="pe"></a>pe</h2><p>arm架构，没环境调不动，只能硬看了XD。这题有好多奇怪的函数，而且通过伪代码跟的话就能看到函数套函数套函数……所以基本靠猜出来的（</p>
+<p>继续通过字符串回溯找主函数。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134822-1627344499.png" alt="image-20201230140754908](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134822-1627344499.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230140754908](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231134822-1627344499.png)</div>
+            </figure></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135025-755564000.png" alt="image-20201230142921253](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135025-755564000.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230142921253](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135025-755564000.png)</div>
+            </figure></p>
+<p>根据参数猜测，sub_1400023C8()是strcmp()的作用，我们需要让v9=”KIMLXDWRZXTHXTHQTXTXHZWC”。</p>
+<p>再往上走，sub_1400015B0这个函数调用了v9，于是跟进去看功能。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135267-1176964483.png" alt="image-20201228135416441](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135267-1176964483.png)" title="">
+                </div>
+                <div class="image-caption">image-20201228135416441](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135267-1176964483.png)</div>
+            </figure></p>
+<p>感觉是某种加密，以相邻的两字符为一组，对这两个字符做相同的操作，再做后续处理。</p>
+<p>跟进sub_1400012B8()里看，可以看到大概是一个搜索的过程</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135506-1315518990.png" alt="image-20201230002706300](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135506-1315518990.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230002706300](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135506-1315518990.png)</div>
+            </figure></p>
+<p>如果不等于-1就说明在表中找到了这个元素，然后返回一个索引（？</p>
+<p>再往下看好像就看不太懂了，然后就是玄学的猜猜猜= =</p>
+<p>回去看string可以看到一个这个，猜测是密钥表之类的？</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135729-917943359.png" alt="image-20201230004038936](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135729-917943359.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230004038936](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135729-917943359.png)</div>
+            </figure></p>
+<p>往上回溯也看不到什么线索，不过可以发现这25个数字刚好没有相同的。</p>
+<p>现在总结一下这个古典加密算法的特点，大概是两个为一组处理+已定义的密钥表（即不是通过输入生成的）5*5+处理时用到索引。</p>
+<p>很久很久以前想写某对cp的AU同人时想把ctf元素混进去，就看了很多简单又奇奇怪怪的编码/古典密码（现代密码太学术了XD），没想到现在有用武之地了（手动狗头。</p>
+<p>然后翻到了一个符合这个特点的密码，Playfair Cipher：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135969-340384244.png" alt="image-20201230004436275](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135969-340384244.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230004436275](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231135969-340384244.png)</div>
+            </figure></p>
+<p>不同的是密码表是直接给出的，不过加密流程再对回ida里的反编译感觉挺像的，于是果断试试。</p>
+<p>按照Playfair Cipher的加解密流程写出脚本：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">def getIndex(c):</span><br><span class="line">    for i in range(len(key)):</span><br><span class="line">        if key[i].find(c)!&#x3D;-1:</span><br><span class="line">            return i,key[i].find(c)</span><br><span class="line">letter_list&#x3D;&quot;ABCDEFGHJKLMNOPQRSTUVWXYZ&quot;</span><br><span class="line">key&#x3D;[&quot;CREIH&quot;,&quot;TQGNU&quot;,&quot;AOVXL&quot;,&quot;DZKYM&quot;,&quot;PBWFS&quot;]</span><br><span class="line">cipher&#x3D;&quot;KIMLXDWRZXTHXTHQTXTXHZWC&quot;</span><br><span class="line">text&#x3D;&quot;&quot;</span><br><span class="line">for i in range(0,len(cipher),2):</span><br><span class="line">    j&#x3D;i+1</span><br><span class="line">    x1,y1&#x3D;getIndex(cipher[i])</span><br><span class="line">    x2,y2&#x3D;getIndex(cipher[j])</span><br><span class="line">    if x1&#x3D;&#x3D;x2:</span><br><span class="line">        text+&#x3D;key[x1][(y1+1)%5]+key[x2][(y2+1)%5]</span><br><span class="line">    elif y1&#x3D;&#x3D;y2:</span><br><span class="line">        text+&#x3D;key[(x1+1)%5][y1]+key[(x2+1)%5][y2]</span><br><span class="line">    else:</span><br><span class="line">        text+&#x3D;key[x1][y2]+key[x2][y1]</span><br><span class="line">    i+&#x3D;2</span><br><span class="line">print(text)</span><br></pre></td></tr></table></figure></div>
+
+<p>走一遍脚本解密可以得到：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231136345-1780338312.png" alt="image-20201230085247002](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231136345-1780338312.png)" title="">
+                </div>
+                <div class="image-caption">image-20201230085247002](https://img2020.cnblogs.com/blog/2183122/202012/2183122-20201230231136345-1780338312.png)</div>
+            </figure></p>
+<p>YES MAYBE YOU CAN RUN AN ARM PE</p>
+<p>No, I can’t 😦</p>
+<p>看起来能读的通，成功get flag。</p>
+<p><strong>flag{YESMAYBEYOUCANRUNANARMPE}</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T01:41:35.819Z" itemprop="dateUpdated">2021-01-11 09:41:35</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/06/%5B12.20%5D%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&source=华为三场比赛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF-华为专场》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：攻防世界WEB
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：网络安全复习">下一篇：网络安全复习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&source=华为三场比赛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF-华为专场》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>
