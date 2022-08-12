@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>攻防世界_RESERVE_新手(2) | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="XCTF-RE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界_RESERVE_新手(2)">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="XCTF-RE">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/07/21/J8bYTkpcOV73IXa.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/21/QKwNzsWqxUn7o5C.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/21/QNUDxCqgIBhE8O1.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/JBKEW3dVs4Ytzy8.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/8Z5dTi4eoBKuFwt.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/TuN4kxmXReYlCaI.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20200722145116900.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20200722145443643.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/MV2HN9KPLWemfZk.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/VH3PbYrcBqR6NIk.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/oYsXWCxGZNgDyd4.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png">
+<meta property="article:published_time" content="2020-07-21T09:39:27.744Z">
+<meta property="article:modified_time" content="2021-01-11T01:41:46.226Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/21/J8bYTkpcOV73IXa.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">攻防世界_RESERVE_新手(2)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XCTF-RE"><span class="post-toc-number">1.</span> <span class="post-toc-text">XCTF-RE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-Hello-CTF"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x01 Hello, CTF</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-getit"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">0x02 getit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x03-re1"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">0x03 re1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x04-no-strings-attached"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">0x04 no-strings-attached</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x05-csaw2013reversing2"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">0x05 csaw2013reversing2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x06-maze"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">0x06 maze</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-攻防世界_RESERVE_新手(2)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">攻防世界_RESERVE_新手(2)</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-07-21 17:39:27" datetime="2020-07-21T09:39:27.744Z"  itemprop="datePublished">2020-07-21</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">9</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="XCTF-RE"><a href="#XCTF-RE" class="headerlink" title="XCTF-RE"></a>XCTF-RE</h2><a id="more"></a>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>放假两天了，在家实在闲的太无聊了，把攻防世界新手区的博客给水完吧。啥也不说，直接上题！</p>
+<h3 id="0x01-Hello-CTF"><a href="#0x01-Hello-CTF" class="headerlink" title="0x01 Hello, CTF"></a>0x01 Hello, CTF</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/21/J8bYTkpcOV73IXa.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>32位exe文件，直接暴力拖入IDA 32-bit中，暴力F5查看关键代码如下</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">strcpy(&amp;v13, <span class="string">"437261636b4d654a757374466f7246756e"</span>);</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    memset(&amp;v10, <span class="number">0</span>, <span class="number">0x20</span>u);   //v10字符串初始化</span><br><span class="line">    v11 = <span class="number">0</span>;</span><br><span class="line">    v12 = <span class="number">0</span>;</span><br><span class="line">    sub_40134B(aPleaseInputYou, v6);</span><br><span class="line">    scanf(aS, v9);</span><br><span class="line">    <span class="keyword">if</span> ( strlen(v9) &gt; <span class="number">0x11</span> )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v3 = <span class="number">0</span>;</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">      v4 = v9[v3];</span><br><span class="line">      <span class="keyword">if</span> ( !v4 )</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      sprintf(&amp;v8, asc_408044, v4);</span><br><span class="line">      strcat(&amp;v10, &amp;v8);</span><br><span class="line">      ++v3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( v3 &lt; <span class="number">17</span> );</span><br><span class="line">    <span class="keyword">if</span> ( !strcmp(&amp;v10, &amp;v13) )    //如果v10=v13 则输出success</span><br><span class="line">      sub_40134B(aSuccess, v7);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      sub_40134B(aWrong, v7);     //否则输出wrong</span><br><span class="line">  &#125;</span><br><span class="line">  sub_40134B(aWrong, v7);</span><br><span class="line">  result = stru_408090._cnt-- - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> ( stru_408090._cnt &lt; <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> _filbuf(&amp;stru_408090);</span><br><span class="line">  ++stru_408090._ptr;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里我们看到，当v10和v13相等时，会返回<strong>success</strong> ，接下来要分析的就是v10是怎么来的，通过上面的代码可以知道<strong>v10</strong>是通过将输入的字符串以十六进制读取而成的 那么，我们将v13转换成10进制（两位一转），再通过Ascll码变成字符，就可以得到正确的结果，编写脚本如下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">0x43</span>,<span class="number">0x72</span>,<span class="number">0x61</span>,<span class="number">0x63</span>,<span class="number">0x6b</span>,<span class="number">0x4d</span>,<span class="number">0x65</span>,<span class="number">0x4a</span>,<span class="number">0x75</span>,<span class="number">0x73</span>,<span class="number">0x74</span>,<span class="number">0x46</span>,<span class="number">0x6f</span>,<span class="number">0x72</span>,<span class="number">0x46</span>,<span class="number">0x75</span>,<span class="number">0x6e</span>]</span><br><span class="line">c = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    c += chr(x)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure></div>
+
+<p>得到flag{CrackMeJustForFun}</p>
+<h3 id="0x02-getit"><a href="#0x02-getit" class="headerlink" title="0x02 getit"></a>0x02 getit</h3><p>IDA静态分析，F5查看关键代码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  char v3; // al</span><br><span class="line">  __int64 v5; // [rsp+<span class="number">0</span>h] [rbp<span class="number">-40</span>h]</span><br><span class="line">  int i; // [rsp+<span class="number">4</span>h] [rbp<span class="number">-3</span>Ch]</span><br><span class="line">  FILE *stream; // [rsp+<span class="number">8</span>h] [rbp<span class="number">-38</span>h]</span><br><span class="line">  char filename[<span class="number">8</span>]; // [rsp+<span class="number">10</span>h] [rbp<span class="number">-30</span>h]</span><br><span class="line">  unsigned __int64 v9; // [rsp+<span class="number">28</span>h] [rbp<span class="number">-18</span>h]</span><br><span class="line"></span><br><span class="line">  v9 = __readfsqword(<span class="number">0x28</span>u);</span><br><span class="line">  LODWORD(v5) = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> ( (signed int)v5 &lt; strlen(s) )    //  s=c61b68366edeb7bdce3c6820314b7498</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( v5 &amp; <span class="number">1</span> )</span><br><span class="line">      v3 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      v3 = <span class="number">-1</span>;</span><br><span class="line">    *(&amp;t + (signed int)v5 + 10) = s[(signed int)v5] + v3; //t=53h+harifCTF&#123;????????????????????????????????&#125;</span><br><span class="line">    LODWORD(v5) = v5 + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  strcpy(filename, <span class="string">"/tmp/flag.txt"</span>);</span><br><span class="line">  stream = fopen(filename, <span class="string">"w"</span>);</span><br><span class="line">  fprintf(stream, <span class="string">"%s\n"</span>, u, v5);</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; strlen(&amp;t); ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    fseek(stream, p[i], <span class="number">0</span>);</span><br><span class="line">    fputc(*(&amp;t + p[i]), stream);</span><br><span class="line">    fseek(stream, <span class="number">0L</span>L, <span class="number">0</span>);</span><br><span class="line">    fprintf(stream, <span class="string">"%s\n"</span>, u);</span><br><span class="line">  &#125;</span><br><span class="line">  fclose(stream);</span><br><span class="line">  remove(filename);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>s = ‘c61b68366edeb7bdce3c6820314b7498’</strong><br><strong>t = [‘S’,’h’,’a’,’r’,’i’,’f’,’C’,’T’,’F’,’{‘,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’?’,’}’]</strong></p>
+<p>编写不同语言脚本如下</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">v5 = <span class="number">0</span>     //python</span><br><span class="line">s = <span class="string">'c61b68366edeb7bdce3c6820314b7498'</span></span><br><span class="line">t = [<span class="string">'S'</span>,<span class="string">'h'</span>,<span class="string">'a'</span>,<span class="string">'r'</span>,<span class="string">'i'</span>,<span class="string">'f'</span>,<span class="string">'C'</span>,<span class="string">'T'</span>,<span class="string">'F'</span>,<span class="string">'&#123;'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'?'</span>,<span class="string">'&#125;'</span>]</span><br><span class="line">v3 = <span class="number">0</span></span><br><span class="line">l = len(s)</span><br><span class="line"><span class="keyword">while</span>(v5 &lt; l):</span><br><span class="line">    <span class="keyword">if</span>( v5 &amp; <span class="number">1</span> ):</span><br><span class="line">        v3 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v3 = <span class="number">-1</span></span><br><span class="line">    t[<span class="number">10</span>+v5] = chr(ord(s[v5])+v3)</span><br><span class="line">    v5 += <span class="number">1</span></span><br><span class="line">c = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> t:</span><br><span class="line">    c+=x</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;    //c语言</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> v3;</span><br><span class="line">    __int64 v5;</span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"c61b68366edeb7bdce3c6820314b7498"</span>;</span><br><span class="line">    <span class="keyword">char</span> t[] = <span class="string">"SharifCTF&#123;????????????????????????????????&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    v5 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (v5 &lt; <span class="built_in">strlen</span>(s)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v5 &amp; <span class="number">1</span>)</span><br><span class="line">            v3 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            v3 = <span class="number">-1</span>;</span><br><span class="line">        *(t + v5 + <span class="number">10</span>) = s[v5] + v3;</span><br><span class="line">        v5++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>, t);</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"PAUSE"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;   //c++</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">34</span>]=&#123;<span class="string">"c61b68366edeb7bdce3c6820314b7498"</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> content[<span class="number">34</span>];</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">33</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&amp;<span class="number">1</span>)</span><br><span class="line">            a=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> a=<span class="number">-1</span>;</span><br><span class="line">        content[i]=s[i]+a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;content;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-re1"><a href="#0x03-re1" class="headerlink" title="0x03 re1"></a>0x03 re1</h3><p>非常简单入门的逆向题</p>
+<p>直接拖入Winhex </p>
+<p>搜索字符串CTF</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/21/QKwNzsWqxUn7o5C.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/21/QNUDxCqgIBhE8O1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>就得到flag了</p>
+<h3 id="0x04-no-strings-attached"><a href="#0x04-no-strings-attached" class="headerlink" title="0x04 no-strings-attached"></a>0x04 no-strings-attached</h3><p>这块的知识点还不咋会，先不写，等我学会了再来写吧</p>
+<h3 id="0x05-csaw2013reversing2"><a href="#0x05-csaw2013reversing2" class="headerlink" title="0x05 csaw2013reversing2"></a>0x05 csaw2013reversing2</h3><p>不多逼逼，直接使用 IDA Pro 7.0 (32 bit) 打开程序，默认进入主函数的反汇编窗口，按下 <strong>F5</strong> 后进行反编译，自动生成类 C 语言的伪代码：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/JBKEW3dVs4Ytzy8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>可已见到，若 <code>sub_40102A()</code> 或 <code>IsDebuggerPresent()</code> 的返回值为真，则执行调试断点指令 <code>__debugbreak()</code>、子函数 <code>sub_401000(v3 + 4, lpMem)</code>、结果进程函数 <code>ExitProcess(0xFFFFFFFF)</code>，否则直接执行 <code>MessageBoxA(0, lpMem + 1, &quot;Flag&quot;, 2u)</code>，弹出全是乱码的 Flag 提示框。</p>
+<p>双击 <code>sub_40102A()</code> 查看其反编译代码，发现返回值恒为零：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub_40102A</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> v0; <span class="comment">// t1</span></span><br><span class="line"></span><br><span class="line">  v0 = *(_BYTE *)(*(_DWORD *)(__readfsdword(<span class="number">0x18</span>u) + <span class="number">48</span>) + <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>而对于库函数 <a href="https://docs.microsoft.com/en-us/windows/desktop/api/debugapi/nf-debugapi-isdebuggerpresent" target="_blank" rel="noopener"><code>IsDebuggerPresent()</code></a>，若程序处于调试模式下，则返回值为非零；若未处于调试模式下，则返回值为零。显然，程序不处于调试模式下，即无法满足 <code>if</code> 语句的条件。</p>
+<p>双击 <code>sub_401000()</code> 查看其反编译代码，目测是对以上乱码数据的解密函数：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/8Z5dTi4eoBKuFwt.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>综上，解题思路大致为：<strong>进入 <code>if</code> 语句块，跳过调试断点，并执行解密函数，最终弹框输出 Flag。</strong></p>
+<p>在主函数的反汇编窗口中，核心的语句块如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/TuN4kxmXReYlCaI.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>首先，<code>int 3</code> 中断即为调试断点指令，需将其改为空指令 <code>nop</code>。</p>
+<p>将光标置于中断指令所在行，依次点击 <strong>Edit -&gt; Patch program -&gt; Assemble</strong>，弹出指令修改框：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20200722145116900.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<p>将 <code>int 3</code> 改为 <code>nop</code> 后点击 <strong>OK</strong> 即可。</p>
+<blockquote>
+<p>小贴士：点击 <strong>OK</strong> 后，IDA 会自动弹出下一条指令的修改框，通常无需修改，点击 <strong>Cancel</strong> 即可。</p>
+</blockquote>
+<p>根据上述操作，依次将 <code>jmp short loc_4010EF</code> 修改为 <code>jmp short loc_4010B9</code>，将 <code>jz short loc_4010B9</code> 修改为 <code>jmp short loc_401096</code>，修改完运行流程如下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20200722145443643.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>最后，依次点击 <strong>Edit -&gt; Patch program -&gt; Apply patches to input file…</strong>，弹出设置框，选择待打补丁程序，按需选择对原程序进行备份，设置完毕后点击 <strong>OK</strong> 即可。找到修改后的程序，双击执行可获得 <code>flag{reversing_is_not_that_hard!}</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/MV2HN9KPLWemfZk.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="0x06-maze"><a href="#0x06-maze" class="headerlink" title="0x06 maze"></a>0x06 maze</h3><p>这道题之前用IDA打开过，但是整来整去连源码都没找出来，也不知道和迷宫有什么关系。直到上次安恒6月赛题也出了一道类似的迷宫题我才恍然大悟！还是要多做题，兄弟们，没经验基础真滴是不行的。</p>
+<p>这是个64位的elf文件，放IDA里看一下main函数，部分代码加了注释</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="function">__int64 __fastcall <span class="title">main</span><span class="params">(__int64 a1, <span class="keyword">char</span> **a2, <span class="keyword">char</span> **a3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *v3; <span class="comment">// rsi</span></span><br><span class="line">  <span class="keyword">signed</span> __int64 v4; <span class="comment">// rbx</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> v5; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">char</span> v6; <span class="comment">// bp</span></span><br><span class="line">  <span class="keyword">char</span> v7; <span class="comment">// al</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *v8; <span class="comment">// rdi</span></span><br><span class="line">  __int64 v10; <span class="comment">// [rsp+0h] [rbp-28h]</span></span><br><span class="line"></span><br><span class="line">  v10 = <span class="number">0L</span>L;</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">"Input flag:"</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;s1, <span class="number">0L</span>L);   <span class="comment">//限制获取输入字符串长度为24且必须开头5个字符为"nctf&#123;" 最后一个字符位"&#125;"</span></span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strlen</span>(&amp;s1) != <span class="number">24</span> || (v3 = <span class="string">"nctf&#123;"</span>, <span class="built_in">strncmp</span>(&amp;s1, <span class="string">"nctf&#123;"</span>, <span class="number">5u</span>LL)) || *(&amp;byte_6010BF + <span class="number">24</span>) != <span class="number">125</span> )</span><br><span class="line">  &#123;</span><br><span class="line">LABEL_22:</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"Wrong flag!"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  v4 = <span class="number">5L</span>L;</span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strlen</span>(&amp;s1) - <span class="number">1</span> &gt; <span class="number">5</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      v5 = *(&amp;s1 + v4);</span><br><span class="line">      v6 = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> ( v5 &gt; <span class="number">78</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        v5 = (<span class="keyword">unsigned</span> __int8)v5;</span><br><span class="line">        <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int8)v5 == <span class="string">'O'</span> )      <span class="comment">//往左走</span></span><br><span class="line">        &#123;</span><br><span class="line">          v7 = sub_400650((_DWORD *)&amp;v10 + <span class="number">1</span>);</span><br><span class="line">          <span class="keyword">goto</span> LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( v5 == <span class="string">'o'</span> )                       <span class="comment">//往右走</span></span><br><span class="line">        &#123;</span><br><span class="line">          v7 = sub_400660((<span class="keyword">char</span> *)&amp;v10 + <span class="number">4</span>, v3);</span><br><span class="line">          <span class="keyword">goto</span> LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        v5 = (<span class="keyword">unsigned</span> __int8)v5;</span><br><span class="line">        <span class="keyword">if</span> ( (<span class="keyword">unsigned</span> __int8)v5 == <span class="string">'.'</span> )      <span class="comment">//往上走</span></span><br><span class="line">        &#123;</span><br><span class="line">          v7 = sub_400670(&amp;v10, v3);</span><br><span class="line">          <span class="keyword">goto</span> LABEL_14;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( v5 == <span class="string">'0'</span> )                      <span class="comment">//往下走</span></span><br><span class="line">        &#123;</span><br><span class="line">          v7 = sub_400680(&amp;v10, v3);</span><br><span class="line">LABEL_14:</span><br><span class="line">          v6 = v7;</span><br><span class="line">          <span class="keyword">goto</span> LABEL_15;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">LABEL_15:</span><br><span class="line">      v3 = (<span class="keyword">const</span> <span class="keyword">char</span> *)HIDWORD(v10);</span><br><span class="line">      <span class="keyword">if</span> ( !(<span class="keyword">unsigned</span> __int8)sub_400690((__int64)asc_601060, SHIDWORD(v10), v10) )</span><br><span class="line">        <span class="keyword">goto</span> LABEL_22;</span><br><span class="line">      <span class="keyword">if</span> ( ++v4 &gt;= <span class="built_in">strlen</span>(&amp;s1) - <span class="number">1</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v6 )</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">LABEL_20:</span><br><span class="line">        v8 = <span class="string">"Wrong flag!"</span>;</span><br><span class="line">        <span class="keyword">goto</span> LABEL_21;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( asc_601060[<span class="number">8</span> * (<span class="keyword">signed</span> <span class="keyword">int</span>)v10 + SHIDWORD(v10)] != <span class="number">35</span> )</span><br><span class="line">    <span class="keyword">goto</span> LABEL_20;</span><br><span class="line">  v8 = <span class="string">"Congratulations!"</span>;</span><br><span class="line">LABEL_21:</span><br><span class="line">  <span class="built_in">puts</span>(v8);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0L</span>L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>下边全是goto语句 我们直接将视图切为图表（Graph view）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/VH3PbYrcBqR6NIk.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>按r可以发现，根据这四个字符”<strong>.</strong>“ ,”<strong>0</strong>“,”<strong>o</strong>“ , “<strong>O</strong>“分别跳到不同的位置进行操作  ，既然<strong>sub_400650</strong>，<strong>sub_400660</strong>，<strong>sub_400670</strong>，<strong>sub_400680</strong>分别是写左右上下的函数，那我们就看看<strong>sub_400690</strong>到底是干啥的呢！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/oYsXWCxGZNgDyd4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/07/22/XHbsrc4Q1YinhBq.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>我们可以看到<strong>sub_400690</strong>是和<strong>asc_601060</strong>有关,猜测是判断上面<strong>asc_601060</strong>数组的第edi个值是否等于20h或23h，如果不等于就跳到</p>
+<p><strong>loc_400822</strong>输出<strong>wrong flag</strong>!</p>
+<p>我们直接去Hex中找到地址为<strong>601060</strong>中的数据！发现恰好为一个八阶方阵，而且数值只有3个，分别为20h，2Ah以及23h</p>
+<p>那么函数<strong>400690</strong>的意思不就是判断当前的位置是否是从（0，0）走到（4，4）</p>
+<p><img src="https://i.loli.net/2020/07/22/5qo4mWhT3rg7fwp.png" alt=""></p>
+<p>最初的四个跳转应该就是对应着上下左右四个方向</p>
+<p>20 20 2A 2A 2A 2A 2A 2A  </p>
+<p>2A 20 20 20 2A 20 20 2A</p>
+<p> 2A 2A 2A 20 2A 20 2A 2A </p>
+<p> 2A 2A 20 20 2A 20 2A 2A</p>
+<p> 2A 20 20 2A 23 20 20 2A </p>
+<p> 2A 2A 20 2A 2A 2A 20 2A</p>
+<p> 2A 2A 20 20 20 20 20 2A </p>
+<p> 2A 2A 2A 2A 2A 2A 2A 2A</p>
+<p>那么上下左右分别对应字符”.” “0” “O” “o”</p>
+<p>路径为：右下右右下下左下下下右右右右上上左左       o0oo00O000oooo..OO</p>
+<p>我们得到flag为nctf{o0oo00O000oooo..OO}</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T01:41:46.226Z" itemprop="dateUpdated">2021-01-11 09:41:46</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=XCTF-RE" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/08/20/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B%20WriteUp/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：第十三届全国大学生信息安全竞赛 WriteUp
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/07/20/%E5%B0%8F%E9%83%AD%E4%B8%8E%E5%B0%8F%E8%A3%B4%E7%9A%84%E4%B8%83%E4%B8%83%E5%85%AB%E5%85%AB/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：小郭与小裴的七七八八">下一篇：小郭与小裴的七七八八</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&title=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&source=XCTF-RE" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《攻防世界_RESERVE_新手(2)》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/07/21/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_RESERVE_%E6%96%B0%E6%89%8B(2)/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

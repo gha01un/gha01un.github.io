@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>密码学课程设计报告 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="AI">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="嫖了各种大佬的博客！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学课程设计报告">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="嫖了各种大佬的博客！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/qOzk6a8Gp9h5IZi.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/iRODWVHwXferFUI.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/LmA3OSY2zFyr8bu.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/UtEgOBxj6PVSNnd.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/x1ZTeam7OHnS3kR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/oZVXxwTfcpnWLj4.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/Ehs7cYJCdxnVkwP.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/V5B1GtPknLvWmCg.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/7FhAy8vOo9nCJcX.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/EcsJzqWKLCfHoOR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/OaJ71VAvEzou3NU.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/RwXo4zZ3BbAuvgd.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/kLUrC6HYhunBxSf.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/Z7IKfMSBF4RVUkH.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/FwSLDfHza7yYRsu.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/6KLNZ7pdGP9vblH.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/43JPsw2OmtHheCW.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/nbDWETfgRQNtH1w.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/3GUOFL1Smy7a8Qe.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/kFI1fZwbC3vTpen.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/q13EHr9WD2caByv.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/VyG7I1Dj6BwvsnA.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/4JdHZSYhe82GMLr.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/vhlaZ1nQ2OBoCJb.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/7Mh9IqiXePwf1ZJ.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/GQT4XhnFMAlzmKE.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/I9rGW8NK5OQRBV3.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/xSM8oL6G13Yklgc.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/FlKtDS4wyQhzaIj.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/12/XPN2QDrpIqyfgVz.png">
+<meta property="article:published_time" content="2021-01-11T15:00:42.495Z">
+<meta property="article:modified_time" content="2021-01-12T12:59:01.006Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/12/qOzk6a8Gp9h5IZi.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">密码学课程设计报告</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仿射密码-Affine-Cipher"><span class="post-toc-number">1.</span> <span class="post-toc-text">仿射密码 Affine Cipher</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加密算法"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">加密算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解密算法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">解密算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#攻击方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">攻击方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#穷举攻击"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">穷举攻击</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#统计分析攻击"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">统计分析攻击</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">运行结果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加密"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">加密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#已知-key-解密"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">已知 key\ 解密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#暴力枚举解密"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">暴力枚举解密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#统计分析解密"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">统计分析解密</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性分析"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">安全性分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#维吉尼亚密码-Vigenere-cipher"><span class="post-toc-number">2.</span> <span class="post-toc-text">维吉尼亚密码 Vigenère cipher</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法实现-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加密算法-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">加密算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解密算法-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">解密算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他考虑"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">其他考虑</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#攻击方法-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">攻击方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Kasiski测试法"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">Kasiski测试法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重合指数法"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">重合指数法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完整代码"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">完整代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">运行结果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加密-1"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">加密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解密"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">解密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#破解"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">破解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性分析-1"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">安全性分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#序列密码-LFSR"><span class="post-toc-number">3.</span> <span class="post-toc-text">序列密码 LFSR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法实现-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">算法实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">运行结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性分析-2"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">安全性分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分组密码"><span class="post-toc-number">4.</span> <span class="post-toc-text">分组密码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密钥扩展"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">密钥扩展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#置换选择"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">置换选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#循环左移"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">循环左移</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始置换-IP-和它的逆置换-IP-1"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">初始置换 IP 和它的逆置换 IP-1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#F-函数"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">F 函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-扩展置换"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">1. 扩展置换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-密钥加"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">2. 密钥加</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-代换盒（S-盒）"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">3. 代换盒（S 盒）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-置换盒（P-盒）"><span class="post-toc-number">4.4.4.</span> <span class="post-toc-text">4. 置换盒（P 盒）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-3"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">运行结果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加密-2"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">加密</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解密-1"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">解密</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性分析-3"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">安全性分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#公钥密码RSA"><span class="post-toc-number">5.</span> <span class="post-toc-text">公钥密码RSA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RSA算法原理"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">RSA算法原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大素数生成"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">大素数生成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带模的幂运算"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">带模的幂运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#求逆运算"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">求逆运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-4"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">运行结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性分析-4"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">安全性分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MD5加密"><span class="post-toc-number">6.</span> <span class="post-toc-text">MD5加密</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-4"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MD5算法原理"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">MD5算法原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#消息填充"><span class="post-toc-number">6.2.1.</span> <span class="post-toc-text">消息填充</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始化链接变量"><span class="post-toc-number">6.2.2.</span> <span class="post-toc-text">初始化链接变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分组处理"><span class="post-toc-number">6.2.3.</span> <span class="post-toc-text">分组处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步函数"><span class="post-toc-number">6.2.4.</span> <span class="post-toc-text">步函数</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">7.</span> <span class="post-toc-text">代码实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#消息填充-1"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">消息填充</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化链接变量-1"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">初始化链接变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组处理及步函数"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">分组处理及步函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行结果-5"><span class="post-toc-number">8.</span> <span class="post-toc-text">运行结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安全性分析-5"><span class="post-toc-number">9.</span> <span class="post-toc-text">安全性分析</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-密码学课程设计报告"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">密码学课程设计报告</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-11 23:00:42" datetime="2021-01-11T15:00:42.495Z"  itemprop="datePublished">2021-01-11</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Study/">Study</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">42</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>嫖了各种大佬的博客！</p>
+<a id="more"></a>
+
+<h2 id="仿射密码-Affine-Cipher"><a href="#仿射密码-Affine-Cipher" class="headerlink" title="仿射密码 Affine Cipher"></a>仿射密码 <em>Affine Cipher</em></h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>仿射密码也属于单表代换密码，它使用线性方程加上一个模数。</p>
+<p><strong>仿射密码</strong>为单表加密的一种，字母系统中所有<a href="https://baike.baidu.com/item/字母/1710184" target="_blank" rel="noopener">字母</a>都藉一简单数学方程<a href="https://baike.baidu.com/item/加密/752748" target="_blank" rel="noopener">加密</a>，对应至数值，或转回字母。</p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h4><p>仿射密码的加密算法是一个线性变换，是移位密码和乘数密码的组合，即对任意的明文字符 x，选取 k1，k2 两个参数，其中 k1，k2∈Z26，且要求 gcd (k1，26)=1。 </p>
+<p>加密变换：C=k1*m+k2 (mod26)（当 k1=1 时，移位密码；当 k2=1 时，乘数密码）；</p>
+<p>加密的功能：①基本的仿射加密完全实现，大写转成大写，小写转成小写； </p>
+<p>②判断出 k1 与 26 不互素时利用跳转语句 goto 提示 k1 输入错误，需要重新输入； </p>
+<p>③字母外的字母保持原来的状态，不作任何处理，按照输入的样子输出； </p>
+<p>④利用 cin.getline () 语句和 cin.ignore () 语句，确保在 while (true) 的条件下可以反复进行加密。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">int</span> m[maxn];</span><br><span class="line"><span class="comment">// 将字符移位操作的位数存到数组 m [maxn] 里面 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;		</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		m[i]=(k1*(<span class="keyword">int</span>)(s[i]-<span class="string">'A'</span>)+k2)%<span class="number">26</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		m[i]=(k1*(<span class="keyword">int</span>)(s[i]-<span class="string">'a'</span>)+k2)%<span class="number">26</span>;</span><br><span class="line"><span class="comment">//		cout&lt;&lt;(char)('A'+m);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"******Encryption******"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"The ciphertext is:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'A'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'a'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="解密算法"><a href="#解密算法" class="headerlink" title="解密算法"></a>解密算法</h4><p> 解密变换：m=k1^(-1)*(C-k2)(mod26)</p>
+<p> 注：为保证仿射加密函数是一个双射函数，必须要保证 (k1，26)=1。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">int</span> m[maxn];</span><br><span class="line"><span class="comment">// 将字符移位操作的位数存到数组 m [maxn] 里面 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;		</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		m[i]=(k1*(<span class="keyword">int</span>)(s[i]-<span class="string">'A'</span>)+k2)%<span class="number">26</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		m[i]=(k1*(<span class="keyword">int</span>)(s[i]-<span class="string">'a'</span>)+k2)%<span class="number">26</span>;</span><br><span class="line"><span class="comment">//		cout&lt;&lt;(char)('A'+m);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"******Encryption******"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"The ciphertext is:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'A'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'a'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a>攻击方法</h3><h4 id="穷举攻击"><a href="#穷举攻击" class="headerlink" title="穷举攻击"></a>穷举攻击</h4><p>暴力穷举破解与解密算法相差无几，主要在于用 for 循环遍历所有的 k1 和 k2，但是应当排除 k1=1，k2=0 的无意义加密。需要注意的一点是，由于采用打表法取的 k1 值，所以 k1 的取值一定与 26 互素，就不用考虑 k1 和 26 是否互素的问题。列举出所有可能的明文（一共 311 种情况），从中找出有特定标识（如 <strong><em>flag\</em></strong> ）或构成自然语言中有意义的单词或短语的正确明文。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">25</span>;k++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(!(c[j]==<span class="number">1</span>&amp;&amp;k==<span class="number">0</span>))&#123;</span><br><span class="line"><span class="comment">// 考虑到 k1=1,k2=0 的无意义加密方式 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		m[i]=(inverse[c[j]]*((<span class="keyword">int</span>)(s[i]-<span class="string">'A'</span>)-k+<span class="number">26</span>))%<span class="number">26</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		m[i]=(inverse[c[j]]*((<span class="keyword">int</span>)(s[i]-<span class="string">'a'</span>)-k+<span class="number">26</span>))%<span class="number">26</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="统计分析攻击"><a href="#统计分析攻击" class="headerlink" title="统计分析攻击"></a>统计分析攻击</h4><p>假定明文字母中出现频率最高的字母是e，其次是t(统计)，设仿射加密函数为e(x)=k1x+k2(mod26)；设出现频率最高的字母偏移量为a，其次是b，e(‘e’)≡a(mod26)=&gt;e(4)≡a(mod26)=&gt;4k1+k2≡a(mod26)；e(‘t’)≡b(mod26)=&gt;e(19)≡b(mod26)=&gt;19k1+k2≡b(mod26)</p>
+<p>两式相减得 15k1≡(b-a)(mod26) 而15的逆=7；两边相乘15的模逆k1≡7(b-a)(mod26)为防止k1取负数；k1≡<a href="mod26">7(b-a)(mod26)+26</a></p>
+<p>在优化的过程中，只考虑频率出现最高的字母e，则4k1+k2≡a(mod26)=&gt;k2≡<a href="mod26">(a-4k1)(mod26)+26</a>；</p>
+<p>遍历表中所有的k1值，分别求出相应的k2，则可进行依次解密，解密成功率也将显著提高。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 统计分析攻击仿射密码 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// 考虑使用优先级队列将数量出现最多的两个字母取出来 </span></span><br><span class="line"><span class="comment">//priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt;q;// 升序 </span></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,less&lt;<span class="keyword">int</span>&gt; &gt;q;<span class="comment">// 降序 </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e4</span>;</span><br><span class="line"><span class="keyword">int</span> num[<span class="number">30</span>];</span><br><span class="line"><span class="keyword">char</span> str[maxn],str2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c[<span class="number">15</span>]=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">17</span>,<span class="number">19</span>,<span class="number">21</span>,<span class="number">23</span>,<span class="number">25</span>&#125;;<span class="comment">// 与 26 互素的所有元素 </span></span><br><span class="line">	<span class="keyword">int</span> inverse[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">int</span> temp[<span class="number">100</span>]=&#123;<span class="number">1</span>,<span class="number">9</span>,<span class="number">21</span>,<span class="number">15</span>,<span class="number">3</span>,<span class="number">19</span>,<span class="number">7</span>,<span class="number">23</span>,<span class="number">11</span>,<span class="number">5</span>,<span class="number">17</span>,<span class="number">25</span>&#125;;</span><br><span class="line">	<span class="built_in">memset</span>(inverse,<span class="number">0</span>,<span class="keyword">sizeof</span>(inverse)); </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		inverse[c[i]]=temp[i];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(!q.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			q.pop();</span><br><span class="line">		&#125;<span class="comment">// 将队列清空 </span></span><br><span class="line">		<span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="keyword">sizeof</span>(num));</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"Please enter your ciphertext:"</span>;</span><br><span class="line">		<span class="built_in">cin</span>.getline(str,maxn);<span class="comment">// 原始密文 </span></span><br><span class="line">		<span class="keyword">int</span> len=<span class="built_in">strlen</span>(str);</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	    &#123;</span><br><span class="line"><span class="comment">// 为方便操作，将密文转换成小写字母 </span></span><br><span class="line">		<span class="keyword">if</span>(str[i]&gt;=<span class="string">'A'</span>&amp;&amp;str[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">		str2[i]=str[i]+<span class="string">'a'</span>-<span class="string">'A'</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">else</span> str2[i]=str[i];</span><br><span class="line">	    <span class="keyword">if</span>(str2[i]&gt;=<span class="string">'a'</span>&amp;&amp;str2[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">	    &#123;</span><br><span class="line">		num[<span class="keyword">int</span>(str2[i]-<span class="string">'a'</span>)]++;</span><br><span class="line">		&#125;<span class="comment">// 统计每个字母出现的次数（不考虑大小写） </span></span><br><span class="line">	    &#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(num[i]!=<span class="number">0</span>)</span><br><span class="line">			q.push(num[i]);</span><br><span class="line">		&#125;<span class="comment">// 把字母出现次数压到队列里进行自动排序 </span></span><br><span class="line">		<span class="keyword">int</span> test1=<span class="number">0</span>; </span><br><span class="line">        <span class="keyword">int</span> test2=<span class="number">0</span>;</span><br><span class="line">		test1=q.top();<span class="comment">// 出现最多的次数 </span></span><br><span class="line">		q.pop(); </span><br><span class="line">		test2=q.top();<span class="comment">// 出现次多的次数 </span></span><br><span class="line"><span class="comment">//		q.pop();</span></span><br><span class="line">		<span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> b=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(num[i]==test1)</span><br><span class="line">			&#123;</span><br><span class="line">				a=i;</span><br><span class="line">			&#125;<span class="comment">// 找出出现次数最多字母偏移量 </span></span><br><span class="line">			<span class="keyword">if</span>(num[i]==test2)</span><br><span class="line">			&#123;</span><br><span class="line">				b=i;</span><br><span class="line">			&#125;<span class="comment">// 找出出现次数次多字母偏移量 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> k1=((b-a)*<span class="number">7</span>%<span class="number">26</span>+<span class="number">26</span>)%<span class="number">26</span>;<span class="comment">//+26 防止出现结果出现负数 </span></span><br><span class="line">		<span class="keyword">int</span> k2=((a<span class="number">-4</span>*k1)%<span class="number">26</span>+<span class="number">26</span>)%<span class="number">26</span>; </span><br><span class="line">		<span class="keyword">int</span> m[maxn];<span class="comment">// 计算每个字母偏移量放到数组 m [maxn] 中 </span></span><br><span class="line">	    <span class="keyword">int</span> k3=inverse[k1];<span class="comment">// 求出 k1 模逆 </span></span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	    &#123;		</span><br><span class="line">		m[i]=(k3*((<span class="keyword">int</span>)(str2[i]-<span class="string">'a'</span>)-k2+<span class="number">26</span>))%<span class="number">26</span>;</span><br><span class="line"><span class="comment">//		cout&lt;&lt;(char)('A'+m);</span></span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="built_in">cout</span>&lt;&lt;<span class="string">"******Decryption******"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	    <span class="built_in">cout</span>&lt;&lt;<span class="string">"k1="</span>&lt;&lt;k1&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"k2="</span>&lt;&lt;k2&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">    	<span class="built_in">cout</span>&lt;&lt;<span class="string">"The plaintext is:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">     	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">		<span class="keyword">if</span>(str[i]&gt;=<span class="string">'A'</span>&amp;&amp;str[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'A'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(str[i]&gt;=<span class="string">'a'</span>&amp;&amp;str[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(<span class="keyword">char</span>)(<span class="string">'a'</span>+m[i]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;str[i];</span><br><span class="line">	    &#125;</span><br><span class="line">    	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	    <span class="built_in">cin</span>.ignore();</span><br><span class="line">	&#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><blockquote>
+<p>例如：明文是 Hello CUMT~ ，k1 是 5 ，k2 是 6，得到密文 Pajjy QCOX 。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/qOzk6a8Gp9h5IZi.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="已知-key-解密"><a href="#已知-key-解密" class="headerlink" title="已知 key\ 解密"></a>已知 <strong><em>key\</em></strong> 解密</h4><blockquote>
+<p>例如：密文是 Pajjy QCOX ，k1 是 5 ，k2 是 6，得到明文 Hello CUMT。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/iRODWVHwXferFUI.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="暴力枚举解密"><a href="#暴力枚举解密" class="headerlink" title="暴力枚举解密"></a>暴力枚举解密</h4><blockquote>
+<p>例如：密文是 Pajjy QCOX ，不知道 k1,k2，暴力穷举出所有可能，再结合某些标识或使明文在自然语言中有意义，得到明文 Hello CUMT 。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/LmA3OSY2zFyr8bu.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="统计分析解密"><a href="#统计分析解密" class="headerlink" title="统计分析解密"></a>统计分析解密</h4><blockquote>
+<p>例如解密：</p>
+<p><strong><em>Pu yfo of oin hvy ufa hrpkpyb, jlar ph hopkk py oin hvy oinan, svo jn jpkk klvbi rfan zfyupgnyo zlkr; pu ovayng of ufvyg iph fjy hilgfj, lmmafmaplon nhzlmn, oin hvy jpkk sn oiafvbi oin inlao,jlar nlzi mklzn snipyg oin zfayna; pu ly fvohoanozing mlkr zlyyfo ulkk svoonaukx, oiny zknyzing jlcpyb larh, bpcny mfjna; pu P zly’o ilcn sapbio hrpkn, po jpkk ulzn of oin hvyhipyn, lyg hvyhipyn hrpkn ofbnoina, py uvkk skffr.\</em></strong></p>
+<p>结果是：</p>
+<p><strong><em>If not to the sun for smiling, warm is still in the sun there, but we will laugh more confident calm; if turned to found his own shadow, appropriate escape, the sun will be through the heart,warm each place behind the corner; if an outstretched palm cannot fall butterfly, then clenched waving arms, given power; if I can’t have bright smile, it will face to the sunshine, and sunshine smile together, in full bloom.\</em></strong></p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/UtEgOBxj6PVSNnd.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>由于gcd(k1.26)=1，所以k1 有 φ(26)=12种取值；k2则有 26 种取值，刨除 k1=1,k2=0的情况，密钥空间为 12×26−1=311 。对于普通的偏移密码和乘法密码，仿射密码的安全性有很大的改善，但其实依然不够大，即使是使用穷举攻击，也能轻易破解出明文。但是更好的方式是根据统计分析规律（前提是截获的密文足够长）进行攻击。实际上，由于只有两个参数，所以找到两组明文密文对便可计算出两个参数，从而彻底攻破算法。</p>
+<h2 id="维吉尼亚密码-Vigenere-cipher"><a href="#维吉尼亚密码-Vigenere-cipher" class="headerlink" title="维吉尼亚密码 Vigenère cipher"></a>维吉尼亚密码 <em>Vigenère cipher</em></h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>维吉尼亚密码是一种简单的多表代换密码，可以看成由一些偏移量不同的恺撒密码组成。为了掩盖字母使用中暴露的频率特征，解决的办法就是用多套符号代替原来的文字。它是一个表格，第一行代表原文的字母，下面每一横行代表原文分别由哪些字母代替，每一竖列代表我们要用第几套字符来替换原文。一共26个字母，一共26套代替法，所以这个表是一个26*26的表 .</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/x1ZTeam7OHnS3kR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="加密算法-1"><a href="#加密算法-1" class="headerlink" title="加密算法"></a>加密算法</h4><p>s2[i]=’A’+(s2[i]+(s1[j%len1]-‘a’)-‘A’)%26；</p>
+<p>特别要注意的是，若密钥长度小于明文长度，则密钥循环使用，这体现在我们的代码中就是对 len(1) 取模。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len2;i++)</span><br><span class="line">	&#123;</span><br><span class="line"><span class="comment">// 如果遇到空格，就不能用密钥 </span></span><br><span class="line"><span class="comment">// 通过 j 来进行标记 </span></span><br><span class="line">		<span class="keyword">if</span>(s2[i]&gt;=<span class="string">'A'</span>&amp;&amp;s2[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[i]=<span class="string">'A'</span>+(s2[i]+(s1[j%len1]-<span class="string">'a'</span>)-<span class="string">'A'</span>)%<span class="number">26</span>;	</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[i]&gt;=<span class="string">'a'</span>&amp;&amp;s2[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[i]=<span class="string">'a'</span>+(s2[i]+(s1[j%len1]-<span class="string">'a'</span>)-<span class="string">'a'</span>)%<span class="number">26</span>;		</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;s2[i];</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="解密算法-1"><a href="#解密算法-1" class="headerlink" title="解密算法"></a>解密算法</h4><p>s2[i]=’A’+(s2[i]-‘A’-(s1[j%len1]-‘a’)+26)%26;</p>
+<p>这里加26防止出现负数。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len2;i++)</span><br><span class="line">	&#123;</span><br><span class="line"><span class="comment">// 如果遇到空格，就不能用密钥 </span></span><br><span class="line">		<span class="keyword">if</span>(s2[i]&gt;=<span class="string">'A'</span>&amp;&amp;s2[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[i]=<span class="string">'A'</span>+(s2[i]-<span class="string">'A'</span>-(s1[j%len1]-<span class="string">'a'</span>)+<span class="number">26</span>)%<span class="number">26</span>;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[i]&gt;=<span class="string">'a'</span>&amp;&amp;s2[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[i]=<span class="string">'a'</span>+(s2[i]-<span class="string">'a'</span>-(s1[j%len1]-<span class="string">'a'</span>)+<span class="number">26</span>)%<span class="number">26</span>;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;s2[i];</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="其他考虑"><a href="#其他考虑" class="headerlink" title="其他考虑"></a>其他考虑</h4><p>对于大小写字母的区分，我们的处理方法和恺撒密码中完全相同。</p>
+<p>对于字母之外的字符，他们不使用密钥，也不消耗密钥，这时候，密文就是明文，明文就是密文。</p>
+<h3 id="攻击方法-1"><a href="#攻击方法-1" class="headerlink" title="攻击方法"></a>攻击方法</h3><p>破译维吉尼亚密码的关键在于它的密钥是循环重复的。如果我们知道了密钥的长度，那密文就可以被看作是交织在一起的凯撒密码，而其中每一个都可以单独破解。</p>
+<p>多表代换密码体制的分析方法主要分为三步：第一步确定秘钥长度，常用的方法有卡西斯基（Kasiski）测试法和重合指数法（Index of Coincidence）；第二步就是确定秘钥，常用的方法是拟重合指数测试法；第三步是根据第二步确定的密钥恢复出明文。</p>
+<h4 id="Kasiski测试法"><a href="#Kasiski测试法" class="headerlink" title="Kasiski测试法"></a>Kasiski测试法</h4><p>卡西斯基试验是基于类似 the 这样的常用单词有可能被同样的密钥字母进行加密，从而在密文中重复出现。如果将密文中所有相同的字母组都找出来，并计算他们的最大公因数，就有可能提取出来密钥长度信息。</p>
+<p>测试过程：搜索长度至少为2的相邻的一对对相同的密文段，记下它们之间的距离。而密钥长度d可能就是这些距离的最大公因子</p>
+<h4 id="重合指数法"><a href="#重合指数法" class="headerlink" title="重合指数法"></a>重合指数法</h4><p>利用随机文本和英文文本的统计概率差别来分析密钥长度。依据：英文中每种单词出现的频率不同。</p>
+<p>重合指数公式：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/oZVXxwTfcpnWLj4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>人们已经获得了英文的26个字母的概率分布的一个估计。期望值为：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/Ehs7cYJCdxnVkwP.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>将密文按n来分组，当每组的重合指数都接近0.065时，n便为密钥的长度值</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line"> 	&#123;</span><br><span class="line">    <span class="keyword">float</span> IC[clen];<span class="comment">// 重合指数</span></span><br><span class="line">    <span class="built_in">memset</span>(IC,<span class="number">0</span>,<span class="keyword">sizeof</span>(IC));</span><br><span class="line">	<span class="keyword">float</span> avgIC=<span class="number">0</span>;<span class="comment">// 平均重合指数</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;klen;i++)<span class="comment">// 统计分组字母个数 	</span></span><br><span class="line">	&#123;	</span><br><span class="line">	    <span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="keyword">sizeof</span>(num));<span class="comment">// 盛放字母个数的数组</span></span><br><span class="line">	    <span class="comment">// 密钥长度等于分成的组数</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;i+j*klen&lt;clen;j++) <span class="comment">//统计每一组每个字母出现的次数 </span></span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">if</span>(c[i+j*klen]&gt;=<span class="string">'A'</span>&amp;&amp;c[i+j*klen]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">		&#123; </span><br><span class="line">		num[(<span class="keyword">int</span>)(c[i+j*klen]-<span class="string">'A'</span>)]++;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">if</span>(c[i+j*klen]&gt;=<span class="string">'a'</span>&amp;&amp;c[i+j*klen]&lt;=<span class="string">'z'</span>)</span><br><span class="line">		&#123; </span><br><span class="line">		num[(<span class="keyword">int</span>)(c[i+j*klen]-<span class="string">'a'</span>)]++;</span><br><span class="line">		&#125;</span><br><span class="line">		&#125; </span><br><span class="line">        <span class="keyword">float</span> e=<span class="number">0</span>;<span class="comment">// 重合指数的值  重合指数是小数不能用int </span></span><br><span class="line">        <span class="keyword">int</span> L=<span class="number">0</span>; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">26</span>;k++)<span class="comment">// 子串密文长度 </span></span><br><span class="line">        &#123;</span><br><span class="line">        L+=num[k];  <span class="comment">//所有的字母数量相加 </span></span><br><span class="line">        &#125; <span class="comment">//L是密文长度 </span></span><br><span class="line">        L*=(L<span class="number">-1</span>);<span class="comment">// 分母 ,L=L*(L-1)</span></span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">26</span>;k++)<span class="comment">// 分组计算重合指数 IC </span></span><br><span class="line">	    &#123;</span><br><span class="line">	    <span class="keyword">if</span>(num[k]!=<span class="number">0</span>)</span><br><span class="line">	    &#123;</span><br><span class="line">		e+=((<span class="keyword">float</span>)num[k]*(<span class="keyword">float</span>)(num[k]<span class="number">-1</span>))/(<span class="keyword">float</span>)L; <span class="comment">//xi(xi-1)/L(L-1) </span></span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		IC[i]=e;<span class="comment">//得到无偏估计值 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;klen;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	avgIC+=IC[i];</span><br><span class="line">	&#125;</span><br><span class="line">	avgIC/=klen;<span class="comment">// 求 IC 的平均值 第一次klen为1   </span></span><br><span class="line">    <span class="keyword">if</span>(avgIC&gt;=<span class="number">0.065</span>)<span class="keyword">break</span>;<span class="comment">// 判断退出条件，重合指数的平均值是否大于 0.065 </span></span><br><span class="line">   	<span class="keyword">else</span> klen++;</span><br><span class="line"><span class="comment">//   	cout&lt;&lt;"密钥长度为:"&lt;&lt;klen&lt;&lt;endl;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"密钥长度为:"</span>&lt;&lt;klen&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//计算拟重合指数 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;klen;i++) <span class="comment">// 统计分组字母个数 </span></span><br><span class="line">	&#123;	</span><br><span class="line">	<span class="keyword">int</span> g=<span class="number">0</span>;<span class="comment">// 密文移动 g 个位置 </span></span><br><span class="line">	<span class="keyword">float</span> temp[<span class="number">26</span>];<span class="comment">// 存储偏移量 </span></span><br><span class="line">	<span class="built_in">memset</span>(temp,<span class="number">0</span>,<span class="keyword">sizeof</span>(temp));</span><br><span class="line">	<span class="keyword">for</span>(g=<span class="number">0</span>;g&lt;<span class="number">26</span>;g++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">float</span> x=<span class="number">0</span>;<span class="comment">// 拟重合指数 	</span></span><br><span class="line">		<span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="keyword">sizeof</span>(num));<span class="comment">// 盛放字母个数的数组</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;i+j*klen&lt;clen;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(c[i+j*klen]&gt;=<span class="string">'A'</span>&amp;&amp;c[i+j*klen]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">			&#123; </span><br><span class="line">			num[(<span class="keyword">int</span>)(c[i+j*klen]-<span class="string">'A'</span>)]++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(c[i+j*klen]&gt;=<span class="string">'a'</span>&amp;&amp;c[i+j*klen]&lt;=<span class="string">'z'</span>)</span><br><span class="line">			&#123; </span><br><span class="line">			num[(<span class="keyword">int</span>)(c[i+j*klen]-<span class="string">'a'</span>)]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	    <span class="keyword">int</span> L=<span class="number">0</span>;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">26</span>;k++)<span class="comment">// 子串密文长度</span></span><br><span class="line">		&#123;</span><br><span class="line">			L+=num[k];</span><br><span class="line">			x=x+p[k]*num[(k+g)%<span class="number">26</span>];</span><br><span class="line">	    &#125;</span><br><span class="line">	    temp[g]=<span class="built_in">abs</span>(x/L<span class="number">-0.065</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">float</span> value=temp[<span class="number">0</span>]; </span><br><span class="line">	<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(g=<span class="number">0</span>;g&lt;<span class="number">26</span>;g++)<span class="comment">// 找最小偏差 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(temp[g]&lt;value)</span><br><span class="line">		&#123;</span><br><span class="line">		value=temp[g];</span><br><span class="line">		result=g;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		key[i]=result;		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"加密密钥为:"</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;klen;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		s2[i]=<span class="keyword">char</span>(<span class="string">'a'</span>+key[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><h4 id="加密-1"><a href="#加密-1" class="headerlink" title="加密"></a>加密</h4><blockquote>
+<p>例如明文是 Haha CUMTer~ ，密钥是 password，得到密文 Wazs YIDWtr~ 。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/V5B1GtPknLvWmCg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><blockquote>
+<p>例如密文是 Wazs YIDWtr~ ，密钥是 password，得到明文 Haha CUMTer~。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/7FhAy8vOo9nCJcX.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h4><blockquote>
+<p>例如解密：</p>
+<p><strong><em>BZGTNPMMCGZFPUWJCUIGRWXPFNLHZCKOAPGLKYJNRAQFIUYRAVGNPANUMDQOAHMWTGJDXGOMPJPTKAAVZIUIWKVTUCWBWNFWDFUMPJWPMQGPTNWXTSDPLPMWJAXUHHXWPFXXGVAPFNTXVFKOYIRBOQJHCBVWVFYCGQFGUSUBDWVIYATJGTBNDKGHCTMTWIUEFJITVUGJHHIMUVJICUWYQWYGGUWPUUCWIFGWUANILKPHDKOSPJTTWJQOJHXLBJAPZHVQWPDYPGLLGDBCHTGIZCCMEGVIIJLIFFBHSMEGUJHRXBOQUBDNASPEUCWNGWSNWXTSDPLPMWJAIUHUMWPSYCTUWFBMIAMKVBNTDMQNBVDKILQSSDYVWVXIGDQFIBHSLEAVDBXGOLGDBCHTGIZVNFQFKTNGRWXUDCTGKWCOXIXKZPPFDZG\</em></strong></p>
+<p>结果是：</p>
+<p><strong><em>THESTATEKEYLABORATORYOFNETWORKINGANDSWITCHINGTECHNOLOGYBELONGSTOBEIJINGUNIVERSITYOFPOSTSANDTELECOMMUNICATIONSTHELABORATORYWASOPENEDINNINETEENNINETYTWOINNINETEENNINETYFIVETHELABORATORYPASSEDACCEPTANCEINSPECTIONBOGOVERNMENTANDANEVALUATIONORGANIZEDBYMINISTRYOFSCIENCEANDTECHNOLOGYINTWOTHOUSANDANDTWOSINCETWOTHOUSANDANDFOURTHELABORATORYHASBEENRENAMEDASTHESTATEKEYLABORATORYOFNETWORKINGANDSWITCHINGTECHNOLOGYBYMINISTRYOFSCIENCEANDTECHNOLOGY\</em></strong></p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/EcsJzqWKLCfHoOR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="安全性分析-1"><a href="#安全性分析-1" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>多表代换密码打破了原语言的字符出现规律，故其分析方法比单表代换密码复杂得多。多表代换密码对比单表代换密码安全性显著提高。但是仍然可以用一些统计分析法破解（具体参看上文攻击方法), 对所有多表密码的破译都是以字母频率为基础的，这里对维吉尼亚的分析仍不例外，只是直接的频率分析并不适用。通过卡西斯基试验或者就可以得到密钥长度，得到密钥长度，密钥就可以看作是多个凯撒密码结合到一起，每一个都可单独破解，就像上面的破解步骤。但是前提是密文足够长。所以，较短的密文几乎是不可破译的。较长的密文是很容易破解的。</p>
+<h2 id="序列密码-LFSR"><a href="#序列密码-LFSR" class="headerlink" title="序列密码 LFSR"></a>序列密码 LFSR</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>反馈移位寄存器由移位寄存器和反馈函数组成。移位寄存器是由位组成的序列，每次移位寄存器中所有位右移一位，新的最左端的位根据寄存器中的某些位计算来得到，反馈函数用来计算新的最左端位。而线性移位寄存器就是采用线性函数来作为反馈函数的反馈移位寄存器。</p>
+<h3 id="算法实现-2"><a href="#算法实现-2" class="headerlink" title="算法实现"></a>算法实现</h3><p>开始设置好寄存器初始序列全局变量，抽头序列，再初始化一个跟寄存器长度一样的新列表。</p>
+<p>利用zfill函数来初始化寄存器状态，定义 output_ = [] 来存放输出序列，编写feedback函数计算抽头异或的值,reg.txt记录周期内寄存器的状态。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 20次本原多项式:x^20 + x^3 + 1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">feedbck</span><span class="params">(reg, fb)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    反馈函数</span></span><br><span class="line"><span class="string">    :param reg: 移位寄存器的内容</span></span><br><span class="line"><span class="string">    :param fb: 由抽头构成的列表</span></span><br><span class="line"><span class="string">    :return: 最左端的输入</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    res = reg[fb[<span class="number">0</span>] - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(fb)):</span><br><span class="line">        res = int(res) ^ int(reg[fb[i] - <span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lfsr</span><span class="params">(p)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    线性反馈移位寄存器</span></span><br><span class="line"><span class="string">    :param p: 由本原多项式次数构成的列表</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    reg_len = max(p)</span><br><span class="line">    <span class="comment"># 初始寄存器状态:00000....001</span></span><br><span class="line">    shift_reg = <span class="string">'1'</span>.zfill(reg_len)   <span class="comment">#在1前面补0</span></span><br><span class="line">    regs = [shift_reg]  <span class="comment"># 存放寄存器的各个状态</span></span><br><span class="line">    output_ = []  <span class="comment"># 存放输出序列</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(pow(<span class="number">2</span>, reg_len) - <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 输出寄存器最右端的值</span></span><br><span class="line">        output_.append(shift_reg[<span class="number">-1</span>])</span><br><span class="line">        <span class="comment"># 计算抽头异或的值</span></span><br><span class="line">        input_ = str(feedback(shift_reg, p))</span><br><span class="line">        shift_reg = input_ + shift_reg[:<span class="number">-1</span>]</span><br><span class="line">        <span class="comment"># 如果寄存器当前状态已经出现过了,说明一个周期结束</span></span><br><span class="line">        <span class="keyword">if</span> shift_reg <span class="keyword">in</span> regs:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            regs.append(shift_reg)</span><br><span class="line">    <span class="keyword">return</span> output_, regs</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            ct = input(<span class="string">"\n请输入本原多项式x的系数(以空格分隔):\n"</span>).split(<span class="string">" "</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">'q'</span> <span class="keyword">in</span> ct) <span class="keyword">or</span> (<span class="string">'Q'</span> <span class="keyword">in</span> ct):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            ct = [int(ct[i]) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ct))]</span><br><span class="line">            print(<span class="string">"您输入的本原多项式为:"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ct)):</span><br><span class="line">                print(<span class="string">"x^"</span> + str(ct[i]) + <span class="string">" + "</span>, end=<span class="string">""</span>)</span><br><span class="line">            print(<span class="string">"1"</span>)</span><br><span class="line">            print(<span class="string">"理论最大周期为: "</span> + str(pow(<span class="number">2</span>, max(ct)) - <span class="number">1</span>))</span><br><span class="line">            mode = input(<span class="string">"是否确认:\n[Y]确定\t[N]重新输入\t[Q]退出\n"</span>)</span><br><span class="line">            <span class="keyword">if</span> mode == <span class="string">'Y'</span> <span class="keyword">or</span> mode == <span class="string">'y'</span>:</span><br><span class="line">                outputs, regs = lfsr(ct)</span><br><span class="line">                print(<span class="string">"\n周期为: "</span> + str(len(outputs)))</span><br><span class="line">                choice1 = input(<span class="string">"是否查看输出序列:\n[Y]是\t[N]否\n"</span>)</span><br><span class="line">                <span class="keyword">if</span> choice1 == <span class="string">'Y'</span> <span class="keyword">or</span> choice1 == <span class="string">'y'</span>:</span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> outputs:</span><br><span class="line">                        print(i, end=<span class="string">""</span>)</span><br><span class="line">                choice2 = input(<span class="string">"\n是否输出周期内寄存器各状态:\n[Y]是\t[N]否\n"</span>)</span><br><span class="line">                <span class="keyword">if</span> choice2 == <span class="string">'Y'</span> <span class="keyword">or</span> choice2 == <span class="string">'y'</span>:</span><br><span class="line">                    <span class="keyword">with</span> open(<span class="string">'regs.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                        <span class="keyword">for</span> i <span class="keyword">in</span> regs:</span><br><span class="line">                            f.write(i + <span class="string">"\n"</span>)</span><br><span class="line">                    print(<span class="string">"成功！周期内寄存器各状态保存在regs.txt"</span>)</span><br><span class="line">            <span class="keyword">elif</span> mode == <span class="string">'N'</span> <span class="keyword">or</span> mode == <span class="string">'n'</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> mode == <span class="string">'Q'</span> <span class="keyword">or</span> mode == <span class="string">'q'</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">"输入有误!"</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><p>20次本原多项式:x^18 + x^3 + 1</p>
+<p>寄存器初始值：[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]</p>
+<p>本原多项式：[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/OaJ71VAvEzou3NU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h3 id="安全性分析-2"><a href="#安全性分析-2" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>由算法的实现可知，序列密码算法的加解密对种子秘钥的依赖十分强烈。故需要保证种子秘钥的安全性。对于此可进行相关攻击。可以进行穷举搜素攻击，故为了保证安全强度，要求秘钥长度足够长。弱密钥攻击，弱密钥会产生重复的密钥流，一旦子密钥序列出现了重复，密文就有可能被破解。序列密码具有实现简单、便于硬件实施、加解密处理速度快、没有或只有有限的错误传播等特点，因此在实际应用中，特别是专用或机密机构中保持着优势，序列密码是一个随时间变化的加密变换，具有转换速度快、低错误传播的优点，硬件实现电路更简单。</p>
+<h2 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h2><h3 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h3><p>DES是分组加密，将明文分成64位一组，密钥长度 64 比特（其中有效长度为 56 比特），8 的倍数位为奇校验位（保证每 8 位有奇数个 1）。如图，64 比特的密钥经过置换选择和循环移位操作可生成 16 个 48 比特的子密钥。明文 m 经过初始置换 IP 后划分为左右两部分（各32 比特），经过 16 轮 Feistel 结果（其中最后一轮不做左右交换）再做一次逆置换 IP-1得到密文 c 。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/RwXo4zZ3BbAuvgd.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>加密方程：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/kLUrC6HYhunBxSf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>解密方程：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/Z7IKfMSBF4RVUkH.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>由此可见DES是一个对合运算。</p>
+<h3 id="密钥扩展"><a href="#密钥扩展" class="headerlink" title="密钥扩展"></a>密钥扩展</h3><p>用于生成迭代的子密钥。具体过程为：</p>
+<p>64位初始密钥经过置换选择1 ( PC-1 ) 后变成 56 位，经过循环左移和置换选择2 ( PC-2 ) 后分别得到 16 个 48 位子密钥 Ki 用做每一轮的迭代运算。</p>
+<p>PC-1 去掉了校验位， PC-2 去掉了9, 18, 22, 25, 35, 38, 43, 54 位。</p>
+<h4 id="置换选择"><a href="#置换选择" class="headerlink" title="置换选择"></a>置换选择</h4><p>置换选择1（PC-1）和置换选择2（PC-2）：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#秘钥的PC-1置换</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_key1</span><span class="params">(my_key)</span>:</span></span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> PC_1:</span><br><span class="line">        res += my_key[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment">#秘钥的PC-2置换</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_key2</span><span class="params">(my_key)</span>:</span></span><br><span class="line">    res  = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> PC_2:</span><br><span class="line">        res += my_key[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h4><p>输入序列经过指定循环左移次数后得到结果（可以使用切片法）：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#循环左移操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">left_turn</span><span class="params">(my_str,num)</span>:</span></span><br><span class="line">    left_res = my_str[num:len(my_str)]</span><br><span class="line">    left_res = my_str[<span class="number">0</span>:num]+left_res</span><br><span class="line">    <span class="keyword">return</span> left_res</span><br></pre></td></tr></table></figure></div>
+
+<p>加入取模操作的好处：若 <code>num</code> 为负数，则相当于可以处理循环右移，方便解密时使用。</p>
+<h3 id="初始置换-IP-和它的逆置换-IP-1"><a href="#初始置换-IP-和它的逆置换-IP-1" class="headerlink" title="初始置换 IP 和它的逆置换 IP-1"></a>初始置换 IP 和它的逆置换 IP-1</h3><p>IPIP 在第一轮迭代之前进行，目的是将原明文块的位进行换位操作（查表），实际并没有密码意义，因此在软件中时常直接被去掉。</p>
+<p>IP−1IP−1 在最后一轮迭代之后进行，在加密算法中输出为密文，在解密算法中输出明文，若 IPIP 被去掉，IP−1IP−1 也相应地被去掉。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/FwSLDfHza7yYRsu.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">#IP盒处理</span><br><span class="line">def ip_change(bin_str):</span><br><span class="line">    res &#x3D; &quot;&quot;</span><br><span class="line">    for i in IP_table:</span><br><span class="line">        res +&#x3D; bin_str[i-1]     #数组下标i-1</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#IP逆盒处理</span><br><span class="line">def ip_re_change(bin_str):</span><br><span class="line">    res &#x3D; &quot;&quot;</span><br><span class="line">    for i in IP_re_table:</span><br><span class="line">        res +&#x3D; bin_str[i-1]</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="F-函数"><a href="#F-函数" class="headerlink" title="F 函数"></a>F 函数</h3><p>也称轮函数，包括四个过程：</p>
+<ol>
+<li>扩展置换 ( E 盒 )</li>
+<li>密钥加</li>
+<li>S 盒</li>
+<li>P 盒</li>
+</ol>
+<p>下面，我们分别解释这几个过程。</p>
+<h4 id="1-扩展置换"><a href="#1-扩展置换" class="headerlink" title="1. 扩展置换"></a>1. 扩展置换</h4><p><strong><em>32 bit → 48 bit\</em></strong></p>
+<p>通过扩展置换，数据的右半部分  从 32 位扩展到 48 位。扩展置换改变了位的次序，重复了某些位。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/6KLNZ7pdGP9vblH.png" alt="image-20210112205546510" title="">
+                </div>
+                <div class="image-caption">image-20210112205546510</div>
+            </figure>
+
+<p>目的：让明文的 1 位可能影响到密文的 2 位，从而快速实现了雪崩效应。（结合 S 盒）</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#E盒置换</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">e_key</span><span class="params">(bin_str)</span>:</span></span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> E:</span><br><span class="line">        res += bin_str[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-密钥加"><a href="#2-密钥加" class="headerlink" title="2. 密钥加"></a>2. 密钥加</h4><p><strong><em>48 bit ⊕ 48 bit → 48 bit\</em></strong></p>
+<p>E 盒输出与子密钥 <strong><em>Xor\</em></strong> （逐位异或）。</p>
+<p>Python 中，异或使用 <code>^</code> 运算符。因为我的处理方法是把字符转成对应的二进制（简单粗暴），所以我写了个封装 <strong><em>Xor\</em></strong> 的函数：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#字符串异或操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str_xor</span><span class="params">(my_str1,my_str2)</span>:</span></span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(my_str1)):</span><br><span class="line">        xor_res = int(my_str1[i],<span class="number">10</span>)^int(my_str2[i],<span class="number">10</span>) <span class="comment">#变成10进制是转化成字符串 2进制与10进制异或结果一样，都是1,0</span></span><br><span class="line">        <span class="keyword">if</span> xor_res == <span class="number">1</span>:</span><br><span class="line">            res += <span class="string">'1'</span></span><br><span class="line">        <span class="keyword">if</span> xor_res == <span class="number">0</span>:</span><br><span class="line">            res += <span class="string">'0'</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-代换盒（S-盒）"><a href="#3-代换盒（S-盒）" class="headerlink" title="3. 代换盒（S 盒）"></a>3. 代换盒（S 盒）</h4><p><strong><em>48 bit → 32 bit\</em></strong></p>
+<p>目的是实现非线性代换，是 <strong>DES 中的唯一的非线性部分</strong>。</p>
+<p>实际上是查表运算，8 个 S 盒对应把 48 位分成 8 个组（6 位一组）。</p>
+<p>每个 S 盒的输入为 6 位，输出为 4 位。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/43JPsw2OmtHheCW.png" alt="image-20210112205534444" title="">
+                </div>
+                <div class="image-caption">image-20210112205534444</div>
+            </figure>
+
+<p> 利用了bin输出有可能不是4位str类型的值，所以才有下面的循环并且加上字符0</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># S盒过程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">s_box</span><span class="params">(my_str)</span>:</span></span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    c = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(my_str),<span class="number">6</span>):</span><br><span class="line">        now_str = my_str[i:i+<span class="number">6</span>]</span><br><span class="line">        row = int(now_str[<span class="number">0</span>]+now_str[<span class="number">5</span>],<span class="number">2</span>)</span><br><span class="line">        col = int(now_str[<span class="number">1</span>:<span class="number">5</span>],<span class="number">2</span>)</span><br><span class="line">        num = bin(S[c][row*<span class="number">16</span> + col])[<span class="number">2</span>:]   <span class="comment">#利用了bin输出有可能不是4位str类型的值，所以才有下面的循环并且加上字符0</span></span><br><span class="line">        <span class="keyword">for</span> gz <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">4</span>-len(num)):</span><br><span class="line">            num = <span class="string">'0'</span>+ num</span><br><span class="line">        res += num</span><br><span class="line">        c  += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-置换盒（P-盒）"><a href="#4-置换盒（P-盒）" class="headerlink" title="4. 置换盒（P 盒）"></a>4. 置换盒（P 盒）</h4><p><strong><em>32 bit → 32 bit\</em></strong></p>
+<p>简单置换。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#P盒置换</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p_box</span><span class="params">(bin_str)</span>:</span></span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span>  P:</span><br><span class="line">        res += bin_str[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><h4 id="加密-2"><a href="#加密-2" class="headerlink" title="加密"></a>加密</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/nbDWETfgRQNtH1w.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="解密-1"><a href="#解密-1" class="headerlink" title="解密"></a>解密</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/3GUOFL1Smy7a8Qe.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="安全性分析-3"><a href="#安全性分析-3" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>安全性争论：</p>
+<ul>
+<li>S盒的设计准则还没有完全公开，人们仍然不知道S盒的构造中是否使用了进一步的设计准则</li>
+<li>DES存在一些弱密钥和半弱密钥</li>
+<li>DES的56位密钥无法抵抗穷举攻击</li>
+<li>代数结构存在互补对称性</li>
+</ul>
+<p>弱密钥：</p>
+<p>给定初始密钥𝐾生成子密钥时，将种子密钥分成两个部分，如果𝐾使得这两部分的每一部分的所有位置全为0或1，则经子密钥产生器产生的各个子密钥都相同，即𝐾1=𝐾2=…=𝐾16，则称密钥𝐾为弱密钥（共有4个）</p>
+<p>若𝐾为弱密钥，则对任意的64比特信息有：</p>
+<p>Ek(Ek(m))=m和Dk(Dk(m))=mEk(Ek(m))=m和Dk(Dk(m))=m</p>
+<p>半弱密钥：</p>
+<p>把明文加密成相同的密文，即存在两个不同的密钥𝑘和𝑘′,使得𝐸<em>𝑘 (𝑚)=𝐸</em>(𝑘^′ ) (𝑚)</p>
+<p>具有下述性质：</p>
+<p>若𝑘和𝑘′为一对弱密钥，𝑚为明文组，则有：</p>
+<p>Ek′(Ek(m))=Ek(Ek′(m))=mEk′(Ek(m))=Ek(Ek′(m))=m</p>
+<p>互补性：</p>
+<p>对明文𝑚逐位取补，记为𝑚 ̅，密钥𝐾逐位取补，记为𝑘 ̅ ， 若𝑐=𝐸𝑘(𝑚)，则有𝑐 ̅=𝐸_𝑘 ̅ (𝑚 ̅) ，称为算法上的互补性</p>
+<p>由算法中两次异或运算的配置决定：两次异或运算一次在S盒之前，一次在P盒置换之后</p>
+<p>若对DES 的明文和密钥同时取补，则扩展运算E的输出和子密钥产生器的输出也都取补，因而经异或运算后的输出和未取补时的输出一样，即到达S盒的输入数据未变，输出自然也不变，但经第二个异或运算时，由于左边数据已取补，因而输出也就取补</p>
+<p>互补性使DES在选择明文攻击下所需的工作量减半（2^55）</p>
+<p>对选择的明文𝑚和𝑚 ̅ 加密后得到密文如下：</p>
+<p>c1=Ek(m)c2=Ek(m−)c1=Ek(m)c2=Ek(m−)</p>
+<p>由对称互补性可得</p>
+<p>c−2=Ek−(m)c2−=Ek−(m)</p>
+<p>所以对𝑚加密，如果密文为𝑐_1，则加密密钥为𝑘, 如果密文为(𝑐_2 ) ̅，则加密密钥为𝑘 ̅</p>
+<p>差分分析法：</p>
+<p>通过分析特定明文差对结果密文差的影响来获得可能性最大的密钥。这种攻击方法主要适用于攻击迭代分组密码，最初是针对DES提出的一种攻击方法，虽然差分攻击方法对破译16轮的DES不能提供一种实用的方法，但对破译轮数较低的DES是很成功的。</p>
+<p>线性分析法：</p>
+<p>寻找一个给定密码算法的有关明文比特、密文比特和密钥比特的有效线性近似表达式，通过选择充分多的明－密文对来分析密钥的某些比特，用这种方法破译DES比差分分析方法更有效。可用247个已知明文破译8－轮DES。</p>
+<p>三重DES：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/kFI1fZwbC3vTpen.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>两密钥的3DES称为加密-解密-加密方案，简记为EDE(encrypt-decrypt-encrypt)</p>
+<p>破译它的穷举密钥搜索量为2112 量级，用差分分析破译也要超过1035sup&gt;量级。此方案仍有足够的安全性。</p>
+<h2 id="公钥密码RSA"><a href="#公钥密码RSA" class="headerlink" title="公钥密码RSA"></a>公钥密码RSA</h2><h3 id="RSA算法原理"><a href="#RSA算法原理" class="headerlink" title="RSA算法原理"></a>RSA算法原理</h3><ol>
+<li>密钥的生成</li>
+</ol>
+<ul>
+<li><p>选择两个大素数 𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）</p>
+</li>
+<li><p>计算𝑛=𝑝×𝑞， (𝑛)=(𝑝－1)×(𝑞－1)</p>
+</li>
+<li><p>选择整数 𝑒 使 ((𝑛)，𝑒) =1, 1&lt;𝑒&lt; (𝑛)</p>
+</li>
+<li><p>计算𝑑，使𝑑=𝑒－1 𝑚𝑜𝑑 (𝑛),</p>
+<p>得到：公钥为{𝑒, 𝑛}； 私钥为{𝑑}</p>
+</li>
+</ul>
+<ol>
+<li>加密(用𝒆，𝒏)： 明文𝑀&lt;𝑛， 密文𝐶=𝑀^𝑒 (𝑚𝑜𝑑 𝑛).</li>
+<li>解密(用𝒅，𝒏)： 密文𝐶， 明文𝑀 =𝐶^𝑑 (𝑚𝑜𝑑 𝑛)</li>
+</ol>
+<h3 id="大素数生成"><a href="#大素数生成" class="headerlink" title="大素数生成"></a>大素数生成</h3><p>对于大整数的素性测试，一般用 Miller-Rabin 算法。它是一个基于概率的算法，是费马小定理（若 n 是一个素数，则 an-1 ≡ 1 (mod n) ）的一个改进。要测试 n 是否为素数，首先将 n−1 分解为 2sd 。在每次测试开始时，先随机选一个介于 [1,n−1] 的整数 a ，之后如果对所有的 r∈[0,s−1] ，若admodn≠1 且 a2rd mod n≠−1，则 n 是合数。否则，n 有 3/4 的概率为素数。增加测试的次数，该数是素数的概率会越来越高。这样，我们就可以给定位数 n 的情况下随机生成数，然后再用 Miller-Rabin 算法验证它是不是素数，若是，则就用它，否则再随机生成其他数字，循环。Python 脚本如下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">miller_rabin</span><span class="params">(n, k=<span class="number">10</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    用Miler-Rabin算法进行素性检验</span></span><br><span class="line"><span class="string">    :param n: 被检验的数</span></span><br><span class="line"><span class="string">    :param k: 检验的次数，默认为15次</span></span><br><span class="line"><span class="string">    :return: 是否通过检验</span></span><br><span class="line"><span class="string">    要测试n是否为素数,首先将n−1分解为(2^s)d</span></span><br><span class="line"><span class="string">    在每次测试开始时,先随机选一个介于[1,n−1]的整数a,之后如果对所有的r∈[0,s−1] ,</span></span><br><span class="line"><span class="string">    若a^d ≠1  (mod n)且 a^(2^rd)≠−1(mod n),则n是合数</span></span><br><span class="line"><span class="string">    否则，n 有 3/4 的概率为素数,增加测试的次数,该数是素数的概率会越来越高。</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 偶数直接不通过</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    s, d = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 将p-1分解为(2**s)d</span></span><br><span class="line">    <span class="keyword">while</span> d % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        s += <span class="number">1</span></span><br><span class="line">        d //= <span class="number">2</span></span><br><span class="line">    <span class="comment"># 进行k次检验566++3.+6</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        <span class="comment"># 每次测试时,随机选取一个[1,n-1]的整数a</span></span><br><span class="line">        a = randint(<span class="number">1</span>, n - <span class="number">1</span>)</span><br><span class="line">        x = pow(a, d, n)  <span class="comment"># x = a**d mod(n)</span></span><br><span class="line">        <span class="comment"># 如果a**d(mod n)=1,说明当次检验通过(不是合数),进行下一轮检验</span></span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">1</span> <span class="keyword">or</span> x == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            flag = <span class="number">0</span></span><br><span class="line">            <span class="comment"># 对所有的r∈[0, s-1],判断a**((2**r)*d) (mod n)是否等于-1，</span></span><br><span class="line">            <span class="keyword">for</span> r <span class="keyword">in</span> range(s):</span><br><span class="line">                <span class="comment"># x**pow(2,r) == a**d**pow(2,r)</span></span><br><span class="line">                x = pow(x, <span class="number">2</span>, n)</span><br><span class="line">                <span class="keyword">if</span> x == n - <span class="number">1</span>:</span><br><span class="line">                    flag = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="comment"># 若a**d≠1(mod n)且a**pow(2,r)**≠</span></span><br><span class="line">            <span class="keyword">if</span> flag == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="带模的幂运算"><a href="#带模的幂运算" class="headerlink" title="带模的幂运算"></a>带模的幂运算</h3><p>原理：模重复平方运算，Python 代码如下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fast_mod</span><span class="params">(x, n, p)</span>:</span></span><br><span class="line">    x = x % p</span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n!=<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> n &amp; <span class="number">1</span>:</span><br><span class="line">            res = (res * x) % p</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>     <span class="comment"># 相当于 n //= 2</span></span><br><span class="line">        x = (x * x) % p</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="求逆运算"><a href="#求逆运算" class="headerlink" title="求逆运算"></a>求逆运算</h3><p>扩展欧几里得法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extended_gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    扩展的欧几里得算法计算gcd的最大公因子g以及x和y,满足g=ax+by</span></span><br><span class="line"><span class="string">    递归式的推导过程:</span></span><br><span class="line"><span class="string">    ax₁ + by₁ = gcd(a,b)</span></span><br><span class="line"><span class="string">    bx₂ + (a%b)y₂ = gcd(b,a%b)</span></span><br><span class="line"><span class="string">    ∵ gcd(a,b) = gcd(b,a%b) 且 a%b = a - (a//b)*b</span></span><br><span class="line"><span class="string">    ∴ bx₂ + (a%b)y₂</span></span><br><span class="line"><span class="string">     = bx₂ + [a - (a//b)*b]y₂</span></span><br><span class="line"><span class="string">     = ay₂ + bx₂ - (a//b)by₂</span></span><br><span class="line"><span class="string">     = ay₂ + b[x₂ - (a//b)y₂]</span></span><br><span class="line"><span class="string">     = ax₁ + by₁</span></span><br><span class="line"><span class="string">     ∴待定系数法得:x₁ = y₂, y₁ = x₂ - (a//b)y₂</span></span><br><span class="line"><span class="string">     递归终止条件: 当b = 0, gcd(a,b) = a, 此时 x = 1,y = 0</span></span><br><span class="line"><span class="string">    :return: (g,s,t)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> a, <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        g, x, y = extended_gcd(b, a % b)  <span class="comment"># 先得到更里层的x₂,y₂,</span></span><br><span class="line">        <span class="keyword">return</span> g, y, x - (a // b) * y  <span class="comment"># 再根据得到的x₂,y₂,计算x₁,y₁</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mod_inverse</span><span class="params">(a, m)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    计算模逆,即a**-1 (mod m)</span></span><br><span class="line"><span class="string">    :param a: 底数</span></span><br><span class="line"><span class="string">    :param m: 模数</span></span><br><span class="line"><span class="string">    :return: 逆元</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    g, x, y = extended_gcd(a, m)  <span class="comment"># ax + my = 1</span></span><br><span class="line">    <span class="comment"># 若a,m不互素,则不可逆</span></span><br><span class="line">    <span class="keyword">if</span> g != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(str(a) + <span class="string">' is not invertible!'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> x % m</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="运行结果-4"><a href="#运行结果-4" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/q13EHr9WD2caByv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="安全性分析-4"><a href="#安全性分析-4" class="headerlink" title="安全性分析"></a>安全性分析</h3><p>RSA的安全性依赖于大数分解问题，目前，还未能从数学上证明由𝑐和𝑒计算出𝑚一定需要分解𝑛，然而，如果新方法能使密码分析者推算出𝑑，它也就成为大数分解的一个新方法</p>
+<p>非对称加密算法中 1024 bit 密钥的强度相当于对称加密算法 80bit 密钥的强度。但是，从效率上，密钥长度增长一倍，公钥操作所需时间增加约 4 倍，私钥操作所需时间增加约 8 倍，公私钥生成时间约增长16倍。所以，我们要权衡一下效率和安全性。一般来说， 1024 bit 只能用于加密 最多117 字节的明文。</p>
+<p><strong>低加密指数攻击：</strong></p>
+<p>为了使加密高效，一般希望选取较小的加密指数 ee ，但是 ee 不能太小，否则容易遭到低加密指数攻击。</p>
+<p>假设用户使用的密钥 e=3e=3 。考虑到加密关系满足：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/VyG7I1Dj6BwvsnA.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>低加密指数广播攻击：</strong></p>
+<p>还有一种情况是如果给 k 个用户发的都是同个低加密指数比如 e=3 ，在不同的模数 n1.n2,n3下 ，可由 CRT（中国剩余定理） 解出 m3 ，从而直接开三次根解出 m。</p>
+<p><strong>共模攻击：</strong></p>
+<p>场景：n 相同（让多个用户使用相同的模数 n ），但他们的公私钥对不同。这样，我们可以在已知 n,e1,e2,c1,c2 的情况下解出 m 。过程如下：</p>
+<p>其实有个隐形的前提条件是：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/4JdHZSYhe82GMLr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>存在 s1,s2 使得：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/vhlaZ1nQ2OBoCJb.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>又由 RSA 定义可知：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/7Mh9IqiXePwf1ZJ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>可得出：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/GQT4XhnFMAlzmKE.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这样，我们仅需要使用扩展欧几里得算法求出 s1,s2s1,s2 便可解出明文。</p>
+<h2 id="MD5加密"><a href="#MD5加密" class="headerlink" title="MD5加密"></a>MD5加密</h2><h3 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h3><p>Hash，一般翻译做散列、杂凑，或音译为哈希，是把任意长度的输入(又叫做预映射)通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是说，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是是将任意长度的输入变换为固定长度的输出的不可逆的单向密码体制。</p>
+<p>MD5(Message-Digest Algorithm,信息摘要算法)，是由美国著名密码学家Rivest设计的一种密码散列函数，可以将长度小于264比特的消息，按512比特的分组单位进行处理，输出一个128比特的消息摘要。</p>
+<p>MD5具有Hash函数的所有特性。</p>
+<p>​    ①压缩性。无论输入的明文多长，计算出来的MD5值长度固定为128位。</p>
+<p>​    ②易计算性。由原数据容易计算出MD5值 。</p>
+<p>​    ③抗碰撞性。知道明文和MD5值，很难找到相同MD5值相同的明文。</p>
+<p>​    ④抗修改性。即便修改一个字节，计算出来的MD5值也会存在极大差异</p>
+<p>​    MD5是在MD4基础上发展而来的，虽然比MD4稍慢，但更安全，实现了更快的雪崩效应，在实际应用中更受欢迎。</p>
+<p>​    散列函数的安全性主要体现在其良好的单向性和对碰撞的有效避免。由于散列变换是一种压缩变换，输入和输出长度相差极大啊，很难通过输出来确定 输入。但是，散列函数经常被用于数据改动检测，如果一个合法消息和一个非法消息能够碰撞，攻击就可以用合法消息生成散列值，再以非法消息作为该散列值的对应消息进行欺骗，且是他人无法识别。所以，对于Hash函数的攻击，攻击者的主要目标不是恢复原始明文，而是用相同散列值的非法消息来替代合法消息进行伪造和欺骗。</p>
+<p>​    对于MD5的碰撞研究，王小云教授做出了突破性的贡献，她的研究成果可以概括为：对于给定的M1，可以比较快速地找到M2，使得H(M1)=H(M2)。在2004年发表的论文中，她在IBM P690上用了一个小时左右就找了这样的一个碰撞，放到现在的计算机上面，这个时间会更短。所以，如果是要求高度保密的场所，比如说军工之类，MD5已经不安全了，应更换为更安全的Hash算法；但对于民用来说，一般没有人有能承受那么大计算量的设备，在一些不重要的认证上面仍可使用。</p>
+<h3 id="MD5算法原理"><a href="#MD5算法原理" class="headerlink" title="MD5算法原理"></a>MD5算法原理</h3><h4 id="消息填充"><a href="#消息填充" class="headerlink" title="消息填充"></a>消息填充</h4><ul>
+<li>使消息长度模512=448如果消息长度模512恰等于448，增加512个填充比特。即填充的个数为1~512，填充方法：第1比特为1，其余全部为0</li>
+<li>将消息长度转换为64比特的数值，如果长度超过64比特所能表示的数据长度，值保留最后64比特添加到填充数据后面，使数据为512比特的整数倍</li>
+<li>512比特按32比特分为16组</li>
+</ul>
+<p><strong>注：64位数据长度存储的时候是小端序</strong></p>
+<h4 id="初始化链接变量"><a href="#初始化链接变量" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h4><p>使用4个32位的寄存器A， B，C， D存放4个固定的32位整型参数，用于第一轮迭代，这里需要注意的是，寄存器的值要转化为小端序。</p>
+<p>A=0x01234567 B=0x89abcdef C=0xfedcba98 D=0x76543210</p>
+<h4 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h4><p>与分组密码分组处理相似，有4轮步骤，将512比特的消息分组平均分为16个子分组，每个子分组有32比特，参与每一轮的的16步运算，每步输入是4个32比特的链接变量和一个32位的的消息子分组，经过这样的64步之后得到4个寄存器的值分别与输入的链接变量进行模加。</p>
+<h4 id="步函数"><a href="#步函数" class="headerlink" title="步函数"></a>步函数</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/I9rGW8NK5OQRBV3.png" alt="image-20210112205456498" title="">
+                </div>
+                <div class="image-caption">image-20210112205456498</div>
+            </figure>
+
+<p>该函数包括 4 轮，每轮 16 步，上一步的链接变量 D, B, C 直接赋值给下一步的链接变量 A, C, D。</p>
+<p>A 先和非线性函数的结果加一下，结果再和 M[j] 加一下，结果再和 T[i] 加一下，结果再循环左移 s 次，结果再和原来的 B 加一下，最后的得到新 B。</p>
+<p>非线性函数：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/xSM8oL6G13Yklgc.png" alt="image-20210112205446350" title="">
+                </div>
+                <div class="image-caption">image-20210112205446350</div>
+            </figure>
+
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="消息填充-1"><a href="#消息填充-1" class="headerlink" title="消息填充"></a>消息填充</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对消息进行填充</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">message_padding</span><span class="params">(m)</span>:</span></span><br><span class="line">    <span class="comment"># 计算附加的64为长度(小端序表示)</span></span><br><span class="line">    len_padding = bin2little(bin(len(m))[<span class="number">2</span>:].zfill(<span class="number">64</span>))</span><br><span class="line">    m += <span class="string">'1'</span></span><br><span class="line">    <span class="keyword">while</span> len(m) % <span class="number">512</span> != <span class="number">448</span>:</span><br><span class="line">        m += <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">return</span> m + len_padding</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="初始化链接变量-1"><a href="#初始化链接变量-1" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始链接变量(小端序表示)</span></span><br><span class="line">IV_A, IV_B, IV_C, IV_D = (<span class="number">0x67452301</span>, <span class="number">0xefcdab89</span>, <span class="number">0x98badcfe</span>, <span class="number">0x10325476</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="分组处理及步函数"><a href="#分组处理及步函数" class="headerlink" title="分组处理及步函数"></a>分组处理及步函数</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 压缩函数(对每个512bit分组进行处理)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress_func</span><span class="params">(a, b, c, d, m)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    压缩函数函数,对每512bit得分组进行处理,包括4轮,每轮16步</span></span><br><span class="line"><span class="string">    :param a, b, c, d:  输入链接变量(即前一个分组的输出链接变量)</span></span><br><span class="line"><span class="string">    :param m: 512bit的消息分组</span></span><br><span class="line"><span class="string">    :return: A,B,C,D 输出链接变量</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 对每一分组的初始链接变量进行备份</span></span><br><span class="line">    A, B, C, D = a, b, c, d</span><br><span class="line">    <span class="comment"># 将512bit分为16组,每组32bit</span></span><br><span class="line">    m_list_32 = re.findall(<span class="string">r'.&#123;32&#125;'</span>, m)</span><br><span class="line">    <span class="comment"># 每个分组经过4轮函数</span></span><br><span class="line">    <span class="keyword">for</span> round_index <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">        <span class="comment"># 每轮有16步</span></span><br><span class="line">        <span class="keyword">for</span> step_index <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">            <span class="comment"># 对每一步的链接变量进行备份</span></span><br><span class="line">            AA, BB, CC, DD = A, B, C, D</span><br><span class="line">            <span class="comment"># 每一轮选择不同的非线性函数</span></span><br><span class="line">            <span class="keyword">if</span> round_index == <span class="number">0</span>:</span><br><span class="line">                func_out = F(B, C, D)</span><br><span class="line">            <span class="keyword">elif</span> round_index == <span class="number">1</span>:</span><br><span class="line">                func_out = G(B, C, D)</span><br><span class="line">            <span class="keyword">elif</span> round_index == <span class="number">2</span>:</span><br><span class="line">                func_out = H(B, C, D)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                func_out = I(B, C, D)</span><br><span class="line">            A, C, D = D, B, C</span><br><span class="line">            <span class="comment"># B模加非线性函数的输出</span></span><br><span class="line">            B = mod_add(AA, func_out)</span><br><span class="line">            <span class="comment"># 模加消息分组(注意为大端序)</span></span><br><span class="line">            B = mod_add(B, int(bin2little(m_list_32[M_index_[round_index][step_index]]), <span class="number">2</span>))</span><br><span class="line">            <span class="comment"># print(type(B))</span></span><br><span class="line">            <span class="comment"># 模加伪随机常数</span></span><br><span class="line">            B = mod_add(B, T(<span class="number">16</span> * round_index + step_index + <span class="number">1</span>))</span><br><span class="line">            <span class="comment"># 循环左移s位</span></span><br><span class="line">            B = rol(B, shift_[round_index][step_index])</span><br><span class="line">            <span class="comment"># 模加BB</span></span><br><span class="line">            B = mod_add(B, BB)</span><br><span class="line">        <span class="comment">#     print(str(16 * round_index + step_index + 1).zfill(2), end=" ")</span></span><br><span class="line">        <span class="comment">#     print(hex(A).replace("0x", "").replace("L", "").zfill(8), end=" ")</span></span><br><span class="line">        <span class="comment">#     print(hex(B).replace("0x", "").replace("L", "").zfill(8), end=" ")</span></span><br><span class="line">        <span class="comment">#     print(hex(C).replace("0x", "").replace("L", "").zfill(8), end=" ")</span></span><br><span class="line">        <span class="comment">#     print(hex(D).replace("0x", "").replace("L", "").zfill(8))</span></span><br><span class="line">        <span class="comment"># print("*" * 38)</span></span><br><span class="line">    <span class="comment"># 与该分组的初始链接变量异或</span></span><br><span class="line">    A = mod_add(A, a)</span><br><span class="line">    B = mod_add(B, b)</span><br><span class="line">    C = mod_add(C, c)</span><br><span class="line">    D = mod_add(D, d)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> A, B, C, D</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="运行结果-5"><a href="#运行结果-5" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/FlKtDS4wyQhzaIj.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>找一个在线加密的网站验证一下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/12/XPN2QDrpIqyfgVz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="安全性分析-5"><a href="#安全性分析-5" class="headerlink" title="安全性分析"></a>安全性分析</h2><p>攻击者的主要目标不是恢复原始的明文，而是用非法消息替代合法消息进行伪造和欺骗，对哈希函数的攻击也是寻找碰撞的过程。</p>
+<p>基本攻击方法：</p>
+<p>（1）穷举攻击：能对任何类型的Hash函数进行攻击</p>
+<p>最典型方法是“生日攻击”：给定初值𝐻0=H(M)，寻找𝑀’≠ 𝑀，使ℎ(𝑀’)= 𝐻0</p>
+<p>（2）密码分析法：依赖于对Hash函数的结构和代数性质分析，采用针对Hash函数弱性质的方法进行攻击。这类攻击方法有中间相遇攻击、修正分组攻击和差分分析等</p>
+<p>MD5算法中，输出的每一位都是输入的每一位的函数，逻辑函数F、G、H、I的复杂迭代使得输出对输入的依赖非常小</p>
+<p>但Berson证明，对单轮的MD5算法，利用差分分析，可以在合理时间内找出碰撞的两条消息</p>
+<p>MD5算法抗密码分析的能力较弱，生日攻击所需代价是试验264个消息</p>
+<p>2004年8月17日，在美国加州圣巴巴拉召开的美密会（Crypto2004）上，中国的王小云、冯登国、来学嘉、于红波4位学者宣布，只需1小时就可找出MD5的碰撞（利用差分分析）</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-12T12:59:01.006Z" itemprop="dateUpdated">2021-01-12 20:59:01</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&title=《密码学课程设计报告》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&title=《密码学课程设计报告》 — Mr.Guo&source=嫖了各种大佬的博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《密码学课程设计报告》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：密码学复习总结
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：攻防世界WEB">下一篇：攻防世界WEB</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&title=《密码学课程设计报告》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&title=《密码学课程设计报告》 — Mr.Guo&source=嫖了各种大佬的博客！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《密码学课程设计报告》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

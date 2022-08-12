@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>攻防世界WEB | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Web">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="网安实验被迫写WEB!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界WEB">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="网安实验被迫写WEB!">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/5QKiaRNHfZjMm6s.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/XoGcKtPRN4Om7HE.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/ucCKSxwXgT4FPd2.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/joaTB6mp8FnqAUR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/2nZBMK6YjUhrNag.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/B8yf5MlTWg3JYun.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/P7XCfZDKoMn21sy.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/zNeBO1gRmUxaijo.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/Ay3ec2gBkN6HDiL.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/JeRE8j7oHXBgvqP.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/ElFStwzKPhqWsmR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/06/es9oQD3hEM4baT7.png">
+<meta property="article:published_time" content="2021-01-06T14:45:14.455Z">
+<meta property="article:modified_time" content="2021-01-11T02:59:27.637Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/06/5QKiaRNHfZjMm6s.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">攻防世界WEB</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PHP2"><span class="post-toc-number">1.</span> <span class="post-toc-text">PHP2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unserialize3"><span class="post-toc-number">2.</span> <span class="post-toc-text">unserialize3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cat"><span class="post-toc-number">3.</span> <span class="post-toc-text">Cat</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ics-05"><span class="post-toc-number">4.</span> <span class="post-toc-text">ics-05</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Triangle"><span class="post-toc-number">5.</span> <span class="post-toc-text">Triangle</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-攻防世界web"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">攻防世界WEB</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-06 22:45:14" datetime="2021-01-06T14:45:14.455Z"  itemprop="datePublished">2021-01-06</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">14</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>网安实验被迫写WEB!</p>
+<a id="more"></a>
+
+<h2 id="PHP2"><a href="#PHP2" class="headerlink" title="PHP2"></a>PHP2</h2><p><strong>考察.phps源码泄露、URL二次编码绕过</strong></p>
+<p>一开始我也没明白这个题是什么意思，看了大佬的wp才知道是有.phps源码泄露：</p>
+<p>访问index.phps得到源码：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/5QKiaRNHfZjMm6s.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看源码就可以知道这个是很简单的URL二次编码绕过，所以payload：<code>?id=ad%256din</code></p>
+<p>flag到手。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/XoGcKtPRN4Om7HE.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="unserialize3"><a href="#unserialize3" class="headerlink" title="unserialize3"></a>unserialize3</h2><p><strong>绕过魔法函数sleep()和wakeup()的反序列化漏洞</strong></p>
+<p>题目名叫<strong>unserialize3</strong>，那应该是跟反序列化有关的题目。</p>
+<p>看一下源码，出现了<code>__wakeup()</code>这个魔法函数：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/ucCKSxwXgT4FPd2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>unserialize()执行时会检查是否存在一个wakeup()方法。如果存在则先调用wakeup()方法，预先准备对象需要的资源。wakeup()经常用在反序列化操作中。sleep()则相反，是在序列化一个对象的时候被调用。</p>
+<p>这个漏洞的核心是：序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过<code>__wakeup()</code>的执行。</p>
+<p>将题目中的类序列化得到结果：<code>O:4:&quot;xctf&quot;:1:{s:4:&quot;flag&quot;;s:3:&quot;111&quot;;}</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/joaTB6mp8FnqAUR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>简单解释一下这个字符串：</p>
+<p><code>O</code>代表结构类型为<code>类</code>，<code>4</code>表示<code>类名长度</code>，然后是<code>类名</code>、<code>成员个数</code>。</p>
+<p>大括号内的值是：<code>属性名类型</code>、<code>长度</code>、<code>名称</code>；<code>值类型</code>、<code>长度</code>、<code>值</code>。</p>
+<p>如果我们把传入序列化字符串的属性个数改成比1更大的值，就不会触发<code>__wakeup()</code>方法，进而得到flag。</p>
+<p>payload:<code>?code=O:4:&quot;xctf&quot;:2:{s:4:&quot;flag&quot;;s:3:&quot;111&quot;;}</code></p>
+<h2 id="Cat"><a href="#Cat" class="headerlink" title="Cat"></a>Cat</h2><p><strong>个人感觉比较综合也比较难的题目，考察的是url编码和django的知识</strong></p>
+<p>打开网页发现是一个ping功能，但是输入正常的用户名没有反应，输入ip地址有反应：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/2nZBMK6YjUhrNag.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>本来因为题目名叫cat，又是ping，以为是命令执行，但是尝试了<code>|</code>、<code>&amp;</code>等都报错，提示<code>Invalid URL</code>。看来题目的本意并不是命令执行。</p>
+<p>看了网上一个大佬的wp才知道这个是跟Django有关的。网站本身是用PHP写的，但是可能有Django的组成部分。</p>
+<p>在url里传参<code>%80</code>报错（URL编码是0~127，80的十六进制是128自然报错），从报错信息的目录结构可以知道这个是Django的项目：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/B8yf5MlTWg3JYun.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/P7XCfZDKoMn21sy.png" alt="image-20210106224024807" title="">
+                </div>
+                <div class="image-caption">image-20210106224024807</div>
+            </figure>
+
+<p>其他的没什么信息，又去看了看大佬的wp，发现这个原来还需要用PHP的@前缀：</p>
+<p>根据Django的目录特性，用@进行文件传递，对文件进行读取之后将内容传给url参数，如果有错误信息就可以得到回显，进而取得更多错误信息、帮助我们拿到flag。</p>
+<p>先看看settings.py：</p>
+<p>payload: <code>?url=@/opt/api/api/settings.py</code></p>
+<p>找到数据库文件的存放位置：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/zNeBO1gRmUxaijo.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看看这个文件：</p>
+<p>payload： <code>?url=@/opt/api/database.sqlite3</code></p>
+<p>搜索CTF得到flag。</p>
+<h2 id="ics-05"><a href="#ics-05" class="headerlink" title="ics-05"></a>ics-05</h2><p>进去之后随便点点发现了这个：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/Ay3ec2gBkN6HDiL.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>page=index，那应该可以用伪协议读出源码。</p>
+<p>payload:<code>page=php://filter/read=convert.base64-encode/resource=index.php</code></p>
+<p>源码到手，base64解码一下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">error_reporting(<span class="number">0</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="php">@session_start();</span></span><br><span class="line"><span class="php">posix_setuid(<span class="number">1000</span>);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"renderer"</span> <span class="attr">content</span>=<span class="string">"webkit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"layui/css/layui.css"</span> <span class="attr">media</span>=<span class="string">"all"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>è®¾å¤‡ç»´æŠ¤ä¸­å¿ƒ<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"layui-nav"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layui-nav-item layui-this"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?page=index"</span>&gt;</span>äº‘å¹³å�°è®¾å¤‡ç»´æŠ¤ä¸­å¿ƒ<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">class</span>=<span class="string">"layui-elem-field layui-field-title"</span> <span class="attr">style</span>=<span class="string">"margin-top: 30px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>è®¾å¤‡åˆ—è¡¨<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"layui-hide"</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"switchTpl"</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="comment">&lt;!-- è¿™é‡Œçš„ checked çš„çŠ¶æ€�å�ªæ˜¯æ¼”ç¤º --&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;d.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">lay-skin</span>=<span class="string">"switch"</span> <span class="attr">lay-text</span>=<span class="string">"å¼€|å</span></span></span></span></span><br><span class="line"><span class="actionscript">³<span class="string">" lay-filter="</span>checkDemo<span class="string">" &#123;&#123; d.id==1 0003 ? 'checked' : '' &#125;&#125;&gt;</span></span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"layui/layui.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    layui.use(<span class="string">'table'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> table = layui.table,</span></span><br><span class="line">            form = layui.form;</span><br><span class="line"></span><br><span class="line">        table.render(&#123;</span><br><span class="line"><span class="actionscript">            elem: <span class="string">'#test'</span>,</span></span><br><span class="line"><span class="actionscript">            url: <span class="string">'/somrthing.json'</span>,</span></span><br><span class="line">            cellMinWidth: 80,</span><br><span class="line">            cols: [</span><br><span class="line">                [</span><br><span class="line"><span class="actionscript">                    &#123; type: <span class="string">'numbers'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; type: <span class="string">'checkbox'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; field: <span class="string">'id'</span>, title: <span class="string">'ID'</span>, width: <span class="number">100</span>, unresize: <span class="literal">true</span>, sort: <span class="literal">true</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; field: <span class="string">'name'</span>, title: <span class="string">'è®¾å¤‡å��'</span>, templet: <span class="string">'#nameTpl'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; field: <span class="string">'area'</span>, title: <span class="string">'åŒºåŸŸ'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; field: <span class="string">'status'</span>, title: <span class="string">'ç»´æŠ¤çŠ¶æ€�'</span>, minWidth: <span class="number">120</span>, sort: <span class="literal">true</span> &#125;,</span></span><br><span class="line"><span class="actionscript">                     &#123; field: <span class="string">'check'</span>, title: <span class="string">'è®¾å¤‡å¼€å</span></span></span><br><span class="line">³', width: 85, templet: '#switchTpl', unresize: true &#125;</span><br><span class="line">                ]</span><br><span class="line">            ],</span><br><span class="line"><span class="actionscript">            page: <span class="literal">true</span></span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    layui.use(<span class="string">'element'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> element = layui.element; <span class="comment">//å¯¼èˆªçš„hoveræ•ˆæžœã€�äºŒçº§è�œå�•ç­‰åŠŸèƒ½ï¼Œéœ€è¦�ä¾�èµ–elementæ¨¡å�—</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//ç›‘å�¬å¯¼èˆªç‚¹å‡»</span></span></span><br><span class="line"><span class="actionscript">        element.on(<span class="string">'nav(demo)'</span>, <span class="function"><span class="keyword">function</span><span class="params">(elem)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//console.log(elem)</span></span></span><br><span class="line">            layer.msg(elem.text());</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"></span><br><span class="line"><span class="php">$page = $_GET[page];</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="keyword">if</span> (<span class="keyword">isset</span>($page)) &#123;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="keyword">if</span> (ctype_alnum($page)) &#123;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"lead"</span>&gt;</span><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $page; <span class="keyword">die</span>();<span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"></span><br><span class="line"><span class="php">&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"lead"</span>&gt;</span></span><br><span class="line">                <span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"></span><br><span class="line"><span class="php">                <span class="keyword">if</span> (strpos($page, <span class="string">'input'</span>) &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="php">                    <span class="keyword">die</span>();</span></span><br><span class="line"><span class="php">                &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php">                <span class="keyword">if</span> (strpos($page, <span class="string">'ta:text'</span>) &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="php">                    <span class="keyword">die</span>();</span></span><br><span class="line"><span class="php">                &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php">                <span class="keyword">if</span> (strpos($page, <span class="string">'text'</span>) &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="php">                    <span class="keyword">die</span>();</span></span><br><span class="line"><span class="php">                &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php">                <span class="keyword">if</span> ($page === <span class="string">'index.php'</span>) &#123;</span></span><br><span class="line"><span class="php">                    <span class="keyword">die</span>(<span class="string">'Ok'</span>);</span></span><br><span class="line"><span class="php">                &#125;</span></span><br><span class="line"><span class="php">                    <span class="keyword">include</span>($page);</span></span><br><span class="line"><span class="php">                    <span class="keyword">die</span>();</span></span><br><span class="line"><span class="php">                <span class="meta">?&gt;</span></span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="comment">//æ–¹ä¾¿çš„å®žçŽ°è¾“å</span></span></span><br><span class="line"><span class="php">¥è¾“å‡ºçš„åŠŸèƒ½,æ­£åœ¨å¼€å�‘ä¸­çš„åŠŸèƒ½ï¼Œå�ªèƒ½å†</span></span><br><span class="line"><span class="php">éƒ¨äººå‘˜æµ‹è¯•</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="keyword">if</span> ($_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="php">    <span class="keyword">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="php">    $pattern = $_GET[pat];</span></span><br><span class="line"><span class="php">    $replacement = $_GET[rep];</span></span><br><span class="line"><span class="php">    $subject = $_GET[sub];</span></span><br><span class="line"></span><br><span class="line"><span class="php">    <span class="keyword">if</span> (<span class="keyword">isset</span>($pattern) &amp;&amp; <span class="keyword">isset</span>($replacement) &amp;&amp; <span class="keyword">isset</span>($subject)) &#123;</span></span><br><span class="line"><span class="php">        preg_replace($pattern, $replacement, $subject);</span></span><br><span class="line"><span class="php">    &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">die</span>();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>发现了危险函数<strong>preg_replace()</strong>，存在命令执行漏洞。</p>
+<p>preg_replace( pattern , replacement , subject ) : 当pattern指明/e标志时 ,preg_replace()会将replacement部分的代码当作PHP代码执行 (简单的说就是将replacement参数值放入eval()结构中)</p>
+<p>payload:<code>/index.php?pat=/test/e&amp;rep=phpinfo()&amp;sub=test</code>，这里还需要一个XFF绕过（至于为什么请看源码），可以用BurpSuite的Repeater来测试：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/JeRE8j7oHXBgvqP.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>最终拿到flag的payload：<code>/index.php?pat=/test/e&amp;rep=system(&#39;cat%20./s3chahahaDir/flag/flag.php&#39;)&amp;sub=test</code>：</p>
+<h2 id="Triangle"><a href="#Triangle" class="headerlink" title="Triangle"></a>Triangle</h2><p>进去之后先读一波JavaScript源码，源码的格式比较乱，可以用Chrome自带的代码格式化功能格式化一下：</p>
+<p>util.js</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test_pw</span>(<span class="params">e, _</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> t = stoh(atob(getBase64Image(<span class="string">"eye"</span>)))</span><br><span class="line">      , r = <span class="number">4096</span></span><br><span class="line">      , m = <span class="number">8192</span></span><br><span class="line">      , R = <span class="number">12288</span></span><br><span class="line">      , a = <span class="keyword">new</span> uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R9, m),</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R10, R),</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R8, _.length),</span><br><span class="line">    a.mem_map(r, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> o = <span class="number">0</span>; o &lt; o1.length; o++)</span><br><span class="line">        a.mem_write(r + o, [t[o1[o]]]);</span><br><span class="line">    a.mem_map(m, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    a.mem_write(m, stoh(_)),</span><br><span class="line">    a.mem_map(R, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    a.mem_write(R, stoh(e));</span><br><span class="line">    <span class="keyword">var</span> u = r</span><br><span class="line">      , c = r + o1.length;</span><br><span class="line">    <span class="keyword">return</span> a.emu_start(u, c, <span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">    a.reg_read_i32(uc.ARM_REG_R5)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enc_pw</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _ = stoh(atob(getBase64Image(<span class="string">"frei"</span>)))</span><br><span class="line">      , t = <span class="number">4096</span></span><br><span class="line">      , r = <span class="number">8192</span></span><br><span class="line">      , m = <span class="number">12288</span></span><br><span class="line">      , R = <span class="keyword">new</span> uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R8, r),</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R9, m),</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R10, e.length),</span><br><span class="line">    R.mem_map(t, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="number">0</span>; a &lt; o2.length; a++)</span><br><span class="line">        R.mem_write(t + a, [_[o2[a]]]);</span><br><span class="line">    R.mem_map(r, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    R.mem_write(r, stoh(e)),</span><br><span class="line">    R.mem_map(m, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">var</span> o = t</span><br><span class="line">      , u = t + o2.length;</span><br><span class="line">    <span class="keyword">return</span> R.emu_start(o, u, <span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">    htos(R.mem_read(m, e.length))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_pw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = stoh(atob(getBase64Image(<span class="string">"templar"</span>))), _ = <span class="string">""</span>, t = <span class="number">0</span>; t &lt; o3.length; t++)</span><br><span class="line">        _ += <span class="built_in">String</span>.fromCharCode(e[o3[t]]);</span><br><span class="line">    <span class="keyword">return</span> _</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>secret.js</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test_pw</span>(<span class="params">e, _</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> t = stoh(atob(getBase64Image(<span class="string">"eye"</span>)))</span><br><span class="line">      , r = <span class="number">4096</span></span><br><span class="line">      , m = <span class="number">8192</span></span><br><span class="line">      , R = <span class="number">12288</span></span><br><span class="line">      , a = <span class="keyword">new</span> uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R9, m),</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R10, R),</span><br><span class="line">    a.reg_write_i32(uc.ARM_REG_R8, _.length),</span><br><span class="line">    a.mem_map(r, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> o = <span class="number">0</span>; o &lt; o1.length; o++)</span><br><span class="line">        a.mem_write(r + o, [t[o1[o]]]);</span><br><span class="line">    a.mem_map(m, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    a.mem_write(m, stoh(_)),</span><br><span class="line">    a.mem_map(R, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    a.mem_write(R, stoh(e));</span><br><span class="line">    <span class="keyword">var</span> u = r</span><br><span class="line">      , c = r + o1.length;</span><br><span class="line">    <span class="keyword">return</span> a.emu_start(u, c, <span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">    a.reg_read_i32(uc.ARM_REG_R5)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enc_pw</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _ = stoh(atob(getBase64Image(<span class="string">"frei"</span>)))</span><br><span class="line">      , t = <span class="number">4096</span></span><br><span class="line">      , r = <span class="number">8192</span></span><br><span class="line">      , m = <span class="number">12288</span></span><br><span class="line">      , R = <span class="keyword">new</span> uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R8, r),</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R9, m),</span><br><span class="line">    R.reg_write_i32(uc.ARM_REG_R10, e.length),</span><br><span class="line">    R.mem_map(t, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="number">0</span>; a &lt; o2.length; a++)</span><br><span class="line">        R.mem_write(t + a, [_[o2[a]]]);</span><br><span class="line">    R.mem_map(r, <span class="number">4096</span>, uc.PROT_ALL),</span><br><span class="line">    R.mem_write(r, stoh(e)),</span><br><span class="line">    R.mem_map(m, <span class="number">4096</span>, uc.PROT_ALL);</span><br><span class="line">    <span class="keyword">var</span> o = t</span><br><span class="line">      , u = t + o2.length;</span><br><span class="line">    <span class="keyword">return</span> R.emu_start(o, u, <span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">    htos(R.mem_read(m, e.length))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_pw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = stoh(atob(getBase64Image(<span class="string">"templar"</span>))), _ = <span class="string">""</span>, t = <span class="number">0</span>; t &lt; o3.length; t++)</span><br><span class="line">        _ += <span class="built_in">String</span>.fromCharCode(e[o3[t]]);</span><br><span class="line">    <span class="keyword">return</span> _</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>unicorn.js是一个JavaScript框架的源码，暂时不去管它。</p>
+<p>我们把<code>get_pw()</code>在console里执行一下得到返回值：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/ElFStwzKPhqWsmR.png" alt="image-20210106224107993" title="">
+                </div>
+                <div class="image-caption">image-20210106224107993</div>
+            </figure>
+
+<p>执行enc_pw和test_pw得到返回值：</p>
+<p>enc_pw: <code>\x08\x00\xa0\xe1\x09\x10\xa0\xe1\x0a\x20\xa0\xe1\x00\x30\xa0\xe3\x00\x50\xa0\xe3\x00\x40\xd0\xe5\x01\x00\x55\xe3\x01\x00\x00\x1a\x03\x60\x03\xe2\x06\x40\x84\xe0\x06\x40\x84\xe2\x01\x50\x04\xe2\x00\x40\xc1\xe5\x01\x00\x80\xe2\x01\x10\x81\xe2\x01\x30\x83\xe2\x02\x00\x53\xe1\xf2\xff\xff\xba\x00\x00\xa0\xe3\x00\x10\xa0\xe3\x00\x20\xa0\xe3\x00\x30\xa0\xe3\x00\x40\xa0\xe3\x00\x50\xa0\xe3\x00\x60\xa0\xe3\x00\x70\xa0\xe3\x00\x90\xa0\xe3\x00\xa0\xa0\xe3</code></p>
+<p>test_pw: <code>\x09\x00\xa0\xe1\x0a\x10\xa0\xe1\x08\x30\xa0\xe1\x00\x40\xa0\xe3\x00\x50\xa0\xe3\x00\xc0\xa0\xe3\x00\x20\xd0\xe5\x00\x60\xd1\xe5\x05\x60\x86\xe2\x01\xc0\x04\xe2\x00\x00\x5c\xe3\x00\x00\x00\x0a\x03\x60\x46\xe2\x06\x00\x52\xe1\x05\x00\x00\x1a\x01\x00\x80\xe2\x01\x10\x81\xe2\x01\x40\x84\xe2\x03\x00\x54\xe1\xf1\xff\xff\xba\x01\x50\xa0\xe3\x00\x00\xa0\xe3\x00\x10\xa0\xe3\x00\x20\xa0\xe3\x00\x30\xa0\xe3\x00\x40\xa0\xe3\x00\x60\xa0\xe3\x00\x70\xa0\xe3\x00\x80\xa0\xe3\x00\x90\xa0\xe3\x00\xa0\xa0\xe3\x00\xc0\xa0\xe3</code></p>
+<p>直接转换得到的是乱码，卡了一会儿后才发现js源码中出现了“ARM”，同时Unicorn.js里也有不少“ARM”：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/06/es9oQD3hEM4baT7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>百度了一下发现是一种CPU，并找到一个十六进制与ARM代码的转换器：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Farmconverter.com%2Fhextoarm%2F" target="_blank" rel="noopener">http://armconverter.com/hextoarm/</a></p>
+<p>把text_pw和enc_pw得到的十六进制字符串去掉前面的\x并用转换器转换一下，得到以下汇编代码：</p>
+<p>enc_pw:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">MOV R0, R8</span><br><span class="line">MOV R1, SB</span><br><span class="line">MOV R2, SL</span><br><span class="line">MOV R3, #0</span><br><span class="line">MOV R5, #0</span><br><span class="line">LDRB    R4, [R0]</span><br><span class="line">CMP R5, #1</span><br><span class="line">BNE #0x28</span><br><span class="line">AND R6, R3, #3</span><br><span class="line">ADD R4, R4, R6</span><br><span class="line">ADD R4, R4, #6</span><br><span class="line">AND R5, R4, #1</span><br><span class="line">STRB    R4, [R1]</span><br><span class="line">ADD R0, R0, #1</span><br><span class="line">ADD R1, R1, #1</span><br><span class="line">ADD R3, R3, #1</span><br><span class="line">CMP R3, R2</span><br><span class="line">BLT #0x14</span><br><span class="line">MOV R0, #0</span><br><span class="line">MOV R1, #0</span><br><span class="line">MOV R2, #0</span><br><span class="line">MOV R3, #0</span><br><span class="line">MOV R4, #0</span><br><span class="line">MOV R5, #0</span><br><span class="line">MOV R6, #0</span><br><span class="line">MOV R7, #0</span><br><span class="line">MOV SB, #0</span><br><span class="line">MOV SL, #0</span><br></pre></td></tr></table></figure></div>
+
+<p>test_pw:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">MOV R0, SB</span><br><span class="line">MOV R1, SL</span><br><span class="line">MOV R3, R8</span><br><span class="line">MOV R4, #0</span><br><span class="line">MOV R5, #0</span><br><span class="line">MOV IP, #0</span><br><span class="line">LDRB  R2, [R0]</span><br><span class="line">LDRB  R6, [R1]</span><br><span class="line">ADD R6, R6, #5</span><br><span class="line">AND IP, R4, #1</span><br><span class="line">CMP IP, #0           </span><br><span class="line">BEQ #0x34</span><br><span class="line">SUB R6, R6, #3</span><br><span class="line">CMP R2, R6</span><br><span class="line">BNE #0x54</span><br><span class="line">ADD R0, R0, #1</span><br><span class="line">ADD R1, R1, #1</span><br><span class="line">ADD R4, R4, #1</span><br><span class="line">CMP R4, R3</span><br><span class="line">BLT #0x18</span><br><span class="line">MOV R5, #1</span><br><span class="line">MOV R0, #0</span><br><span class="line">MOV R1, #0</span><br><span class="line">MOV R2, #0</span><br><span class="line">MOV R3, #0</span><br><span class="line">MOV R4, #0</span><br><span class="line">MOV R6, #0</span><br><span class="line">MOV R7, #0</span><br><span class="line">MOV R8, #0</span><br><span class="line">MOV SB, #0</span><br><span class="line">MOV SL, #0</span><br><span class="line">MOV IP, #0</span><br></pre></td></tr></table></figure></div>
+
+<p>完全不懂汇编的本渣渣表示彻底懵了，难道Web和逆向都精通才是未来的趋势吗？？？</p>
+<p>这其实是道逆向题。（雾）</p>
+<p>于是只好去搜了wp，发现上面的汇编码用Python写是这样的：</p>
+<p>enc_pw：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enc_pw</span><span class="params">(s)</span>:</span></span><br><span class="line">  res = <span class="string">''</span></span><br><span class="line">  f = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(s):</span><br><span class="line">    c = ord(c)</span><br><span class="line">    <span class="keyword">if</span> f == <span class="number">1</span>:</span><br><span class="line">      c += i &amp; <span class="number">3</span></span><br><span class="line">    c += <span class="number">6</span></span><br><span class="line">    f = c &amp; <span class="number">1</span></span><br><span class="line">    res += chr(c)</span><br><span class="line">  <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div>
+
+<p>test_pw：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_pw</span><span class="params">(s, t)</span>:</span></span><br><span class="line">  <span class="keyword">for</span> i, (c, d) <span class="keyword">in</span> enumerate(zip(s, t)):</span><br><span class="line">    c, d = ord(c), ord(d)</span><br><span class="line">    c += <span class="number">5</span></span><br><span class="line">    <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">      c -= <span class="number">3</span></span><br><span class="line">    <span class="keyword">if</span> c != d:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></div>
+
+<p>解密脚本：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enc_pw</span><span class="params">(s)</span>:</span></span><br><span class="line">  res = <span class="string">''</span></span><br><span class="line">  f = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(s):</span><br><span class="line">    c = ord(c)</span><br><span class="line">    <span class="keyword">if</span> f == <span class="number">1</span>:</span><br><span class="line">      c += i &amp; <span class="number">3</span></span><br><span class="line">    c += <span class="number">6</span></span><br><span class="line">    f = c &amp; <span class="number">1</span></span><br><span class="line">    res += chr(c)</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">encrypted = <span class="string">'XYzaSAAX_PBssisodjsal_sSUVWZYYYb'</span></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(encrypted):</span><br><span class="line">  c = ord(c)</span><br><span class="line">  c -= <span class="number">5</span></span><br><span class="line">  <span class="keyword">if</span> i &amp; <span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">    c += <span class="number">3</span></span><br><span class="line">  <span class="keyword">for</span> d <span class="keyword">in</span> string.printable:</span><br><span class="line">    <span class="keyword">if</span> enc_pw(flag + d)[i] == chr(c):</span><br><span class="line">      flag += d</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">print</span> flag</span><br></pre></td></tr></table></figure></div>
+
+<p>跑一下这个脚本得到flag</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T02:59:27.637Z" itemprop="dateUpdated">2021-01-11 10:59:27</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&title=《攻防世界WEB》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&title=《攻防世界WEB》 — Mr.Guo&source=网安实验被迫写WEB!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《攻防世界WEB》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：密码学课程设计报告
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/06/%5B12.20%5D%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：XCTF-华为专场">下一篇：XCTF-华为专场</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&title=《攻防世界WEB》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&title=《攻防世界WEB》 — Mr.Guo&source=网安实验被迫写WEB!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《攻防世界WEB》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

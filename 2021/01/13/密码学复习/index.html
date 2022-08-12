@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>密码学复习总结 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="AI">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="图书馆学不进去就赶紧写个总结水篇博客吧！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学复习总结">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="图书馆学不进去就赶紧写个总结水篇博客吧！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/01/13/FtmKHajRQqOvJyz.png">
+<meta property="article:published_time" content="2021-01-13T00:43:31.463Z">
+<meta property="article:modified_time" content="2021-01-25T03:50:57.069Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/13/FtmKHajRQqOvJyz.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">密码学复习总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章-密码学概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章 密码学概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三章-古典密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">第三章 古典密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四章-分组密码"><span class="post-toc-number">3.</span> <span class="post-toc-text">第四章 分组密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第六章-哈希函数"><span class="post-toc-number">4.</span> <span class="post-toc-text">第六章 哈希函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第七章-公钥密码"><span class="post-toc-number">5.</span> <span class="post-toc-text">第七章 公钥密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第八章-数字签名"><span class="post-toc-number">6.</span> <span class="post-toc-text">第八章 数字签名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第九章-密码协议"><span class="post-toc-number">7.</span> <span class="post-toc-text">第九章 密码协议</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-密码学复习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">密码学复习总结</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-13 08:43:31" datetime="2021-01-13T00:43:31.463Z"  itemprop="datePublished">2021-01-13</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Study/">Study</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">13</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>图书馆学不进去就赶紧写个总结水篇博客吧！</p>
+<a id="more"></a>
+
+<h2 id="第一章-密码学概述"><a href="#第一章-密码学概述" class="headerlink" title="第一章 密码学概述"></a>第一章 密码学概述</h2><p>密码学：密码是按特定法则编成、用以对通信双方的信息进行明文-&gt;密文变换的符号。或者说，密码是隐蔽了真实内容的符号序列。</p>
+<p>是结合数学、计算机科学、电子与通讯等诸多学科于一体的交叉学科，是研究信息系统安全保密的一门科学。</p>
+<p>密码体制，也称密码系统(Cryptosystem)，由五部分组成：明文空间M，密文空间C，密钥空间K，加密算法E，解密算法D 。</p>
+<h2 id="第三章-古典密码"><a href="#第三章-古典密码" class="headerlink" title="第三章 古典密码"></a>第三章 古典密码</h2><p>仿射密码：选取𝑘1，𝑘2两个参数，其中gcd⁡(𝑘1, 26)＝1<br>加密变换：  𝐶＝ 𝑘1∗𝑚＋𝑘2 𝑚𝑜𝑑 26解密变换：  𝑚＝ (𝐶−𝑘2)∗〖𝑘1〗^(−1) 𝑚𝑜𝑑 26</p>
+<h2 id="第四章-分组密码"><a href="#第四章-分组密码" class="headerlink" title="第四章 分组密码"></a>第四章 分组密码</h2><p>分组密码的设计要求：</p>
+<p>分组长度要足够大:假设𝑛为分组长度，则要使2𝑛足够大，防止明文穷举攻击<br>密钥量要足够大:防止密钥穷举攻击<br>密码变换要足够复杂:使攻击者除穷举攻击外，找不到其他简洁的数学攻击方法<br>加密和解密运算简单:便于软件和硬件的实现</p>
+<p>无数据扩展和压缩</p>
+<p>扩散原则（移位）：密钥或明文的每一比特变化影响密文的许多比特的变化，以便隐蔽明文的统计特性(形象的称为雪崩效应)</p>
+<p>混淆原则（替代）：又称混乱原则，指密钥和明文以及密文之间的依赖关系尽可能的复杂化，以防通过统计分析法进行破译(如使用非线性变换)</p>
+<p>乘积密码体制</p>
+<p>Feistel网络的优点在于加解密相似性，它只需要一个逆转的密钥编排算法，其加解密部分几乎完全相同</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/13/FtmKHajRQqOvJyz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>SP网络是由多重S变换和P变换组合成的变换网络<br>基本操作是S变换(代换)和P变换(置换)，前者称为S盒，后者称为P盒<br>S盒起到混乱作用，P盒起到扩散的作用</p>
+<p>DES轮函数F：扩展置换(E盒)，密钥加，非线性代换(S盒)，线性置换(P盒)</p>
+<p>加密方程：<br>L0R0 ←IP(&lt;64位明文&gt;)<br>Ln←Rn-1<br>Rn← Ln-1+(Rn-1,Kn)<br>&lt;64位密文&gt;← IP-1(R16L16)</p>
+<p>解密方程：<br>R16L16 ←IP(&lt;64位密文&gt;)<br>Rn-1←Ln<br>Ln-1← Rn+(Ln,Kn)<br>&lt;64位明文&gt;← IP-1(L0R0)</p>
+<p>S盒设计准则：具有良好的非线性(输出的每个比特与全部输入比特有关)<br>每一行包括所有16种4位二进制<br>两个输入相差1比特时，输出相差2比特<br>如果两个输入刚好在中间两个比特上不同，则输出至少有两个比特不同<br>如果两个输入前两位不同而最后两位相同，则输出一定不同<br>相差6比特的输入共有32对，这32对中有不超过8对的输出相同</p>
+<p>DES子密钥是从初始密钥(种子密钥)产生的<br>种子密钥𝐾为64位，其中有8位用于奇偶校验，分别位于第8，16，24，32，40，48，56，64位<br>奇偶校验位用于检查密钥𝐾在产生和分配以及存储过程中可能发生的错误<br>DES的密钥实际上只有56位</p>
+<p>DES的安全性：互补性：对明文𝑚逐位取补，记为𝑚 ̅，密钥𝐾逐位取补，记为𝑘 ̅  ， 若𝑐=𝐸𝑘(𝑚)，则有𝑐 ̅=𝐸𝑘 ̅  (𝑚 ̅) ，称为算法上的互补性<br>由算法中两次异或运算的配置决定：两次异或运算一次在S盒之前，一次在P盒置换之后若对DES 的明文和密钥同时取补，则扩展运算E的输出和子密钥产生器的输出也都取补，因而经异或运算后的输出和未取补时的输出一样，即到达S盒的输入数据未变，输出自然也不变，但经第二个异或运算时，由于左边数据已取补，因而输出也就取补。弱密钥：给定初始密钥𝐾生成子密钥时，将种子密钥分成两个部分，如果𝐾使得这两部分的每一部分的所有位置全为0或1，则经子密钥产生器产生的各个子密钥都相同，即𝐾1=𝐾2=…=𝐾16，则称密钥𝐾为弱密钥（共有4个）若𝐾为弱密钥，则对任意的64比特信息有： 𝑬𝒌(𝑬𝒌(𝒎))= 𝒎  和  𝑫𝒌(𝑫𝒌(𝒎))= 𝒎半弱密钥：把明文加密成相同的密文，即存在两个不同的密钥𝑘和𝑘′,使得𝐸𝑘 (𝑚)=𝐸(𝑘^′ ) (𝑚)具有下述性质：若𝑘和𝑘′为一对弱密钥，𝑚为明文组，则有：𝐸(𝑘^′ ) (𝐸𝑘 (𝑚))=𝐸𝑘 (𝐸_(𝑘^′ ) (𝑚))=𝑚迭代轮数，密钥的长度        </p>
+<p>字节代换行移位列混合轮密钥加</p>
+<p>乘 0x01 -&gt; 不变<br>乘 0x02最高位为 0，直接左移一位 最高位为 1，左移一位后与0001 1011 异或<br>乘 0x03，0000 0011= 0000 0010⊕0000 0001<br>乘以 0x03 可以拆为分别称为 0x01 和 0x02，再将结果异或.</p>
+<p>AES和DES相似之处：二者的轮函数都是由三层构成，非线性层、线性混合层、子密钥异或，只是顺序不同<br>AES的子密钥异或对应于DES中S盒之前的子密钥异或<br>AES的列混合运算的目的是让不同的字节相互影响，而DES中F函数的输出与左边一半数据相加也有类似的效果<br>AES的非线性运算是字节代替(ByteSub)，对应于DES中惟一的非线性运算S盒<br>行移位运算保证了每一行的字节不仅仅影响其它行对应的字节，而且影响其它行所有的字节，这与DES中置换P相似</p>
+<p>AES和DES不同之处：AES的密钥长度(128位、192位、256位)是可变的，而DES的密钥长度固定为56位<br>DES是面向比特的运算，AES是面向字节的运算<br>AES的加密运算和解密运算不一致，因而加密器不能同时用作解密器，DES则无此限制</p>
+<p>电码本模式(ECB ) 密文中数据出了错，解密事会使得相应的整个明文分组解密错误，不影响其他密文块的解密<br>密码分组链接模式(CBC ) 没有明文错误扩散 只有一个分组错误 解密分组影响对应的解密明文分组和其后的一个</p>
+<p>密码反馈模式(CFB) 明文的一个错误影响所有后面的密文但解密的明文只有一组分组错误 密文里单独的一个错误会引起解密后的对应明文的一个错误，错误进入移位寄存器，导致加密输出错误，知道该错误从寄存器另一端移出 8比特CFB中，密文1比特错误，解密后明文9比特错误</p>
+<p>输出反馈模式(OFB)   1对1错误 失去同步是致命的</p>
+<p>计数器模式(CTR) 并行性 硬件效率 软件效率 预处理 随机访问 可证明安全性 简单性</p>
+<h2 id="第六章-哈希函数"><a href="#第六章-哈希函数" class="headerlink" title="第六章 哈希函数"></a>第六章 哈希函数</h2><p>Hash函数的概念</p>
+<p>•Hash函数(杂凑函数/散列函数)是将任意长的消息M变换为较短的、固定长度的值H(M)的不可逆的单向密码体制</p>
+<p>•H(M)称为杂凑值、杂凑码或消息摘要</p>
+<p>•H(M)打上了输入串的烙印，又称为<strong>数字指纹</strong>(Digital FingerPrint)</p>
+<p>Hash函数(杂凑函数)的基本特征：</p>
+<p>•<strong>算法公开，不需要密钥</strong></p>
+<p>•<strong>数据压缩：</strong>可将<strong>任意长度的输入</strong>数据变换成一个<strong>固定长度的输出</strong></p>
+<p>•<strong>易于计算：</strong>对任何给定的m，h(m)易于计算</p>
+<p>•单向性（抗原像性，Pre-image Resistance）：给定消息的散列值h(m)，要得到消息m在计算上不可行、</p>
+<p> 函数 <em>y</em>=<em>H</em>(<em>x</em>)满足</p>
+<p>I.将任意长度的比特串<em>x</em>压缩成为固定长度的比特串<em>y</em></p>
+<p>II.已知<em>x</em>，计算<em>y</em>=<em>H</em>(<em>x</em>)很容易；已知<em>y</em>，找一个<em>x</em>满足<em>y</em>=<em>H</em>(<em>x</em>)在计算上不可行——单向性</p>
+<p>III.找(<em>x</em>1，<em>x</em>2)，<em>x</em>1≠<em>x</em>2，满足<em>H</em>(<em>x</em>1)= <em>H</em>(<em>x</em>2)在计算上是不可行的<em>———</em>抗碰撞性</p>
+<p>Hash函数必须满足以下安全性要求：</p>
+<p>抗弱碰撞性；抗第二原像； 对任意给定的消息m，寻找与m不同的消息m’，使得h(m)=h(m’)在计算上不可行</p>
+<p>抗强碰撞性（Strong Collision Resistance) ： 寻找任意两个不同的消息m和m’,使得h(m)=h(m’)在计算上不可行</p>
+<p>消息填充 </p>
+<p>•步骤1(填充消息):使消息长度模512=448</p>
+<p>•如果消息长度模512恰等于448，增加512个填充比特。即填充的个数为1~512</p>
+<p>•填充方法：第1比特为1，其余全部为0</p>
+<p>•步骤2(补足长度): 将消息长度转换为64比特的数值</p>
+<p>•如果长度超过64比特所能表示的数据长度，值保留最后64比特</p>
+<p>•添加到填充数据后面，使数据为512比特的整数倍</p>
+<p>•512比特按32比特分为16组。最终输出 128 位（即 16 字节，32 个十六进制位）的消息摘要。过程为 4 轮，每轮 16 步，共 64 步。</p>
+<h2 id="第七章-公钥密码"><a href="#第七章-公钥密码" class="headerlink" title="第七章 公钥密码"></a>第七章 公钥密码</h2><p>密钥的生成</p>
+<ol>
+<li>选择两个大素数 p和q,（p≠q，需要保密，步骤4以后建议销毁）</li>
+</ol>
+<ol start="2">
+<li><p>计算n=p×q， j(n)=(p－1)×(q－1)</p>
+</li>
+<li><p>选择整数 e 使 (j(n)，e) =1,  1&lt;e&lt; j(n) </p>
+</li>
+<li><p>计算d，使d=e－1 mod j(n),</p>
+</li>
+</ol>
+<p>​    得到：公钥为{e, n}； 私钥为{d}</p>
+<p>加密(用e，n)： 明文M&lt;n， 密文C=M^e (mod n).</p>
+<p> 解密(用d，n)： 密文C， 明文M =C^d (mod n)</p>
+<p>1.若gcd⁡(𝒎,𝒏)=𝟏,<br>𝐶𝑑 𝑚𝑜𝑑 𝑛=(𝒎^𝒆)𝑑 𝑚𝑜𝑑 𝑛 =𝒎^𝒆𝒅  𝑚𝑜𝑑 𝑛≡𝑚 𝑚𝑜𝑑 𝑛<br>2.若gcd⁡(𝒎,𝒏)&gt;𝟏,由于𝒏=𝒑𝒒,所以gcd⁡(𝒎,𝒏)必含𝒑,𝒒之一，设gcd⁡(𝒎,𝒏)=𝒑或𝒎=𝒄𝒑, 𝟏≤𝒄≤𝒒,由欧拉定理得：<br>𝒎^(𝝋(𝒒))=𝟏(𝒎𝒐𝒅 𝒒).<br>𝒎^(𝒒−𝟏)(𝒑−𝟏)𝒌=𝟏(𝒎𝒐𝒅 𝒒)<br>即 𝒎^(𝒌𝝋(n))=𝟏(𝒎𝒐𝒅 𝒒) 或 𝟏=𝒎^(𝒌𝝋(n))+𝒉𝒒<br>由假定𝒎=𝒄𝒑得：<br>𝒎=𝒎^(𝒌𝝋(n)+𝟏)+𝒄𝒉𝒑𝒒=𝒎^(𝒌𝝋(n)+𝟏)+𝒂𝒏 (其中𝒂=𝒄𝒉),<br>即𝒎^(𝒌𝝋(n)+𝟏)=𝒎 (𝒎𝒐𝒅 𝒏)</p>
+<p>共模攻击：假设𝑚是明文，两用户的公钥分别是𝑒1和𝑒2，且(𝑒1,𝑒2)=1，共同的模数𝑁，两个密文分别为：<br>𝑐_1≡𝑚^(𝑒_1 )      𝑚𝑜𝑑  𝑁<br>𝑐_2≡𝑚^(𝑒_2 )      𝑚𝑜𝑑  𝑁<br>攻击者知道𝑁，𝑒1，𝑒2，𝑐1和𝑐2，可如下恢复明文𝑚<br>(𝑒1,𝑒2)=1，由欧几里德算法可找出𝑟,𝑠满足𝑟𝑒1＋𝑠𝑒2＝1。假定𝑟是负数，那么<br>(𝒄𝟏)^(−𝟏)^(−𝒓)∙(𝒄𝟐)^𝒔=𝒎^(𝒓𝒆𝟏＋𝒔𝒆𝟐)≡𝒎   𝒎𝒐𝒅 𝑵</p>
+<p>低指数攻击：小的公钥可加快加密的速度，但过小的公钥易受到攻击</p>
+<p>如果3个用户都使用3作为公钥，对同一个明文m加密，则c1＝m3 (mod n1)，c2＝m3 (mod n2)，c3＝m3 (mod n3)， gcd⁡(n1,n2,n3)=1 ，且m＜n1，m＜n2，m＜n3</p>
+<p>由中国剩余定理可从c1，c2，c3计算出c，且c＝m3 mod (n1n2n3 )，显然m3＜n1n2n3，所以m＝c^(1/3)</p>
+<p>1.<strong>密钥的生成</strong></p>
+<p>  选取大素数p，g∈〖Z_p〗^∗是一个生成元，p,g 作为系统参数所有用户共享</p>
+<p>  系统中每个用户U都随机挑选整数x，2≤x≤ p－2，并计算：</p>
+<p>​             y=gx(mod p)，</p>
+<p>  y, p, g作为用户U的公钥，而x作为用户U的私钥</p>
+<p>2.<strong>加密：</strong></p>
+<p>1.用户A先把明文M编码为一个在 0 到p－1之间的整数m ；</p>
+<p>2.用户A挑选一个秘密随机数 r (2≤ r ≤ p－2 )并计算:c1＝ g^r (mod p)；</p>
+<p>​              c2 ＝ m∙y^r(mod p)</p>
+<p>3.用户A把二元组 (c1,c2)作为密文传送给用户B</p>
+<p>解密：<br>  用户B接收到密文二元组(𝑐1 ,𝑐2)后，做解密计算：<br>𝒎=𝒄𝟐∙(𝒄𝟏^𝒙 )^(−𝟏)𝒎𝒐𝒅 𝒑</p>
+<p>正确性：C2.(C1^x)^(-1) (modp)=(y^r m)(^rx)^(-1) (mod p)<br>=(g^rx m)g^-rx (mod p)<br>=m (mod p)</p>
+<h2 id="第八章-数字签名"><a href="#第八章-数字签名" class="headerlink" title="第八章 数字签名"></a>第八章 数字签名</h2><p>2、利用RSA密码实现数字签名：<br>⑴签名算法<br>设M为明文，KeA =&lt;e,n&gt;是A的公开加密钥，<br>KdA =&lt;d,p,q,φ(n)&gt;是A的保密的解密钥,<br>则A对M的签名过程是，<br>SA = D(M,KdA) =(M^d) modn SA 便是A对M的签名。<br> 验证签名的过程是，<br>E(SA ,KeA)=(M^d)^e modn = M</p>
+<p>安全性：</p>
+<p>对RSA数字签名的攻击：利用已有的签名进行攻击:此时：S1＝(HASH(M1))d mod n ，S2＝(HASH(M2))d mod n<br>而，(HASH(M1))d (HASH(M2))d≠(HASH(M1M2))d mod n<br> 所以：S3≠S1S2 ，于是不能由S1和S2计算出A对M3的签名。</p>
+<p>𝑯(𝑴)的另一个作用—加快签名速度<br>对整个消息签名，由于公钥体制速度比较慢，当消息比较长时，签名与验证过程都会相当慢<br>对消息的Hash值签名，则无论消息多长，签名都只与Hash值的长度有关</p>
+<p>ElGamal签名过程：</p>
+<p>1.系统初始化过程：公钥为(p,g,y)，私钥为x (1≤x＜p-1)，其中y≡g^xmod p</p>
+<p>2.签名过程：给定消息M，签名者如下计算：</p>
+<p>  ①选择随机数k∈Zp∗，且k与(p－1)互素；</p>
+<p>  ②首先计算消息M的哈希值H(M)，然后计算:</p>
+<p>​           r≡g^k(mod p)；</p>
+<p>​           s≡(H(M)-xr) k^(-1)  (mod p－1) </p>
+<p>  ③ 将(r，s)作为签名，与M一起发送给接收方</p>
+<p>3.验证签名过程:接收方收到M与其签名(r,s)后：</p>
+<p>​    ① 计算消息M的Hash值H(M)；</p>
+<p>​    ② 验证公式 </p>
+<p>y^r r^s≡g^(H(M)) mod p</p>
+<p>   成立则确认(r,s)为有效签名，否则认为签名是伪造的</p>
+<p>安全性：</p>
+<p>非确定性数字签名算法，同一消息M的签名依赖于随机数k；安全性基于有限域上计算离散对数的困难性；随机数k不能被泄露(已知k可以计x)  x＝(m-ks)^(r-1)mod(p-1)；随机数k不能被重复使用（泄露x）；不使用Hash函数则易受到攻击攻击者可以选取任一整数对(𝑢,𝑣)，满足  𝑔𝑐𝑑⁡(𝑣，𝑝−1) = 1计算  𝑟 = 𝑔^𝑢𝑦^𝑣 𝑚𝑜𝑑 𝑝 = 𝑔^(𝑢+𝑥𝑣) 𝑚𝑜𝑑 𝑝  和  𝑠 = −𝑟𝑣^(−1)  𝑚𝑜𝑑 (𝑝−1)，则(𝑟,𝑠)就是对消息𝑚 = 𝑠𝑢 𝑚𝑜𝑑 𝑝的一个有效签名因为𝑘= (𝑚−𝑥𝑟)𝑠^(−1)= (𝑠𝑢−𝑥𝑟)𝑠^(−1)= (𝑢+𝑥𝑣)   𝑚𝑜𝑑 (𝑝−1)，所以有  𝑟 = 𝑔^𝑘 =𝑔^(𝑢+𝑥𝑣) 𝑚𝑜𝑑 𝑝</p>
+<h2 id="第九章-密码协议"><a href="#第九章-密码协议" class="headerlink" title="第九章 密码协议"></a>第九章 密码协议</h2><p>比特承诺 安全性质：1.隐蔽性:Alice像Bob承诺时,Bob不可能获得承诺消息的任何信息。2.绑定性：一段时间后A能够像B证明她所承诺的消息，但是A不能欺骗B，也就是说，在这段时间里A不能改变承诺的消息。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-25T03:50:57.069Z" itemprop="dateUpdated">2021-01-25 11:50:57</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&title=《密码学复习总结》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&title=《密码学复习总结》 — Mr.Guo&source=图书馆学不进去就赶紧写个总结水篇博客吧！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《密码学复习总结》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2022/08/11/HVV%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：HVV工作总结
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/11/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：密码学课程设计报告">下一篇：密码学课程设计报告</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&title=《密码学复习总结》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&title=《密码学复习总结》 — Mr.Guo&source=图书馆学不进去就赶紧写个总结水篇博客吧！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《密码学复习总结》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/13/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>XCTF进阶区 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="实验课继续水一水！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF进阶区">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="实验课继续水一水！">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/bJN1qua8BT7ZoQU.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/1XKgsRHWxOdUJlT.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/fbkSXxUCZ3qDNre.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/VL6hPGlkgJOniCS.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/rc7Qq3TVMxEvPYg.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/GqYQuOnfXgdxVBm.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/5FdQxNc41jBKUIo.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/QHpRUCcTFz9ywOS.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/TP2bDEoU5VOjqwv.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/XjDhKBWLoemAa4p.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/9eN7nqHd6LvksVf.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/DFOehNzBxX2aAy6.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/01/39EGHuigIXvSpCk.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/JCQVIn2gzx43PST.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/veyU4frF1wlQ8Nq.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/D7SrYZMOXL1J6fl.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/3feh4s7lUoCFDaH.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/j4fGlDYMrcKxwy5.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/NjAm48ZpobEuGUw.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/GAhwgMlzebICosc.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/02/KV5CirUT68yRdMJ.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/RNvTVMpK2c7GA1s.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/UpCxYFDAqaenT5g.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/mr7RLnhj29bX1xZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/c3TmMtUDf1J9nl5.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/GUSC1HW9Laz3b5Z.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/BYfRjnq27HES6mM.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/lpaJNdFA5zstYbr.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/7DLn4SzqhsQbro3.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/qiUAf3dpWeG5cmO.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/XRnHwaFJ57M4bS9.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/6VdtmXQo5x9hBwT.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/dYo5zKEVjL3lJXp.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/TxaPeuctCnb7qyz.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/HJRNUExsLfdrIa4.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/NWSZ7a84IdFbXRV.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/qzIwdZk8x4KueV9.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/yoPcI9VbzH2JxSF.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/FNnVfoygbApRHrv.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/22/je4LdMXsZ6zIQpD.png">
+<meta property="article:published_time" content="2020-12-01T06:36:35.240Z">
+<meta property="article:modified_time" content="2021-01-11T01:42:51.158Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/01/bJN1qua8BT7ZoQU.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XCTF进阶区</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#elrond32"><span class="post-toc-number">1.</span> <span class="post-toc-text">elrond32</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tt3441810"><span class="post-toc-number">2.</span> <span class="post-toc-text">tt3441810</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re2-cpp-is-awesome"><span class="post-toc-number">3.</span> <span class="post-toc-text">re2-cpp-is-awesome</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re4-unvm-me"><span class="post-toc-number">4.</span> <span class="post-toc-text">re4-unvm-me</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流浪者"><span class="post-toc-number">5.</span> <span class="post-toc-text">流浪者</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#666"><span class="post-toc-number">6.</span> <span class="post-toc-text">666</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ReverseMe-120"><span class="post-toc-number">7.</span> <span class="post-toc-text">ReverseMe-120</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EASYHOOK"><span class="post-toc-number">8.</span> <span class="post-toc-text">EASYHOOK</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#easyre-153"><span class="post-toc-number">9.</span> <span class="post-toc-text">easyre-153</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IgniteMe"><span class="post-toc-number">10.</span> <span class="post-toc-text">IgniteMe</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reverse-for-the-holy-grail-350"><span class="post-toc-number">11.</span> <span class="post-toc-text">reverse-for-the-holy-grail-350</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EasyRE"><span class="post-toc-number">12.</span> <span class="post-toc-text">EasyRE</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-XCTF高手区"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XCTF进阶区</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-12-01 14:36:35" datetime="2020-12-01T06:36:35.240Z"  itemprop="datePublished">2020-12-01</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">28</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>实验课继续水一水！</p>
+<a id="more"></a>
+
+<p>XCTF逆向进阶区第二页也快做完了，实验课赶紧补一补wp吧</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/bJN1qua8BT7ZoQU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="elrond32"><a href="#elrond32" class="headerlink" title="elrond32"></a>elrond32</h3><p>拖入ida中查看main函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/1XKgsRHWxOdUJlT.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看见Access granted显然可知sub_8048538()函数是输出flag的函数，点开看看</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/fbkSXxUCZ3qDNre.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看代码发现我们需要得到数组a2的值，于是回到main函数，发现a2与sub_8048414()函数有关，点开看看</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/VL6hPGlkgJOniCS.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>分析函数写出代码！</p>
+<p>继续分析sub_8048538()函数，发现我们还需要知道v2数组的值，根据代码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">qmemcpy(v2, &amp;unk_8048760, sizeof(v2));</span><br></pre></td></tr></table></figure></div>
+
+<p>知道v2是从unk_8048760处复制了33个int<br>查看unk_8048760的值</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/rc7Qq3TVMxEvPYg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>一个int占4个内存，所以剩下3个的内存用0填充</strong>，最后得出</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">data=[<span class="number">0x0F</span>,<span class="number">0x1F</span>,<span class="number">0x04</span>,<span class="number">0x09</span>,<span class="number">0x1C</span>,<span class="number">0x12</span>,<span class="number">0x42</span>,<span class="number">0x09</span>,<span class="number">0x0C</span>,<span class="number">0x44</span>,<span class="number">0x0D</span>,<span class="number">0x07</span>,<span class="number">0x09</span>,<span class="number">0x06</span>,<span class="number">0x2D</span>,<span class="number">0x37</span>,<span class="number">0x59</span>,<span class="number">0x1E</span>,<span class="number">0x00</span>,<span class="number">0x59</span>,<span class="number">0x0F</span>,<span class="number">0x08</span>,<span class="number">0x1C</span>,<span class="number">0x23</span>,<span class="number">0x36</span>,<span class="number">0x07</span>,<span class="number">0x55</span>,<span class="number">0x02</span>,<span class="number">0x0C</span>,<span class="number">0x08</span>,<span class="number">0x41</span>,<span class="number">0x0A</span>,<span class="number">0x14</span>]</span><br></pre></td></tr></table></figure></div>
+
+<p>编写代码得到flag</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">'ie ndags r'</span></span><br><span class="line">x=<span class="number">0</span></span><br><span class="line">s=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">    x=<span class="number">7</span>*x%<span class="number">11</span></span><br><span class="line">    s.append(a[x])</span><br><span class="line">    x+=<span class="number">1</span></span><br><span class="line">print(<span class="string">''</span>.join(s))</span><br><span class="line">data=[<span class="number">0x0F</span>,<span class="number">0x1F</span>,<span class="number">0x04</span>,<span class="number">0x09</span>,<span class="number">0x1C</span>,<span class="number">0x12</span>,<span class="number">0x42</span>,<span class="number">0x09</span>,<span class="number">0x0C</span>,<span class="number">0x44</span>,<span class="number">0x0D</span>,<span class="number">0x07</span>,<span class="number">0x09</span>,<span class="number">0x06</span>,<span class="number">0x2D</span>,<span class="number">0x37</span>,<span class="number">0x59</span>,<span class="number">0x1E</span>,<span class="number">0x00</span>,<span class="number">0x59</span>,<span class="number">0x0F</span>,<span class="number">0x08</span>,<span class="number">0x1C</span>,<span class="number">0x23</span>,<span class="number">0x36</span>,<span class="number">0x07</span>,<span class="number">0x55</span>,<span class="number">0x02</span>,<span class="number">0x0C</span>,<span class="number">0x08</span>,<span class="number">0x41</span>,<span class="number">0x0A</span>,<span class="number">0x14</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">33</span>):</span><br><span class="line">    print(chr(ord(s[i%<span class="number">8</span>])^data[i]),end=<span class="string">''</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="tt3441810"><a href="#tt3441810" class="headerlink" title="tt3441810"></a>tt3441810</h3><p>这题根本不是逆向题</p>
+<p>用01editor打开</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/GqYQuOnfXgdxVBm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>所以这道题的16进制转ASCII码又是一堆16进制，那我们把得到的16进制转ASCII</p>
+<p>得到了很奇怪的输出，HH4$HH重复出现。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">text=[<span class="number">0x68</span>, <span class="number">0x66</span>, <span class="number">0x6C</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>,</span><br><span class="line">      <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>,</span><br><span class="line">      <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x67</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>,</span><br><span class="line">      <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>,</span><br><span class="line">      <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">      <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x7B</span>, <span class="number">0x70</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">      <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>,</span><br><span class="line">      <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x6F</span>, <span class="number">0x70</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">      <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>,</span><br><span class="line">     <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x70</span>, <span class="number">0x6F</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x70</span>, <span class="number">0x72</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>,</span><br><span class="line">     <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>, <span class="number">0x65</span>, <span class="number">0x74</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>, <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x68</span>,</span><br><span class="line">     <span class="number">0x7D</span>, <span class="number">0x0A</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xBF</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0x8D</span>,</span><br><span class="line">     <span class="number">0x34</span>, <span class="number">0x24</span>, <span class="number">0x48</span>, <span class="number">0xBA</span>, <span class="number">0x02</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x01</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span>, <span class="number">0x48</span>, <span class="number">0x31</span>, <span class="number">0xFF</span>, <span class="number">0x48</span>, <span class="number">0xB8</span>, <span class="number">0x3C</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">     <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0F</span>, <span class="number">0x05</span> ]</span><br><span class="line">t=[]</span><br><span class="line">s=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> text:</span><br><span class="line">     <span class="keyword">if</span> x&gt;=<span class="number">32</span> <span class="keyword">and</span> x&lt;=<span class="number">125</span>:</span><br><span class="line">         t.append(x)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> t:</span><br><span class="line">    s+=chr(i)</span><br><span class="line">print(s)</span><br><span class="line">s=s.replace(<span class="string">'HH4$HH'</span>,<span class="string">''</span>)</span><br><span class="line">print(s)</span><br><span class="line">s=s.replace(<span class="string">'h'</span>,<span class="string">''</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="re2-cpp-is-awesome"><a href="#re2-cpp-is-awesome" class="headerlink" title="re2-cpp-is-awesome"></a>re2-cpp-is-awesome</h3><p>一道c++的题目，这道题我在给新生赛出逆向题目的时候写过类似样子的源码，所以比较的熟悉。</p>
+<p>打开ida查看主函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/5FdQxNc41jBKUIo.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>大部分都是些没有用的代码，第27行代码，是一个for循环，没有结束条件，每次增加sub_400D7A(&amp;i)，即1字节</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">_QWORD *__fastcall sub_400D7A(_QWORD *a1)</span><br><span class="line">&#123;</span><br><span class="line">  ++*a1;</span><br><span class="line">  return a1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">for ( i &#x3D; std::__cxx11::basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;::begin(&amp;v11); ; sub_400D7A(&amp;i) )</span><br><span class="line">&#123;</span><br><span class="line">  v13 &#x3D; std::__cxx11::basic_string&lt;char,std::char_traits&lt;char&gt;,std::allocator&lt;char&gt;&gt;::end(&amp;v11);</span><br><span class="line">  if ( !sub_400D3D((__int64)&amp;i, (__int64)&amp;v13) )&#x2F;&#x2F; 循环结束条件</span><br><span class="line">    break;</span><br><span class="line">  v8 &#x3D; (_BYTE *)sub_400D9A((__int64)&amp;i);      &#x2F;&#x2F; 进行某种赋值</span><br><span class="line">  if ( *v8 !&#x3D; off_6020A0[dword_6020C0[v14]] ) &#x2F;&#x2F; 重点！这里实际上就是一个数组套着数组</span><br><span class="line">    sub_400B56(&amp;i, &amp;v13);</span><br><span class="line">  ++v14;                                      &#x2F;&#x2F; 数组下标</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过对比sub_400B56(&amp;i, &amp;v13);和 sub_400B73(&amp;i, &amp;v13);函数，我们能够得到flag实际藏在if判断条件中</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">void __fastcall __noreturn sub_400B56(__int64 a1, __int64 a2, __int64 a3)</span><br><span class="line">&#123;</span><br><span class="line">  std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt;&gt;(&amp;std::cout, &quot;Better luck next time\n&quot;, a3);</span><br><span class="line">  exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">__int64 __fastcall sub_400B73(__int64 a1, __int64 a2, __int64 a3)</span><br><span class="line">&#123;</span><br><span class="line">  return std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt;&gt;(&amp;std::cout, &quot;You should have the flag by now\n&quot;, a3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>进入off_6020A0和dword_6020C0我们可以看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/QHpRUCcTFz9ywOS.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/TP2bDEoU5VOjqwv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>因此我们可以分析得出，通过v15/v14作为内部数组下标，循环获到的整数再作为外部数组的下标，获取到需要的字符串。</p>
+<p><strong>这里值得注意的一点是，algn 8表示两个数之间间隔8位，相当于在两个数之间插了7个0，也就相当于在头两个数之间还有一个’0’</strong></p>
+<p>写出脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">S = <span class="string">'L3t_ME_T3ll_Y0u_S0m3th1ng_1mp0rtant_A_&#123;FL4G&#125;_W0nt_b3_3X4ctly_th4t_345y_t0_c4ptur3_H0wev3r_1T_w1ll_b3_C00l_'</span></span><br><span class="line"></span><br><span class="line">N = [<span class="number">0x24</span>,<span class="number">0x0</span>,<span class="number">0x5</span>,<span class="number">0x36</span>,<span class="number">0x65</span>,<span class="number">0x7</span>,<span class="number">0x27</span>,<span class="number">0x26</span>,<span class="number">0x2d</span>,<span class="number">0x1</span>,<span class="number">0x3</span>,<span class="number">0x0</span>,<span class="number">0x0d</span>,<span class="number">0x56</span>,<span class="number">0x1</span>,<span class="number">0x3</span>,<span class="number">0x65</span>,<span class="number">0x3</span>,<span class="number">0x2d</span>,<span class="number">0x16</span>,<span class="number">0x2</span>,<span class="number">0x15</span>,<span class="number">0x3</span>,<span class="number">0x65</span>,<span class="number">0x0</span>,<span class="number">0x29</span>,<span class="number">0x44</span>,<span class="number">0x44</span>,<span class="number">0x1</span>,<span class="number">0x44</span>,<span class="number">0x2b</span>]</span><br><span class="line"></span><br><span class="line">x = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> N:</span><br><span class="line">    x += S[i]</span><br><span class="line"></span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="re4-unvm-me"><a href="#re4-unvm-me" class="headerlink" title="re4-unvm-me"></a>re4-unvm-me</h3><p>pyc在线pyc转</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># visit http://tool.lu/pyc/ for more information</span></span><br><span class="line"><span class="keyword">import</span> md5</span><br><span class="line">md5s = [</span><br><span class="line">    <span class="number">0x831DAA3C843BA8B087C895F0ED305CE7L</span>,</span><br><span class="line">    <span class="number">0x6722F7A07246C6AF20662B855846C2C8L</span>,</span><br><span class="line">    <span class="number">0x5F04850FEC81A27AB5FC98BEFA4EB40CL</span>,</span><br><span class="line">    <span class="number">0xECF8DCAC7503E63A6A3667C5FB94F610L</span>,</span><br><span class="line">    <span class="number">0xC0FD15AE2C3931BC1E140523AE934722L</span>,</span><br><span class="line">    <span class="number">0x569F606FD6DA5D612F10CFB95C0BDE6DL</span>,</span><br><span class="line">    <span class="number">0x68CB5A1CF54C078BF0E7E89584C1A4EL</span>,</span><br><span class="line">    <span class="number">0xC11E2CD82D1F9FBD7E4D6EE9581FF3BDL</span>,</span><br><span class="line">    <span class="number">0x1DF4C637D625313720F45706A48FF20FL</span>,</span><br><span class="line">    <span class="number">0x3122EF3A001AAECDB8DD9D843C029E06L</span>,</span><br><span class="line">    <span class="number">0xADB778A0F729293E7E0B19B96A4C5A61L</span>,</span><br><span class="line">    <span class="number">0x938C747C6A051B3E163EB802A325148EL</span>,</span><br><span class="line">    <span class="number">0x38543C5E820DD9403B57BEFF6020596DL</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Can you turn me back to python ? ...'</span></span><br><span class="line">flag = raw_input(<span class="string">'well as you wish.. what is the flag: '</span>)</span><br><span class="line"><span class="keyword">if</span> len(flag) &gt; <span class="number">69</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'nice try'</span></span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">if</span> len(flag) % <span class="number">5</span> != <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'nice try'</span></span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(flag), <span class="number">5</span>):</span><br><span class="line">    s = flag[i:i + <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">if</span> int(<span class="string">'0x'</span> + md5.new(s).hexdigest(), <span class="number">16</span>) != md5s[i / <span class="number">5</span>]:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'nice try'</span></span><br><span class="line">        exit()</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Congratz now you have the flag'</span></span><br></pre></td></tr></table></figure></div>
+
+<p>16进制转md5，在线工具直接解</p>
+<h3 id="流浪者"><a href="#流浪者" class="headerlink" title="流浪者"></a>流浪者</h3><p>根据字符串的查找，找到关键函数。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/XjDhKBWLoemAa4p.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>x交叉引用，找到引用了sub_4017f0的函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/9eN7nqHd6LvksVf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>分析函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span>; Str[i]; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( Str[i] &gt; <span class="number">57</span> || Str[i] &lt; <span class="number">48</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( Str[i] &gt; <span class="number">122</span> || Str[i] &lt; <span class="number">97</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( Str[i] &gt; <span class="number">90</span> || Str[i] &lt; <span class="number">65</span> )</span><br><span class="line">          sub_4017B0();                         // 错误</span><br><span class="line">        <span class="keyword">else</span>                                    // <span class="number">65</span><span class="number">-90</span>  +<span class="number">29</span></span><br><span class="line">          v5[i] = Str[i] - <span class="number">29</span>;                  // 大写</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;                                         // <span class="number">97</span><span class="number">-122</span>   +<span class="number">87</span></span><br><span class="line">        v5[i] = Str[i] - <span class="number">87</span>;                    // 小写</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;                                           // <span class="number">48</span><span class="number">-57</span>   +<span class="number">48</span></span><br><span class="line">      v5[i] = Str[i] - <span class="number">48</span>;                      // 数字-‘<span class="number">0</span>‘</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sub_4017F0(v5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>写出解题脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">tab=<span class="string">'abcdefghiABCDEFGHIJKLMNjklmn0123456789opqrstuvwxyzOPQRSTUVWXYZ'</span></span><br><span class="line">tg=<span class="string">'KanXueCTF2019JustForhappy'</span></span><br><span class="line">temp=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(tg)):</span><br><span class="line">    temp.append(tab.index(tg[i]))</span><br><span class="line">print(temp)</span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> temp:</span><br><span class="line">    <span class="keyword">if</span> c&gt;=<span class="number">65</span><span class="number">-29</span> <span class="keyword">and</span> c&lt;=<span class="number">90</span><span class="number">-29</span>:</span><br><span class="line">        c+=<span class="number">29</span></span><br><span class="line">    <span class="keyword">elif</span> c&gt;=<span class="number">97</span><span class="number">-87</span> <span class="keyword">and</span> c&lt;=<span class="number">122</span><span class="number">-87</span>:</span><br><span class="line">        c+=<span class="number">87</span></span><br><span class="line">    <span class="keyword">elif</span> c&gt;=<span class="number">48</span><span class="number">-48</span> <span class="keyword">and</span> c&lt;=<span class="number">57</span><span class="number">-48</span>:</span><br><span class="line">        c+=<span class="number">48</span></span><br><span class="line">    flag+=chr(c)</span><br><span class="line"><span class="keyword">print</span> (flag)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="666"><a href="#666" class="headerlink" title="666"></a>666</h3><p>没啥好解释的，拖入ida查看主函数，main函数中，用户输入保存到v5。然后调用encode(&amp;v5,&amp;s)函数。</p>
+<p>在判断中，首先比较用户输入的长度是否等于key，也就是18。然后比较了s和enflag是否相等。s应该是刚刚调用encode函数后得到的。enflag的值为<code>izwhroz&quot;&quot;w&quot;v.K&quot;.Ni</code></p>
+<p>其中，key的值为18，enflag的值为<code>izwhroz&quot;&quot;w&quot;v.K&quot;.Ni</code>：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/DFOehNzBxX2aAy6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>现在来看看encode函数。<br>a1也就是main函数里用户的输入v5，a2是main函数里的s，是最后要比较的字符串。<br>首先呢，检查了一下用户输入的长度，必须为key。<br>然后在一个for循环中，每次取用户输入的三个字符，分别做相关的异或运算，再分别赋值给a2的对应的位置。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/01/39EGHuigIXvSpCk.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>对应写出脚本,这里分别用c和py分别写出相应代码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> target[]=<span class="string">"izwhroz\"\"w\"v.K\".Ni"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">18</span>;i+=<span class="number">3</span>)&#123;</span><br><span class="line"></span><br><span class="line">    target[i]=(target[i]^<span class="number">18</span>)<span class="number">-6</span>;</span><br><span class="line"></span><br><span class="line">    target[i+<span class="number">1</span>]=(target[i+<span class="number">1</span>]^<span class="number">18</span>)+<span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">    target[i+<span class="number">2</span>]=(target[i+<span class="number">2</span>]^<span class="number">18</span>)^<span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">puts</span>(target);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">enflag=[<span class="number">105</span>, <span class="number">122</span>, <span class="number">119</span>, <span class="number">104</span>, <span class="number">114</span>, <span class="number">111</span>, <span class="number">122</span>, <span class="number">34</span>, <span class="number">34</span>, <span class="number">119</span>, </span><br><span class="line">  <span class="number">34</span>, <span class="number">118</span>, <span class="number">46</span>, <span class="number">75</span>, <span class="number">34</span>, <span class="number">46</span>, <span class="number">78</span>, <span class="number">105</span>, <span class="number">0</span>]</span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">18</span>,<span class="number">3</span>):</span><br><span class="line">    flag+=chr((<span class="number">18</span>^enflag[i])<span class="number">-6</span>)</span><br><span class="line">    flag+=chr((<span class="number">18</span>^enflag[i+<span class="number">1</span>])+<span class="number">6</span>)</span><br><span class="line">    flag+=chr(<span class="number">18</span>^enflag[i+<span class="number">2</span>]^<span class="number">6</span>) </span><br><span class="line">    </span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="ReverseMe-120"><a href="#ReverseMe-120" class="headerlink" title="ReverseMe-120"></a>ReverseMe-120</h3><p>打开ida，首先查看一下程序逻辑</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/JCQVIn2gzx43PST.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p> 可以看到成功的条件是<code>v9</code>，而<code>v9</code>是<code>v13</code>与字符串”<code>you_know_how_to_remove_junk_code</code>“比较的结果。然后追一下<code>v13</code>的数据流，看看<code>v13</code>是怎么来的</p>
+<p>可以看到<code>v13</code>的定义，以及一个关键函数<code>sub_401000</code>，为什么说是关键函数呢，因为函数的参数包含了<strong>刚定义的</strong><code>v13</code>，以及<strong>你的输入</strong><code>v11</code>。</p>
+<p> 我们跟进去看一看，注意我们想知道的是<code>v13</code>是怎么得到的，而<code>v13</code>作为<strong>第二个参数</strong>，在函数<code>sub_401000</code>里是<code>a2</code>，我们顺着<code>a2</code>去看。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/veyU4frF1wlQ8Nq.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>发现是base64加密。参考笔记：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/D7SrYZMOXL1J6fl.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>写出解密脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">s=<span class="string">'you_know_how_to_remove_junk_code'</span></span><br><span class="line">tmp=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">    tmp+=chr(ord(s[i])^<span class="number">0x25</span>)</span><br><span class="line">print(base64.b64encode(tmp.encode(<span class="string">'utf-8'</span>)))</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="EASYHOOK"><a href="#EASYHOOK" class="headerlink" title="EASYHOOK"></a>EASYHOOK</h3><p> IDA 打开，F5 分析 main 函数如下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/3feh4s7lUoCFDaH.png" alt="image-20201202163002260" title="">
+                </div>
+                <div class="image-caption">image-20201202163002260</div>
+            </figure>
+
+<p>大概分析可得，输入的 flag 长度应为 19，长度验证正确后会先调用 sub_401220 函数，该函数功能未知。然后通过 CreateFileA 和 WriteFile 将输入的 flag 写入到一个文件里面，双击 FileName 可知是写入到本地目录下的 Your_Input 文件里面。接着调用 sub_401240 函数，因为传入了 buffer 和NumberOfBytesWritten 的地址，结合紧跟着 sub_401240 后面的一个关键判断，所以很可能 sub_401240 就是对 flag 进行验证的关键函数了。</p>
+<p>从上面分析得知，输入的长度为 19 的 flag 会被写入到文件里面。然而测试之后发现，写入到文件里面的 flag 发生了改变。回顾 main 函数的执行流程，可知对 flag 的修改要么发生在 sub_401220 函数里面，要么是WriteFile 函数出了问题。由于题目的名称给出了 hook 的提示信息，于是猜测在 sub_401220 里面 hook 了WriteFile 函数。直接 F5 分析 sub_401220 函数，报错。查看汇编代码得知猜测正确，分析如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/j4fGlDYMrcKxwy5.png" alt="image-20201202163322284" title="">
+                </div>
+                <div class="image-caption">image-20201202163322284</div>
+            </figure>
+
+<p>在 sub_401220 中获取进程句柄后跳转到loc_4011B0。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/NjAm48ZpobEuGUw.png" alt="image-20201202163345312" title="">
+                </div>
+                <div class="image-caption">image-20201202163345312</div>
+            </figure>
+
+<p>在 loc_401180 里面通过GetProcAddress 获取WriteFile 的地址，然后调用了sub_4010D0。注意红框框处的几个数据。</p>
+<p>F5 查看 sub_4010D0，可知调用 VirtualProtectEx和 WriteProcessMemory 修改了 WriteFile 函数的起始 5 个字节。动态调试后发现修改为跳转到 sub_401080 的一条无条件跳转指令，从而实现了 hook WriteFile 的功能。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/GAhwgMlzebICosc.png" alt="image-20201202163510734" title="">
+                </div>
+                <div class="image-caption">image-20201202163510734</div>
+            </figure>
+
+<p>首先调用 sub_401000 函数，分析参数传递可知参数 lpBuffer 即是我们输入的 flag，那么很有可能就是在 sub_401000 里面对 flag 进行了修改。然后调用 sub_401140 函数，接着又一次调用了WriteFile 函数。我们知道虽然 WriteFile 被 hook 了，但最后确实是把 flag 写入到了文件里面，所以很有可能是在 sub_401140 里面对 WriteFIle 进行了 hook 还原。最后对 sub_401000 的返回值进行判断，如果非 0 则将NumberOfBytesWritten 置 1。</p>
+<p>先分析sub_401140，证实了里面的 hook 还原操作。然后看一下 sub_401000，可知里面主要是两个循环处理：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/02/KV5CirUT68yRdMJ.png" alt="image-20201202163602738" title="">
+                </div>
+                <div class="image-caption">image-20201202163602738</div>
+            </figure>
+
+<p>这里就有一个很明显的字符串比较的意图了，结合上面的分析可知，我们输入的长度为 19 的 flag 经过第一个循环的处理之后，如果和 byte_40A030 指向的全局字符串相同，那么 sub_401000 返回 1。在 sub_401080 里面对sub_401000 的返回值进行判断，如果返回值为 1，则将NumberOfBytesWritten 置 1。然后在最外层的 main函数里面进行判断，如果NumberOfBytesWritten 为 1，则输出正确的提示信息。</p>
+<p>所以，我们只需要将 byte_40A030 指向的字符串做一次 sub_401000 函数里面第一个循环处理的逆运算，就可以得到输入正确的 flag 了。</p>
+<p>当然别忘了在 main 函数里面的 sub_401240 函数，我们刚开始时分析认为在 sub_401240 里面对输入的 flag 做了关键验证，但事实上真正的验证函数是 sub_401000，只要 sub_401000 验证正确即可。</p>
+<p>贴上脚本分别用py和c分别实现</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">data=[ <span class="number">0x61</span>, <span class="number">0x6A</span>, <span class="number">0x79</span>, <span class="number">0x67</span>, <span class="number">0x6B</span>, <span class="number">0x46</span>, <span class="number">0x6D</span>, <span class="number">0x2E</span>, <span class="number">0x7F</span>, <span class="number">0x5F</span>,</span><br><span class="line">  <span class="number">0x7E</span>, <span class="number">0x2D</span>, <span class="number">0x53</span>, <span class="number">0x56</span>, <span class="number">0x7B</span>, <span class="number">0x38</span>, <span class="number">0x6D</span>, <span class="number">0x4C</span>, <span class="number">0x6E</span>, <span class="number">0x00</span>]</span><br><span class="line">data[<span class="number">18</span>]^=<span class="number">0x13</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">17</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">    t=i^data[i]</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">2</span>:</span><br><span class="line">        data[i]=t+i</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        data[i+<span class="number">2</span>]=t</span><br><span class="line">print(<span class="string">''</span>.join(map(chr,data)))</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"windows.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> str[] =</span><br><span class="line">&#123;</span><br><span class="line">  <span class="number">0x61</span>, <span class="number">0x6A</span>, <span class="number">0x79</span>, <span class="number">0x67</span>, <span class="number">0x6B</span>, <span class="number">0x46</span>, <span class="number">0x6D</span>, <span class="number">0x2E</span>, <span class="number">0x7F</span>, <span class="number">0x5F</span>,</span><br><span class="line">  <span class="number">0x7E</span>, <span class="number">0x2D</span>, <span class="number">0x53</span>, <span class="number">0x56</span>, <span class="number">0x7B</span>, <span class="number">0x38</span>, <span class="number">0x6D</span>, <span class="number">0x4C</span>, <span class="number">0x6E</span>, <span class="number">0x00</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    str[<span class="number">18</span>]^=<span class="number">0x13</span>u;</span><br><span class="line">    <span class="keyword">int</span> v3;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">17</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">     v3 = i ^ str[i];</span><br><span class="line">     <span class="keyword">if</span>(i%<span class="number">2</span>)</span><br><span class="line">        str[i] = v3 + i;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">        str[i+<span class="number">2</span>] = v3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="easyre-153"><a href="#easyre-153" class="headerlink" title="easyre-153"></a>easyre-153</h3><p>查看分析是32位elf文件，有壳</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/RNvTVMpK2c7GA1s.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>放到kali下进行脱壳</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/UpCxYFDAqaenT5g.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>ida静态分析</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/mr7RLnhj29bX1xZ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>pipe是完成两个进程之间通信的函数 1是写，0是读</p>
+<p>fork是通过系统调用创建一个“子进程”的函数</p>
+<p>fork的返回值，在子进程里面是0，在父进程里是子进程的进程id</p>
+<p>所以我们可以很容易看出来 在子进程里面，由于v5==0，所以会输出刚刚我们看到的 OMG!!!! I forgot kid’s id 然后将69800876143568214356928753通过pipe传给父进程</p>
+<p>完成这个任务后，子进程就会exit（0）</p>
+<p>至于父进程，由于v5！=0，会跳过子进程刚刚执行的部分，直接读取子进程传给他的那一串数字 并且读取用户输入的v6</p>
+<p>如果v6==v5 那么就会继续进行下面的操作</p>
+<p>也就是说程序会创建一个管道，然后开启一个子进程进行进程间通信。子进程将 <strong>69800876143568214356928753</strong> 发送给父进程。父进程要求用户输入一个整数，并且等于子进程的 <strong>pid</strong> 。后面就会对发送过来的数据进行解码成 <strong>flag</strong> 输出来。</p>
+<p>我们进入lol函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/c3TmMtUDf1J9nl5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>再看流程图</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/GUSC1HW9Laz3b5Z.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>原来输出解码后的数据的那部分代码被作者改掉了，永远也不会执行。解码的操作也不复杂，直接用pthon脚本吧。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">guo=<span class="string">'69800876143568214356928753'</span></span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line">flag=chr(<span class="number">2</span>*ord(guo[<span class="number">1</span>]))</span><br><span class="line">flag+=chr(ord(guo[<span class="number">4</span>])+ord(guo[<span class="number">5</span>]))</span><br><span class="line">flag+=chr(ord(guo[<span class="number">8</span>])+ord(guo[<span class="number">9</span>]))</span><br><span class="line">flag+=chr(ord(guo[<span class="number">12</span>])*<span class="number">2</span>)</span><br><span class="line">flag+=chr(ord(guo[<span class="number">17</span>])+ord(guo[<span class="number">18</span>]))</span><br><span class="line">flag+=chr(ord(guo[<span class="number">10</span>])+ord(guo[<span class="number">21</span>]))</span><br><span class="line">flag+=chr(ord(guo[<span class="number">9</span>])+ord(guo[<span class="number">25</span>]))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'RCTF&#123;'</span>+flag+<span class="string">'&#125;'</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="IgniteMe"><a href="#IgniteMe" class="headerlink" title="IgniteMe"></a>IgniteMe</h3><p>32位文件，无壳</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/BYfRjnq27HES6mM.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>拖入ida中查看，逻辑不太难，这里面我加了很多注释方便读懂程序。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/lpaJNdFA5zstYbr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>里面有一个很关键的函数sub_4011C0()，函数结构如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/7DLn4SzqhsQbro3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/qiUAf3dpWeG5cmO.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>EXP</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line">cipher=<span class="string">r'GONDPHyGjPEKruv&#123;&#123;pj]X@rF'</span></span><br><span class="line">k=[<span class="number">0xd</span>,<span class="number">0x13</span>,<span class="number">0x17</span>,<span class="number">0x11</span>,<span class="number">0x2</span>,<span class="number">0x1</span>,<span class="number">0x20</span>,<span class="number">0x1d</span>,<span class="number">0xc</span>,<span class="number">0x2</span>,<span class="number">0x19</span>,<span class="number">0x2f</span>,<span class="number">0x17</span>,<span class="number">0x2b</span>,<span class="number">0x24</span>,<span class="number">0x1f</span>,<span class="number">0x1e</span>,<span class="number">0x16</span>,<span class="number">0x9</span>,<span class="number">0xf</span>,<span class="number">0x15</span>,<span class="number">0x27</span>,<span class="number">0x13</span>,<span class="number">0x26</span>,<span class="number">0xa</span>,<span class="number">0x2f</span>,<span class="number">0x1e</span>,<span class="number">0x1a</span>,<span class="number">0x2d</span>,<span class="number">0xc</span>,<span class="number">0x22</span>,<span class="number">0x4</span>]</span><br><span class="line">ch=<span class="string">''</span></span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line">i=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(cipher)):</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> string.printable:</span><br><span class="line">        <span class="keyword">if</span> c&gt;=<span class="string">'a'</span> <span class="keyword">and</span> c&lt;=<span class="string">'z'</span>:</span><br><span class="line">            ch=chr(ord(c)<span class="number">-32</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> c&gt;=<span class="string">'A'</span> <span class="keyword">and</span> c&lt;=<span class="string">'Z'</span>:</span><br><span class="line">                ch=chr(ord(c)+<span class="number">32</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ch=c</span><br><span class="line">        ch=chr(k[i]^((ord(ch)^<span class="number">0x55</span>)+<span class="number">72</span>))</span><br><span class="line">        <span class="keyword">if</span> ch==cipher[i]:</span><br><span class="line">            flag+=c</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'EIS&#123;'</span>+flag+<span class="string">'&#125;'</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>不过我个人还是喜欢写C语言的，这里也贴一下C语言代码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">char</span> a[]=&#123;<span class="number">0x0D</span>, <span class="number">0x13</span>, <span class="number">0x17</span>, <span class="number">0x11</span>, <span class="number">0x2</span>, <span class="number">0x1</span>, <span class="number">0x20</span>, <span class="number">0x1D</span>, <span class="number">0x0C</span>, <span class="number">0x2</span>, <span class="number">0x19</span>, <span class="number">0x2F</span>, <span class="number">0x17</span>, <span class="number">0x2B</span>, <span class="number">0x24</span>, <span class="number">0x1F</span>, <span class="number">0x1E</span>, <span class="number">0x16</span>, <span class="number">0x9</span>, <span class="number">0x0F</span>, <span class="number">0x15</span>, <span class="number">0x27</span>, <span class="number">0x13</span>, <span class="number">0x26</span>, <span class="number">0x0A</span>, <span class="number">0x2F</span>, <span class="number">0x1E</span>, <span class="number">0x1A</span>, <span class="number">0x2D</span>, <span class="number">0x0C</span>, <span class="number">0x22</span>,<span class="number">0x4</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> b[]=<span class="string">"GONDPHyGjPEKruv&#123;&#123;pj]X@rF"</span>;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">char</span> j;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">24</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0X0</span>;j&lt;<span class="number">0X7f</span>;j++)&#123;</span><br><span class="line"><span class="keyword">if</span>(b[i]==(a[i]^((j^<span class="number">0x55</span>)+<span class="number">0x48</span>)))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="number">0x40</span>&lt;j&amp;&amp;j&lt;<span class="number">0x5B</span>)</span><br><span class="line">j+=<span class="number">0x20</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">0x60</span>&lt;j&amp;&amp;j&lt;<span class="number">0x5B</span>)</span><br><span class="line">j-=<span class="number">20</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>,j);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里新学了一个ida小知识，<em>数据可以用快捷键shift+E，在hex-view窗口里提取数据（这样就不用跟我一样一个一个输了）</em>。</p>
+<h3 id="reverse-for-the-holy-grail-350"><a href="#reverse-for-the-holy-grail-350" class="headerlink" title="reverse-for-the-holy-grail-350"></a>reverse-for-the-holy-grail-350</h3><p>64位elf文件，拖入ida静态调试</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/XRnHwaFJ57M4bS9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>查看主函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> v3; <span class="comment">// ebx</span></span><br><span class="line">  <span class="keyword">int</span> v4; <span class="comment">// ebx</span></span><br><span class="line">  __int64 v5; <span class="comment">// rbx</span></span><br><span class="line">  <span class="keyword">void</span> *v7; <span class="comment">// [rsp+0h] [rbp-70h]</span></span><br><span class="line">  __int64 v8; <span class="comment">// [rsp+10h] [rbp-60h]</span></span><br><span class="line">  <span class="keyword">void</span> *v9; <span class="comment">// [rsp+20h] [rbp-50h]</span></span><br><span class="line">  __int64 v10; <span class="comment">// [rsp+30h] [rbp-40h]</span></span><br><span class="line">  <span class="keyword">void</span> *v11; <span class="comment">// [rsp+40h] [rbp-30h]</span></span><br><span class="line">  __int64 v12; <span class="comment">// [rsp+48h] [rbp-28h]</span></span><br><span class="line">  <span class="keyword">char</span> v13; <span class="comment">// [rsp+50h] [rbp-20h]</span></span><br><span class="line"></span><br><span class="line">  v11 = &amp;v13;</span><br><span class="line">  v12 = <span class="number">0L</span>L;</span><br><span class="line">  v13 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"What... is your name?"</span>, <span class="number">21L</span>L);</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">endl</span>&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>);</span><br><span class="line">  <span class="built_in">std</span>::<span class="keyword">operator</span>&gt;&gt;&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;,<span class="built_in">std</span>::allocator&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cin</span>, &amp;v11);</span><br><span class="line">  <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"What... is your quest?"</span>, <span class="number">22L</span>L);</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">endl</span>&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>);</span><br><span class="line">  <span class="built_in">std</span>::istream::ignore((<span class="built_in">std</span>::istream *)&amp;<span class="built_in">std</span>::<span class="built_in">cin</span>);</span><br><span class="line">  <span class="built_in">std</span>::getline&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;,<span class="built_in">std</span>::allocator&lt;<span class="keyword">char</span>&gt;&gt;((__int64)&amp;<span class="built_in">std</span>::<span class="built_in">cin</span>, (__int64)&amp;v11);</span><br><span class="line">  <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"What...  is the secret password?"</span>, <span class="number">32L</span>L);</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">endl</span>&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>);</span><br><span class="line">  <span class="built_in">std</span>::<span class="keyword">operator</span>&gt;&gt;&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;,<span class="built_in">std</span>::allocator&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cin</span>, &amp;userIn);</span><br><span class="line">  v7 = &amp;v8;</span><br><span class="line">  <span class="built_in">std</span>::__cxx11::basic_string&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;,<span class="built_in">std</span>::allocator&lt;<span class="keyword">char</span>&gt;&gt;::_M_construct&lt;<span class="keyword">char</span> *&gt;(</span><br><span class="line">    (__int64 *)&amp;v7,</span><br><span class="line">    (_BYTE *)userIn,</span><br><span class="line">    (_BYTE *)(qword_601AE8 + userIn));</span><br><span class="line">  v3 = validChars((__int64 *)&amp;v7);</span><br><span class="line">  <span class="keyword">if</span> ( v7 != &amp;v8 )</span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(v7)</span></span>;</span><br><span class="line">  <span class="keyword">if</span> ( v3 &lt; <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">goto</span> LABEL_14;</span><br><span class="line">  v9 = &amp;v10;</span><br><span class="line">  <span class="built_in">std</span>::__cxx11::basic_string&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;,<span class="built_in">std</span>::allocator&lt;<span class="keyword">char</span>&gt;&gt;::_M_construct&lt;<span class="keyword">char</span> *&gt;(</span><br><span class="line">    (__int64 *)&amp;v9,</span><br><span class="line">    (_BYTE *)userIn,</span><br><span class="line">    (_BYTE *)(qword_601AE8 + userIn));</span><br><span class="line">  v4 = stringMod((__int64 *)&amp;v9);     <span class="comment">//stringMod是我们解出此题的关键</span></span><br><span class="line">  <span class="keyword">if</span> ( v9 != &amp;v10 )                   <span class="comment">//这里是关键函数</span></span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(v9)</span></span>;</span><br><span class="line">  <span class="keyword">if</span> ( v4 &lt; <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">LABEL_14:</span><br><span class="line">    <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"Auuuuuuuugh"</span>, <span class="number">11L</span>L);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">endl</span>&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"Go on. Off you go. tuctf&#123;"</span>, <span class="number">25L</span>L);</span><br><span class="line">    v5 = <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, userIn, qword_601AE8);</span><br><span class="line">    <span class="built_in">std</span>::__ostream_insert&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(v5, <span class="string">"&#125;"</span>, <span class="number">1L</span>L);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">endl</span>&lt;<span class="keyword">char</span>,<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;(v5);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v11 != &amp;v13 )</span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(v11)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>加密还有 check 函数 全部都在stringMod 这个函数里面</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="function">__int64 __fastcall <span class="title">stringMod</span><span class="params">(__int64 *a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  __int64 length; <span class="comment">// r9</span></span><br><span class="line">  <span class="keyword">char</span> *c_str; <span class="comment">// r10</span></span><br><span class="line">  __int64 i; <span class="comment">// rcx</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> v4; <span class="comment">// er8</span></span><br><span class="line">  <span class="keyword">int</span> *temp_2; <span class="comment">// rdi</span></span><br><span class="line">  <span class="keyword">int</span> *temp_3; <span class="comment">// rsi</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> t; <span class="comment">// ecx</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> j; <span class="comment">// er9</span></span><br><span class="line">  <span class="keyword">int</span> index; <span class="comment">// er10</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> tmp; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">int</span> sign; <span class="comment">// esi</span></span><br><span class="line">  <span class="keyword">int</span> v12; <span class="comment">// esi</span></span><br><span class="line">  <span class="keyword">int</span> temp[<span class="number">24</span>]; <span class="comment">// [rsp+0h] [rbp-60h]</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">memset</span>(temp, <span class="number">0</span>, <span class="number">0x48</span>uLL);</span><br><span class="line">  length = a1[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">if</span> ( length )</span><br><span class="line">  &#123;</span><br><span class="line">    c_str = (<span class="keyword">char</span> *)*a1;</span><br><span class="line">    i = <span class="number">0L</span>L;</span><br><span class="line">    v4 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      v12 = c_str[i];</span><br><span class="line">      temp[i] = v12;</span><br><span class="line">      <span class="keyword">if</span> ( <span class="number">3</span> * ((<span class="keyword">unsigned</span> <span class="keyword">int</span>)i / <span class="number">3</span>) == (_DWORD)i &amp;&amp; v12 != firstchar[(<span class="keyword">unsigned</span> <span class="keyword">int</span>)i / <span class="number">3</span>] )<span class="comment">// 当i是3的倍数时，str=first[i/3]</span></span><br><span class="line">                                                <span class="comment">// &#123; 65, 105, 110, 69, 111, 97&#125;</span></span><br><span class="line">        v4 = <span class="number">-1</span>;</span><br><span class="line">      ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( i != length );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    v4 = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  temp_2 = temp;</span><br><span class="line">  temp_3 = temp;</span><br><span class="line">  t = <span class="number">666</span>;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">  &#123;</span><br><span class="line">    *temp_3 = t ^ *(<span class="keyword">unsigned</span> __int8 *)temp_3;</span><br><span class="line">    t += t % <span class="number">5</span>;</span><br><span class="line">    ++temp_3;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( &amp;temp[<span class="number">18</span>] != temp_3 );                <span class="comment">// 异或操作</span></span><br><span class="line">  j = <span class="number">1</span>;</span><br><span class="line">  index = <span class="number">0</span>;</span><br><span class="line">  tmp = <span class="number">1</span>;</span><br><span class="line">  sign = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">do</span>                                            <span class="comment">// 0,1,2  每三个数验证</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( sign == <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( *temp_2 != thirdchar[index] )        <span class="comment">// &#123; 751, 708, 732, 711, 734, 764, 0, 0 &#125;</span></span><br><span class="line">                                                <span class="comment">// temp[2]=</span></span><br><span class="line">        v4 = <span class="number">-1</span>;</span><br><span class="line">      <span class="keyword">if</span> ( tmp % *temp_2 != masterArray[index] )<span class="comment">// &#123; 471, 12, 580, 606, 147, 108 &#125;</span></span><br><span class="line">                                                <span class="comment">//</span></span><br><span class="line">                                                <span class="comment">// temp[0]*temp[1]%temp[2]=</span></span><br><span class="line">        v4 = <span class="number">-1</span>;</span><br><span class="line">      ++index;</span><br><span class="line">      tmp = <span class="number">1</span>;</span><br><span class="line">      sign = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>                                        <span class="comment">// sign  0,1,</span></span><br><span class="line">    &#123;</span><br><span class="line">      tmp *= *temp_2;                           <span class="comment">// 0 tmp=temp[0]</span></span><br><span class="line">                                                <span class="comment">// 1 tmp=temp[0]*temp[1]</span></span><br><span class="line">      <span class="keyword">if</span> ( ++sign == <span class="number">3</span> )</span><br><span class="line">        sign = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ++j;</span><br><span class="line">    ++temp_2;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( j != <span class="number">19</span> );                            <span class="comment">// 18循环</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span>)(t * v4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>stringMod函数校验过程一共分为三部分，第一部分中需要值得注意的是：<br><code>v3</code>是int型，除以一个数后小数部分会被去掉，所以<code>3 * ((unsigned int)v3 / 3) == (_DWORD)v3</code>成立的条件是<code>v3</code>是<code>3</code>的倍数，因此flag的第 <code>3*n</code> 个字符对应firstchar的六个字符</p>
+<p>脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">i = <span class="number">666</span></span><br><span class="line">num = []                                       # v7</span><br><span class="line">flag = 'A**i**n**E**o**a**'           # flag第0+3*n位对应firstchar</span><br><span class="line">Xorflag = []                                   # flag每位与v7异或的结果</span><br><span class="line">thirdchar = [<span class="number">0x2ef</span>, <span class="number">0x2c4</span>, <span class="number">0x2dc</span>, <span class="number">0x2c7</span>, <span class="number">0x2de</span>, <span class="number">0x2fc</span>]</span><br><span class="line">masterarray = [<span class="number">0x1d7</span>, <span class="number">0xc</span>, <span class="number">0x244</span>, <span class="number">0x25e</span>, <span class="number">0x93</span>, <span class="number">0x6c</span>]</span><br><span class="line"><span class="keyword">for</span> j in range(<span class="number">18</span>):                         # 求v7</span><br><span class="line">    num.append(i)</span><br><span class="line">    i += (i % <span class="number">5</span>)</span><br><span class="line">temp_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i in range(<span class="number">2</span>, len(flag)+<span class="number">1</span>, <span class="number">3</span>):        # 求flag 第 <span class="number">1</span>+<span class="number">3</span>*n位</span><br><span class="line">    temp = thirdchar[temp_num] ^ num[i]</span><br><span class="line">    temp_num += <span class="number">1</span></span><br><span class="line">    flag = flag[:i] + chr(temp) + flag[i+<span class="number">1</span>:]</span><br><span class="line">temp_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i in range(len(flag)):                 # flag每位与v7异或</span><br><span class="line">    temp = ord(flag[i]) ^ num[i]</span><br><span class="line">    Xorflag.append(temp)</span><br><span class="line"><span class="keyword">for</span> i in range(<span class="number">1</span>, <span class="number">19</span>, <span class="number">3</span>):                    # 求flag第<span class="number">1</span>+<span class="number">3</span>*n位</span><br><span class="line">    <span class="keyword">for</span> j in range(<span class="number">32</span>, <span class="number">128</span>):</span><br><span class="line">        j ^= num[i]</span><br><span class="line">        temp = j * Xorflag[i<span class="number">-1</span>] % Xorflag[i+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> temp == masterarray[temp_num]:</span><br><span class="line">            flag = flag[:i] + chr(j ^ num[i]) + flag[i+<span class="number">1</span>:]</span><br><span class="line">            temp_num += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"tuctf&#123;"</span> + flag + <span class="string">'&#125;'</span>)</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/6VdtmXQo5x9hBwT.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="EasyRE"><a href="#EasyRE" class="headerlink" title="EasyRE"></a>EasyRE</h3><p>不知道逆向题做到什么时候能有突破，不知道未来的方向在哪里，不知道我未来靠这个能做些什么，不知道自己何时能变得更强，眼下学了一年得逆向还在这做EasyRE，可笑可笑！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/dYo5zKEVjL3lJXp.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>32位文件，无壳直接用IDA打开</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/TxaPeuctCnb7qyz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>Shift+F12查看字符串窗口，发现flag，但是并不对。<br>注意到下面的right\n，是start函数，查看其伪代码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">signed</span> <span class="keyword">int</span> __usercall start@&lt;eax&gt;(<span class="keyword">int</span> a1@&lt;ebp&gt;, <span class="keyword">int</span> a2@&lt;esi&gt;)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">char</span> v2; <span class="comment">// bl</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">int</span> v4; <span class="comment">// ST14_4</span></span><br><span class="line">  _DWORD *v5; <span class="comment">// eax</span></span><br><span class="line">  _DWORD *v6; <span class="comment">// esi</span></span><br><span class="line">  _DWORD *v7; <span class="comment">// eax</span></span><br><span class="line">  _DWORD *v8; <span class="comment">// esi</span></span><br><span class="line">  <span class="keyword">int</span> v9; <span class="comment">// edi</span></span><br><span class="line">  <span class="keyword">int</span> v10; <span class="comment">// esi</span></span><br><span class="line">  _DWORD *v11; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">int</span> v12; <span class="comment">// et1</span></span><br><span class="line"></span><br><span class="line">  sub_4017C7();</span><br><span class="line">  <span class="keyword">if</span> ( !(<span class="keyword">unsigned</span> __int8)sub_40157C(<span class="number">1</span>)</span><br><span class="line">    || (v2 = <span class="number">0</span>, *(_BYTE *)(a1 - <span class="number">25</span>) = <span class="number">0</span>, *(_DWORD *)(a1 - <span class="number">4</span>) = <span class="number">0</span>, *(_BYTE *)(a1 - <span class="number">36</span>) = sub_40154A(), dword_403334 == <span class="number">1</span>) )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_401885(<span class="number">7</span>);</span><br><span class="line">    <span class="keyword">goto</span> LABEL_20;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( dword_403334 )</span><br><span class="line">  &#123;</span><br><span class="line">    v2 = <span class="number">1</span>;</span><br><span class="line">    *(_BYTE *)(a1 - <span class="number">25</span>) = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    dword_403334 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( initterm_e(&amp;unk_4020D4, &amp;unk_4020E0) )</span><br><span class="line">    &#123;</span><br><span class="line">      *(_DWORD *)(a1 - <span class="number">4</span>) = <span class="number">-2</span>;</span><br><span class="line">      result = <span class="number">255</span>;</span><br><span class="line">      <span class="keyword">goto</span> LABEL_18;</span><br><span class="line">    &#125;</span><br><span class="line">    initterm(&amp;unk_4020C8, &amp;unk_4020D0);</span><br><span class="line">    dword_403334 = <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_4016E5(*(_DWORD *)(a1 - <span class="number">36</span>));</span><br><span class="line">  v5 = (_DWORD *)sub_401879(v4);</span><br><span class="line">  v6 = v5;</span><br><span class="line">  <span class="keyword">if</span> ( *v5 &amp;&amp; (<span class="keyword">unsigned</span> __int8)sub_401651(v5) )</span><br><span class="line">    ((<span class="keyword">void</span> (__thiscall *)(_DWORD, _DWORD, <span class="keyword">signed</span> <span class="keyword">int</span>, _DWORD))*v6)(*v6, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">  v7 = (_DWORD *)sub_40187F();</span><br><span class="line">  v8 = v7;</span><br><span class="line">  <span class="keyword">if</span> ( *v7 &amp;&amp; (<span class="keyword">unsigned</span> __int8)sub_401651(v7) )</span><br><span class="line">    register_thread_local_exe_atexit_callback(*v8);</span><br><span class="line">  v9 = get_initial_narrow_environment();</span><br><span class="line">  v10 = *(_DWORD *)_p___argv();</span><br><span class="line">  v11 = (_DWORD *)_p___argc();</span><br><span class="line">  a2 = sub_401080(*v11, v10, v9);</span><br><span class="line">  <span class="keyword">if</span> ( !(<span class="keyword">unsigned</span> __int8)sub_4019A4() )</span><br><span class="line">LABEL_20:</span><br><span class="line">    <span class="built_in">exit</span>(a2);</span><br><span class="line">  <span class="keyword">if</span> ( !v2 )</span><br><span class="line">    cexit();</span><br><span class="line">  sub_401702(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  *(_DWORD *)(a1 - <span class="number">4</span>) = <span class="number">-2</span>;</span><br><span class="line">  result = a2;</span><br><span class="line">LABEL_18:</span><br><span class="line">  v12 = *(_DWORD *)(a1 - <span class="number">16</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>先拖进IDA 里看看吧！找到之前命令行中的提示字符串 <code>input</code> ，找到交叉引用该字符串的地方为函数sub_401080。（在查看strings windows的时候眼前一亮发现有个 <code>flag{NP2NiaNXx1ClGYVQ50}</code> ，但是输入以后发现并不是真正的flag…</p>
+<p>F5查看函数sub_401080的伪代码。字符串 <code>input</code> 的地址为0x402150，结合代码，可以判断sub_401020函数为printf函数。再往下发现地址0x402158开始的字符串为%s，说明sub_401050应该是scanf函数，将用户输入保存到v7中。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/HJRNUExsLfdrIa4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>得到输入以后，对v7的长度进行检查，从代码中可知v7长度必须为24个字符。</p>
+<p>接下来以 v8地址+7 位置处的字符赋值给v2，根据IDA的分析提示，v7的起始地址为ebp-24h(ebp-36)， v8的起始地址为ebp-14h(ebp-20)。假设我输入的是<code>abcdefghijklmnopqrstuvwx</code> ，那么在栈中应该是下面的情况。也就是v2的初始值是用户输入的最后一个字符<code>x</code>。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高地址</td>
+<td>ebp-13</td>
+<td>x</td>
+</tr>
+<tr>
+<td>|</td>
+<td>ebp-14</td>
+<td>w</td>
+</tr>
+<tr>
+<td>|</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>|</td>
+<td>ebp-20</td>
+<td>q</td>
+</tr>
+<tr>
+<td>|</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>↓</td>
+<td>ebp-35</td>
+<td>b</td>
+</tr>
+<tr>
+<td>低地址</td>
+<td>ebp-36</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<p>每次循环中通过v1控制对用户输入字符串的遍历，将v2的值赋值给v3，然后v2地址自减1，也就是逆序取下一个字符。将v3保存的当前字符赋值给数组 byte_40336C[v1]。所以这个部分其实就是逆序提取用户输入，保存到数组byte_40336C的过程。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/NWSZ7a84IdFbXRV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>接下来对数组byte_40336C的每个值x进行 (x+1)^6的操作。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/qzIwdZk8x4KueV9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>最后将数组byte_40336C，也就是一个字符串，与地址0x402124开始的字符串进行比较。如果相同，即strcmp返回值为0，则调用printf函数输出 <code>right\n</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/yoPcI9VbzH2JxSF.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>双击unk_402124，选中24个字符，按下 <code>Shift + E</code> 提取，选择 <code>string literal</code> ，得到的字符串为： <code>xIrCj~&lt;r|2tWsv3PtI\x7Fzndka</code> 。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/22/FNnVfoygbApRHrv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>至此，整个程序的逻辑很清楚了：</p>
+<ul>
+<li>在第1个部分中，读取用户输入</li>
+<li>在第2部分中，判断用户输入的长度。逆序提取用户输入，保存到数组中（其实是个字符串）</li>
+<li>在第3部分中，对数组每个值x进行 (x+1)^6的操作</li>
+<li>在第4部分中，检查得到的数组（字符串）与<code>xIrCj~&lt;r|2tWsv3PtI\x7Fzndka</code> 是否相等，相等则成功解决。<br><img src="https://i.loli.net/2020/12/22/je4LdMXsZ6zIQpD.png" alt=""></li>
+</ul>
+<p>用python写脚本逆出正确的输入 <code>flag{xNqU4otPq3ys9wkDsN}</code>：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># user_input逆序，存到arr数组中</span></span><br><span class="line"><span class="comment"># arr中的每个字符，进行 (i+1)^6 的操作</span></span><br><span class="line"><span class="comment"># 将arr与target比较，相同的时候输出"right"</span></span><br><span class="line">target=<span class="string">'xIrCj~&lt;r|2tWsv3PtI\x7Fzndka'</span></span><br><span class="line">res = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> target:</span><br><span class="line">    tmp = (ord(i) ^ <span class="number">6</span>) - <span class="number">1</span>  <span class="comment"># 异或的优先级！！</span></span><br><span class="line">    tmp_char = chr(tmp)</span><br><span class="line">    <span class="comment"># print("tmp:&#123;&#125;, tmp_char:&#123;&#125;".format(tmp, tmp_char))</span></span><br><span class="line">    res += tmp_char</span><br><span class="line">    </span><br><span class="line">res = res[::<span class="number">-1</span>]   <span class="comment">#逆序</span></span><br><span class="line">print(res)  <span class="comment"># flag&#123;xNqU4otPq3ys9wkDsN&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>编写脚本的过程中有两个需要注意的：</p>
+<p>1.异或运算的逆运算还是异或，比如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">x = <span class="number">5</span></span><br><span class="line">y = x^<span class="number">6</span>  <span class="comment"># 3, 0b101 ^ 0b110 =&gt; 0b011</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 已知y，求x</span></span><br><span class="line">x = y^<span class="number">6</span>  <span class="comment"># 0b011 ^ 0b110 =&gt; 0b101</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.异或运算的优先级是低于减号的：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span>^<span class="number">6</span> <span class="number">-1</span>  <span class="comment"># =&gt; 0</span></span><br><span class="line">(<span class="number">5</span>^<span class="number">6</span>) <span class="number">-1</span>  <span class="comment"># =&gt;2</span></span><br></pre></td></tr></table></figure></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T01:42:51.158Z" itemprop="dateUpdated">2021-01-11 09:42:51</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&title=《XCTF进阶区》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&title=《XCTF进阶区》 — Mr.Guo&source=实验课继续水一水！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF进阶区》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/12/02/%E5%AF%92%E5%81%87%E4%B9%8B%E5%89%8D%E7%9A%84%E8%AE%A1%E5%88%92/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：寒假之前的计划
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/11/30/%E8%8F%9C%E9%B8%A1%E7%9A%84%E6%96%B0%E7%94%9F%E8%B5%9B%E5%87%BA%E9%A2%98/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：菜鸡的新生赛出题">下一篇：菜鸡的新生赛出题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&title=《XCTF进阶区》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&title=《XCTF进阶区》 — Mr.Guo&source=实验课继续水一水！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF进阶区》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/12/01/XCTF%E9%AB%98%E6%89%8B%E5%8C%BA/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

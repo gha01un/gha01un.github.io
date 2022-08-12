@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>x64dbg的安装与配置 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="从0到1——X64dbg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="x64dbg的安装与配置">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="从0到1——X64dbg">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/11/21/3nw8KighrE2NxOQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/21/GNq7b3rKdRZvDc8.png">
+<meta property="article:published_time" content="2020-11-21T14:07:25.030Z">
+<meta property="article:modified_time" content="2020-11-21T14:20:55.139Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/21/3nw8KighrE2NxOQ.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">x64dbg的安装与配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从0到1——X64dbg"><span class="post-toc-number">1.</span> <span class="post-toc-text">从0到1——X64dbg</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x01-x64dbg的安装与配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 x64dbg的安装与配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x02-x64dbg界面介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 x64dbg界面介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x03-基本调试方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">0x03 基本调试方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x04-搜索字符串"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">0x04 搜索字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x05-修改后保存成EXE"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">0x05 修改后保存成EXE</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x06-命令支持"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">0x06 命令支持</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x07-寄存器"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">0x07 寄存器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x08-内存读取"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">0x08 内存读取</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数字"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">数字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模块数据"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">模块数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加载的模块基地"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">加载的模块基地</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RVA-文件偏移量"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">RVA &#x2F;文件偏移量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模块的入口点"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">模块的入口点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表达式"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">表达式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理信息"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">处理信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#插件"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">插件</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-x64dbg的安装与配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">x64dbg的安装与配置</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-11-21 22:07:25" datetime="2020-11-21T14:07:25.030Z"  itemprop="datePublished">2020-11-21</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">5</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="从0到1——X64dbg"><a href="#从0到1——X64dbg" class="headerlink" title="从0到1——X64dbg"></a>从0到1——X64dbg</h3><a id="more"></a>
+
+<h4 id="0x01-x64dbg的安装与配置"><a href="#0x01-x64dbg的安装与配置" class="headerlink" title="0x01 x64dbg的安装与配置"></a>0x01 x64dbg的安装与配置</h4><p>x64dbg官网地址：<code>https://x64dbg.com/#start</code></p>
+<h4 id="0x02-x64dbg界面介绍"><a href="#0x02-x64dbg界面介绍" class="headerlink" title="0x02 x64dbg界面介绍"></a>0x02 x64dbg界面介绍</h4><p>1.反汇编窗口</p>
+<p>这个位置显示的是需要分析的程序的反汇编代码。在第一个区域的最左侧例如“7712EAA3”这一列就是内存地址区域，接着“E8 07”就是汇编指令的opcode，“jmp xxxxxxxxx”这个区域就是汇编代码区，最后有一个空白的地方，我们可以在这个位置输入一些注释。</p>
+<p>2.寄存器窗口</p>
+<p>这里显示的是当前所调试程序的寄存器信息。</p>
+<p>3.数据窗口</p>
+<p>这里一般查看的是内存地址的内容。最左边是地址，接着是对应地址的十六进制数据，最右侧是十六进制对应的ASCII码。</p>
+<p>4.堆栈窗口</p>
+<p>显示一些堆栈的信息。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/11/21/3nw8KighrE2NxOQ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="0x03-基本调试方法"><a href="#0x03-基本调试方法" class="headerlink" title="0x03 基本调试方法"></a>0x03 基本调试方法</h4><p>首先我们了解一下一些基本的操作指令。<br>F2：设置断点。（可以简单理解为暂停）<br>F4：运行到光标处<br>F7：单步步入。（遇到call指令，进入call函数的实现处继续执行汇编指令）<br>F8：单步步过。（遇到call指令，执行call函数，之后接着执行call指令的下一条指令）<br>F9：运行程序（如果没有碰到断点，程序会一直执行到结束。）</p>
+<p>Ctrl+F9: 执行到函数返回处，用于跳出函数实现</p>
+<p>Alt+F9:执行到用户代码，用于快速跳出系统函数</p>
+<p>Ctrl+G:输入十六进制地址，快速定位到该地址处</p>
+<h4 id="0x04-搜索字符串"><a href="#0x04-搜索字符串" class="headerlink" title="0x04 搜索字符串"></a>0x04 搜索字符串</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/11/21/GNq7b3rKdRZvDc8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="0x05-修改后保存成EXE"><a href="#0x05-修改后保存成EXE" class="headerlink" title="0x05 修改后保存成EXE"></a>0x05 修改后保存成EXE</h4><p>文件-&gt;补丁(ctrl+P)</p>
+<p>修补文件</p>
+<p>自己输入文件名加.exe后缀</p>
+<h4 id="0x06-命令支持"><a href="#0x06-命令支持" class="headerlink" title="0x06 命令支持"></a>0x06 命令支持</h4><p>格式</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">命令 arg1 ， arg2 ， argN</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="0x07-寄存器"><a href="#0x07-寄存器" class="headerlink" title="0x07 寄存器"></a>0x07 寄存器</h4><p>所有大小的寄存器都可以用作变量</p>
+<h4 id="0x08-内存读取"><a href="#0x08-内存读取" class="headerlink" title="0x08 内存读取"></a>0x08 内存读取</h4><p>[addr]       读取DWORD / QWORD</p>
+<p>n:[addr]      从addr开始读取n个字节</p>
+<p>seg:[addr]    段寄存器加偏移读取DWORD / QWORD    <code>seg</code>可以<code>gs</code>，<code>es</code>，<code>cs</code>，<code>fs</code>，<code>ds</code>，<code>ss</code></p>
+<p>byte:[addr]   读取BYTE </p>
+<p>word:[addr]   读取word</p>
+<p>dword:[addr]  读取dword</p>
+<p>qword:[addr]  读取qword</p>
+<p>字节/字/双字/四字/指针(ptr)<br>ReadByte,Byte,byte(addr)：从 addr 读取一个字节，并返回该值。<br>ReadWord,Word,word(addr)：从 addr 读取一个字(2字节)，并返回该值。<br>ReadDword,Dword,dword(addr)：从 addr 读取双字(4字节)，并返回该值。<br>ReadQword,Qword,qword(addr)：从 addr 读取四字(8字节)，并返回该值(仅用于x64)。<br>ReadPtr,ReadPointer,ptr,Pointer,pointer(addr)：从 addr 读取一个指针(4/8 字节)，并返回该值。</p>
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a><strong>数字</strong></h4><p><strong>默认情况下，所有数字都解释为十六进制！</strong>如果要指定，可以<code>x</code>或<code>0x</code>作为前缀。十进制数可以通过在数字前加点号来使用<code>.123=7B</code></p>
+<h4 id="模块数据"><a href="#模块数据" class="headerlink" title="模块数据"></a><strong>模块数据</strong></h4><p>键入<code>GetProcAddress,</code>它将自动解析为函数的实际地址。要明确定义从哪个模块加载API，请使用：<code>[module].dll:[api]</code>或<code>[module]:[api]</code>。当<code>[module]</code>为空字符串时<code>:GetProcAddress</code>，将使用CPU中当前选择的模块。</p>
+<h4 id="加载的模块基地"><a href="#加载的模块基地" class="headerlink" title="加载的模块基地"></a><strong>加载的模块基地</strong></h4><p>如果您要访问加载模块的基地址，你可以写：<code>[module]:0</code>，<code>[module]:base</code>，<code>[module]:imagebase</code>或<code>[module]:header</code></p>
+<h4 id="RVA-文件偏移量"><a href="#RVA-文件偏移量" class="headerlink" title="RVA /文件偏移量"></a><strong>RVA /文件偏移量</strong></h4><p>如果要访问模块RVA，则可以写<code>[module]:0+[rva]</code>，也可以写<code>[module]:$[rva]</code>。如果要将文件偏移量转换为VA，可以使用<code>[module]:#[offset]</code>。例如，当<code>[module]</code>为空字符串时，将使用CPU中当前选择的模块</p>
+<h4 id="模块的入口点"><a href="#模块的入口点" class="headerlink" title="模块的入口点"></a><strong>模块的入口点</strong></h4><p>要访问一个模块的入口点，你可以写<code>[module]:entry</code>，<code>[module]:oep</code>或<code>[module]:ep</code>。请注意，当有名称为的导出时<code>entry</code>，<code>oep</code>否则<code>ep</code>将返回这些地址</p>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a><strong>表达式</strong></h4><p>调试器允许使用基本表达式。只需在命令窗口中键入一个表达式，结果就会显示在控制台中。除了计算之外，它还允许使用类似C的语法快速更改变量</p>
+<ol>
+<li><em>括号</em>：<code>(1+2)</code>，<code>[1+6]</code>比其他操作优先。</li>
+<li><em>一元减/二进制非/逻辑非</em>：（<code>-1</code>负1），<code>~1</code>（二进制非1），<code>!0</code>（逻辑非0）。</li>
+<li><em>乘法/除法</em>：（<code>2*3</code>常规乘法），<code>2</code>3<code>（得到乘法的高分），</code>6/3<code>（常规除法），</code>5%3`（除法的模/余数）。</li>
+<li><em>加法/减法</em>：（<code>1+3</code>加法），<code>5-2</code>（减法）。</li>
+<li><em>左/右移位/旋转</em>：（<code>1&lt;&lt;2</code>向左移位，shl表示无符号，sal表示有符号），<code>10&gt;&gt;1</code>（向右移位，shl表示无符号，sal表示有符号），<code>1&lt;&lt;&lt;2</code>（向左旋转），<code>1&gt;&gt;&gt;2</code>（向右旋转）。</li>
+<li><em>小（相等）/大（等于）</em>：<code>4&lt;10</code>，<code>3&gt;6</code>，<code>1&lt;=2</code>，<code>6&gt;=7</code>（如果真解析为1，0，如果假）。</li>
+<li><em>等于/不等于</em>：<code>1==1</code>，<code>2!=6</code>（如果为true，则解析为1；如果为false，则解析为0）。</li>
+<li><em>二进制和</em>：（<code>12&amp;2</code>常规二进制和）。</li>
+<li><em>二进制异或</em>：（<code>2^1</code>常规二进制异或）。</li>
+<li><em>二进制或</em>：（<code>2|8</code>常规二进制或）。</li>
+<li><em>逻辑和</em>：（<code>0&amp;&amp;3</code>如果为true，则解析为1；如果为false，则解析为0）。</li>
+<li><em>逻辑或</em>：（<code>0||3</code>如果为true，则解析为1；如果为false，则解析为0）。</li>
+<li><em>逻辑含义</em>：（<code>0-&gt;1</code>如果为true，则解析为1；如果为false，则解析为0）</li>
+</ol>
+<h4 id="处理信息"><a href="#处理信息" class="headerlink" title="处理信息"></a><strong>处理信息</strong></h4><ul>
+<li><code>peb()</code> ：获取PEB地址。</li>
+<li><code>teb()</code> ：获取TEB地址。</li>
+<li><code>tid()</code> ：获取当前线程ID</li>
+</ul>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a><strong>插件</strong></h4><p><strong><a href="https://github.com/horsicq/stringsx64dbg">stringsx64dbg</a>    字符串搜索</strong></p>
+<p><strong>x64dbgApiBreak    API断点</strong></p>
+<p><strong><a href="https://github.com/ThunderCls/xAnalyzer/releases/tag/2.5.4">xAnalyzer</a>          分析</strong></p>
+<p><strong>SharpOD x64       反调试</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-11-21T14:20:55.139Z" itemprop="dateUpdated">2020-11-21 22:20:55</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&title=《x64dbg的安装与配置》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&title=《x64dbg的安装与配置》 — Mr.Guo&source=从0到1——X64dbg" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《x64dbg的安装与配置》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/11/23/%E2%80%9C%E7%A5%A5%E4%BA%91%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：“祥云杯”网络安全大赛
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/11/21/peda%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：peda的官方文档说明">下一篇：peda的官方文档说明</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&title=《x64dbg的安装与配置》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&title=《x64dbg的安装与配置》 — Mr.Guo&source=从0到1——X64dbg" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《x64dbg的安装与配置》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/11/21/x64dbg%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

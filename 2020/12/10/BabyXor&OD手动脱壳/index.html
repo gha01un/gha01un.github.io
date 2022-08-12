@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>BabyXor&amp;OD手动脱壳 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="题目虽然常规，但是学到了一些关于手动脱壳的知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BabyXor&amp;OD手动脱壳">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="题目虽然常规，但是学到了一些关于手动脱壳的知识。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/zN8M6BDTdcQ9qnm.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/jeLRZWtk1Ji3yTU.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/aUH4XvfgsziRWxD.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/jduGTcb6fvitU2D.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/1lWQXfnNxHJzvRU.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/aH1pMEPU8bZIQwg.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/8qucbXtQJmy5wKH.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/n73SbGkKf8iYOhV.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/4JNp1coPiFdHIaE.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/NKkzeQyIULaitJE.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/FUoj5SqeuXcrDEY.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/MY9mkrbaZWs81Ul.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/4l3cADT1dm5uwNH.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/fcPpmRa38nCUE4k.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/jiKHz9TbvAPLtEO.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/udED4eAzTQyn8cb.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/10/3nGJAiYTKLb1ePa.png">
+<meta property="article:published_time" content="2020-12-10T08:42:49.781Z">
+<meta property="article:modified_time" content="2021-01-11T01:42:17.969Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/10/zN8M6BDTdcQ9qnm.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">BabyXor&amp;OD手动脱壳</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#脱壳过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">脱壳过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">静态分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态分析</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-BabyXor&amp;OD手动脱壳"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">BabyXor&OD手动脱壳</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-12-10 16:42:49" datetime="2020-12-10T08:42:49.781Z"  itemprop="datePublished">2020-12-10</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">5</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>题目虽然常规，但是学到了一些关于手动脱壳的知识。</p>
+<a id="more"></a>
+
+<h3 id="脱壳过程"><a href="#脱壳过程" class="headerlink" title="脱壳过程"></a>脱壳过程</h3><p>查看文件，发现是奇奇怪怪的壳，于是我们用OD手动脱壳.</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/zN8M6BDTdcQ9qnm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>将文件拖入OD</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/jeLRZWtk1Ji3yTU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这里利用ESP脱壳大法，下面说一说ESP脱壳的具体步骤。</p>
+<p>  ESP定理脱壳（ESP在OD的寄存器中，我们只要在命令行下ESP的硬件访问断点，就会一下来到程序的OEP了！）</p>
+<p>（1）开始就点F8，注意观察OD右上角的寄存器中ESP有没突现（变成红色）（这只是一 般情况下，更确切的说我们选择的ESP值是关键句之后的第一个ESP值）</p>
+<p>（2）在命令行下：dd XXXXXXXX(指在当前代码中的ESP地址，或者是hr XXXXXXXX)， 按回车</p>
+<p>（3）选中下断的地址，断点—&gt;硬件访问—&gt;WORD断点</p>
+<p>（4）按一下F9运行程序，直接来到了跳转处，按下F8，到达程序OEP</p>
+<p>按下F8单步步过，发现ESP此时是红色，记下此时ESP寄存器中的值0019FF54（载入程序处的下一个ESP是红色，当然每个人机器上运行这个值有可能不同）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/aUH4XvfgsziRWxD.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>在命令行下输入<code>dd 0019FF54</code>，然后按下回车键</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/jduGTcb6fvitU2D.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>选中要下断点的0019FF54那行，依次选择断点 -&gt; 硬件访问 -&gt; Word</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/1lWQXfnNxHJzvRU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>在菜单栏调试（D）下的硬件断点（H）下选项下可以看到我们设置的硬件断点</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/aH1pMEPU8bZIQwg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>按F9运行，然后我们F8单步走，到了有大跳转时不要再按F8了（这是向上跳转的），我们必须跳过去，因为接下来就有可能是程序的OEP领空</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/8qucbXtQJmy5wKH.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/n73SbGkKf8iYOhV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这里有更多关于ESP定律的资料</p>
+<p><code>https://blog.csdn.net/qiurisuixiang/article/details/7649799</code></p>
+<p><code>https://beikeit.com/post-614.html</code></p>
+<h3 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h3><p>把已经脱壳的exe文件拖入ida中</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/4JNp1coPiFdHIaE.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>先分析重要函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">v1 = sub_40108C((int)&amp;unk_435DC0, <span class="number">56</span>);</span><br><span class="line">v2 = (char *)sub_401041((int)&amp;unk_435DC0, (int)&amp;dword_435DF8, <span class="number">0x38</span>u);</span><br><span class="line">v3 = malloc(<span class="number">0x64</span>u);</span><br><span class="line">v4 = strlen(v2);</span><br><span class="line">memcpy(v3, v2, v4);</span><br><span class="line">v5 = sub_4010C3(&amp;unk_435DC0, v2, &amp;dword_435E30, <span class="number">56</span>);</span><br><span class="line">sub_40101E(v1, v2, v5);</span><br></pre></td></tr></table></figure></div>
+
+<p>找到这些重要的函数先看传参,并找出其关联</p>
+<p>访问<code>&amp;unk_435DC0</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/NKkzeQyIULaitJE.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>显然这是一个数组,不过在这之间,和我一样的小菜鸡们注意了,怎么找值<br>1.找类型,此处类型为db,及占4个字节,及是以四个字节为媒介进行分开<br>2.看地址,上图是一个地址一个地址进行分开<br>3.看端序,及所谓小端序(高到低)和大端序(低到高)<br>又上面3个要点可以得到</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">435DC0&#x3D;[0x66,0x6d,0x63,0x64,0x7f,0x37,0x35,0x30,0x30,0x6b,0x3a,0x3c,0x3b,0x20]</span><br></pre></td></tr></table></figure></div>
+
+<p>访问<code>&amp;dword_435DF8</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/FUoj5SqeuXcrDEY.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">435DF8&#x3D;[0x37,0x6f,0x38,0x62,0x36,0x7c,0x37,0x33,0x34,0x76,0x33,0x62,0x64,0x7a]</span><br></pre></td></tr></table></figure></div>
+
+<p>访问<code>dword_435E30</code><br>得到</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">435E30&#x3D;[0x1a,0,0,0x51,0x5,0x11,0x54,0x56,0x55,0x59,0x1d,0x9,0x5d,0x12,0,0]</span><br></pre></td></tr></table></figure></div>
+
+<p>提取完数据我们看逻辑</p>
+<p><code>sub_40108C</code>函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/MY9mkrbaZWs81Ul.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>化成代码：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">a1 = unk_435DC0</span><br><span class="line"><span class="keyword">char</span> *v3</span><br><span class="line">v3 = <span class="built_in">malloc</span>(<span class="number">56</span>&gt;&gt;<span class="number">2</span>)    <span class="comment">// 56&gt;&gt;2 = 14</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;<span class="number">14</span> ; ++i)</span><br><span class="line">    <span class="built_in">sprintf</span>(&amp;v3[i],<span class="string">"%c"</span>,i^*(a1 + <span class="number">4</span>*i))</span><br><span class="line"></span><br><span class="line">    a1 = [<span class="number">102</span>, <span class="number">109</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">127</span>, <span class="number">55</span>, <span class="number">53</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">107</span>, <span class="number">58</span>, <span class="number">60</span>, <span class="number">59</span>, <span class="number">32</span> ]</span><br></pre></td></tr></table></figure></div>
+
+<p>解这个函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a1 = [<span class="number">102</span>, <span class="number">109</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">127</span>, <span class="number">55</span>, <span class="number">53</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">107</span>, <span class="number">58</span>, <span class="number">60</span>, <span class="number">59</span>, <span class="number">32</span> ]</span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">14</span>):</span><br><span class="line">    flag += chr(a1[i]^i)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>sub_401041((int)&amp;unk_435DC0, (int)&amp;dword_435DF8, 0x38u)</code>函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/4l3cADT1dm5uwNH.png" alt="image-20201210173449644" title="">
+                </div>
+                <div class="image-caption">image-20201210173449644</div>
+            </figure>
+
+<p>化成代码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> *v5;</span><br><span class="line">v5 = <span class="built_in">malloc</span>(<span class="number">56</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>,*a2[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>;i&lt;<span class="number">14</span>;++i)</span><br><span class="line">    <span class="built_in">sprintf</span>(&amp;v5[i],<span class="string">"%c"</span>,*(a1 + <span class="number">4</span>* i)^*(a2 + <span class="number">4</span>*i)^*(a1+ <span class="number">4</span>*i <span class="number">-4</span>))</span><br></pre></td></tr></table></figure></div>
+
+<p>解这个函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a2 = [<span class="number">55</span>, <span class="number">111</span>, <span class="number">56</span>, <span class="number">98</span>, <span class="number">54</span>, <span class="number">124</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">118</span>, <span class="number">51</span>, <span class="number">98</span>, <span class="number">100</span>, <span class="number">122</span>]</span><br><span class="line">temp = []</span><br><span class="line">flag += chr(a2[<span class="number">0</span>])</span><br><span class="line">temp.append(a2[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">1</span>,<span class="number">14</span>):</span><br><span class="line">    x = (a1[i]^a2[i]^a1[i<span class="number">-1</span>])</span><br><span class="line">    flag += chr(x)</span><br><span class="line">    temp.append(x)</span><br></pre></td></tr></table></figure></div>
+
+<p>最后一个函数<code>sub_4010C3((int)&amp;unk_435DC0, (int)v3, (int)&amp;dword_435E30, 56)</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/fcPpmRa38nCUE4k.png" alt="image-20201210173723720" title="">
+                </div>
+                <div class="image-caption">image-20201210173723720</div>
+            </figure>
+
+<p>解函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a3 = [<span class="number">26</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">81</span>,<span class="number">5</span>,<span class="number">17</span>,<span class="number">84</span>,<span class="number">86</span>,<span class="number">85</span>,<span class="number">89</span>,<span class="number">29</span>,<span class="number">9</span>,<span class="number">93</span>,<span class="number">18</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i  <span class="keyword">in</span> range(<span class="number">13</span>):</span><br><span class="line">    x += chr(a3[i+<span class="number">1</span>]^temp[i]^i)</span><br><span class="line">    </span><br><span class="line">flag +=  chr(a3[i]^a2[i]) + x</span><br></pre></td></tr></table></figure></div>
+
+<p>完整的exp</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a1 = [<span class="number">102</span>, <span class="number">109</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">127</span>, <span class="number">55</span>, <span class="number">53</span>, <span class="number">48</span>, <span class="number">48</span>, <span class="number">107</span>, <span class="number">58</span>, <span class="number">60</span>, <span class="number">59</span>, <span class="number">32</span> ]</span><br><span class="line">a2 = [<span class="number">55</span>, <span class="number">111</span>, <span class="number">56</span>, <span class="number">98</span>, <span class="number">54</span>, <span class="number">124</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">118</span>, <span class="number">51</span>, <span class="number">98</span>, <span class="number">100</span>, <span class="number">122</span>]</span><br><span class="line">a3 = [<span class="number">26</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">81</span>,<span class="number">5</span>,<span class="number">17</span>,<span class="number">84</span>,<span class="number">86</span>,<span class="number">85</span>,<span class="number">89</span>,<span class="number">29</span>,<span class="number">9</span>,<span class="number">93</span>,<span class="number">18</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">temp=[]</span><br><span class="line">flag=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">14</span>):</span><br><span class="line">    flag+=chr(a1[i]^i)</span><br><span class="line"></span><br><span class="line">flag+=chr(a2[<span class="number">0</span>])</span><br><span class="line">temp.append(a2[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">14</span>):</span><br><span class="line">    x=a1[i]^a2[i]^a1[i<span class="number">-1</span>]</span><br><span class="line">    flag+=chr(x)</span><br><span class="line">    temp.append(x)</span><br><span class="line"></span><br><span class="line">x=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">13</span>):</span><br><span class="line">    x+=chr(a3[i+<span class="number">1</span>]^(temp[i])^i)</span><br><span class="line">flag+= chr(a3[<span class="number">0</span>] ^ a2[<span class="number">0</span>]) + x</span><br><span class="line">print(flag)</span><br><span class="line"></span><br><span class="line"><span class="comment"># flag&#123;2378b077-7d6e-4564-bdca-7eec8eede9a2&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="动态分析"><a href="#动态分析" class="headerlink" title="动态分析"></a>动态分析</h3><p>其实也可以用动态调试的方法做，在三个函数的位置分别下断点</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/jiKHz9TbvAPLtEO.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/udED4eAzTQyn8cb.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/10/3nGJAiYTKLb1ePa.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>把得到的flag拼凑到一起即为答案。</p>
+<p>刚刚发现自己脱壳出来的exe文件无法在od里动调，所以我试不了这种方法，图是偷的别人的。至于为什么动调不了等我回去问问大佬们吧。心态有一点小炸裂，无语凝噎！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T01:42:17.969Z" itemprop="dateUpdated">2021-01-11 09:42:17</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/12/10/BabyXor&amp;OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&amp;OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&title=《BabyXor&OD手动脱壳》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&title=《BabyXor&OD手动脱壳》 — Mr.Guo&source=题目虽然常规，但是学到了一些关于手动脱壳的知识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《BabyXor&OD手动脱壳》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/12/13/URL%E7%BC%96%E7%A0%81/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：网安作业-常见编码
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/12/02/%E5%AF%92%E5%81%87%E4%B9%8B%E5%89%8D%E7%9A%84%E8%AE%A1%E5%88%92/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：寒假之前的计划">下一篇：寒假之前的计划</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&title=《BabyXor&OD手动脱壳》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&title=《BabyXor&OD手动脱壳》 — Mr.Guo&source=题目虽然常规，但是学到了一些关于手动脱壳的知识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《BabyXor&OD手动脱壳》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/12/10/BabyXor&OD%E6%89%8B%E5%8A%A8%E8%84%B1%E5%A3%B3/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

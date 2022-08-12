@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>echo-server | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="XCTF 3rd-NJCTF-2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echo-server">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="XCTF 3rd-NJCTF-2017">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/WN8wG1tdH9ID5bX.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/hJkSTpsnbQ1ogHK.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/31pxl2iAOFP5R9q.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/ZqF3svJhkOITYXW.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/kRunCHvQdAm31pG.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/KkRU7MtAq8yIfud.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/FdtpmjP91JX7DlU.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/9n3pQcmTCqhGIBZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/In6Fe3blwKksxaO.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/YF98Jj4iOboLqum.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/p4CofPbSYNyLr2g.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/Tn5Pz2wWJtXBKUv.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/ji8WHGM2JR1uTdK.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/kevYh7iaBxWG1X5.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/W6J4ts3zwGSfumg.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/Au9JcpmniwZ5QgU.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/HgM7FnUdhxEVAjf.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/SX1QFjmkRoTxhzl.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/17/YkN31GgIVDPszoF.png">
+<meta property="article:published_time" content="2020-12-17T07:57:25.682Z">
+<meta property="article:modified_time" content="2021-01-11T01:42:26.603Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/17/WN8wG1tdH9ID5bX.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">echo-server</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-查壳"><span class="post-toc-number">1.</span> <span class="post-toc-text">0x01.查壳</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-使用IDA进行反编译"><span class="post-toc-number">2.</span> <span class="post-toc-text">0x02.使用IDA进行反编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x03-分析程序"><span class="post-toc-number">3.</span> <span class="post-toc-text">0x03.分析程序</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-echo-server"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">echo-server</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-12-17 15:57:25" datetime="2020-12-17T07:57:25.682Z"  itemprop="datePublished">2020-12-17</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">3</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>XCTF 3rd-NJCTF-2017</p>
+<a id="more"></a>
+
+<h3 id="0x01-查壳"><a href="#0x01-查壳" class="headerlink" title="0x01.查壳"></a>0x01.查壳</h3><p>使用ExeinfoPe工具查壳，可以发现是32位程序，没有壳</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/WN8wG1tdH9ID5bX.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="0x02-使用IDA进行反编译"><a href="#0x02-使用IDA进行反编译" class="headerlink" title="0x02.使用IDA进行反编译"></a>0x02.使用IDA进行反编译</h3><p>使用32位的IDA打开程序</p>
+<h3 id="0x03-分析程序"><a href="#0x03-分析程序" class="headerlink" title="0x03.分析程序"></a>0x03.分析程序</h3><p>题目提示”输入密钥，得到flag.”<br>定位到main函数，并使用F5大法查看伪代码</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/hJkSTpsnbQ1ogHK.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这个程序的main函数伪代码比较清晰，根据伪代码可知程序main函数中只有一个关键函数，但是这个函数调用比较奇怪。猜测这里可能有问题。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line">((<span class="keyword">void</span> (*)(<span class="keyword">void</span>))((<span class="keyword">char</span> *)&amp;loc_80487C1 + <span class="number">3</span>))();</span><br></pre></td></tr></table></figure></div>
+
+<p>我们切回汇编代码，直接看汇编代码</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/31pxl2iAOFP5R9q.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们双击这个函数，跟去这个函数看下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/ZqF3svJhkOITYXW.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>双击后程序跳转到这里了，根据main函数中的那个call，我们可以知道，程序应该跳转到<code>loc_80487C1+3</code>处，但是跳转过来后，发现汇编代码却乱七八糟的，得知程序被混淆了；我们需要想办法去除花指令。<br>在<code>0x080487C1</code>处按下D键把此处的汇编代码转换为数据，我在此处按了两次D键才转换完成。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/kRunCHvQdAm31pG.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><code>0x80487C1</code>处应该变成这样，我们发现<code>0x80487C1</code>处的字节是0xE8，这个0xE8经常用于混淆，使用IDA把它patch为0x90，在<code>0x80487C2</code>处按下C键，我们会看到IDA分析<code>0x80487C2、0x80487C3</code>的汇编代码显示正常，我们返回main函数看一眼那个call，发现那个call变成了<code>call near ptr unk_80487C4</code>，我们回到<code>unk_80487C4</code>处，按下C键。会发现IDA分析的汇编代码和正常的函数开通差不多了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/KkRU7MtAq8yIfud.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>接着往下看</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/FdtpmjP91JX7DlU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>发现这里出现了一个和之前main函数中的函数调用一样诡异的jmp，<code>jmp short near ptr loc_80487F3+1</code>我们可以仔细观察一些，可以发现这条指令占了两个字节，这条指令本身的意思就是跳到自己的第二个字节处，因此我们可以理解为这题指令就是相当于把第一个字节nop掉。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/9n3pQcmTCqhGIBZ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我门看下机器码，发现<code>0x80487F3</code>处的字节0xE8，0xE8也经常被用于混淆，再结合我们上一步的分析，可以得知这里就是用0xE8来干扰IDA的静态分析，我们直接把0xE8patch为0x90。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/In6Fe3blwKksxaO.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>然后可以观察到，又有一块汇编代码恢复正常。然后我发现<code>0x08048816</code>处有一个地址被IDA标红。我们观察下发现<code>0x08048816</code>前面的两行汇编代码相当于无条件跳转</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span>     eax, eax</span><br><span class="line">jz      short loc_804881D</span><br></pre></td></tr></table></figure></div>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/YF98Jj4iOboLqum.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>然后在<code>0x08048816</code>后面发现有一处比较，其中一个参数是地址是<code>0x8048817h</code>，因此我猜测此处的<code>0x08048816</code>处的几个字节的数据可能不是代码，而是数据，使用D转换为数据看下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/p4CofPbSYNyLr2g.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>发现果然是数据，我们在<code>0x08048817</code>按A，把数据转为字符串</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/Tn5Pz2wWJtXBKUv.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在字符串的下方有一处比较，还有一句”You are very close! Now patch me~”<br>因此我们得知程序需要用户输入的字符串是”F1@gA”，我们运行程序尝试下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/ji8WHGM2JR1uTdK.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>发现确实通过比较了，但是并未输出flag，程序提示需要patch，我们接着往下看，找下程序为什么会卡在这。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/kevYh7iaBxWG1X5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们发现这里又有奇怪的跳转，我们使用之前的方法恢复下,尝试了下还是比较奇怪，先不管他，我有看到在”You are very close! Now patch me~”下方有个跳转</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/W6J4ts3zwGSfumg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>发现这里是根据<code>dword_804A088</code>的值来决定是否跳转的，在<code>dword_804A088</code>上按下X键，使用交叉引用，看下<code>dword_804A088</code>这个地址的值是哪来的，</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/Au9JcpmniwZ5QgU.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>过去看下
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/HgM7FnUdhxEVAjf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>发现<code>dword_804A088</code>这个地址的值是在main函数中硬编码的1，</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/SX1QFjmkRoTxhzl.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>知道EAX的值为1，<code>test eax,eax</code>置z标志位为0，z标志位为0时jz不跳转，所以此处的jz没有跳转<br>对此处进行patch，改为jmp，然后保存程序。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/12/17/YkN31GgIVDPszoF.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>成功得到flag：F8C60EB40BF66919A77C4BD88D45DEF4</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-11T01:42:26.603Z" itemprop="dateUpdated">2021-01-11 09:42:26</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/12/17/echo-server/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&title=《echo-server》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&title=《echo-server》 — Mr.Guo&source=XCTF 3rd-NJCTF-2017" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《echo-server》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/12/18/Replace/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：Replace
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/12/17/test_re/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：test_re">下一篇：test_re</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&title=《echo-server》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&title=《echo-server》 — Mr.Guo&source=XCTF 3rd-NJCTF-2017" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《echo-server》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/12/17/echo-server/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

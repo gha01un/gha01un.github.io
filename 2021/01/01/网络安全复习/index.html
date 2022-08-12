@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>网络安全复习 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="AI">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="网络安全复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全复习">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="网络安全复习">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-01T09:09:55.948Z">
+<meta property="article:modified_time" content="2021-01-05T11:38:56.286Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网络安全复习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#网络安全复习"><span class="post-toc-number">1.</span> <span class="post-toc-text">网络安全复习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章-概论"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第一章 概论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二章-网络攻击流程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第二章 网络攻击流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#黑客攻击流程"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">黑客攻击流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扫描基本步骤"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">扫描基本步骤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nmap使用技巧"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">nmap使用技巧</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查点"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">查点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#攻击实施"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">攻击实施</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渗透测试"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">渗透测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四章-口令破解"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">第四章 口令破解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#windows口令文件"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">windows口令文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密码系统："><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">密码系统：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第五章-欺骗攻击"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">第五章 欺骗攻击</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第六章-web攻击"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">第六章 web攻击</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SQL注入"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">SQL注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XSS"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">XSS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#web攻击防御"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">web攻击防御</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第七章-缓冲区溢出"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">第七章 缓冲区溢出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓冲区溢出原理"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">缓冲区溢出原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">防御</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第十章-身份认证"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">第十章 身份认证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第十一章-访问控制"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">第十一章 访问控制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第十二章-防火墙"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">第十二章 防火墙</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本原理"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">基本原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防火墙的分类"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">防火墙的分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防火墙的配置方案"><span class="post-toc-number">1.9.3.</span> <span class="post-toc-text">防火墙的配置方案</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-网络安全复习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网络安全复习</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2021-01-01 17:09:55" datetime="2021-01-01T09:09:55.948Z"  itemprop="datePublished">2021-01-01</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Study/">Study</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">20</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="网络安全复习"><a href="#网络安全复习" class="headerlink" title="网络安全复习"></a>网络安全复习</h1><a id="more"></a>
+
+<h2 id="第一章-概论"><a href="#第一章-概论" class="headerlink" title="第一章 概论"></a>第一章 概论</h2><p>网络安全主要威胁</p>
+<p>特洛伊木马，黑客攻击，后门，计算机病毒，拒绝服务攻击，内外部泄密，蠕虫，逻辑炸弹，信息丢失篡改销毁。</p>
+<p>网络安全的三个基本属性 C I A (扩展5个)</p>
+<p>机密性，完整性，可用性，可认证与可信任性，不可抵赖性，可说明性，可审计性，隐私性</p>
+<p>黑客攻击类型：从安全属性上分类:阻断攻击，截取攻击，篡改攻击，重放攻击，伪造攻击。从攻击方式分类：主动攻击:伪装，回答，修改报文，拒绝服务。</p>
+<p>被动攻击:报文内容泄露，通信分析。</p>
+<h2 id="第二章-网络攻击流程"><a href="#第二章-网络攻击流程" class="headerlink" title="第二章 网络攻击流程"></a>第二章 网络攻击流程</h2><h3 id="黑客攻击流程"><a href="#黑客攻击流程" class="headerlink" title="黑客攻击流程"></a>黑客攻击流程</h3><p>踩点 —&gt; 扫描 —&gt; 查点 —&gt; 访问/拒绝服务 —&gt; 提权 —&gt; 窃取信息 —&gt; 淹没踪迹 —&gt; 创建后门</p>
+<h3 id="扫描基本步骤"><a href="#扫描基本步骤" class="headerlink" title="扫描基本步骤"></a>扫描基本步骤</h3><p>确定目标系统是否真实存在，确定目标系统上那些服务正在运行或监听，探查操作系统。</p>
+<h3 id="nmap使用技巧"><a href="#nmap使用技巧" class="headerlink" title="nmap使用技巧"></a>nmap使用技巧</h3><p>常用命令：</p>
+<p>-sP ：进行ping扫描<br>-sn:  Ping Scan - disable port scan  #ping探测扫描主机， 不进行端口扫描 （测试过对方主机把icmp包都丢弃掉，依然能检测到对方开机状态）<br>-sA （发送tcp的ack包进行探测，可以探测主机是否存活）<br>SYN扫描(半开) -sS ：向目标端送SYN数据包，返回SYN/ACK数据包，可以断定该端口处于监听状态，返回RST/ACK数据包，通常表明该端口不在监听状态，然后，扫描者送出一个RST/ACK数据包(使通信双方永远不会建立一条完整连接)优点:更隐秘，目标系统一般不会将其记入日志。缺点:半开连接过多时，会形成一种拒绝服务条件而引起对方的警觉<br>TCP连接扫描 -sT：3次握手方式tcp的扫描 #效率低，速度慢，不需要root 很容易被目标系统察觉<br>-sU：udp端口的扫描 #如果返回ICMP不可达的错误消息，说明端口是关闭的，如果得到正确的适当的回应，说明端口是开放的.udp端口扫描速度比较慢<br>FIN扫描(秘密扫描) -sF：也是tcp的扫描一种，发送一个FIN标志的数据包 如果目标端口关闭，目标系统应该返回一个RST数据包,<br>否则丢弃该包。通常只对UNIX系统的TCP/IP栈有效(Window平台总是返回RST包)。由于不包含TCP三次握手协议的任何部分，所以无法被记录下来，从而比SYN扫描隐蔽FIN数据包能通过监测SYN包的包过滤器(秘密扫描)<br>-sX：圣诞树扫描-sN：空(NULL)扫描-sV：版本检测<br>TCP ACK扫描(nmap -sA):测试防火墙的规则集。判断防火墙是简单的包过滤防火墙;还是高级的、具备数据包过滤功能的状态(stateful) 防火墙不能用来确定端口是否开放或者关闭<br>TCP窗口扫描(nmap -sW) :测试特定目标系统(如AIX和FreeBSD系统).上的端口是否开放、 被过滤一会导致目标系统返回不同的TCP窗口长度值<br>TCP Ma imon扫描(nmap -sM) : 探测报文改为FIN/ACK外,其原理与TCP FIN扫描一-样;无论端口是否开放，都应响应RST报文。Uriel注意到如果端口开放，许多基于BSD的系统只是丢弃该报文<br>UDP扫描(nmap -sU) : 向目标端口发出UDP数据包<br>如果返回“ICMP port unreachable”出错消息，表明端口关闭。如果没有收到该消息，端口可能开放remark: UDP不要求必须建立一条连接,所以扫描的准确性取决于与目标网络的使用情况和过滤机制有关的许多因素(扫描结果不可靠)</p>
+<h3 id="查点"><a href="#查点" class="headerlink" title="查点"></a>查点</h3><p>对识别出来的服务进行更为充分的探查</p>
+<p>· 用户账号名（用于随后的口令猜测攻击）</p>
+<p>· 错误配置的共享资源（如不安全的文件共享）</p>
+<p>· 具有已知安全性漏洞的旧版本软件（如存在远程缓冲区溢出的web服务器）</p>
+<h3 id="攻击实施"><a href="#攻击实施" class="headerlink" title="攻击实施"></a>攻击实施</h3><p><strong>分类</strong>：破坏性攻击：利用工具发动攻击。入侵性攻击：利用收集到的信息，找到其系统漏洞，然后利用漏洞获取尽可能高的权限</p>
+<p><strong>主要阶段</strong>：预攻击探测：为进一步入侵提供有用信息。口令破解与提升权限。实施攻击：缓冲区溢出、拒绝服务、后门、木马、病毒</p>
+<p><strong>攻击善后</strong>：留后门：长时间地保留和巩固对系统的控制权。隐藏踪迹：删除日志文件，更改日志文件，替换系统程序。</p>
+<h3 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h3><p>一种通过模拟的攻击者的技术与方法，挫败目标系统的安全控制措施 并取得访问控制权的安全测试方法</p>
+<p><strong>分类</strong>：</p>
+<p>白盒测试：拥有组织机构的内部知识的情况下进行的渗透测试</p>
+<p>灰盒测试：拥有一部分内部知识的情况下进行的渗透测试</p>
+<p>黑盒测试：模拟一个对组织机构一无所知的攻击者进行的渗透测试</p>
+<p><strong>步骤（七步）</strong></p>
+<p>前期交互阶段：确定渗透测试范围，目标，限制条件以及服务合同细节。<br>情报搜集阶段：获取目标网络拓扑，系统配置，安全防御措施等信息。<br>威胁建模阶段：针对获取的信息进行威胁建模和攻击规划。<br>漏洞分析阶段：总和汇总的情报信息，从漏扫结果，服务查点信息等找出可实施攻击的点。<br>渗透攻击阶段：利用找出的漏洞入侵系统，获取访问权限。<br>后渗透攻击阶段：根据目标组织经营模式，保护资产形式等自主设计攻击目标。实施能造成重要业务影响的攻击<br>报告阶段：凝聚所有阶段的关键情报信息，发现的系统漏洞，成功的渗透攻击过程，同时分析修补与升级方案</p>
+<h2 id="第四章-口令破解"><a href="#第四章-口令破解" class="headerlink" title="第四章 口令破解"></a>第四章 口令破解</h2><p>暴力破解:穷举，速度慢。</p>
+<p>字典攻击：根据用户信息建立起一个用户可能使用的口令表文件，速度快。</p>
+<p>组合攻击：在字典列表的基础上增加几个字母或数字进行攻击。</p>
+<p>社会工程学：偷窥，网络嗅探，搜索垃圾箱，重放。</p>
+<h3 id="windows口令文件"><a href="#windows口令文件" class="headerlink" title="windows口令文件"></a>windows口令文件</h3><p>1.安全账户管理器SAM机制。</p>
+<p>C:\Windows\System32\Config\SAM</p>
+<p>2.SAM文件:</p>
+<p>含有本地系统或坐在控制域上所有用户名和口令的HASH值。</p>
+<h3 id="密码系统："><a href="#密码系统：" class="headerlink" title="密码系统："></a>密码系统：</h3><p>/etc/passwd: 包含了用户名、用户的真实姓名、标 识信息以及每个用户的基本信息，各个域之间用”:” 隔开<br>/etc/shadow: 影子密码文件，包含了加密过的密码以 及密码失效时间</p>
+<p>/etc/group：列出了计算机上所有的组<br>/etc/gshadow：计算机上所有组的群组影子密码文件</p>
+<h2 id="第五章-欺骗攻击"><a href="#第五章-欺骗攻击" class="headerlink" title="第五章 欺骗攻击"></a>第五章 欺骗攻击</h2><p> 欺骗：冒充身份通过认证以骗取信任的攻击方式攻击者针对认证机制的缺陷，将自己伪装成可信任方， 从而与受害者交流，以获取信息或者展开进一步攻击</p>
+<p>常见的欺骗攻击ip欺骗ARP欺骗邮箱欺骗DNS欺骗WEB欺骗</p>
+<p>IP欺骗 IP协议：非面向连接，两台计算机的信任连接主要依 靠双方的IP地址</p>
+<p><strong>IP欺骗的方式</strong>：</p>
+<p>简单的IP地址更改:攻击者将一台计算机的IP地址修改为其它主机的地址， 以伪装冒充其它机器<br>源路由攻击：保证数据包始终会经 过一条经定的途径，而攻击者机器在该途径中<br>TCP会话劫持:接管现存动过程，即攻击者可以替代原来的合法用户，同时监视并掌 握会话内容</p>
+<p>TCP会话劫持(Session Hijack): 接管现存动态会话的过程，即攻击者可以替代原来的合法用户，同时监视并掌握会话内容。会话劫持结合了嗅探及欺骗技术，会话劫持一般伴随着拒绝服务DoS，且不依赖于操作系统</p>
+<p>1.发现攻击目标 ①目标是一个准予TCP 会话连接（例如Telnet和FTP等）的服务器②能否检测数据流2.确认动态会话3.猜测序列号 ①通过嗅探或者ARP欺骗，先发现目标机正在使用 的序列号，再根据序列号机制，可以猜测出下一 对SEQ/ACK序列号② 同时，攻击者若以某种方法扰乱客户主机的SEQ/ACK，服务器将不再相信客户主机正确的数据包，从而可以伪装为客户主机，使用正确的 SEQ/ACK序列号，现在攻击主机就可以与服务器进 行连接，这样就抢劫一个会话连接。4.使客户主机下线 对其进行拒绝服务攻击5.接管会话 ①持续向服务器发送数据包并且接管整个会话 ②创立账户留下后门</p>
+<p><strong>TCP会话劫持的危害</strong></p>
+<p> 1.就其实现原理而言，任何使用Internet进行通信 的主机都有可能受到这种攻击</p>
+<p> 2产生了简单适用的会话劫持攻击软件，技术门槛的 降低导致了很多“少年攻击者”的诞生.</p>
+<p>原因：一个最主要的原因就是它并不依赖于操作系统，另一个原因就是它可以被用来进行积极的攻击，通过攻击行为可以获得进入系统的可能。</p>
+<h2 id="第六章-web攻击"><a href="#第六章-web攻击" class="headerlink" title="第六章 web攻击"></a>第六章 web攻击</h2><h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p><strong>1.原理</strong></p>
+<p>利用Web应用对后数据库查询语句处理存在的安全漏洞，攻击者提交一段精心构造的数据库查询代码， 根据返回的结果，获得他想得知的数据。</p>
+<p><strong>2.注入分类</strong>普通注入：利用union查询等来进行注入。报错注入：根据报错信息进行注入。盲注：bool盲注，时间盲注。</p>
+<p><strong>3.注入位置</strong>只要执行了了数据库查询语句的地方都可能存在注入。</p>
+<p><strong>4.sql注入防范</strong>①使用预编译语句，绑定变量②对用户提交的数据和输入参数进行严格的过滤③摒弃动态 SQL 语句，改用存储过程来访问和操作数据④使用安全函数⑤最小权限原则</p>
+<h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><p>攻击者往Web页面里插入恶意html代码，当用户浏览该网页时， 嵌入其中的恶意代码被执行，达到特殊目的。一旦得手，黑客可以盗取用户帐户，修改用户设置，盗取 /污染cookie，做虚假广告，查看主机信息等。</p>
+<p><strong>1.跨站脚本攻击发起条件</strong></p>
+<p>Web服务器允许用户在表格或编辑框中输入不相关的字符。</p>
+<p>Web服务器存储并允许把用户输入显示在返回给终端用户的页面上，而没有去除非法字符或者重新进行编码。</p>
+<p><strong>2.攻击实现条件</strong></p>
+<p>需要存在跨站脚本漏洞的web应用程序</p>
+<p>需要用户点击连接或者访问某一页面</p>
+<p><strong>3.分类</strong>反射型XSS（XSS Reflection,非持久性的XSS）：简单的将用户输入数据“反射”给浏览器，黑客需要诱导用户点击一个恶意链接。存储式XSS（Stored XSS）：攻击脚本永久存储在目标服务器数据库或者文件中，比如黑客写下一篇含有恶意JavaScript代码的博客文章。DOM型XSS：利用 DOM（文档解析功能）发动攻击。</p>
+<p><strong>4.防御</strong>用户：教育为主</p>
+<p>Web应用开发者</p>
+<p> 对所有用户提交内容进行可靠的输入验证。</p>
+<p> 保护所有敏感的功能，以防被机器人自动执行或者被第三方网站所执行。</p>
+<h3 id="web攻击防御"><a href="#web攻击防御" class="headerlink" title="web攻击防御"></a>web攻击防御</h3><p><strong>1.简单性</strong>:主机系统越简单，其安全性就越好。最好把不必要的服 务从服务器上卸载掉。</p>
+<p><strong>2.超级用户权限</strong>：尽量不用超级用户来维护系统。</p>
+<p><strong>3.本地和远程访问控制</strong>：访问控制是用来指定哪些用户可以访问系统的特定数据、 目录或功能。应该实现一套有效的身份验证机制，并包含用户的日志记录。</p>
+<p><strong>4.审计和可审计性</strong>:主要指平时对记录进行审计，在系统生成的大量审计记录 中查找可疑数据，查找攻击者或恶意程序的踪迹.</p>
+<p><strong>5.恢复</strong>：配置实时或增量备份策略是非常必要的，在紧急关头可以使得服务器的关键数据得以保存，从而可以迅速恢复服务以减少损失，同时便于事后取证的进行，以追查入侵者。</p>
+<h2 id="第七章-缓冲区溢出"><a href="#第七章-缓冲区溢出" class="headerlink" title="第七章 缓冲区溢出"></a>第七章 缓冲区溢出</h2><p><strong>什么是缓冲区:</strong> 包含相同数据类型实例的一个连续的计算机内存块， 是程序运行期间在内存中分配的一个连续区域，用于保存包括字符数组在内的各种数据类型。</p>
+<p><strong>缓冲区溢出（Buffer Overflow）</strong>：向固定长度的缓冲区中写入超出其预定长度的内容，造成缓冲区数据溢出，从而覆盖缓冲区周围的内存空间。</p>
+<p>堆和栈的区别:<br>分配和管理方式不同 堆:动态分配，其空间的分配和释放都由程序员控制 栈:由编译器自动管理<br>产生碎片不同 堆:频繁的new()/delete()或malloc()/free()势必会造成内存空间的不连续，造成大量碎片，使程序效率降低 栈:先进后出的队列，永远不可能有一个内存块从栈中间弹出<br>生长方向不同 堆:向着内存地址增加的方向增长 栈:向着内存地址减小的方向增长，由内存的高地址向低地址方向增长</p>
+<p><strong><em>黑客借此精心构造填充数据，可以修改内存中变量的 值，导致原有流程改变，甚至可以劫持进程，执行恶意代码，最终获取系统控制权\</em></strong>。</p>
+<p><strong>其他攻击类型相比，缓冲区溢出攻击</strong>：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">技术性强</span><br><span class="line">破坏力大</span><br><span class="line">隐蔽性强</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="缓冲区溢出原理"><a href="#缓冲区溢出原理" class="headerlink" title="缓冲区溢出原理"></a>缓冲区溢出原理</h3><p>栈溢出 PE文件代码段中包含的机器码会装入内存的代码区<br>(.text)。发生函数调用时，函数的调用关系等信息会动态保存<br>到内存的栈区。如果需要动态分配内存，则在内存的堆区分配合适的<br>区域</p>
+<p>堆溢出 C使用malloc()/free()，C++使用new()/delete()函数实<br>现内存的动态分配和回收</p>
+<p>BSS溢出 .bss段存放全局和静态的未初始化变量，其分<br>配比较简单，变量之间连续存放 如下定义的两个字符数组位于BSS段:<br>static char buf1[16]，buf2[16];向buf2中写入16个字符A后再往buf1中写入24个.B，由于变量连续存放，buf1溢出后，就会覆盖buf2的值 利用:改写BSS中的指针或函数指针等，改变程序原先的执行流程，使指针跳转到特定的内存地址并执行指定操作</p>
+<p>格式化串溢出 在输出函数对输出格式进行解析时产生的漏洞</p>
+<p>整数溢出 当计算结果超过了规定的长度后，编译器一般会删除溢出的高位部分 </p>
+<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><p>缓冲区溢出的真正原因在于编程语言缺乏类型安全，程序缺少边界检查。</p>
+<p>1.系统管理上的防范策略</p>
+<p>1.1关闭不需要的特权程序</p>
+<p>1.2及时给程序漏洞打补丁</p>
+<p>2.软件开发过程中的防范策略</p>
+<p>2.1编写正确的代码</p>
+<p>2.2数组边界检查</p>
+<p>2.3改进语言函数库</p>
+<p>2.4程序指针完整性检查</p>
+<p>2.5栈保护机制</p>
+<p>3.软件运行过程中的防范措施</p>
+<p>3.1缓冲区不可执行</p>
+<p>3.2地址空间随机化</p>
+<p><strong>源码级保护方法</strong></p>
+<p><strong>运行期保护方法</strong></p>
+<p><strong>阻止攻击代码执行</strong></p>
+<p><strong>加强系统防护</strong></p>
+<h2 id="第十章-身份认证"><a href="#第十章-身份认证" class="headerlink" title="第十章 身份认证"></a>第十章 身份认证</h2><p><strong>1.AAA机制</strong>：认证 :在做任何动作之前必须要识别动作执行者的真实身份。又称为鉴别、确认。主要是通过标识符鉴别用户身份，防止攻击者假冒合法用户获取访问权限。授权 :当用户身份被确认合法后，赋予该用户进行文件和数据等的操作权限，包括读、写、执行及从属权等。审计(Auditing) :每一一个人都应该为自己所做的操作负责所以在做完事情之后都要留下记录，以便核查责任</p>
+<p><strong>2.认证分类</strong></p>
+<p>基于口令认证：简单口令认证，基于单向函数的口令认证，一次性口令认证。<br>基于生理特征的认证。<br>基于地址的认证：每个主机存储着可以访问本机的其他主机的账号信息，这样只要确认了对方的主机地址，就可以进行用户验证。</p>
+<p>3.常见身份认证技术</p>
+<p>基于口令的认证 基于密码学认证 基于令牌的认证 基于生物特征的认证</p>
+<p><strong>3.Kerberos认证协议</strong></p>
+<p>基于可信第三方（Trusted Third Party，TTP）的认证协议；MIT的雅典娜项目组（Athena Group）开发的认证服务系统，基于对称加密技术。</p>
+<p>基本思想（假设）：能正确对信息进行解密的用 户就是合法用户</p>
+<p>三个子协议:</p>
+<ol>
+<li>认证服务器交换（AS交换）：在客户C和AS间进行</li>
+<li>票证授予服务器交换(TGS交换）：在C和TGS间交换</li>
+<li>客服服务器认证应用交换(AP交换)：在C和应用服务器S间进行</li>
+</ol>
+<p>构成 : 一个完整的 Kerberos 环境包括一个 Kerberos 服务器，一组工作站和一组应用服务器。</p>
+<h2 id="第十一章-访问控制"><a href="#第十一章-访问控制" class="headerlink" title="第十一章 访问控制"></a>第十一章 访问控制</h2><p>访问控制(Access Control)在身份认证的基础上，依据授权对提出的资源访问请求加以控制。对机密性、完整性起直接作用;是针对越权使用资源的防御措施</p>
+<p>访问控制策略模型:自主访问控制:指一个实体可以被授权按照自己<br>的意志使另一个实体能够访问某些资源 强制型访问控制:通过比较具有安全许可的安全标记来控制访问 基于角色的访问控制：基于用户在系统中所属的角色和针对各种角色设定的访问权限来控制访问 基于属性的访问控制：基于用户，被访问资源以及当前环境条件控制访问。</p>
+<p>访问控制机制包括：访问控制列表ACL，能力表，锁与钥匙，保护环</p>
+<p>计算机安全形式化模型：机密性安全策略Bell-L aPadula模型，完整性安全策略Biba模型</p>
+<h2 id="第十二章-防火墙"><a href="#第十二章-防火墙" class="headerlink" title="第十二章 防火墙"></a>第十二章 防火墙</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>1.防火墙是位于两个网络间的实施网间访问控制的组件的集合,防火墙通常是单独的计算机、路由器或专有硬件设备， 充当访问网络的唯一入口点。</p>
+<p>内网和外网的所有网络数据流必 须经过防火墙.<br>只有符合安全策略的数据流才能通过防火墙.<br>防火墙自身对渗透(penetration) 是免疫的.</p>
+<p><strong>2.处理方式</strong></p>
+<p>ACCEPT:允许数据包或信息通过</p>
+<p>Reject:拒绝数据包或信息通过，并且通知信息源该信息被进制</p>
+<p>Drop:直接将数据包或信息丢弃，不通知信息源</p>
+<p><strong>3.基本策略</strong>默认允许原则：没有明确禁止的都是允许的。默认拒绝原则：没有明确允许的都是禁止的</p>
+<p><strong>4.主要功能</strong>网络安全的屏障。强化网络安全策略。对网络存取和访问进行监控审计。防止内部信息的外泄</p>
+<h3 id="防火墙的分类"><a href="#防火墙的分类" class="headerlink" title="防火墙的分类"></a>防火墙的分类</h3><p>1.<strong>包过滤防火墙</strong></p>
+<p>工作在网络层和传输层。设定访问控制列表ACL（Access Control List），检查所有通 过的数据包。</p>
+<p>发展：静态包过滤防火墙，动态包过滤防火墙（状态检测）。</p>
+<p>优点：<br>逻辑简单，价格便宜，对网络性能的影响较小，有较强的透明性。<br>与应用层无关。<br>缺点：<br>需要对IP、TCP、UDP等协议有深入了解，否则容易出现因配置不当而带来问题。<br>过滤有限，不能充分满足各种安全要求。<br>不能彻底防止地址欺骗。</p>
+<p><strong>2.代理服务器</strong></p>
+<p>应用层代理/代理服务器通过在主机上运行代理服务程 序，直接对特定的应用层进行服务，因此也称应用型防火墙。</p>
+<p>优点：<br>1.易于配置，界面友好。<br>2.不允许内外网主机的直接链接。<br>3.提供详细日志。<br>4.可以隐藏用户内部的IP，可以给单个用户授权<br>缺点：<br>1.速度相对慢。<br>2.需要为不同的网络服务建立专门的代理服务。</p>
+<p><strong>3.电路级网关</strong></p>
+<p>监控受信任的客户或服务器与不受信任的主机间的TCP握手信息，以决定会话是否合法。</p>
+<p>网络地址转换（NAT）：属接入广域网技术，一种将私有IP地址转化为合法广域网IP地址的转换技术，被广泛应用。</p>
+<p>NAT分类：静态NAT，动态NAT，端口转换NAPT。</p>
+<p><strong>4.混合型防火墙</strong></p>
+<h3 id="防火墙的配置方案"><a href="#防火墙的配置方案" class="headerlink" title="防火墙的配置方案"></a>防火墙的配置方案</h3><p><strong>1.屏蔽路由器</strong>：最简单的防火墙配置，直接在内网和 外网之间加装一个包过滤路由器或者应用网关</p>
+<p><strong>2.双宿主机模式</strong>：采用主机替代路由器执行安全控制功能， 类似于包过滤防火墙，是外部网络用户进入内部网络的唯一通道。</p>
+<p>特点：主机的路由功能被禁止，两个网络间的通信通过双宿主机完成。</p>
+<p>弱点：一但堡垒机被攻破，可任意访问内网。</p>
+<p><strong>3.屏蔽主机模式</strong>：包过滤路由器连接外网，堡垒主机安装在内网。</p>
+<p><strong>4.屏蔽子网模式</strong>：较流行的一种结构，采用两个包过滤路由器和一个堡垒主机，在内外网络之间建立一个被隔离的子网，称为DMZ</p>
+<p>协商协议的参数<br>交换公共密钥<br>对双方进行认证<br>在交换后对密钥进行管理</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-05T11:38:56.286Z" itemprop="dateUpdated">2021-01-05 19:38:56</time>
+</span>
+
+
+        
+        原文链接：<a href="/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&title=《网络安全复习》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&title=《网络安全复习》 — Mr.Guo&source=网络安全复习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网络安全复习》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/06/%5B12.20%5D%20%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：XCTF-华为专场
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/12/27/%E5%B2%81%E6%9C%AB%E8%B5%9B/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：岁末赛">下一篇：岁末赛</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&title=《网络安全复习》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&title=《网络安全复习》 — Mr.Guo&source=网络安全复习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网络安全复习》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2021/01/01/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>

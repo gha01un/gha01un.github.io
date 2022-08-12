@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>基于人脸检测的批量证件照自动裁剪的研究及实现 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="AI">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="一篇关于小白实习的随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于人脸检测的批量证件照自动裁剪的研究及实现">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="一篇关于小白实习的随笔">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/06/15/doUqk9CRZ7IlTFD.png">
+<meta property="article:published_time" content="2020-06-15T14:00:32.331Z">
+<meta property="article:modified_time" content="2022-03-13T17:09:12.412Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/15/doUqk9CRZ7IlTFD.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">基于人脸检测的批量证件照自动裁剪的研究及实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一篇关于小白实习的随笔"><span class="post-toc-number">1.</span> <span class="post-toc-text">一篇关于小白实习的随笔</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目简介"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">项目简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目基本思想"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">项目基本思想</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最开始的思路"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">最开始的思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进一步思考"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">进一步思考</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最终算法"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">最终算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目总结"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">项目总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实习感悟"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">实习感悟</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-基于人脸检测的批量证件照自动裁剪的研究及实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">基于人脸检测的批量证件照自动裁剪的研究及实现</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2020-06-15 22:00:32" datetime="2020-06-15T14:00:32.331Z"  itemprop="datePublished">2020-06-15</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Study/">Study</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">15</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="一篇关于小白实习的随笔"><a href="#一篇关于小白实习的随笔" class="headerlink" title="一篇关于小白实习的随笔"></a>一篇关于小白实习的随笔</h2><a id="more"></a>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大一暑假有幸去某某公司的人工智能部门做了一个关于人脸识别的小项目，007的工作的环境让我倍感压力。很多985优秀毕业生和研究生和我共处一个工作室，在他们的带领下，我在一步一步努力前行。</p>
+<h3 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h3><p>为了能够在很短的时间内将大批量的非证件照甚至非规则的照片裁剪成符合要求的并且看着舒服的标准证件照。</p>
+<p>这个暑假我在同事和领导的帮助下试着对现有的代码进行了修改和扩充已实现其最优功能。</p>
+<p>其实这个项目的主要核心并不多，简单来说分为以下两点：</p>
+<p>第一，从一张不规则的照片中抠出只带有人脸的正方形图像</p>
+<p>第二，找到最适合的扩大比例，对人脸进行外扩，得到以人脸为中心，四周均有空隙的一张标准证件照</p>
+<h3 id="项目基本思想"><a href="#项目基本思想" class="headerlink" title="项目基本思想"></a>项目基本思想</h3><h4 id="最开始的思路"><a href="#最开始的思路" class="headerlink" title="最开始的思路"></a>最开始的思路</h4><p>由于图片大小不一，所以首先我对各类图片的大小进行了统一，我把照片中长宽较大像素的边且大于等于800像素的边规定为800像素，那么其对应的长或宽则等比例缩小，同理，把长和宽都小于800像素的照片中的较大的边规定为800像素，其对应边同比例扩大。这样就统一了所有不规则尺寸照片的大小了。接下来，对这些照片进行人脸的裁剪，因为这部分函数在我之前已经有人写好了，所以就直接调用了他们的函数，得到了只有人脸的人像。接下来就是对人脸照片的外扩，首先设裁剪出来人脸的宽=fw，高=fh，根据计算，人脸四周需要扩大的长度<code>ext_dist=2/5*fw-（fw&gt;16?4:0）</code>最为合适。这里先把试验基本的参数说明一下，原图片的宽和高分别为<code>img_w</code>，<code>img_h</code>；设原图片中长和宽较小的边<code>min_len=std：：min(img_h,img_w)</code>;设<code>ext_len=std::min(fw + 2 * ext_dist, min_len)</code>.</p>
+<p>第一次试验的思路很简单，我们设人脸图片左上顶点的横纵坐标分别为f.x，f.y，则生成的标准证件照的左上顶点的坐标就为<code>ret.x=std::max(0,f.x-ext_dist)</code>；<code>ret.y=std::max(0,f.y-ext_dist)</code>.也很容易得出标准证件照的宽和高分别为<code>ret.width = (std::min(img_w - ret.x, ext_len))</code>；<code>ret.height = (std::min(img_h - ret.y, ext_len))</code>.</p>
+<h4 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h4><p>这样本以为此次试验的目的就已经达到了，但从测试结果来看，很多图片并没有达到我们预期的效果。分析代码来看，我们以左上顶点为基点，取标准证件照的宽和高时，如果<code>fw+2*ext_dist</code>大于原图片的宽和高，那么这张证件照的边长就取了原图片中较小的边作为证件照的边长，所以这时候就出现了有的证件照没有人下巴的状况了。</p>
+<p>为了改善这一现状，我必须继续完善我的代码。在已经可以运行的代码处加入以下代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ((ret.y + fh / <span class="number">2</span> + ext_dist) &gt; (ret.<span class="built_in">height</span> - fh / <span class="number">2</span> - ext_dist))</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> yuantuwid = (img_w - fh) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">		ret.x = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.x - ext_dist);</span><br><span class="line">		ret.y = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.y - yuantuwid);</span><br><span class="line">		ret.<span class="built_in">width</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_w - ret.x, ext_len))&amp;~<span class="number">3</span>;</span><br><span class="line">		ret.<span class="built_in">height</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_h - ret.y, ext_len))&amp;~<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪前人脸左上"</span> &lt;&lt; f.x &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y &lt;&lt; <span class="string">"裁剪前人脸右上"</span> &lt;&lt; f.x + fw &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪前左下"</span> &lt;&lt; f.x &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y + fh &lt;&lt; <span class="string">"裁剪前右下"</span> &lt;&lt; f.x + fw &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y + fh &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪后左上顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="string">"裁剪后右上顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪后左下顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="string">"裁剪后右下顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码的意义大致为，我们不再以人像的左上顶点为基点，而是以人脸的中心点作为基点，向四周进行扩大，已得到最优证件照。这种方法很好的解决了部分证件照没有下巴的问题，并且在运行的过程中可以清楚的看到每一张人像和标准证件照的坐标点。在进行测试的过程中，基本上每张证件照都是人脸完整且居中的，但是我也清楚的发现有的证件照中的人脸图像所占比例比较大，而有的证件照中的人脸图像所占比例就比较小。究其原因分为以下两点，第一，原图片中人脸所占比例就已经很大，无法实现人脸四周分别外扩<code>ext_dist</code>长度的照片；其次，原图片的长宽比例有可能很不均衡，导致裁剪出来的照片人像占比太大。</p>
+<h4 id="最终算法"><a href="#最终算法" class="headerlink" title="最终算法"></a>最终算法</h4><p>为了能让所有人像占证件照的比例相同，我们不得不在原图的基础上加上一张比原图大的白图，让原图覆盖在较大的白图上，这样便可以使我们的裁剪工作变得更加顺利。首先，根据现有原图的大小来生成一张白图，我们先按原图9/5高和9/5宽的大小来确定白图的宽和高，简单的运用一个for循环和一个if语句，把所有白图存放到一个新的文件夹中去。接下来就是把所有的原图拷贝到白图中去，这个过程的原理大致为，将原图的所有像素点以二维数组的形式存放，运用双重for循环进行逐一拷贝，以得到原图在白图上覆盖的情况。</p>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="built_in">height</span> = img.rows;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">width</span> = img.cols;</span><br><span class="line">	<span class="function">cv::Mat <span class="title">img_new</span><span class="params">((<span class="keyword">int</span>)<span class="built_in">height</span>* <span class="number">9.0</span> / <span class="number">5</span>, (<span class="keyword">int</span>)<span class="built_in">width</span> * <span class="number">9.0</span> / <span class="number">5</span>, CV_8UC3, cv::Scalar(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span></span>;</span><br><span class="line">	<span class="comment">//const char* temp_path = "C:\Users\123\Desktop\1.jpg";</span></span><br><span class="line">	cv::imwrite(dst_path_new, img_new);</span><br><span class="line">	<span class="keyword">int</span> m = <span class="built_in">width</span> * <span class="number">2</span> / <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="built_in">height</span> * <span class="number">2</span> / <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">height</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		uchar* d = img.ptr&lt;uchar&gt;(i);</span><br><span class="line">		uchar* d_b = img_new.ptr&lt;uchar&gt;(i+n);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="built_in">width</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">int</span> b = d[j * <span class="number">3</span>];</span><br><span class="line">			<span class="keyword">int</span> g = d[j * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">int</span> r = d[j * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">			d_b[j * <span class="number">3</span>+m*<span class="number">3</span>]= b;</span><br><span class="line">			d_b[j * <span class="number">3</span> + <span class="number">1</span>+m*<span class="number">3</span>]=g;</span><br><span class="line">			d_b[j * <span class="number">3</span> + <span class="number">2</span>+m*<span class="number">3</span>]=r;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看一下运行效果:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/06/15/doUqk9CRZ7IlTFD.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>批量照片的图片在这里就不贴上去了，感兴趣的师傅们可以和我私下交流经验!</p>
+<h3 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h3><p>通过上述代码我们便可以得到一张以原图为中心，四周均为白图的一张较大的图片，在这张图片的基础上我们便可以轻松的根据上边的裁剪代码来得到我们想要得到的完美证件照。经过几万张测试照片的测试，基本上这个程序可以很好的执行证件照裁剪的工作了。</p>
+<p>其实这个项目的功能还有很多，比如对人脸性别的检测，人脸质量分数，人脸位置检测，人脸特征识别，以及对高糊图像的识别处理等等一系列算法</p>
+<p>下面我贴一下我做的这个项目的main.cpp，还有很多其他代码没有贴，感兴趣的朋友欢迎来和我交流讨论！</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> linux  <span class="comment">//获取目录下的指定文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dirent.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;direct.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;facesdk.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OUTPUTMAXSIZE 384</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">face_quality</span><span class="params">(<span class="keyword">const</span> Image&amp; <span class="built_in">image</span>, <span class="keyword">const</span> Face&amp; face)</span></span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* @function: 获取cate_dir目录下的所有文件名</span></span><br><span class="line"><span class="comment">* @param: cate_dir - string类型</span></span><br><span class="line"><span class="comment">* @result：vector&lt;string&gt;类型</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">GetFilesInDirectory</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;out, <span class="keyword">const</span> <span class="built_in">string</span> &amp;directory)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ((&amp;directory) == <span class="literal">nullptr</span> || directory.length() == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	HANDLE dir;</span><br><span class="line">	WIN32_FIND_DATA file_data;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((dir = FindFirstFile((directory + <span class="string">"/*"</span>).c_str(), &amp;file_data)) == INVALID_HANDLE_VALUE)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">/* No files found */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="built_in">string</span> file_name = file_data.cFileName;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">bool</span> is_directory = (file_data.dwFileAttributes &amp; FILE_ATTRIBUTE_DIRECTORY) != <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (file_name[<span class="number">0</span>] == <span class="string">'.'</span>)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span> (file_name.length() &lt; <span class="number">5</span>)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//printf("%s\n", file_data.cFileName);</span></span><br><span class="line">		<span class="built_in">string</span> file_ext = &amp;file_data.cFileName[file_name.length() - <span class="number">3</span>];</span><br><span class="line">		<span class="comment">//		printf("%s\n", &amp;file_ext[0]);</span></span><br><span class="line">		<span class="keyword">if</span> (file_ext[<span class="number">0</span>] &gt;= <span class="string">'A'</span> &amp;&amp; file_ext[<span class="number">0</span>] &lt;= <span class="string">'Z'</span>)</span><br><span class="line">			file_ext[<span class="number">0</span>] += <span class="string">'a'</span> - <span class="string">'A'</span>;</span><br><span class="line">		<span class="keyword">if</span> (file_ext[<span class="number">1</span>] &gt;= <span class="string">'A'</span> &amp;&amp; file_ext[<span class="number">1</span>] &lt;= <span class="string">'Z'</span>)</span><br><span class="line">			file_ext[<span class="number">1</span>] += <span class="string">'a'</span> - <span class="string">'A'</span>;</span><br><span class="line">		<span class="keyword">if</span> (file_ext[<span class="number">2</span>] &gt;= <span class="string">'A'</span> &amp;&amp; file_ext[<span class="number">2</span>] &lt;= <span class="string">'Z'</span>)</span><br><span class="line">			file_ext[<span class="number">2</span>] += <span class="string">'a'</span> - <span class="string">'A'</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (<span class="number">0</span> == <span class="built_in">strcmp</span>(&amp;file_ext[<span class="number">0</span>], <span class="string">"jpg"</span>) ||</span><br><span class="line">			<span class="number">0</span> == <span class="built_in">strcmp</span>(&amp;file_ext[<span class="number">0</span>], <span class="string">"png"</span>) ||</span><br><span class="line">			<span class="number">0</span> == <span class="built_in">strcmp</span>(&amp;file_ext[<span class="number">0</span>], <span class="string">"bmp"</span>)</span><br><span class="line">			)</span><br><span class="line">		&#123;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (is_directory)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">		out.push_back(file_name);</span><br><span class="line">	&#125; <span class="keyword">while</span> (FindNextFile(dir, &amp;file_data));</span><br><span class="line"></span><br><span class="line">	FindClose(dir);</span><br><span class="line">	<span class="keyword">return</span> out.<span class="built_in">size</span>();</span><br><span class="line">&#125; <span class="comment">// GetFilesInDirectory</span></span><br><span class="line"></span><br><span class="line"><span class="function">Rect <span class="title">ext_face_</span><span class="params">(<span class="keyword">int</span> img_h, <span class="keyword">int</span> img_w, Rect&amp; f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> min_len = <span class="built_in">std</span>::<span class="built_in">min</span>(img_h, img_w);</span><br><span class="line">	<span class="keyword">int</span> fw = f.<span class="built_in">width</span>;</span><br><span class="line">	<span class="keyword">int</span> fh = f.<span class="built_in">height</span>;</span><br><span class="line">	<span class="keyword">int</span> ext_dist = <span class="number">2</span> / <span class="number">5.0</span> * fw - (fw &gt; <span class="number">16</span> ? <span class="number">4</span> : <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> ext_len = <span class="built_in">std</span>::<span class="built_in">min</span>(fw + <span class="number">2</span> * ext_dist, min_len);</span><br><span class="line"></span><br><span class="line">	Rect ret = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">	ret.x = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.x - ext_dist);</span><br><span class="line">	ret.y = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.y - ext_dist);</span><br><span class="line">	ret.<span class="built_in">width</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_w - ret.x, ext_len))&amp;~<span class="number">3</span>;</span><br><span class="line">	ret.<span class="built_in">height</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_h - ret.y, ext_len))&amp;~<span class="number">3</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"没下巴裁剪后左上顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="string">"没下巴裁剪后右上顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"没下巴裁剪后左下顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="string">"没下巴裁剪后右下顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">if</span> ((ret.y + fh/ <span class="number">2</span>+ext_dist)&gt;(ret.<span class="built_in">height</span>-fh/<span class="number">2</span>-ext_dist))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line">		ret.x = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.x - ext_dist);</span><br><span class="line">		ret.y = <span class="built_in">std</span>::<span class="built_in">max</span>(<span class="number">0</span>, f.y - ext_dist);</span><br><span class="line">		ret.<span class="built_in">width</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_w - ret.x, fw + <span class="number">2</span> * ext_dist))&amp;~<span class="number">3</span>;</span><br><span class="line">		ret.<span class="built_in">height</span> = (<span class="built_in">std</span>::<span class="built_in">min</span>(img_h - ret.y, fw + <span class="number">2</span> * ext_dist))&amp;~<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪前人脸左上"</span> &lt;&lt; f.x &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y &lt;&lt; <span class="string">"裁剪前人脸右上"</span> &lt;&lt; f.x + fw &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪前左下"</span> &lt;&lt; f.x &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y + fh &lt;&lt; <span class="string">"裁剪前右下"</span> &lt;&lt; f.x + fw &lt;&lt; <span class="string">" "</span> &lt;&lt; f.y + fh &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪后左上顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="string">"裁剪后右上顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"裁剪后左下顶点"</span> &lt;&lt; ret.x &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="string">"裁剪后右下顶点"</span> &lt;&lt; ret.x + ret.<span class="built_in">width</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; ret.y + ret.<span class="built_in">height</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cut_one_image</span><span class="params">(IFaceDetector* detector, IFaceMatcher* matcher, <span class="keyword">const</span> <span class="keyword">char</span>* src_path, <span class="keyword">const</span> <span class="keyword">char</span>* dst_path, <span class="keyword">const</span> <span class="keyword">char</span>* failed_path = <span class="literal">nullptr</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cv::Mat img = cv::imread(src_path);</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Image</span> <span class="title">m_img</span>;</span></span><br><span class="line">	m_img.data = (<span class="keyword">char</span> *)img.data;</span><br><span class="line">	m_img.<span class="built_in">height</span> = img.rows;</span><br><span class="line">	m_img.<span class="built_in">width</span> = img.cols;</span><br><span class="line">	m_img.format = IMAGE_FORMAT_BGR;</span><br><span class="line">	Face face;</span><br><span class="line">	<span class="keyword">int</span> ret = detector-&gt;DoDetect(m_img, <span class="literal">NULL</span>, face);</span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"[E] Cannot detect face! file: %s\n"</span>, src_path);</span><br><span class="line">		<span class="keyword">if</span> (failed_path != <span class="literal">nullptr</span>)cv::imwrite(failed_path, img);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">float</span> feature[<span class="number">2048</span>];</span><br><span class="line">	<span class="keyword">bool</span> r = matcher-&gt;ExtractFeature(m_img, face, (<span class="keyword">char</span>*)feature, <span class="number">2048</span>);</span><br><span class="line">	ErrorCode err = matcher-&gt;LastError();</span><br><span class="line">	<span class="keyword">float</span> nm = feature[<span class="number">256</span>];</span><br><span class="line">	<span class="comment">//if(nm &lt;15.5)</span></span><br><span class="line">	<span class="comment">//	printf("nm ===%f,%d,%d,%d,%d!!!!!!!!!!!!!!!!!\n", nm,r,err, m_img.width, m_img.height);</span></span><br><span class="line">	<span class="comment">//else</span></span><br><span class="line">	<span class="comment">//	printf("nm ===%f,%d,%d,%d,%d\n", nm,r,err, m_img.width, m_img.height);</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"feature norm:%f\t"</span>, nm);</span><br><span class="line">	<span class="keyword">float</span> score = face_quality(m_img, face);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (nm &lt; <span class="number">12</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		score = <span class="number">15</span> + nm * <span class="number">0.01</span>;</span><br><span class="line">		<span class="comment">//		printf("face feature is too poor,%d,%d,%d\n", nm,r,err, m_img.width, m_img.height);</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (score &lt; <span class="number">70</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (score &lt; <span class="number">12</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"[E!!!] Face Quality is too low! score:%f[eyes distance must big than 55]\t file:%s\t"</span>, score, src_path);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (score &lt; <span class="number">15</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"[E!!!] Face Quality is too low! score:%f[blur value must big than 30]\t file:%s\t"</span>, score, src_path);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (score &lt; <span class="number">17</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"[E!!!] Face Quality is too low! score:%f[face feature norm must big than 12]\t file:%s\t"</span>, score, src_path);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"[E!!!] Face Quality is too low! score:%f[pose score must big than 70]\t file:%s\t"</span>, score, src_path);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (failed_path != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"move to %s\n"</span>, failed_path);</span><br><span class="line">			cv::imwrite(failed_path, img);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Rect f = ext_face_(img.rows, img.cols, face.region);</span><br><span class="line">	cv::Mat dst = img(cv::Rect(f.x, f.y, f.<span class="built_in">width</span>, f.<span class="built_in">height</span>));</span><br><span class="line">	<span class="keyword">if</span> (f.<span class="built_in">width</span> &lt; OUTPUTMAXSIZE)</span><br><span class="line">	&#123;</span><br><span class="line">		cv::imwrite(dst_path, dst);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cv::Mat dst2;</span><br><span class="line">		cv::resize(dst, dst2, cv::Size(OUTPUTMAXSIZE, OUTPUTMAXSIZE));</span><br><span class="line">		cv::imwrite(dst_path, dst2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* inp_dir = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* out_dir = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* err_dir = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Version:1.0\nBuilt Date:%s\n"</span>, __DATE__);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Support:jpg,bmp,png\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Usage: %s[input_dir][output_dir][failed_dir]\n"</span>, argv[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"=========================================================\n"</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">	<span class="comment">//if (argc != 3  &amp;&amp; argc != 4)</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//	printf("Usage: %s input_dir output_dir failed_dir\n",argv[0]);</span></span><br><span class="line">	<span class="comment">//	return 0;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="keyword">if</span> (argc &gt; <span class="number">1</span>)inp_dir = argv[<span class="number">1</span>]; <span class="keyword">else</span> inp_dir = <span class="string">"Input"</span>;</span><br><span class="line">	<span class="keyword">if</span> (argc &gt; <span class="number">2</span>)out_dir = argv[<span class="number">2</span>]; <span class="keyword">else</span> out_dir = <span class="string">"Output"</span>;</span><br><span class="line">	<span class="keyword">if</span> (argc &gt; <span class="number">3</span>)err_dir = argv[<span class="number">3</span>]; <span class="keyword">else</span> err_dir = <span class="string">"Error"</span>;</span><br><span class="line">	IFaceDetector* detector = Create(IFaceDetector::DETECTOR_MODE_NORMAL);</span><br><span class="line">	IFaceMatcher* matcher = Create(IFaceMatcher::TVT_MATCHER_MODE_19V101_NORMAL);</span><br><span class="line">	detector-&gt;Init(<span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	matcher-&gt;Init(<span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; files;</span><br><span class="line">	<span class="keyword">int</span> fcnt = GetFilesInDirectory(files, inp_dir);</span><br><span class="line">	<span class="keyword">if</span> (fcnt &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	CreateDirectory(out_dir, <span class="literal">NULL</span>);</span><br><span class="line">	CreateDirectory(err_dir, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> file_name : files)</span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n=========Processing %d%% [%d of %d]:%s==========\n"</span>, i * <span class="number">100</span> / fcnt, i, fcnt, file_name.c_str());</span><br><span class="line">		<span class="built_in">string</span> src = inp_dir;</span><br><span class="line">		src += <span class="string">"/"</span> + file_name;</span><br><span class="line">		<span class="built_in">string</span> dst = out_dir;</span><br><span class="line">		dst += <span class="string">"/"</span> + file_name;</span><br><span class="line">		<span class="keyword">if</span> (err_dir != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> failed = err_dir;</span><br><span class="line">			failed += <span class="string">"/"</span> + file_name;</span><br><span class="line">			cut_one_image(detector, matcher, src.c_str(), dst.c_str(), failed.c_str());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			cut_one_image(detector, matcher, src.c_str(), dst.c_str());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	Destroy(detector);</span><br><span class="line">	Destroy(matcher);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实习感悟"><a href="#实习感悟" class="headerlink" title="实习感悟"></a>实习感悟</h3><p>整个工程到这里基本上是完成了，经过半个月的尝试和无数次的失败，终于在领导和同事的大力帮助下，完成了这个项目。感谢公司给了我这次实习的机会，也很喜欢这里的工作环境，希望我能通过我的努力，一步一步的向各位优秀的哥哥姐姐们靠拢！加油！奥里给！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2022-03-13T17:09:12.412Z" itemprop="dateUpdated">2022-03-14 01:09:12</time>
+</span>
+
+
+        
+        原文链接：<a href="/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&title=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&title=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&source=一篇关于小白实习的随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/06/16/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：Principle and Interface Technology of Micro Computer
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/15/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRESERVE%E6%96%B0%E6%89%8B/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：攻防世界_RESERVE_新手(1)">下一篇：攻防世界_RESERVE_新手(1)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&title=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&title=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&source=一篇关于小白实习的随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于人脸检测的批量证件照自动裁剪的研究及实现》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2020/06/15/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E6%89%B9%E9%87%8F%E8%AF%81%E4%BB%B6%E7%85%A7%E8%87%AA%E5%8A%A8%E8%A3%81%E5%89%AA%E7%9A%84%E7%A0%94%E7%A9%B6%E5%8F%8A%E5%AE%9E%E7%8E%B0/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>
