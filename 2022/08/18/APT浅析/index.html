@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/08/18/TujgPoBEJeSFb5d.png">
 <meta property="og:image" content="https://s2.loli.net/2022/08/18/3o8jFVrBYwpH5gN.png">
 <meta property="article:published_time" content="2022-08-18T07:35:39.402Z">
-<meta property="article:modified_time" content="2022-08-18T07:39:56.603Z">
+<meta property="article:modified_time" content="2022-08-18T07:45:44.725Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT浅析"><span class="post-toc-number">1.</span> <span class="post-toc-text">APT浅析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT攻击定义及手法"><span class="post-toc-number">2.</span> <span class="post-toc-text">APT攻击定义及手法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#平台上APT事件的理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">平台上APT事件的理解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对于鱼叉式钓鱼防范的思考"><span class="post-toc-number">4.</span> <span class="post-toc-text">对于鱼叉式钓鱼防范的思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#海莲花-APT32"><span class="post-toc-number">5.</span> <span class="post-toc-text">海莲花-APT32</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Microsoft-Word-白利用的攻击示例"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.Microsoft Word 白利用的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#海莲花白利用持久化新型组合攻击方式"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">海莲花白利用持久化新型组合攻击方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新旧白利用方式横向对比"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">新旧白利用方式横向对比</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#APT浅析"><span class="post-toc-number">1.</span> <span class="post-toc-text">APT浅析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT攻击定义及手法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">APT攻击定义及手法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#平台上APT事件的理解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">平台上APT事件的理解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对于鱼叉式钓鱼防范的思考"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">对于鱼叉式钓鱼防范的思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#海莲花-APT32"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">海莲花-APT32</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Microsoft-Word-白利用的攻击示例"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">1.Microsoft Word 白利用的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#海莲花白利用持久化新型组合攻击方式"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">海莲花白利用持久化新型组合攻击方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新旧白利用方式横向对比"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">新旧白利用方式横向对比</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
    
@@ -242,7 +242,7 @@
             阅读本文可能花费您&nbsp;<span class="post-count">7</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="APT浅析"><a href="#APT浅析" class="headerlink" title="APT浅析"></a>APT浅析</h3><a id="more"></a>
+            <h2 id="APT浅析"><a href="#APT浅析" class="headerlink" title="APT浅析"></a>APT浅析</h2><a id="more"></a>
 
 <h3 id="APT攻击定义及手法"><a href="#APT攻击定义及手法" class="headerlink" title="APT攻击定义及手法"></a>APT攻击定义及手法</h3><p>APT:高级持续威胁（Advanced Persistent Threat),普遍认可的定义是，<strong>利用各种先进的攻击手段，对高价值目标进行的有组织、长期持续性网络攻击行为</strong>。也就是说很难去确定是不是APT攻击，只能从已发生过的APT攻击事件，分析其特点，进而与上述解释性概念相关联，得出APT攻击的一般规律。</p>
 <p>APT组织常用的攻击手法有：鱼叉式网络钓鱼、水坑攻击、路过式下载攻击、社会工程学、即时通讯工具、社交网络等，在各大分析报告中出现最多的还是<strong>鱼叉式网络钓鱼、水坑攻击、社会工程学</strong>。</p>
@@ -373,12 +373,12 @@
 <td align="left">中国，越南语用户</td>
 </tr>
 </tbody></table>
-<h4 id="海莲花白利用持久化新型组合攻击方式"><a href="#海莲花白利用持久化新型组合攻击方式" class="headerlink" title="海莲花白利用持久化新型组合攻击方式"></a>海莲花白利用持久化新型组合攻击方式</h4><p>在日常狩猎海莲花攻击时，发现海莲花组织攻入企业内部后，滥用白利用技术，进行持久化驻留。配合横移技术以后，为了持久化驻留，使用了一个新的白利用驻留模式。</p>
+<h4 id="海莲花白利用持久化新型组合攻击方式"><a href="#海莲花白利用持久化新型组合攻击方式" class="headerlink" title="海莲花白利用持久化新型组合攻击方式"></a>海莲花白利用持久化新型组合攻击方式</h4><p>在日常狩猎海莲花攻击时，发现海莲花组织攻入企业内部后，滥用<strong>白利用技术，进行持久化驻留</strong>。配合横移技术以后，为了持久化驻留，使用了一个<strong>新的白利用</strong>驻留模式。</p>
 <p>海莲花攻击步骤如下：</p>
 <p>①攻陷企业内网管控端。</p>
 <p>②使用攻陷的内网管控端，通过SMB/RPC建立与目标内网终端的远程服务连接。</p>
 <p>③收集内网终端应用服务信息，同时收集其他可用于定制化的信息，例如：内网IP段，MAC地址，HostName等。</p>
-<p>④将定制化后门模块下发至目标内网终端的指定目录中。</p>
+<p>④将<strong>定制化后门模块</strong>下发至目标内网终端的指定目录中。</p>
 <p>⑤将白文件下发替换内网终端的服务原可执行文件。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -388,8 +388,8 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p>当内网终端原有任务计划启动服务时，相当于启动了白利用后门组合文件。根据对攻击过程的观察和分析，发现海莲花选择的目标服务主要是非系统服务，例如谷歌更新服务GoogleUpdate.exe，Adobe更新服务armsvc.exe。这些服务即使被替换也不会影响应用程序的正常使用。由于没有创建新服务项或修改原服务项的配置信息，仅替换原服务的可执行文件，用于替换的白文件也是可信文件，相当于模拟了一次应用程序文件升级的过程，以此来逃避安全软件的筛查。</p>
-<h4 id="新旧白利用方式横向对比"><a href="#新旧白利用方式横向对比" class="headerlink" title="新旧白利用方式横向对比"></a>新旧白利用方式横向对比</h4><p>以往海莲花在使用白利用手法攻击时，大多是通过远程服务或远程任务计划启动白利用组合文件。当内网终端被远程连接时，会留下相关痕迹。并且无法持久化控制白利用组合文件的启动。本次使用的新方式，利用了被攻击者系统中已存在的正常程序（服务）的任务计划来定时启动白文件加载后门模块，同时实现了持久化驻留的目的。避免了因远程服务连接而留下痕迹的缺点。</p>
+<p>当内网终端原有任务计划启动服务时，相当于启动了白利用后门组合文件。根据对攻击过程的观察和分析，发现海莲花选择的目标服务主要是<strong>非系统服务</strong>，例如谷歌更新服务GoogleUpdate.exe，Adobe更新服务armsvc.exe。这些服务即使被替换也<strong>不会影响应用程序的正常使用</strong>。由于没有创建新服务项或修改原服务项的配置信息，仅替换原服务的可执行文件，用于替换的白文件也是可信文件，相当于模拟了一次应用程序文件升级的过程，以此来逃避安全软件的筛查。</p>
+<h4 id="新旧白利用方式横向对比"><a href="#新旧白利用方式横向对比" class="headerlink" title="新旧白利用方式横向对比"></a>新旧白利用方式横向对比</h4><p>以往海莲花在使用白利用手法攻击时，大多是<strong>通过远程服务或远程任务计划启动白利用组合文件</strong>。当内网终端被远程连接时，会留下相关痕迹。并且无法<strong>持久化控制白利用组合文件的启动</strong>。本次使用的新方式，利用了被攻击者系统中已存在的正常程序（服务）的任务计划来定时启动白文件加载后门模块，同时实现了持久化驻留的目的。避免了因远程服务连接而留下痕迹的缺点。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -403,7 +403,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-08-18T07:39:56.603Z" itemprop="dateUpdated">2022-08-18 15:39:56</time>
+    Last updated: <time datetime="2022-08-18T07:45:44.725Z" itemprop="dateUpdated">2022-08-18 15:45:44</time>
 </span>
 
 
