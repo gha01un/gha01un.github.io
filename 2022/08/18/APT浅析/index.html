@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>APT浅析 | Mr.Guo | 信息安全小白</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="AI">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="APT浅析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APT浅析">
+<meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/index.html">
+<meta property="og:site_name" content="Mr.Guo">
+<meta property="og:description" content="APT浅析">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/t1M34EkBGFPiTxX.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/SyvplE4jU9kugTn.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/YDRtLIPAMNXqogz.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/5gvCEt9WZOBAn7Y.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/ItC7hda6Ge2UBFj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/aP3fltu7Cmn56HE.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/NQfgi5nWITvsrKY.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/bTP4epoO85R7gDs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/fVaXKpjeMZW6JiA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/17/NpDnZ4IPLcK9jrs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/TujgPoBEJeSFb5d.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/3o8jFVrBYwpH5gN.png">
+<meta property="article:published_time" content="2022-08-18T07:35:39.402Z">
+<meta property="article:modified_time" content="2022-08-18T07:39:56.603Z">
+<meta property="article:author" content="Mr.Guo">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/18/t1M34EkBGFPiTxX.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Mr.Guo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Mr.Guo</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/243839548@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/gha01un" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/5180160661/home?wvr=5" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Twitter" href="https://twitter.com/MrGuo243839548" target="_blank"title="Twitter" >
+                <i class="icon icon-lg icon-twitter twitter"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">APT浅析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT浅析"><span class="post-toc-number">1.</span> <span class="post-toc-text">APT浅析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT攻击定义及手法"><span class="post-toc-number">2.</span> <span class="post-toc-text">APT攻击定义及手法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#平台上APT事件的理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">平台上APT事件的理解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对于鱼叉式钓鱼防范的思考"><span class="post-toc-number">4.</span> <span class="post-toc-text">对于鱼叉式钓鱼防范的思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#海莲花-APT32"><span class="post-toc-number">5.</span> <span class="post-toc-text">海莲花-APT32</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Microsoft-Word-白利用的攻击示例"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.Microsoft Word 白利用的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#海莲花白利用持久化新型组合攻击方式"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">海莲花白利用持久化新型组合攻击方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新旧白利用方式横向对比"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">新旧白利用方式横向对比</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-APT浅析"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">APT浅析</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2022-08-18 15:35:39" datetime="2022-08-18T07:35:39.402Z"  itemprop="datePublished">2022-08-18</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Study/">Study</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">7</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="APT浅析"><a href="#APT浅析" class="headerlink" title="APT浅析"></a>APT浅析</h3><a id="more"></a>
+
+<h3 id="APT攻击定义及手法"><a href="#APT攻击定义及手法" class="headerlink" title="APT攻击定义及手法"></a>APT攻击定义及手法</h3><p>APT:高级持续威胁（Advanced Persistent Threat),普遍认可的定义是，<strong>利用各种先进的攻击手段，对高价值目标进行的有组织、长期持续性网络攻击行为</strong>。也就是说很难去确定是不是APT攻击，只能从已发生过的APT攻击事件，分析其特点，进而与上述解释性概念相关联，得出APT攻击的一般规律。</p>
+<p>APT组织常用的攻击手法有：鱼叉式网络钓鱼、水坑攻击、路过式下载攻击、社会工程学、即时通讯工具、社交网络等，在各大分析报告中出现最多的还是<strong>鱼叉式网络钓鱼、水坑攻击、社会工程学</strong>。</p>
+<p>鱼叉式网络钓鱼（Spear phishing）指一种源于亚洲与东欧，只针对特定目标进行攻击的网络钓鱼攻击。当进行攻击的骇客锁定目标后，会以<strong>电子邮件</strong>的方式，假冒该公司或组织的名义寄发难以辨真伪之档案，诱使员工进一步登录其账号密码，使攻击者可以以此借机安装特洛伊木马或其他间谍软件，窃取机密；或于员工时常浏览之网页中置入病毒自动下载器，并持续更新受感染系统内之变种病毒，使使用者穷于应付。</p>
+<p>水坑攻击（Watering hole）是一种<strong>计算机入侵手法</strong>，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测（或观察）确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/18/t1M34EkBGFPiTxX.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/18/SyvplE4jU9kugTn.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="平台上APT事件的理解"><a href="#平台上APT事件的理解" class="headerlink" title="平台上APT事件的理解"></a>平台上APT事件的理解</h3><p>由今年的台账可以得出几类常见的APT事件类型：</p>
+<p>1.某某公司的内网IP地址解析APT组织”毒云藤”等的钓鱼域名</p>
+<p>2.某某公司的内网IP地址存在大量主要连接海莲花等APT团伙关联IP的通讯行为</p>
+<p>3.某某公司IP地址主动外联APT组织C2地址</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/YDRtLIPAMNXqogz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>对现有已知的APT组织例如”海莲花””毒云藤”等的相关恶意域名以及恶意IP(IOC)进行收集，形成自己的体系，以便于我们更好的在平台上抓取到APT相关信息。</p>
+<h3 id="对于鱼叉式钓鱼防范的思考"><a href="#对于鱼叉式钓鱼防范的思考" class="headerlink" title="对于鱼叉式钓鱼防范的思考"></a>对于鱼叉式钓鱼防范的思考</h3><p>类似于报文规则，我们也可以适当的编写鱼叉式网络钓鱼的一些规则，通过对邮件协议的抓包，我们可以得到一些初步的结果。</p>
+<p>当邮件的附件为exe且APT组织为毒云藤时，匹配如下：</p>
+<p>Date: 匹配任意字符</p>
+<p>From: 匹配任意字符@qq.com或者匹配任意字符@163.com或者匹配任意字符@foxmail.com或者匹配任意字符@Outlook.com或者Gmail.com</p>
+<p>To: 匹配任意字符</p>
+<p>Subject:包含 更新 或者 下载 或者 安装 或者 简历 或者 登入 或者 密码 或者 账户异常 或者 系统管理员 或者 通知 或者 告警 或者 订单 或者 采购单 或者 发票 或者 会议日程 或者 参会名单 或者 历届会议回顾 或者 密码重置 或者 验证 或者 整改  </p>
+<p>关键字：</p>
+<blockquote>
+<p>“201”，“202”，“2022年”，“报”，“报告”，“兵”，“部队”，“对台”，“工作”，“规划”，“国”，“国际”，“航”，“合作”，“机”，“机场”，“基地”，“极地”，“军”，“军事”，“科技”，“密”，“内部”，“十”，“十三”，“台”，“台湾”，“铁路”，“无人”，“项”，“雪”，“研”，“运输”，“战”，“站”，“中”</p>
+</blockquote>
+<p>Content-Type: application/octet-stream;</p>
+<p>name=”匹配任意字符.exe”</p>
+<h3 id="海莲花-APT32"><a href="#海莲花-APT32" class="headerlink" title="海莲花-APT32"></a>海莲花-APT32</h3><p>“海莲花”，又名 APT32 和 OceanLotus，是越南背景的黑客组织。长期针对<strong>中国能源相关行业、海事机构、海域建设部门、科研院所和航运企业</strong>等进行网络攻击。<br>APT32 至少自 2018 年开始积极使用 KerrDown 下载器，用于投递 Cobalt Strike Beacon 等后门，针对中国和越南语用户进行攻击。<br>KerrDown 主要通过 MHT 格式的 DOC 文档，包含模板注入的 DOCX 文档，以及 ZIP 和 RAR 格式的压缩包进行投递。<br>KerrDown 包含多层 Shellcode，多会针对包含 Microsoft、Google、Adobe、Neuber 等公司有效签名的EXE进行 DLL 劫持。</p>
+<h4 id="1-Microsoft-Word-白利用的攻击示例"><a href="#1-Microsoft-Word-白利用的攻击示例" class="headerlink" title="1.Microsoft Word 白利用的攻击示例"></a>1.Microsoft Word 白利用的攻击示例</h4><p>(CPLH-NHNN-01-2019.rar):该样本释放的诱饵文档及内容翻译如下图所示。可以看出是以越南国家银行为诱饵，疑似针对越南国家银行相关的分支机构进行定向攻击。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/5gvCEt9WZOBAn7Y.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/ItC7hda6Ge2UBFj.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p><strong>Word 白利用</strong>是最常见的攻击手法，主要是因为 Word 可执行文件自带 Word 文档图标，可同时伪装成文档文件进行钓鱼攻击，因此备受青睐。而为了凸显伪装 Word 文档的真实性，木马执行后会释放并启动一个 Word 文档迷惑受害者。</p>
+<h4 id="2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><a href="#2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例" class="headerlink" title="2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例"></a>2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</h4><p>样本 CV-AnthonyWei-CustomerService.docx 的主要功能为<strong>加载 Word 远程模板</strong>，远程模板中带有的<strong>恶意宏代码</strong>会从该 DOCX 文件中提取并释放出<strong>两个 PE 文件</strong>，并将其主程序加入到计划任务中。当该服务启动后会从内存中加载一个内嵌的 SCLoader，从远程服务器下载 Shellcode 并执行。该样本主要执行流程如下:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/aP3fltu7Cmn56HE.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>该样本在微步云沙箱的分析结果如下图所示:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/NQfgi5nWITvsrKY.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/bTP4epoO85R7gDs.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>服务模块主要功能是内存加载一个名为 PostData.exe 的内嵌 EXE</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/fVaXKpjeMZW6JiA.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p> PostData.exe 通过命令行传入特定参数来下载并执行 Payload</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/17/NpDnZ4IPLcK9jrs.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>APT32 拥有丰富的，自定义的武器库，其中 KerrDown 为其至少自 2018 年开始积极使用的下载器，被用于投递 Cobalt Strike Beacon 等后门。KerrDown 相关攻击手法画像如下:</p>
+<table>
+<thead>
+<tr>
+<th align="left">投递载体</th>
+<th align="left">DOC(MHT)，DOCX(TemplateInject)，ZIP，RAR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">技术特点</td>
+<td align="left">多层 Shellcode，针对 Microsoft、Google、Adobe、Neuber 和 360 等的白加黑利用</td>
+</tr>
+<tr>
+<td align="left">投递 Payload</td>
+<td align="left">Cobalt Strike Beacon</td>
+</tr>
+<tr>
+<td align="left">攻击目标</td>
+<td align="left">中国，越南语用户</td>
+</tr>
+</tbody></table>
+<h4 id="海莲花白利用持久化新型组合攻击方式"><a href="#海莲花白利用持久化新型组合攻击方式" class="headerlink" title="海莲花白利用持久化新型组合攻击方式"></a>海莲花白利用持久化新型组合攻击方式</h4><p>在日常狩猎海莲花攻击时，发现海莲花组织攻入企业内部后，滥用白利用技术，进行持久化驻留。配合横移技术以后，为了持久化驻留，使用了一个新的白利用驻留模式。</p>
+<p>海莲花攻击步骤如下：</p>
+<p>①攻陷企业内网管控端。</p>
+<p>②使用攻陷的内网管控端，通过SMB/RPC建立与目标内网终端的远程服务连接。</p>
+<p>③收集内网终端应用服务信息，同时收集其他可用于定制化的信息，例如：内网IP段，MAC地址，HostName等。</p>
+<p>④将定制化后门模块下发至目标内网终端的指定目录中。</p>
+<p>⑤将白文件下发替换内网终端的服务原可执行文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/18/TujgPoBEJeSFb5d.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>当内网终端原有任务计划启动服务时，相当于启动了白利用后门组合文件。根据对攻击过程的观察和分析，发现海莲花选择的目标服务主要是非系统服务，例如谷歌更新服务GoogleUpdate.exe，Adobe更新服务armsvc.exe。这些服务即使被替换也不会影响应用程序的正常使用。由于没有创建新服务项或修改原服务项的配置信息，仅替换原服务的可执行文件，用于替换的白文件也是可信文件，相当于模拟了一次应用程序文件升级的过程，以此来逃避安全软件的筛查。</p>
+<h4 id="新旧白利用方式横向对比"><a href="#新旧白利用方式横向对比" class="headerlink" title="新旧白利用方式横向对比"></a>新旧白利用方式横向对比</h4><p>以往海莲花在使用白利用手法攻击时，大多是通过远程服务或远程任务计划启动白利用组合文件。当内网终端被远程连接时，会留下相关痕迹。并且无法持久化控制白利用组合文件的启动。本次使用的新方式，利用了被攻击者系统中已存在的正常程序（服务）的任务计划来定时启动白文件加载后门模块，同时实现了持久化驻留的目的。避免了因远程服务连接而留下痕迹的缺点。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.loli.net/2022/08/18/3o8jFVrBYwpH5gN.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2022-08-18T07:39:56.603Z" itemprop="dateUpdated">2022-08-18 15:39:56</time>
+</span>
+
+
+        
+        原文链接：<a href="/2022/08/18/APT%E6%B5%85%E6%9E%90/" target="_blank" rel="external">https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='https://github.com/gha01un/gha01un.github.io'">
+            <img src="https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" alt="Mr.Guo">
+            <a>Mr.Guo</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&title=《APT浅析》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&title=《APT浅析》 — Mr.Guo&source=APT浅析" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《APT浅析》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2022/08/11/HVV%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：HVV工作总结">下一篇：HVV工作总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "3nztltfuvNfYN4yV7zxv4h8U-gzGzoHsz",
+            appKey: "CGxu9DylhaTiqe09F5FkEJzb",
+            avatar: "wavatar",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2020
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="https://github.com/gha01un/gha01un.github.io">gha01un.github.io</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+    
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+    
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+    
+        <span class="license">This blog is licensed under a <a rel="license noopener" rel="external nofollow noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2020/06/04/2I7aueljzb9xypn.jpg" data-alipay="https://i.loli.net/2020/06/04/7lT5ihFeUxEYBLO.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&title=《APT浅析》 — Mr.Guo&pic=https://i.loli.net/2020/06/03/obm8dYauEDhsfFr.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&title=《APT浅析》 — Mr.Guo&source=APT浅析" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《APT浅析》 — Mr.Guo&url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/&via=https://github.com/gha01un/gha01un.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://github.com/gha01un/gha01un.github.io/2022/08/18/APT%E6%B5%85%E6%9E%90/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+if(window.innerWidth > 600){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+	
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+	
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+	
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+	
+	/* 标题跳动 */
+	$(".archivestitle").bumpyText();
+	
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+	
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+	
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+	
+		document.body.appendChild(myimg);
+	
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+	
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2020/1/22");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Mr.Guo");
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 36.5网友小郭 %c  © Mr. Guo  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 引入jquery 已经引入过了可去掉 -->
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+  }
+</script>
+</body>
+</html>
