@@ -5759,8 +5759,8 @@
 </blockquote>
 <p>Content-Type: application/octet-stream;</p>
 <p>name=”匹配任意字符.exe”</p>
-<h3 id="海莲花-APT32"><a href="#海莲花-APT32" class="headerlink" title="海莲花-APT32"></a>海莲花-APT32</h3><p>“海莲花”，又名 APT32 和 OceanLotus，是越南背景的黑客组织。长期针对<strong>中国能源相关行业、海事机构、海域建设部门、科研院所和航运企业</strong>等进行网络攻击。<br>APT32 至少自 2018 年开始积极使用 KerrDown 下载器，用于投递 Cobalt Strike Beacon 等后门，针对中国和越南语用户进行攻击。<br>KerrDown 主要通过 MHT 格式的 DOC 文档，包含模板注入的 DOCX 文档，以及 ZIP 和 RAR 格式的压缩包进行投递。<br>KerrDown 包含多层 Shellcode，多会针对包含 Microsoft、Google、Adobe、Neuber 等公司有效签名的EXE进行 DLL 劫持。</p>
-<h4 id="1-Microsoft-Word-白利用的攻击示例"><a href="#1-Microsoft-Word-白利用的攻击示例" class="headerlink" title="1.Microsoft Word 白利用的攻击示例"></a>1.Microsoft Word 白利用的攻击示例</h4><p>(CPLH-NHNN-01-2019.rar):该样本释放的诱饵文档及内容翻译如下图所示。可以看出是以越南国家银行为诱饵，疑似针对越南国家银行相关的分支机构进行定向攻击。</p>
+<h3 id="海莲花-APT32的简单分析"><a href="#海莲花-APT32的简单分析" class="headerlink" title="海莲花-APT32的简单分析"></a>海莲花-APT32的简单分析</h3><p>“海莲花”，又名 APT32 和 OceanLotus，是越南背景的黑客组织。长期针对<strong>中国能源相关行业、海事机构、海域建设部门、科研院所和航运企业</strong>等进行网络攻击。<br>APT32 至少自 2018 年开始积极使用 KerrDown 下载器，用于投递 Cobalt Strike Beacon 等后门，针对中国和越南语用户进行攻击。<br>KerrDown 主要通过 MHT 格式的 DOC 文档，包含模板注入的 DOCX 文档，以及 ZIP 和 RAR 格式的压缩包进行投递。<br>KerrDown 包含多层 Shellcode，多会针对包含 Microsoft、Google、Adobe、Neuber 等公司有效签名的EXE进行 DLL 劫持。</p>
+<h4 id="Microsoft-Word-白利用的攻击示例"><a href="#Microsoft-Word-白利用的攻击示例" class="headerlink" title="Microsoft Word 白利用的攻击示例"></a>Microsoft Word 白利用的攻击示例</h4><p>(CPLH-NHNN-01-2019.rar):该样本释放的诱饵文档及内容翻译如下图所示。可以看出是以越南国家银行为诱饵，疑似针对越南国家银行相关的分支机构进行定向攻击。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -5778,7 +5778,7 @@
             </figure>
 
 <p><strong>Word 白利用</strong>是最常见的攻击手法，主要是因为 Word 可执行文件自带 Word 文档图标，可同时伪装成文档文件进行钓鱼攻击，因此备受青睐。而为了凸显伪装 Word 文档的真实性，木马执行后会释放并启动一个 Word 文档迷惑受害者。</p>
-<h4 id="2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><a href="#2-以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例" class="headerlink" title="2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例"></a>2.以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</h4><p>样本 CV-AnthonyWei-CustomerService.docx 的主要功能为<strong>加载 Word 远程模板</strong>，远程模板中带有的<strong>恶意宏代码</strong>会从该 DOCX 文件中提取并释放出<strong>两个 PE 文件</strong>，并将其主程序加入到计划任务中。当该服务启动后会从内存中加载一个内嵌的 SCLoader，从远程服务器下载 Shellcode 并执行。该样本主要执行流程如下:</p>
+<h4 id="以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><a href="#以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例" class="headerlink" title="以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例"></a>以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</h4><p>样本 CV-AnthonyWei-CustomerService.docx 的主要功能为<strong>加载 Word 远程模板</strong>，远程模板中带有的<strong>恶意宏代码</strong>会从该 DOCX 文件中提取并释放出<strong>两个 PE 文件</strong>，并将其主程序加入到计划任务中。当该服务启动后会从内存中加载一个内嵌的 SCLoader，从远程服务器下载 Shellcode 并执行。该样本主要执行流程如下:</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
