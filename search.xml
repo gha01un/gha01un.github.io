@@ -5714,10 +5714,10 @@
     <url>/2022/08/18/APT%E6%B5%85%E6%9E%90/</url>
     <content><![CDATA[<h2 id="APT浅析"><a href="#APT浅析" class="headerlink" title="APT浅析"></a>APT浅析</h2><a id="more"></a>
 
-<h3 id="APT攻击定义及手法"><a href="#APT攻击定义及手法" class="headerlink" title="APT攻击定义及手法"></a>APT攻击定义及手法</h3><p>APT:高级持续威胁（Advanced Persistent Threat),普遍认可的定义是，<strong>利用各种先进的攻击手段，对高价值目标进行的有组织、长期持续性网络攻击行为</strong>。也就是说很难去确定是不是APT攻击，只能从已发生过的APT攻击事件，分析其特点，进而与上述解释性概念相关联，得出APT攻击的一般规律。</p>
-<p>APT组织常用的攻击手法有：鱼叉式网络钓鱼、水坑攻击、路过式下载攻击、社会工程学、即时通讯工具、社交网络等，在各大分析报告中出现最多的还是<strong>鱼叉式网络钓鱼、水坑攻击、社会工程学</strong>。</p>
-<p>鱼叉式网络钓鱼（Spear phishing）指一种源于亚洲与东欧，只针对特定目标进行攻击的网络钓鱼攻击。当进行攻击的骇客锁定目标后，会以<strong>电子邮件</strong>的方式，假冒该公司或组织的名义寄发难以辨真伪之档案，诱使员工进一步登录其账号密码，使攻击者可以以此借机安装特洛伊木马或其他间谍软件，窃取机密；或于员工时常浏览之网页中置入病毒自动下载器，并持续更新受感染系统内之变种病毒，使使用者穷于应付。</p>
-<p>水坑攻击（Watering hole）是一种<strong>计算机入侵手法</strong>，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测（或观察）确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
+<h3 id="APT攻击定义及手法"><a href="#APT攻击定义及手法" class="headerlink" title="APT攻击定义及手法"></a>APT攻击定义及手法</h3><p>​    APT:高级持续威胁（Advanced Persistent Threat),普遍认可的定义是，<strong>利用各种先进的攻击手段，对高价值目标进行的有组织、长期持续性网络攻击行为</strong>。也就是说很难去确定是不是APT攻击，只能从已发生过的APT攻击事件，分析其特点，进而与上述解释性概念相关联，得出APT攻击的一般规律。</p>
+<p>​    APT组织常用的攻击手法有：鱼叉式网络钓鱼、水坑攻击、路过式下载攻击、社会工程学、即时通讯工具、社交网络等，在各大分析报告中出现最多的还是<strong>鱼叉式网络钓鱼、水坑攻击、社会工程学</strong>。</p>
+<p>​    鱼叉式网络钓鱼（Spear phishing）指一种源于亚洲与东欧，只针对特定目标进行攻击的网络钓鱼攻击。当进行攻击的骇客锁定目标后，会以<strong>电子邮件</strong>的方式，假冒该公司或组织的名义寄发难以辨真伪之档案，诱使员工进一步登录其账号密码，使攻击者可以以此借机安装特洛伊木马或其他间谍软件，窃取机密；或于员工时常浏览之网页中置入病毒自动下载器，并持续更新受感染系统内之变种病毒，使使用者穷于应付。</p>
+<p>​    水坑攻击（Watering hole）是一种<strong>计算机入侵手法</strong>，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测或观察确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -5746,7 +5746,7 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p>对现有已知的APT组织例如”海莲花””毒云藤”等的相关恶意域名以及恶意IP(IOC)进行收集，形成自己的体系，以便于我们更好的在平台上抓取到APT相关信息。</p>
+<p>​    对现有已知的APT组织例如”海莲花””毒云藤”等的相关恶意域名以及恶意IP(IOC)进行收集，形成自己的体系，以便于我们更好的在平台上抓取到APT相关信息。</p>
 <h3 id="对于鱼叉式钓鱼防范的思考"><a href="#对于鱼叉式钓鱼防范的思考" class="headerlink" title="对于鱼叉式钓鱼防范的思考"></a>对于鱼叉式钓鱼防范的思考</h3><p>类似于报文规则，我们也可以适当的编写鱼叉式网络钓鱼的一些规则，通过对邮件协议的抓包，我们可以得到一些初步的结果。</p>
 <p>当邮件的附件为exe且APT组织为毒云藤时，匹配如下：</p>
 <p>Date: 匹配任意字符</p>
@@ -5759,8 +5759,8 @@
 </blockquote>
 <p>Content-Type: application/octet-stream;</p>
 <p>name=”匹配任意字符.exe”</p>
-<h3 id="海莲花-APT32的简单分析"><a href="#海莲花-APT32的简单分析" class="headerlink" title="海莲花-APT32的简单分析"></a>海莲花-APT32的简单分析</h3><p>“海莲花”，又名 APT32 和 OceanLotus，是越南背景的黑客组织。长期针对<strong>中国能源相关行业、海事机构、海域建设部门、科研院所和航运企业</strong>等进行网络攻击。<br>APT32 至少自 2018 年开始积极使用 KerrDown 下载器，用于投递 Cobalt Strike Beacon 等后门，针对中国和越南语用户进行攻击。<br>KerrDown 主要通过 MHT 格式的 DOC 文档，包含模板注入的 DOCX 文档，以及 ZIP 和 RAR 格式的压缩包进行投递。<br>KerrDown 包含多层 Shellcode，多会针对包含 Microsoft、Google、Adobe、Neuber 等公司有效签名的EXE进行 DLL 劫持。</p>
-<h4 id="Microsoft-Word-白利用的攻击示例"><a href="#Microsoft-Word-白利用的攻击示例" class="headerlink" title="Microsoft Word 白利用的攻击示例"></a>Microsoft Word 白利用的攻击示例</h4><p>(CPLH-NHNN-01-2019.rar):该样本释放的诱饵文档及内容翻译如下图所示。可以看出是以越南国家银行为诱饵，疑似针对越南国家银行相关的分支机构进行定向攻击。</p>
+<h3 id="海莲花-APT32的简单分析"><a href="#海莲花-APT32的简单分析" class="headerlink" title="海莲花-APT32的简单分析"></a>海莲花-APT32的简单分析</h3><p>​    “海莲花”，又名 APT32 和 OceanLotus，是越南背景的黑客组织。长期针对<strong>中国能源相关行业、海事机构、海域建设部门、科研院所和航运企业</strong>等进行网络攻击。<br>​    APT32 至少自 2018 年开始积极使用 KerrDown 下载器，用于投递 Cobalt Strike Beacon 等后门，针对中国和越南语用户进行攻击。<br>​    KerrDown 主要通过 MHT 格式的 DOC 文档，包含模板注入的 DOCX 文档，以及 ZIP 和 RAR 格式的压缩包进行投递。<br>​    KerrDown 包含多层 Shellcode，多会针对包含 Microsoft、Google、Adobe、Neuber 等公司有效签名的EXE进行 DLL 劫持。</p>
+<h4 id="Microsoft-Word-白利用的攻击示例"><a href="#Microsoft-Word-白利用的攻击示例" class="headerlink" title="Microsoft Word 白利用的攻击示例"></a>Microsoft Word 白利用的攻击示例</h4><p>​    (CPLH-NHNN-01-2019.rar):该样本释放的诱饵文档及内容翻译如下图所示。可以看出是以越南国家银行为诱饵，疑似针对越南国家银行相关的分支机构进行定向攻击。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -5777,8 +5777,8 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p><strong>Word 白利用</strong>是最常见的攻击手法，主要是因为 Word 可执行文件自带 Word 文档图标，可同时伪装成文档文件进行钓鱼攻击，因此备受青睐。而为了凸显伪装 Word 文档的真实性，木马执行后会释放并启动一个 Word 文档迷惑受害者。</p>
-<h4 id="以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><a href="#以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例" class="headerlink" title="以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例"></a>以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</h4><p>样本 CV-AnthonyWei-CustomerService.docx 的主要功能为<strong>加载 Word 远程模板</strong>，远程模板中带有的<strong>恶意宏代码</strong>会从该 DOCX 文件中提取并释放出<strong>两个 PE 文件</strong>，并将其主程序加入到计划任务中。当该服务启动后会从内存中加载一个内嵌的 SCLoader，从远程服务器下载 Shellcode 并执行。该样本主要执行流程如下:</p>
+<p>​    <strong>Word 白利用</strong>是最常见的攻击手法，主要是因为 Word 可执行文件自带 Word 文档图标，可同时伪装成文档文件进行钓鱼攻击，因此备受青睐。而为了凸显伪装 Word 文档的真实性，木马执行后会释放并启动一个 Word 文档迷惑受害者。</p>
+<h4 id="以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例"><a href="#以简历为诱饵，以包含模板注入功能的-DOCX-文档为载体的攻击示例" class="headerlink" title="以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例"></a>以简历为诱饵，以包含模板注入功能的 DOCX 文档为载体的攻击示例</h4><p>​    样本 CV-AnthonyWei-CustomerService.docx 的主要功能为<strong>加载 Word 远程模板</strong>，远程模板中带有的<strong>恶意宏代码</strong>会从该 DOCX 文件中提取并释放出<strong>两个 PE 文件</strong>，并将其主程序加入到计划任务中。当该服务启动后会从内存中加载一个内嵌的 SCLoader，从远程服务器下载 Shellcode 并执行。该样本主要执行流程如下:</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -5822,7 +5822,7 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p>APT32 拥有丰富的，自定义的武器库，其中 KerrDown 为其至少自 2018 年开始积极使用的下载器，被用于投递 Cobalt Strike Beacon 等后门。KerrDown 相关攻击手法画像如下:</p>
+<p>​    APT32 拥有丰富的，自定义的武器库，其中 KerrDown 为其至少自 2018 年开始积极使用的下载器，被用于投递 Cobalt Strike Beacon 等后门。KerrDown 相关攻击手法画像如下:</p>
 <table>
 <thead>
 <tr>
@@ -5843,7 +5843,7 @@
 <td align="left">中国，越南语用户</td>
 </tr>
 </tbody></table>
-<h4 id="海莲花白利用持久化新型组合攻击方式"><a href="#海莲花白利用持久化新型组合攻击方式" class="headerlink" title="海莲花白利用持久化新型组合攻击方式"></a>海莲花白利用持久化新型组合攻击方式</h4><p>在日常狩猎海莲花攻击时，发现海莲花组织攻入企业内部后，滥用<strong>白利用技术，进行持久化驻留</strong>。配合横移技术以后，为了持久化驻留，使用了一个<strong>新的白利用</strong>驻留模式。</p>
+<h4 id="海莲花白利用持久化新型组合攻击方式"><a href="#海莲花白利用持久化新型组合攻击方式" class="headerlink" title="海莲花白利用持久化新型组合攻击方式"></a>海莲花白利用持久化新型组合攻击方式</h4><p>​    在日常狩猎海莲花攻击时，发现海莲花组织攻入企业内部后，滥用<strong>白利用技术，进行持久化驻留</strong>。配合横移技术以后，为了持久化驻留，使用了一个<strong>新的白利用</strong>驻留模式。</p>
 <p>海莲花攻击步骤如下：</p>
 <p>①攻陷企业内网管控端。</p>
 <p>②使用攻陷的内网管控端，通过SMB/RPC建立与目标内网终端的远程服务连接。</p>
@@ -5858,8 +5858,8 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p>当内网终端原有任务计划启动服务时，相当于启动了白利用后门组合文件。根据对攻击过程的观察和分析，发现海莲花选择的目标服务主要是<strong>非系统服务</strong>，例如谷歌更新服务GoogleUpdate.exe，Adobe更新服务armsvc.exe。这些服务即使被替换也<strong>不会影响应用程序的正常使用</strong>。由于没有创建新服务项或修改原服务项的配置信息，仅替换原服务的可执行文件，用于替换的白文件也是可信文件，相当于模拟了一次应用程序文件升级的过程，以此来逃避安全软件的筛查。</p>
-<h4 id="新旧白利用方式横向对比"><a href="#新旧白利用方式横向对比" class="headerlink" title="新旧白利用方式横向对比"></a>新旧白利用方式横向对比</h4><p>以往海莲花在使用白利用手法攻击时，大多是<strong>通过远程服务或远程任务计划启动白利用组合文件</strong>。当内网终端被远程连接时，会留下相关痕迹。并且无法<strong>持久化控制白利用组合文件的启动</strong>。本次使用的新方式，利用了被攻击者系统中已存在的正常程序（服务）的任务计划来定时启动白文件加载后门模块，同时实现了持久化驻留的目的。避免了因远程服务连接而留下痕迹的缺点。</p>
+<p>​    当内网终端原有任务计划启动服务时，相当于启动了白利用后门组合文件。根据对攻击过程的观察和分析，发现海莲花选择的目标服务主要是<strong>非系统服务</strong>，例如谷歌更新服务GoogleUpdate.exe，Adobe更新服务armsvc.exe。这些服务即使被替换也<strong>不会影响应用程序的正常使用</strong>。由于没有创建新服务项或修改原服务项的配置信息，仅替换原服务的可执行文件，用于替换的白文件也是可信文件，相当于模拟了一次应用程序文件升级的过程，以此来逃避安全软件的筛查。</p>
+<h4 id="新旧白利用方式横向对比"><a href="#新旧白利用方式横向对比" class="headerlink" title="新旧白利用方式横向对比"></a>新旧白利用方式横向对比</h4><p>​    以往海莲花在使用白利用手法攻击时，大多是<strong>通过远程服务或远程任务计划启动白利用组合文件</strong>。当内网终端被远程连接时，会留下相关痕迹。并且无法<strong>持久化控制白利用组合文件的启动</strong>。本次使用的新方式，利用了被攻击者系统中已存在的正常程序（服务）的任务计划来定时启动白文件加载后门模块，同时实现了持久化驻留的目的。避免了因远程服务连接而留下痕迹的缺点。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
