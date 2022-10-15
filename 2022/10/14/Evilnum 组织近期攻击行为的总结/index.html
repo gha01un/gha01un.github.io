@@ -47,7 +47,7 @@
 <meta property="og:description" content="好难找啊！！！好难发现啊！！">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756798.png">
-<meta property="og:image" content="c:/Users/大仑子/AppData/Roaming/Typora/typora-user-images/image-20221009102339667.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151801322.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756945.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756466.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756024.png">
@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756554.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756434.png">
 <meta property="article:published_time" content="2022-10-14T07:09:39.778Z">
-<meta property="article:modified_time" content="2022-10-15T09:57:28.410Z">
+<meta property="article:modified_time" content="2022-10-15T10:02:31.653Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
@@ -257,17 +257,23 @@
 <li>在执行过程中创建的所有文件名称都是由攻击者仔细构造的，以欺骗合法的 Windows 平台和其他第三方二进制文件检测工具。</li>
 <li>在每个新实例中，APT 组织使用与行业垂直目标相关的特定关键字注册多个域名。</li>
 </ul>
-<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756798.png" alt="image-20221011174914153" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756798.png" alt="image-20221011174914153"  />
 
-<h3 id="样本分析"><a href="#样本分析" class="headerlink" title="样本分析"></a>样本分析</h3><h4 id="第-1-阶段：恶意文档"><a href="#第-1-阶段：恶意文档" class="headerlink" title="第 1 阶段：恶意文档"></a>第 1 阶段：恶意文档</h4><img src="C:\Users\大仑子\AppData\Roaming\Typora\typora-user-images\image-20221009102339667.png" alt="image-20221009102339667" style="zoom: 50%;" />
+<h3 id="样本分析"><a href="#样本分析" class="headerlink" title="样本分析"></a>样本分析</h3><h4 id="第-1-阶段：恶意文档"><a href="#第-1-阶段：恶意文档" class="headerlink" title="第 1 阶段：恶意文档"></a>第 1 阶段：恶意文档</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151801322.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 
 <p>主题的选取上延续了Evilnum在之前的行动中诱饵文件使用过的类似文件名，意为所有权证明。这些样本文档制作比较粗糙，包括本样本在内的一系列样本都是利用CVE-2017-0199来进行恶意行为执行，但内容却是诱导受害者打开Office宏的图。Evilnum在之前的行动中使用过这类诱导图片，不过本次未作修改就应用在这些样本中。</p>
-<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756945.png" alt="image-20221009135954769" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756945.png" alt="image-20221009135954769"  />
 
 <h4 id="第-2-阶段：宏模板-VBA-代码清除技术"><a href="#第-2-阶段：宏模板-VBA-代码清除技术" class="headerlink" title="第 2 阶段：宏模板 [VBA 代码清除技术]"></a>第 2 阶段：宏模板 [VBA 代码清除技术]</h4><p>模板包含主要的恶意宏代码。它利用了相当少见的 VBA 代码清除技术。这种技术会破坏源代码，并且仅将 VBA 宏代码（也称为 p 代码）的编译版本存储在文档中。因此，这种技术可以防止 olevba 等静态分析工具提取反编译的 VBA 代码。</p>
 <p>使用沃尔玛团队提出的VBA Stomping — Advanced Maldoc Techniques技术，我们能够提取完整的宏代码。</p>
 <p>宏代码中的所有字符串均使用如图所示的字符串解密函数进行解密。</p>
-<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756466.png" alt="image-20221014150715577" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756466.png" alt="image-20221014150715577"  />
 
 <p>以下是宏的主要功能。</p>
 <p><strong>1.</strong>文档文件有两个文本框，内容是加密的。这些文本框将在运行时由 VBA 宏代码解密。</p>
@@ -282,9 +288,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756024.png" alt="image-20221014150736852" title="">
+                    <img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756024.png" alt="" title="">
                 </div>
-                <div class="image-caption">image-20221014150736852</div>
+                <div class="image-caption"></div>
             </figure>
 
 <h4 id="第-3-阶段：去混淆和分析"><a href="#第-3-阶段：去混淆和分析" class="headerlink" title="第 3 阶段：去混淆和分析"></a>第 3 阶段：去混淆和分析</h4><p>我们将重点介绍一些在混淆的 JavaScript 中很少观察到的独特混淆技术。在执行时使用以下命令行向此 JavaScript 传递了两个参数：</p>
@@ -297,9 +303,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756214.png" alt="image-20221014150755699" title="">
+                    <img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756214.png" alt="" title="">
                 </div>
-                <div class="image-caption">image-20221014150755699</div>
+                <div class="image-caption"></div>
             </figure>
 
 <p>下一步是解密混淆数组。下图中显示了相关的 JavaScript 代码，该代码使用粗略近似法来解密混淆数组。它有一个预定义的种子值“0x6467a”。在每次迭代中，该函数使用如下图所示的算法去计算一个种子，并将其与预定义的种子“0x6467a”进行比较，如果不满足条件，该函数继续将数组的内容向右移动一个位置，直到满足此条件。代码中包含相关注释以说明其逻辑。</p>
@@ -380,7 +386,7 @@
 <p>e) Cookies </p>
 <p><strong>2.</strong>解析从配置中检索到库的 API 地址</p>
 <p><strong>3.</strong>对生成的字符串进行加密和Base64编码</p>
-<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756434.png" alt="image-20221014150911224" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756434.png" alt="image-20221014150911224"  />
 
 <p><strong>4.</strong>通过从配置中选择一种 cookie，将编码字符串嵌入 cookie 标头字段中。</p>
 <h4 id="网络通讯"><a href="#网络通讯" class="headerlink" title="[+] 网络通讯"></a><strong>[+] 网络通讯</strong></h4><p>完成以上所有操作后。后门从配置中选择一个 C2 和一个路径，并发送网络请求。</p>
@@ -889,7 +895,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-10-15T09:57:28.410Z" itemprop="dateUpdated">2022-10-15 17:57:28</time>
+    Last updated: <time datetime="2022-10-15T10:02:31.653Z" itemprop="dateUpdated">2022-10-15 18:02:31</time>
 </span>
 
 
