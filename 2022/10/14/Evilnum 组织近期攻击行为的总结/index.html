@@ -39,12 +39,12 @@
 
 
     
-    <meta name="description" content="好难找啊！！！好难发现啊！！">
+    <meta name="description" content="Evilnum  APT组织近期攻击行为总结组织介绍Evilnum 组织因使用 Evilnum 恶意软件而闻名，该组织最初于 2018 年被安全公司所披露。Evilnum 组织擅长对受害者目标使用鱼叉式网络钓鱼电子邮件，主要针对整个欧洲的金融科技公司。由于金融公司多数需要身份信息来验证注册，因而用于钓鱼邮件的附件通常使用扫描信用卡、水电费账单、身份证、驾驶执照和其他身份信息图片来作为诱饵内容。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Evilnum  APT组织近期攻击行为总结">
 <meta property="og:url" content="https://github.com/gha01un/gha01un.github.io/2022/10/14/Evilnum%20%E7%BB%84%E7%BB%87%E8%BF%91%E6%9C%9F%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Mr.Guo">
-<meta property="og:description" content="好难找啊！！！好难发现啊！！">
+<meta property="og:description" content="Evilnum  APT组织近期攻击行为总结组织介绍Evilnum 组织因使用 Evilnum 恶意软件而闻名，该组织最初于 2018 年被安全公司所披露。Evilnum 组织擅长对受害者目标使用鱼叉式网络钓鱼电子邮件，主要针对整个欧洲的金融科技公司。由于金融公司多数需要身份信息来验证注册，因而用于钓鱼邮件的附件通常使用扫描信用卡、水电费账单、身份证、驾驶执照和其他身份信息图片来作为诱饵内容。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756798.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151801322.png">
@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756554.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/gha01un/PicGo/main/img/202210151756434.png">
 <meta property="article:published_time" content="2022-10-14T07:09:39.778Z">
-<meta property="article:modified_time" content="2022-10-15T10:02:31.653Z">
+<meta property="article:modified_time" content="2022-10-15T10:04:31.908Z">
 <meta property="article:author" content="Mr.Guo">
 <meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
@@ -208,7 +208,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Evilnum-APT组织近期攻击行为总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Evilnum  APT组织近期攻击行为总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组织介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">组织介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#攻击手法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">攻击手法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样本分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">样本分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-1-阶段：恶意文档"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">第 1 阶段：恶意文档</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-2-阶段：宏模板-VBA-代码清除技术"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">第 2 阶段：宏模板 [VBA 代码清除技术]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-3-阶段：去混淆和分析"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">第 3 阶段：去混淆和分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-4-阶段：丢弃二进制文件（加载程序）"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">第 4 阶段：丢弃二进制文件（加载程序）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-5-阶段：映射-PE（后门）"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">第 5 阶段：映射 PE（后门）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#网络通讯"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">[+] 网络通讯</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Indicators-of-compromise"><span class="post-toc-number">1.3.7.</span> <span class="post-toc-text">Indicators of compromise</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Evilnum-APT组织近期攻击行为总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Evilnum  APT组织近期攻击行为总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组织介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">组织介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#攻击手法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">攻击手法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样本分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">样本分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-1-阶段：恶意文档"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">第 1 阶段：恶意文档</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-2-阶段：宏模板-VBA-代码清除技术"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">第 2 阶段：宏模板 [VBA 代码清除技术]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-3-阶段：去混淆和分析"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">第 3 阶段：去混淆和分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-4-阶段：丢弃二进制文件（加载程序）"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">第 4 阶段：丢弃二进制文件（加载程序）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第-5-阶段：映射-PE（后门）"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">第 5 阶段：映射 PE（后门）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#网络通讯"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">[+] 网络通讯</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Indicators-of-compromise"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Indicators of compromise</span></a></li></ol></li></ol>
         </nav>
     </aside>
    
@@ -241,8 +241,7 @@
             阅读本文可能花费您&nbsp;<span class="post-count">13</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>好难找啊！！！好难发现啊！！</p>
-<a id="more"></a>
+            <a id="more"></a>
 
 <h2 id="Evilnum-APT组织近期攻击行为总结"><a href="#Evilnum-APT组织近期攻击行为总结" class="headerlink" title="Evilnum  APT组织近期攻击行为总结"></a>Evilnum  APT组织近期攻击行为总结</h2><h3 id="组织介绍"><a href="#组织介绍" class="headerlink" title="组织介绍"></a>组织介绍</h3><p>Evilnum 组织因使用 Evilnum 恶意软件而闻名，该组织最初于 2018 年被安全公司所披露。Evilnum 组织擅长对受害者目标使用鱼叉式网络钓鱼电子邮件，主要针对整个欧洲的金融科技公司。由于金融公司多数需要身份信息来验证注册，因而用于钓鱼邮件的附件通常使用扫描信用卡、水电费账单、身份证、驾驶执照和其他身份信息图片来作为诱饵内容。 Evilnum 专注于间谍活动，企图从目标单位企业获取财务信息，包括：客户列表和投资 及交易信息的文档、演示文稿、交易软件的凭证、浏览器数据、电子邮件登录信息、客户信用卡数据、甚至 VPN 配置等。自 2022 年初以来，Evilnum APT 组织的攻击行为一直在被各个国家密切监视。过程中发现他们针对英国和欧洲地区的国家发起的小规模针对性攻击活动的几个实例。近期的攻击行为使用最新的战术、技术和程序。在 2021 年观察到的早期活动中，该APT组织使用的主要分发媒介是 Windows 快捷方式文件 (LNK)或恶意文本文档 (ZIP) 作为电子邮件附件发送给受害者。在最近的例子中，攻击者已经开始使用 MS Office Word 文档，利用文档模板注入将恶意负载传送到受害者的机器上。</p>
 <h3 id="攻击手法"><a href="#攻击手法" class="headerlink" title="攻击手法"></a>攻击手法</h3><ul>
@@ -398,7 +397,7 @@
 <p>“u”:”{first_arg-user_id}”, “sc”:1, “dt”=”{snapshot_date_time}”</p>
 <p>}</p>
 <p><strong>2.</strong>如果内容大小大于4，则后门将下载的数据解密并执行。</p>
-<h4 id="Indicators-of-compromise"><a href="#Indicators-of-compromise" class="headerlink" title="Indicators of compromise"></a><strong>Indicators of compromise</strong></h4><table>
+<h3 id="Indicators-of-compromise"><a href="#Indicators-of-compromise" class="headerlink" title="Indicators of compromise"></a><strong>Indicators of compromise</strong></h3><table>
 <thead>
 <tr>
 <th><strong>MD5</strong></th>
@@ -895,7 +894,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-10-15T10:02:31.653Z" itemprop="dateUpdated">2022-10-15 18:02:31</time>
+    Last updated: <time datetime="2022-10-15T10:04:31.908Z" itemprop="dateUpdated">2022-10-15 18:04:31</time>
 </span>
 
 
@@ -942,7 +941,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/10/14/Evilnum%20%E7%BB%84%E7%BB%87%E8%BF%91%E6%9C%9F%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%80%BB%E7%BB%93/&title=《Evilnum  APT组织近期攻击行为总结》 — Mr.Guo&source=好难找啊！！！好难发现啊！！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/10/14/Evilnum%20%E7%BB%84%E7%BB%87%E8%BF%91%E6%9C%9F%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%80%BB%E7%BB%93/&title=《Evilnum  APT组织近期攻击行为总结》 — Mr.Guo&source=Myblog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -1120,7 +1119,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/10/14/Evilnum%20%E7%BB%84%E7%BB%87%E8%BF%91%E6%9C%9F%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%80%BB%E7%BB%93/&title=《Evilnum  APT组织近期攻击行为总结》 — Mr.Guo&source=好难找啊！！！好难发现啊！！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/gha01un/gha01un.github.io/2022/10/14/Evilnum%20%E7%BB%84%E7%BB%87%E8%BF%91%E6%9C%9F%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%80%BB%E7%BB%93/&title=《Evilnum  APT组织近期攻击行为总结》 — Mr.Guo&source=Myblog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
